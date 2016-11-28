@@ -25,7 +25,7 @@
         <Grid.DataContext>
             <vm:HomePageViewModel />
         </Grid.DataContext>
-        
+
         <!--Header-->
         <breadcrumb:BreadcrumbControl
             Grid.Row="1"
@@ -53,7 +53,7 @@
                 </DataTemplate>
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
-        
+
         <!--<TextBlock Grid.Row="1" Grid.Column="1" Text="Home" FontSize="50" Padding="15"/>-->
 
         <!-- Content -->
@@ -61,5 +61,6 @@
             <controls:ColoredTile Foreground="White" Background="Purple" Title="Start Round" Command="{Binding StartRound, Mode=OneWay}" />
             <controls:ColoredTile Foreground="White" Background="Green" Title="Sync" Command="{Binding Sync, Mode=OneWay}" />
         </StackPanel>
+        <Button x:Name="button" Content="Admin" Click="AdminBtn_Click" Grid.Column="2" HorizontalAlignment="Left" Height="150" Margin="28.333,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="150" FontSize="36" Background="#CA0025C9" Foreground="White"/>
     </Grid>
 </Page>

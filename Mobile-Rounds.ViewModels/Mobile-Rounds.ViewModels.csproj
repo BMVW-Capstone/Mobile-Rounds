@@ -105,10 +105,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="Admin\" />
     <Folder Include="Regular\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Home\IndexViewModel.cs" />
     <Compile Include="Shared\BaseViewModel.cs" />
     <Compile Include="Shared\Commands\AsyncCommand.cs" />
     <Compile Include="Shared\Commands\GoHomeCommand.cs" />

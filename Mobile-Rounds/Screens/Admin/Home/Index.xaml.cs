@@ -32,10 +32,10 @@ namespace Mobile_Rounds.Screens.Admin.Home
         //    this.Frame.Navigate(typeof(Regions.Index), null);
         //}
 
-        //private void StationsBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Frame.Navigate(typeof(Stations.Index), null);
-        //}
+        private void StationsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Stations.Index), null);
+        }
 
         //private void UnitsBtn_Click(object sender, RoutedEventArgs e)
         //{
