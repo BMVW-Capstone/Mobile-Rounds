@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="MainPage.xaml.cs" company="SolarWorld Capstone Team">
+// Copyright (c) SolarWorld Capstone Team. All rights reserved.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,8 +17,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace Mobile_Rounds
 {
     /// <summary>
@@ -22,6 +24,9 @@ namespace Mobile_Rounds
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainPage"/> class.
+        /// </summary>
         public MainPage()
         {
             this.InitializeComponent();
