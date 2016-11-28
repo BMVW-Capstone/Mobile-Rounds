@@ -19,9 +19,6 @@ namespace Mobile_Rounds.ViewModels.Tests.Shared.Home
 
             Assert.IsNotNull(vm.StartRound);
             Assert.IsNotNull(vm.Sync);
-
-            Assert.IsInstanceOfType(vm.StartRound, typeof(StartRoundCommand));
-            Assert.IsInstanceOfType(vm.Sync, typeof(SyncCommand));
         }
 
         [TestMethod]

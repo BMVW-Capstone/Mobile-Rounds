@@ -16,7 +16,7 @@ namespace Mobile_Rounds.ViewModels.Tests.Shared.Commands
 
         [TestMethod]
         [ExpectedException(typeof(NotImplementedException))]
-        public void ExecuteThrowsNotImpelemnted()
+        public void ExecuteThrowsNotImplemented()
         {
             var cmd = new SyncCommand();
             cmd.Execute(null);
