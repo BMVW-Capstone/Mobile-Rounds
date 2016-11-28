@@ -15,7 +15,7 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
     /// <summary>
     /// Represents the bsaic data for the home screens as exposed to XAML.
     /// </summary>
-    public class HomePageViewModel
+    public class HomePageViewModel : BaseViewModel
     {
         /// <summary>
         /// Gets the property used to handle the start of rounds.
@@ -35,6 +35,7 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
         {
             this.Sync = new SyncCommand();
             this.StartRound = new StartRoundCommand();
+            this.Crumbs.Add(new Controls.BreadcrumbItemModel("HELLO WORLD", new GoHomeCommand()));
         }
     }
 }

@@ -22,7 +22,6 @@
             Height="130"
             HorizontalAlignment="Left" 
             TextWrapping="Wrap" 
-
             Text="{Binding Title, ElementName=control, FallbackValue=Test words!}"
             VerticalAlignment="Top" FontSize="30"/>
     </Button>
