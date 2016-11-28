@@ -1,0 +1,45 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "documentationRules": {
+      "companyName": "SolarWorld Capstone Team",
+      "copyrightText": "Copyright (c) {companyName}. All rights reserved.",
+      "xmlHeader": true,
+      "headerDecoration": "-----------------------------------------------------------",
+      "documentExposedElements": true,
+      "documentInterfaces": true,
+      "documentationCulture": "en-US",
+      "documentPrivateFields": false,
+      "documentInternalElements": true,
+      "documentPrivateElements": false,
+      "fileNamingConvention": "stylecop"
+    },
+    "indentation": {
+      "indentationSize": 4,
+      "tabSize": 4,
+      "useTabs": false
+    },
+    "orderingRules": {
+      "blankLinesBetweenUsingGroups": "require",
+      "elementOrder": [
+        "constant",
+        "readonly",
+        "accessibility",
+        "static"
+      ],
+      "systemUsingDirectivesFirst": true,
+      "usingDirectivesPlacement": "outsideNamespace"
+    },
+    "namingRules": {
+      "allowCommonHungarianPrefixes": true,
+      "allowedHungarianPrefixes": [ "vm" ]
+    },
+    "maintainabilityRules": {
+      "topLevelTypes": [ "class", "interface", "enum" ]
+    },
+    "layoutRules": {
+      "allowConsecutiveUsings": false,
+      "newlineAtEndOfFile": "require"
+    }
+  }
+}
