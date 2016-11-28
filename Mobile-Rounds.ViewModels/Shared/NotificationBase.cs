@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="NotificationBase.cs" company="SolarWorld Capstone Team">
+// Copyright (c) SolarWorld Capstone Team. All rights reserved.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace Mobile_Rounds.ViewModels.Shared
 {
+    /// <summary>
+    /// Represents a bindable object that notifies a UI thread about property changes.
+    /// </summary>
     public abstract class NotificationBase : INotifyPropertyChanged
     {
         /// <inheritdoc/>

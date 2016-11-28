@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Mobile_Rounds.Helpers;
 using Mobile_Rounds.Screens.Regular;
+using Mobile_Rounds.ViewModels.Shared;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -19,8 +21,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Mobile_Rounds.ViewModels.Shared;
-using Mobile_Rounds.Helpers;
 
 namespace Mobile_Rounds
 {

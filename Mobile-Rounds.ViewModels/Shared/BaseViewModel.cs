@@ -13,9 +13,9 @@ using System.Windows.Input;
 using Mobile_Rounds.ViewModels.Admin.UnitOfMeasure;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
+using Mobile_Rounds.ViewModels.Shared.Navigation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Mobile_Rounds.ViewModels.Shared.Navigation;
 
 namespace Mobile_Rounds.ViewModels.Shared
 {
@@ -29,7 +29,18 @@ namespace Mobile_Rounds.ViewModels.Shared
         /// </summary>
         public static INavigator Navigator { get; set; }
 
+        /// <summary>
+        /// Gets or sets the mock data in the POC.
+        /// </summary>
         public static List<UnitOfMeasure> MockUnits { get; set; }
+
+        /// <summary>
+        /// Initializes static members of the <see cref="BaseViewModel"/> class.
+        /// </summary>
+        static BaseViewModel()
+        {
+            MockUnits = new List<UnitOfMeasure>();
+        }
 
         /// <summary>
         /// Gets the property used to handle navigating to the admin page.
@@ -56,11 +67,6 @@ namespace Mobile_Rounds.ViewModels.Shared
         /// Gets the command to call when a breadcrumb item is selected.
         /// </summary>
         public ICommand CrumbCommand { get; private set; }
-
-        static BaseViewModel()
-        {
-            MockUnits = new List<UnitOfMeasure>();
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseViewModel"/> class.

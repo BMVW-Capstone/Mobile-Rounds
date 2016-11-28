@@ -118,6 +118,7 @@
     <Compile Include="Shared\Home\HomePageViewModel.cs" />
     <Compile Include="Shared\Commands\StartRoundCommand.cs" />
     <Compile Include="Shared\Commands\SyncCommand.cs" />
+    <Compile Include="Shared\ModificationType.cs" />
     <Compile Include="Shared\Navigation\INavigator.cs" />
     <Compile Include="Shared\Navigation\NavigationType.cs" />
     <Compile Include="Shared\NotificationBase.cs" />

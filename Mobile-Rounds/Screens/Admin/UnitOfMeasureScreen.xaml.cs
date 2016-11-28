@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="UnitOfMeasureScreen.xaml.cs" company="SolarWorld Capstone Team">
+// Copyright (c) SolarWorld Capstone Team. All rights reserved.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,8 +17,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace Mobile_Rounds.Screens.Admin
 {
     /// <summary>
@@ -22,6 +24,9 @@ namespace Mobile_Rounds.Screens.Admin
     /// </summary>
     public sealed partial class UnitOfMeasureScreen : Page
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitOfMeasureScreen"/> class.
+        /// </summary>
         public UnitOfMeasureScreen()
         {
             this.InitializeComponent();
