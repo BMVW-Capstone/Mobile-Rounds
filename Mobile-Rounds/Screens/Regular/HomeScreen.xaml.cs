@@ -1,8 +1,13 @@
-﻿using System;
+﻿// <copyright file="MainPage.xaml.cs" company="SolarWorld Capstone Team">
+// Copyright (c) SolarWorld Capstone Team. All rights reserved.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Mobile_Rounds.ViewModels.Shared.Home;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -11,10 +16,6 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Mobile_Rounds.ViewModels.Shared.Home;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Mobile_Rounds.Screens.Regular
 {
@@ -23,6 +24,9 @@ namespace Mobile_Rounds.Screens.Regular
     /// </summary>
     public sealed partial class HomeScreen : Page
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HomeScreen"/> class.
+        /// </summary>
         public HomeScreen()
         {
             this.InitializeComponent();

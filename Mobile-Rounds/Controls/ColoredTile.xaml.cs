@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="ColoredTile.xaml.cs" company="SolarWorld Capstone Team">
+// Copyright (c) SolarWorld Capstone Team. All rights reserved.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,8 +18,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
-
 namespace Mobile_Rounds.Controls
 {
     /// <summary>
@@ -24,32 +26,38 @@ namespace Mobile_Rounds.Controls
     public sealed partial class ColoredTile : UserControl
     {
         /// <summary>
-        /// The command to call when the tile is tapped.
+        /// Gets or sets the command to call when the tile is tapped.
         /// </summary>
         public ICommand Command
         {
-            get { return (ICommand)GetValue(CommandProperty); }
-            set { SetValue(CommandProperty, value); }
+            get { return (ICommand)this.GetValue(CommandProperty); }
+            set { this.SetValue(CommandProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// Gers or sets the command property for XAML.
+        /// </summary>
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register("Command", typeof(ICommand), typeof(ColoredTile), null);
 
         /// <summary>
-        /// The title to set on the tile.
+        /// Gets or sets the title to set on the tile.
         /// </summary>
         public string Title
         {
-            get { return (string)GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value); }
+            get { return (string)this.GetValue(TitleProperty); }
+            set { this.SetValue(TitleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// Gets the title property for XAML.
+        /// </summary>
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(ColoredTile), null);
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ColoredTile"/> class.
+        /// </summary>
         public ColoredTile()
         {
             this.InitializeComponent();
