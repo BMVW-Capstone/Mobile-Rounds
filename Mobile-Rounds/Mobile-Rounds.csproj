@@ -100,11 +100,11 @@
       <DependentUpon>ColoredTile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Screens\Admin\Stations\Index.xaml.cs">
+    <Compile Include="Screens\Admin\Home\Index.xaml.cs">
       <DependentUpon>Index.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Screens\Admin\Stations\Manage.xaml.cs">
-      <DependentUpon>Manage.xaml</DependentUpon>
+    <Compile Include="Screens\Admin\Stations\Index.xaml.cs">
+      <DependentUpon>Index.xaml</DependentUpon>
     </Compile>
     <Compile Include="Screens\Regular\HomeScreen.xaml.cs">
       <DependentUpon>HomeScreen.xaml</DependentUpon>
@@ -135,11 +135,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Screens\Admin\Stations\Index.xaml">
+    <Page Include="Screens\Admin\Home\Index.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Screens\Admin\Stations\Manage.xaml">
+    <Page Include="Screens\Admin\Stations\Index.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

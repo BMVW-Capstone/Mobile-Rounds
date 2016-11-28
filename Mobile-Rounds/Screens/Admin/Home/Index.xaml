@@ -9,10 +9,10 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="111" Margin="101,69,0,0" TextWrapping="Wrap" Text="Admin" VerticalAlignment="Top" Width="318" FontSize="48" FontWeight="Bold"/>
-        <Button x:Name="button" Content="Regions" HorizontalAlignment="Left" Height="250" Margin="101,185,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
-        <Button x:Name="button_Copy" Content="Stations" HorizontalAlignment="Left" Height="250" Margin="417,185,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
-        <Button x:Name="button_Copy1" Content="Units of &#xD;&#xA;Measure" HorizontalAlignment="Left" Height="250" Margin="101,501,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
-        <Button x:Name="button_Copy2" Content="History" HorizontalAlignment="Left" Height="250" Margin="417,501,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
+        <Button x:Name="regionsBtn" Content="Regions" HorizontalAlignment="Left" Height="250" Margin="101,185,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
+        <Button x:Name="stationsBtn" Content="Stations" HorizontalAlignment="Left" Height="250" Margin="417,185,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
+        <Button x:Name="unitsBtn" Content="Units of &#xD;&#xA;Measure" HorizontalAlignment="Left" Height="250" Margin="101,501,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
+        <Button x:Name="historyBtn" Content="History" HorizontalAlignment="Left" Height="250" Margin="417,501,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
 
     </Grid>
 </Page>
