@@ -1,4 +1,4 @@
-﻿// <copyright file="MainPage.xaml.cs" company="SolarWorld Capstone Team">
+﻿// <copyright file="HomeScreen.xaml.cs" company="SolarWorld Capstone Team">
 // Copyright (c) SolarWorld Capstone Team. All rights reserved.
 // </copyright>
 
