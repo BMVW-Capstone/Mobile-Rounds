@@ -146,7 +146,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             this.Units = new ObservableCollection<UnitOfMeasure>(this.MockUnits);
 
             this.CurrentUnit = new UnitOfMeasure(this.Save, this.Cancel);
-            this.Crumbs.Add(new BreadcrumbItemModel("Admin"));
+            this.Crumbs.Add(new BreadcrumbItemModel("Admin", this.GoToAdmin));
             this.Crumbs.Add(new BreadcrumbItemModel("Unit of Measure"));
         }
     }
