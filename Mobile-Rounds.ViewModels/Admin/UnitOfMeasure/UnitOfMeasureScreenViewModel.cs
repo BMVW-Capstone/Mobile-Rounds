@@ -70,62 +70,82 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             }
         }
 
+        public AsyncCommand Cancel { get; private set; }
+
+        private bool ValidateInput(object input)
+        {
+            return !string.IsNullOrEmpty(this.currentUnit.Abbreviation)
+                && !string.IsNullOrEmpty(this.currentUnit.FullName);
+        }
+
+        private bool CanCancel(object input)
+        {
+            return !string.IsNullOrEmpty(this.currentUnit.Abbreviation)
+                || !string.IsNullOrEmpty(this.currentUnit.FullName);
+        }
+
         public UnitOfMeasureScreenViewModel()
         {
+            this.Cancel = new AsyncCommand(
+                (obj) =>
+                {
+                    this.Selected = null;
+                    this.CurrentUnit = new UnitOfMeasure(this.Save, this.Cancel);
+                }, this.CanCancel);
+
             this.Save = new AsyncCommand(
                 (obj) =>
-            {
-                var existing = this.Units.FirstOrDefault(u => u.Id == this.currentUnit.Id);
-                if (existing == null)
                 {
-                    var newCopy = new UnitOfMeasure(this.CurrentUnit);
-                    this.Units.Add(newCopy);
-                    this.MockUnits.Add(newCopy);
-                }
-                else
-                {
-                    existing.FullName = this.currentUnit.FullName;
-                    existing.Abbreviation = this.currentUnit.Abbreviation;
-                    existing.ModificationType = this.currentUnit.ModificationType;
-                }
-                
-                this.CurrentUnit = new UnitOfMeasure(this.Save);
-                this.Selected = null;
-            });
+                    var existing = this.Units.FirstOrDefault(u => u.Id == this.currentUnit.Id);
+                    if (existing == null)
+                    {
+                        this.CurrentUnit.Id = Guid.NewGuid();
+                        var newCopy = new UnitOfMeasure(this.CurrentUnit);
+                        this.Units.Add(newCopy);
+                        this.MockUnits.Add(newCopy);
+                    }
+                    else
+                    {
+                        existing.FullName = this.currentUnit.FullName;
+                        existing.Abbreviation = this.currentUnit.Abbreviation;
+                        existing.ModificationType = this.currentUnit.ModificationType;
+                    }
 
-            this.MockUnits.Add(new UnitOfMeasure(this.Save)
+                    this.CurrentUnit = new UnitOfMeasure(this.Save, this.Cancel);
+                    this.Selected = null;
+                }, this.ValidateInput);
+
+            this.MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
             {
                 Id = Guid.NewGuid(),
                 FullName = "Pounds per square inch",
                 Abbreviation = "PSI"
             });
 
-            this.MockUnits.Add(new UnitOfMeasure(this.Save)
+            this.MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
             {
                 Id = Guid.NewGuid(),
                 FullName = "Celcius",
                 Abbreviation = "C"
             });
 
-            this.MockUnits.Add(new UnitOfMeasure(this.Save)
+            this.MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
             {
                 Id = Guid.NewGuid(),
                 FullName = "Fahrenheit",
                 Abbreviation = "F"
             });
 
-            this.MockUnits.Add(new UnitOfMeasure(this.Save)
+            this.MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
             {
                 Id = Guid.NewGuid(),
                 FullName = "Percent",
                 Abbreviation = "%"
             });
 
-
             this.Units = new ObservableCollection<UnitOfMeasure>(this.MockUnits);
 
-            this.CurrentUnit = new UnitOfMeasure(this.Save);
-
+            this.CurrentUnit = new UnitOfMeasure(this.Save, this.Cancel);
             this.Crumbs.Add(new BreadcrumbItemModel("Admin"));
             this.Crumbs.Add(new BreadcrumbItemModel("Unit of Measure"));
         }

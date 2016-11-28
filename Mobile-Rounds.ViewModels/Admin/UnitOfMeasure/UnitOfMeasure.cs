@@ -20,7 +20,6 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
     {
         private string abbreviation;
         private string fullName;
-        private AsyncCommand parentSave;
         private string modificationType;
 
         public Guid Id { get; set; }
@@ -37,6 +36,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                 this.abbreviation = value;
                 this.RaisePropertyChanged(nameof(this.Abbreviation));
                 this.Save.RaiseExecuteChanged();
+                this.Cancel.RaiseExecuteChanged();
             }
         }
 
@@ -52,10 +52,12 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                 this.fullName = value;
                 this.RaisePropertyChanged(nameof(this.FullName));
                 this.Save.RaiseExecuteChanged();
+                this.Cancel.RaiseExecuteChanged();
             }
         }
 
-        public AsyncCommand Save { get; private set; }
+        private AsyncCommand Save { get; set; }
+        private AsyncCommand Cancel { get; set; }
 
         public string ModificationType
         {
@@ -93,16 +95,11 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             }
         }
 
-        public UnitOfMeasure()
+        public UnitOfMeasure(AsyncCommand save, AsyncCommand cancel)
         {
             ModificationType = "Save New Unit";
-            this.Save = new AsyncCommand(this.SetId, this.ValidateInput);
-        }
-
-        public UnitOfMeasure(AsyncCommand parentSave)
-        {
-            this.Save = new AsyncCommand(this.SetId, this.ValidateInput);
-            this.parentSave = parentSave;
+            this.Save = save;
+            this.Cancel = cancel;
         }
 
         public UnitOfMeasure(UnitOfMeasure toCopy)
@@ -111,26 +108,8 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             this.abbreviation = toCopy.abbreviation;
             this.Id = toCopy.Id;
             this.Save = toCopy.Save;
+            this.Cancel = toCopy.Cancel;
             this.modificationType = toCopy.modificationType;
-        }
-
-        private void SetId(object input)
-        {
-            if (this.Id == Guid.Empty)
-            {
-                this.Id = Guid.NewGuid();
-            }
-
-            if (this.parentSave != null)
-            {
-                this.parentSave.Execute(this);
-            }
-        }
-
-        private bool ValidateInput(object input)
-        {
-            return !string.IsNullOrEmpty(this.Abbreviation)
-                && !string.IsNullOrEmpty(this.FullName);
         }
     }
 }

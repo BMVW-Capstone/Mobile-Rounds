@@ -19,7 +19,7 @@
         </Style>
     </Page.Resources>
     
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root">
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
             <RowDefinition Height="100" />
@@ -99,9 +99,36 @@
                     </DataTemplate>
                 </TextBox.HeaderTemplate>
             </TextBox>
-            <Button Background="Green" Foreground="White" Height="100" HorizontalContentAlignment="Center"
-                    Command="{Binding Save}" Content="{Binding ModificationType}" HorizontalAlignment="Stretch"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                    Background="Green" Foreground="White" Height="100" 
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding DataContext.Save, ElementName=root}" 
+                    Content="{Binding ModificationType}" 
+                    HorizontalAlignment="Stretch"
+                    Margin="15"/>
+
+                <Button Grid.Column="1"
+                    Background="Gray" Foreground="White" Height="100"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding DataContext.Cancel, ElementName=root}" 
+                    Content="Cancel" HorizontalAlignment="Stretch"
+                    Margin="15"/>
+                
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                
+            </StackPanel>
+            
         </StackPanel>
+            
         
     </Grid>
 
