@@ -15,6 +15,7 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="96" Margin="88,121,0,0" TextWrapping="Wrap" Text="Create Station" VerticalAlignment="Top" Width="320" FontSize="48" FontWeight="Bold"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="88,382,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Height="65" Width="320" FontSize="36"/>
         <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="60" Margin="88,452,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="535"/>
+        <Button x:Name="button" Content="Create" HorizontalAlignment="Left" Height="104" Margin="88,793,0,0" VerticalAlignment="Top" Width="320" FontSize="36" Click="button_Click" RequestedTheme="Light" Background="#B274FF00"/>
 
     </Grid>
 </Page>

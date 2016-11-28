@@ -20,16 +20,11 @@ namespace Mobile_Rounds.Screens.Admin.Stations
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Index : Page
+    public sealed partial class Manage : Page
     {
-        public Index()
+        public Manage()
         {
             this.InitializeComponent();
-        }
-
-        private void itemsTitle_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
