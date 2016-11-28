@@ -105,10 +105,11 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="Admin\" />
     <Folder Include="Regular\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\UnitOfMeasure\UnitOfMeasure.cs" />
+    <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureScreenViewModel.cs" />
     <Compile Include="Shared\BaseViewModel.cs" />
     <Compile Include="Shared\Commands\AsyncCommand.cs" />
     <Compile Include="Shared\Commands\GoHomeCommand.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Shared\Home\HomePageViewModel.cs" />
     <Compile Include="Shared\Commands\StartRoundCommand.cs" />
     <Compile Include="Shared\Commands\SyncCommand.cs" />
+    <Compile Include="Shared\NotificationBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />

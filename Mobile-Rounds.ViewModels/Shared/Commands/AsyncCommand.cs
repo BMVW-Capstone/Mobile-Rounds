@@ -12,13 +12,13 @@ namespace Mobile_Rounds.ViewModels.Shared.Commands
     /// </summary>
     public class AsyncCommand : ICommand
     {
-        protected Action<object> Action { get; set; }
-        protected Func<object, bool> Condition { get; set; }
-
         /// <summary>
         /// Event for when the command changed.
         /// </summary>
         public event EventHandler CanExecuteChanged = (sender, ev) => { };
+
+        protected Action<object> Action { get; set; }
+        protected Func<object, bool> Condition { get; set; }
 
         /// <summary>
         /// Triggers the notification that the command change happened.
