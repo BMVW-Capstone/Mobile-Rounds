@@ -10,14 +10,20 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Mobile_Rounds.ViewModels.Admin.UnitOfMeasure;
 
 namespace Mobile_Rounds.ViewModels.Shared
 {
     /// <summary>
     /// Represents common operations on view models.
     /// </summary>
-    public abstract class BaseViewModel
+    public abstract class BaseViewModel : NotificationBase
     {
+        public List<UnitOfMeasure> MockUnits { get; set; }
+
+
         /// <summary>
         /// Gets or sets the set of breadcrumb items that are visible on the screen, excluding
         /// the home selection.
@@ -41,13 +47,17 @@ namespace Mobile_Rounds.ViewModels.Shared
         {
             this.Crumbs = new List<BreadcrumbItemModel>();
             this.GoHome = new GoHomeCommand();
+            this.MockUnits = new List<UnitOfMeasure>();
             this.CrumbCommand = new AsyncCommand((obj) =>
             {
                 var ev = obj as GoedWare.Controls.Breadcrumb.BreadcrumbEventArgs;
                 if (ev != null)
                 {
                     var model = ev.Item as BreadcrumbItemModel;
-                    model.Command.Execute(model.Title);
+                    if (model.Command != null)
+                    {
+                        model.Command.Execute(model.Title);
+                    }
                 }
             });
         }
@@ -60,6 +70,7 @@ namespace Mobile_Rounds.ViewModels.Shared
             : this()
         {
             this.GoHome = homeCommand;
+            this.MockUnits = new List<UnitOfMeasure>();
         }
     }
 }
