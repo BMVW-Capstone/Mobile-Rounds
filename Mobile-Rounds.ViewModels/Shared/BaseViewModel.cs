@@ -29,7 +29,7 @@ namespace Mobile_Rounds.ViewModels.Shared
         /// </summary>
         public static INavigator Navigator { get; set; }
 
-        public List<UnitOfMeasure> MockUnits { get; set; }
+        public static List<UnitOfMeasure> MockUnits { get; set; }
 
         /// <summary>
         /// Gets the property used to handle navigating to the admin page.
@@ -57,6 +57,11 @@ namespace Mobile_Rounds.ViewModels.Shared
         /// </summary>
         public ICommand CrumbCommand { get; private set; }
 
+        static BaseViewModel()
+        {
+            MockUnits = new List<UnitOfMeasure>();
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
         /// </summary>
@@ -65,7 +70,6 @@ namespace Mobile_Rounds.ViewModels.Shared
             this.IsAdmin = false;
             this.Crumbs = new List<BreadcrumbItemModel>();
             this.GoHome = new GoHomeCommand();
-            this.MockUnits = new List<UnitOfMeasure>();
             this.CrumbCommand = new AsyncCommand((obj) =>
             {
                 var ev = obj as GoedWare.Controls.Breadcrumb.BreadcrumbEventArgs;
@@ -83,17 +87,6 @@ namespace Mobile_Rounds.ViewModels.Shared
             {
                 Navigator.Navigate(NavigationType.AdminHome);
             });
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
-        /// </summary>
-        /// <param name="homeCommand">The command to call when the home item is selected.</param>
-        protected BaseViewModel(ICommand homeCommand)
-            : this()
-        {
-            this.GoHome = homeCommand;
-            this.MockUnits = new List<UnitOfMeasure>();
         }
     }
 }

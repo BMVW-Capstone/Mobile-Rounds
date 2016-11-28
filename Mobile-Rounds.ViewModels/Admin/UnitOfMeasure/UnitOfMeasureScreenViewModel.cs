@@ -102,7 +102,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                         this.CurrentUnit.Id = Guid.NewGuid();
                         var newCopy = new UnitOfMeasure(this.CurrentUnit);
                         this.Units.Add(newCopy);
-                        this.MockUnits.Add(newCopy);
+                        MockUnits.Add(newCopy);
                     }
                     else
                     {
@@ -115,35 +115,39 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                     this.Selected = null;
                 }, this.ValidateInput);
 
-            this.MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
+            // Init test data
+            if (MockUnits.Count == 0)
             {
-                Id = Guid.NewGuid(),
-                FullName = "Pounds per square inch",
-                Abbreviation = "PSI"
-            });
+                MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
+                {
+                    Id = Guid.NewGuid(),
+                    FullName = "Pounds per square inch",
+                    Abbreviation = "PSI"
+                });
 
-            this.MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
-            {
-                Id = Guid.NewGuid(),
-                FullName = "Celcius",
-                Abbreviation = "C"
-            });
+                MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
+                {
+                    Id = Guid.NewGuid(),
+                    FullName = "Celcius",
+                    Abbreviation = "C"
+                });
 
-            this.MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
-            {
-                Id = Guid.NewGuid(),
-                FullName = "Fahrenheit",
-                Abbreviation = "F"
-            });
+                MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
+                {
+                    Id = Guid.NewGuid(),
+                    FullName = "Fahrenheit",
+                    Abbreviation = "F"
+                });
 
-            this.MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
-            {
-                Id = Guid.NewGuid(),
-                FullName = "Percent",
-                Abbreviation = "%"
-            });
+                MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
+                {
+                    Id = Guid.NewGuid(),
+                    FullName = "Percent",
+                    Abbreviation = "%"
+                });
+            }
 
-            this.Units = new ObservableCollection<UnitOfMeasure>(this.MockUnits);
+            this.Units = new ObservableCollection<UnitOfMeasure>(MockUnits);
 
             this.CurrentUnit = new UnitOfMeasure(this.Save, this.Cancel);
             this.Crumbs.Add(new BreadcrumbItemModel("Admin", this.GoToAdmin));

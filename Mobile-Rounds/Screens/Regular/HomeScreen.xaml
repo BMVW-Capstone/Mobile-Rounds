@@ -65,7 +65,7 @@
             <controls:ColoredTile Foreground="White" Background="Purple" Title="Start Round" Command="{Binding StartRound, Mode=OneWay}" />
             <controls:ColoredTile Foreground="White" Background="Green" Title="Sync" Command="{Binding Sync, Mode=OneWay}" />
             <controls:ColoredTile Foreground="White" Background="Orange" Title="Admin"
-                                  Command="{Binding GoToAdmin, Mode=OneWay}"
+                                  Command="{Binding GoToAdmin}"
                                   Visibility="{Binding AdminTileVisibility}"/>
         </StackPanel>
     </Grid>
