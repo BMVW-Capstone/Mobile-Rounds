@@ -29,7 +29,6 @@ namespace Mobile_Rounds.ViewModels.Shared.Commands
         public void Execute(object parameter)
         {
             BaseViewModel.Navigator.Navigate(Navigation.NavigationType.StartRound);
-            /// throw new NotImplementedException();
         }
     }
 }
