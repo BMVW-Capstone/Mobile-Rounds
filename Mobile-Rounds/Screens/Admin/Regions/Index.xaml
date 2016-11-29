@@ -43,6 +43,15 @@
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
 
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="96" Margin="88,121,0,0" TextWrapping="Wrap" Text="Create Region" VerticalAlignment="Top" Width="320" FontSize="48" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="70" Margin="88,121,0,0" TextWrapping="Wrap" Text="Create Region" VerticalAlignment="Top" Width="320" FontSize="48" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="88,273,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Height="65" Width="320" FontSize="36"/>
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="60" Margin="88,343,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="535"/>
+        <Button x:Name="button" Content="Create" HorizontalAlignment="Left" Height="100" Margin="88,793,0,0" VerticalAlignment="Top" Width="320" FontSize="36" RequestedTheme="Light" Background="#B274FF00"/>
+        <TextBlock x:Name="regionsTitle" HorizontalAlignment="Left" Height="70" Margin="712,121,0,0" TextWrapping="Wrap" Text="Regions" VerticalAlignment="Top" Width="261" FontSize="48" FontWeight="Bold" RenderTransformOrigin="0.488,-0.297"/>
+        <Grid HorizontalAlignment="Left" Height="680" Margin="712,217,0,0" VerticalAlignment="Top" Width="673"/>
+
+
+
+
     </Grid>
 </Page>

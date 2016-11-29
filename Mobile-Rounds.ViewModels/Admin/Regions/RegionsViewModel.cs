@@ -4,7 +4,7 @@
 
 using Mobile_Rounds.ViewModels.Shared.Controls;
 
-namespace Mobile_Rounds.ViewModels.Admin.Stations
+namespace Mobile_Rounds.ViewModels.Admin.Regions
 {
     public class RegionsViewModel : Shared.BaseViewModel
     {
