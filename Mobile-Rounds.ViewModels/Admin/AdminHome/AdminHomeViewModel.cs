@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
+using Mobile_Rounds.ViewModels.Shared.Navigation;
 
 namespace Mobile_Rounds.ViewModels.Admin.AdminHome
 {
@@ -30,6 +31,11 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
         public ICommand GoToStations { get; private set; }
 
         /// <summary>
+        /// Gets the action to call to navigate to the Regions screen
+        /// </summary>
+        public ICommand GoToRegions { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="AdminHomeViewModel"/> class.
         /// This also sets up all actions.
         /// </summary>
@@ -38,12 +44,17 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
             this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Admin"));
             this.GoToUnits = new AsyncCommand((obj) =>
             {
-                Navigator.Navigate(Shared.Navigation.NavigationType.UnitOfMeasure);
+                Navigator.Navigate(NavigationType.UnitOfMeasure);
             });
 
             this.GoToStations = new AsyncCommand((obj) =>
             {
-                Navigator.Navigate(Shared.Navigation.NavigationType.Stations);
+                Navigator.Navigate(NavigationType.Stations);
+            });
+
+            this.GoToRegions = new AsyncCommand((obj) =>
+            {
+                Navigator.Navigate(NavigationType.Regions);
             });
         }
     }
