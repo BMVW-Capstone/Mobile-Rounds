@@ -9,12 +9,13 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="67,136,0,0" TextWrapping="Wrap" Text="Station Details" VerticalAlignment="Top" Height="84" Width="355" FontSize="48" FontWeight="Bold"/>
-        <TextBox x:Name="stationNameComboBox" HorizontalAlignment="Left" Height="67" Margin="67,296,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="461"/>
+        <TextBox x:Name="stationNameComboBox" HorizontalAlignment="Left" Height="67" Margin="67,296,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="500"/>
         <TextBlock x:Name="nameTitle" HorizontalAlignment="Left" Height="66" Margin="67,225,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="461" FontSize="36"/>
         <TextBlock x:Name="regionTitle" HorizontalAlignment="Left" Height="66" Margin="67,403,0,0" TextWrapping="Wrap" Text="Region" VerticalAlignment="Top" Width="461" FontSize="36"/>
-        <TextBox x:Name="regionComboBox" HorizontalAlignment="Left" Height="67" Margin="67,474,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="461"/>
+        <TextBox x:Name="regionComboBox" HorizontalAlignment="Left" Height="67" Margin="67,474,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="500"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="678,136,0,0" TextWrapping="Wrap" Text="Items" VerticalAlignment="Top" Height="84" Width="355" FontSize="48" FontWeight="Bold"/>
         <Grid HorizontalAlignment="Left" Height="680" Margin="678,225,0,0" VerticalAlignment="Top" Width="708"/>
-        <!--<Button x:Name="button" Content="Delete" HorizontalAlignment="Left" Height="106" Margin="67,799,0,0" VerticalAlignment="Top" Width="322" FocusVisualPrimaryBrush="#FFDA0000" Background="#B2DC0000" FontSize="36"/>-->
+        <Button x:Name="button" Content="Delete" HorizontalAlignment="Left" Height="106" Margin="67,799,0,0" VerticalAlignment="Top" Width="168" Background="#B2DC0000" FontSize="36"/>
+        <Button x:Name="addItemBtn" Content="Add Item" HorizontalAlignment="Left" Height="106" Margin="281,799,0,0" VerticalAlignment="Top" Width="286" Background="#B270E000" FontSize="36"/>
     </Grid>
 </Page>
