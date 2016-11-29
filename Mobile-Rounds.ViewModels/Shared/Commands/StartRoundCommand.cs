@@ -28,7 +28,8 @@ namespace Mobile_Rounds.ViewModels.Shared.Commands
         /// <inheritdoc/>
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            BaseViewModel.Navigator.Navigate(Navigation.NavigationType.StartRound);
+            /// throw new NotImplementedException();
         }
     }
 }

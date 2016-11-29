@@ -35,6 +35,9 @@ namespace Mobile_Rounds.Helpers
                 case NavigationType.UnitOfMeasure:
                     frame.Navigate(typeof(Screens.Admin.UnitOfMeasureScreen));
                     break;
+                case NavigationType.StartRound:
+                    frame.Navigate(typeof(Screens.Regular.StartRoundScreen));
+                    break;
                 default:
                     break;
             }
