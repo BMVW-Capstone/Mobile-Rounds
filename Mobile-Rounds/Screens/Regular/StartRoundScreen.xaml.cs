@@ -29,12 +29,12 @@ namespace Mobile_Rounds.Screens.Regular
 
         private void TimeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            // enable button
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            // navigate to region select
         }
     }
 }
