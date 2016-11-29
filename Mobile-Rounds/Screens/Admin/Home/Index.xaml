@@ -22,7 +22,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="111" Margin="101,69,0,0" TextWrapping="Wrap" Text="Admin" VerticalAlignment="Top" Width="318" FontSize="48" FontWeight="Bold"/>
         <StackPanel Margin="87,161,1179,0" VerticalAlignment="Top">
-            <controls:ColoredTile Foreground="White" Background="Blue" Title="Regions" Margin="5"/>
+            <controls:ColoredTile Foreground="White" Background="Blue" Title="Regions" Command="{Binding GoToRegions}" Margin="5"/>
             <controls:ColoredTile Foreground="White" Background="Blue" Title="Units of Measure" Command="{Binding GoToUnits}" Height="150" Margin="5"/>
         </StackPanel>
         <StackPanel Margin="37,161,806,0" VerticalAlignment="Top">

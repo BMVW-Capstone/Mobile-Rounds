@@ -96,11 +96,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Controls\BoolToValidColorConverter.cs" />
+    <Compile Include="Controls\BoundTypeToInputScopeConverter.cs" />
     <Compile Include="Controls\ColoredTile.xaml.cs">
       <DependentUpon>ColoredTile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screens\Admin\Regions\Index.xaml.cs">
+      <DependentUpon>Index.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screens\Admin\UnitOfMeasureScreen.xaml.cs">
       <DependentUpon>UnitOfMeasureScreen.xaml</DependentUpon>
     </Compile>
@@ -118,6 +124,9 @@
     </Compile>
     <Compile Include="Screens\Regular\StartRoundScreen.xaml.cs">
       <DependentUpon>StartRoundScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Regular\ReadingInput.xaml.cs">
+      <DependentUpon>ReadingInput.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +154,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Screens\Admin\Regions\Index.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Screens\Admin\UnitOfMeasureScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\Regular\StartRoundScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Regular\ReadingInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

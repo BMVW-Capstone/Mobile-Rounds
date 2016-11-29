@@ -1,18 +1,18 @@
 ﻿<Page
-    x:Class="Mobile_Rounds.Screens.Admin.Stations.Index"
+    x:Class="Mobile_Rounds.Screens.Admin.Regions.Index"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Mobile_Rounds.Screens.Admin.Stations"
+    xmlns:local="using:Mobile_Rounds.Screens.Admin.Regions"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:breadcrumb="using:GoedWare.Controls.Breadcrumb"
-    xmlns:vm="using:Mobile_Rounds.ViewModels.Admin.Stations"
+    xmlns:vm="using:Mobile_Rounds.ViewModels.Admin.Regions"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid.DataContext>
-            <vm:StationsViewModel />
+            <vm:RegionsViewModel />
         </Grid.DataContext>
 
         <!--Header-->
@@ -43,14 +43,15 @@
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
 
-        <Grid HorizontalAlignment="Left" Height="680" Margin="712,217,0,0" VerticalAlignment="Top" Width="673"/>
-        <TextBlock x:Name="itemsTitle" HorizontalAlignment="Left" Height="59" Margin="712,121,0,0" TextWrapping="Wrap" Text="Stations" VerticalAlignment="Top" Width="261" FontSize="48" FontWeight="Bold" RenderTransformOrigin="0.488,-0.297" SelectionChanged="itemsTitle_SelectionChanged"/>
-        <TextBlock x:Name="regionTitle" HorizontalAlignment="Left" Height="65" Margin="88,229,0,0" TextWrapping="Wrap" Text="Select Region" VerticalAlignment="Top" Width="320" FontSize="36"/>
-        <ComboBox x:Name="regionsComboBox" HorizontalAlignment="Left" Margin="88,294,0,0" VerticalAlignment="Top" Width="535" Height="60" FontSize="24"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="96" Margin="88,121,0,0" TextWrapping="Wrap" Text="Create Station" VerticalAlignment="Top" Width="320" FontSize="48" FontWeight="Bold"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="88,382,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Height="65" Width="320" FontSize="36"/>
-        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="60" Margin="88,452,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="535"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="70" Margin="88,121,0,0" TextWrapping="Wrap" Text="Create Region" VerticalAlignment="Top" Width="320" FontSize="48" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="88,273,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Height="65" Width="320" FontSize="36"/>
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="60" Margin="88,343,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="535"/>
         <Button x:Name="button" Content="Create" HorizontalAlignment="Left" Height="100" Margin="88,793,0,0" VerticalAlignment="Top" Width="320" FontSize="36" RequestedTheme="Light" Background="#B274FF00"/>
+        <TextBlock x:Name="regionsTitle" HorizontalAlignment="Left" Height="70" Margin="712,121,0,0" TextWrapping="Wrap" Text="Regions" VerticalAlignment="Top" Width="261" FontSize="48" FontWeight="Bold" RenderTransformOrigin="0.488,-0.297"/>
+        <Grid HorizontalAlignment="Left" Height="680" Margin="712,217,0,0" VerticalAlignment="Top" Width="673"/>
+
+
+
 
     </Grid>
 </Page>

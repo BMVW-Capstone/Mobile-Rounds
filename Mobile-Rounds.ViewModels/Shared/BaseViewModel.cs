@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Mobile_Rounds.ViewModels.Admin.UnitOfMeasure;
+using Mobile_Rounds.ViewModels.Regular.ReadingInput;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
 using Mobile_Rounds.ViewModels.Shared.Navigation;
@@ -35,11 +36,17 @@ namespace Mobile_Rounds.ViewModels.Shared
         public static List<UnitOfMeasure> MockUnits { get; set; }
 
         /// <summary>
+        /// Gets or sets the mock data in the POC.
+        /// </summary>
+        public static List<Meter> MockMeters { get; set; }
+
+        /// <summary>
         /// Initializes static members of the <see cref="BaseViewModel"/> class.
         /// </summary>
         static BaseViewModel()
         {
             MockUnits = new List<UnitOfMeasure>();
+            MockMeters = new List<Meter>();
         }
 
         /// <summary>
