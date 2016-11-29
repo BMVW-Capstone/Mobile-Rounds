@@ -116,6 +116,9 @@
     <Compile Include="Screens\Admin\Stations\Manage.xaml.cs">
       <DependentUpon>Manage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\Regular\PauseScreen.xaml.cs">
+      <DependentUpon>PauseScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screens\Regular\HomeScreen.xaml.cs">
       <DependentUpon>HomeScreen.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Screens\Admin\Stations\Manage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Screens\Regular\PauseScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
