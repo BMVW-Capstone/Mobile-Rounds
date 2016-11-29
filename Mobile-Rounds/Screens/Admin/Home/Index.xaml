@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Mobile_Rounds.Screens.Admin.Home"
     xmlns:vm="using:Mobile_Rounds.ViewModels.Admin.AdminHome"
+    xmlns:controls="using:Mobile_Rounds.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -20,12 +21,14 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="111" Margin="101,69,0,0" TextWrapping="Wrap" Text="Admin" VerticalAlignment="Top" Width="318" FontSize="48" FontWeight="Bold"/>
-        <Button x:Name="regionsBtn" Content="Regions" HorizontalAlignment="Left" Height="250" Margin="101,185,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
-        <Button x:Name="stationsBtn" Content="Stations" HorizontalAlignment="Left" Height="250" Margin="417,185,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
-        <Button Content="Units of &#xD;&#xA;Measure" 
-                Command="{Binding GoToUnits}"
-                HorizontalAlignment="Left" Height="250" Margin="101,501,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
-        <Button x:Name="historyBtn" Content="History" HorizontalAlignment="Left" Height="250" Margin="417,501,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
+        <StackPanel Margin="87,161,1179,0" VerticalAlignment="Top">
+            <controls:ColoredTile Foreground="White" Background="Blue" Title="Regions" Margin="5"/>
+            <controls:ColoredTile Foreground="White" Background="Blue" Title="Units of Measure" Command="{Binding GoToUnits}" Height="150" Margin="5"/>
+        </StackPanel>
+        <StackPanel Margin="37,161,806,0" VerticalAlignment="Top">
+            <controls:ColoredTile Foreground="White" Background="Blue" Title="Stations" Command="{Binding GoToStations}" Margin="5"/>
+            <controls:ColoredTile Foreground="White" Background="Blue" Title="History" Margin="5"/>
+        </StackPanel>
 
     </Grid>
 </Page>
