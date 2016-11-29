@@ -96,6 +96,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Controls\BoolToValidColorConverter.cs" />
+    <Compile Include="Controls\BoundTypeToInputScopeConverter.cs" />
     <Compile Include="Controls\ColoredTile.xaml.cs">
       <DependentUpon>ColoredTile.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,9 @@
     </Compile>
     <Compile Include="Screens\Regular\HomeScreen.xaml.cs">
       <DependentUpon>HomeScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Regular\ReadingInput.xaml.cs">
+      <DependentUpon>ReadingInput.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +172,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Screens\Regular\HomeScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Regular\ReadingInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
