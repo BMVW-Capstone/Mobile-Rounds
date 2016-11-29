@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mobile_Rounds.ViewModels.Shared;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,12 +30,14 @@ namespace Mobile_Rounds.Screens.Regular
 
         private void TimeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // enable button
+            // to do: block button_click until selection is made
+            // pass the time selection backend
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // navigate to region select
+            // placeholder nav
+            BaseViewModel.Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.Stations);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
     {
         public StartRoundViewModel()
         {
-            //this.Crumbs.Add(new BreadcrumbItemModel("Home", this.GoHome));
+            // this.Crumbs.Add(new BreadcrumbItemModel("Home", this.GoHome));
             this.Crumbs.Add(new BreadcrumbItemModel("Start Round"));
         }
     }
