@@ -2,11 +2,12 @@
 // Copyright (c) SolarWorld Capstone Team. All rights reserved.
 // </copyright>
 
+using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Controls;
 
 namespace Mobile_Rounds.ViewModels.Admin.Regions
 {
-    public class RegionsViewModel : Shared.BaseViewModel
+    public class RegionsViewModel : BaseViewModel
     {
         public RegionsViewModel()
         {
