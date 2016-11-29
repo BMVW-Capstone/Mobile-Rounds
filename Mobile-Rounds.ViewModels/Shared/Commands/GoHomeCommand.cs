@@ -24,11 +24,9 @@ namespace Mobile_Rounds.ViewModels.Shared.Commands
         /// </summary>
         public GoHomeCommand()
         {
-            this.Action = async (obj) =>
+            this.Action = (obj) =>
             {
-                var dlg = new MessageDialog(obj.ToString());
-                await dlg.ShowAsync();
-                //throw new NotImplementedException();
+                BaseViewModel.Navigator.Navigate(Navigation.NavigationType.Home);
             };
             this.Condition = (obj) => { return true; };
         }

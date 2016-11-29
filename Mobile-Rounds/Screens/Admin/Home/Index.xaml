@@ -3,10 +3,24 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Mobile_Rounds.Screens.Admin.Home"
+<<<<<<< HEAD
     xmlns:breadcrumb="using:GoedWare.Controls.Breadcrumb"
+=======
+    xmlns:vm="using:Mobile_Rounds.ViewModels.Admin.AdminHome"
+>>>>>>> develop
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:AdminHomeViewModel />
+    </Page.DataContext>
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition />
+        </TransitionCollection>
+    </Page.Transitions>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -40,8 +54,15 @@
 
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="111" Margin="101,69,0,0" TextWrapping="Wrap" Text="Admin" VerticalAlignment="Top" Width="318" FontSize="48" FontWeight="Bold"/>
         <Button x:Name="regionsBtn" Content="Regions" HorizontalAlignment="Left" Height="250" Margin="101,185,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
+<<<<<<< HEAD
         <Button x:Name="stationsBtn" Content="Stations" Click="StationsBtn_Click" HorizontalAlignment="Left" Height="250" Margin="417,185,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
         <Button x:Name="unitsBtn" Content="Units of &#xD;&#xA;Measure" HorizontalAlignment="Left" Height="250" Margin="101,501,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
+=======
+        <Button x:Name="stationsBtn" Content="Stations" HorizontalAlignment="Left" Height="250" Margin="417,185,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
+        <Button Content="Units of &#xD;&#xA;Measure" 
+                Command="{Binding GoToUnits}"
+                HorizontalAlignment="Left" Height="250" Margin="101,501,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
+>>>>>>> develop
         <Button x:Name="historyBtn" Content="History" HorizontalAlignment="Left" Height="250" Margin="417,501,0,0" VerticalAlignment="Top" Width="250" FontSize="36" Background="#B20D0783" Foreground="White"/>
 
     </Grid>

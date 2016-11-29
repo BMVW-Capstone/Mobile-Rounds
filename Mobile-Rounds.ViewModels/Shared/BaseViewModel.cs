@@ -4,20 +4,54 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Mobile_Rounds.ViewModels.Admin.UnitOfMeasure;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
+using Mobile_Rounds.ViewModels.Shared.Navigation;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace Mobile_Rounds.ViewModels.Shared
 {
     /// <summary>
     /// Represents common operations on view models.
     /// </summary>
-    public abstract class BaseViewModel
+    public abstract class BaseViewModel : NotificationBase
     {
+        /// <summary>
+        /// Gets or sets the service to use for changing screens.
+        /// </summary>
+        public static INavigator Navigator { get; set; }
+
+        /// <summary>
+        /// Gets or sets the mock data in the POC.
+        /// </summary>
+        public static List<UnitOfMeasure> MockUnits { get; set; }
+
+        /// <summary>
+        /// Initializes static members of the <see cref="BaseViewModel"/> class.
+        /// </summary>
+        static BaseViewModel()
+        {
+            MockUnits = new List<UnitOfMeasure>();
+        }
+
+        /// <summary>
+        /// Gets the property used to handle navigating to the admin page.
+        /// </summary>
+        public ICommand GoToAdmin { get; private set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the user is an admin user or not.
+        /// </summary>
+        public bool IsAdmin { get; set; }
+
         /// <summary>
         /// Gets or sets the set of breadcrumb items that are visible on the screen, excluding
         /// the home selection.
@@ -39,6 +73,7 @@ namespace Mobile_Rounds.ViewModels.Shared
         /// </summary>
         protected BaseViewModel()
         {
+            this.IsAdmin = false;
             this.Crumbs = new List<BreadcrumbItemModel>();
             this.GoHome = new GoHomeCommand();
             this.CrumbCommand = new AsyncCommand((obj) =>
@@ -47,19 +82,17 @@ namespace Mobile_Rounds.ViewModels.Shared
                 if (ev != null)
                 {
                     var model = ev.Item as BreadcrumbItemModel;
-                    model.Command.Execute(model.Title);
+                    if (model.Command != null)
+                    {
+                        model.Command.Execute(model.Title);
+                    }
                 }
             });
-        }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
-        /// </summary>
-        /// <param name="homeCommand">The command to call when the home item is selected.</param>
-        protected BaseViewModel(ICommand homeCommand)
-            : this()
-        {
-            this.GoHome = homeCommand;
+            this.GoToAdmin = new AsyncCommand((obj) =>
+            {
+                Navigator.Navigate(NavigationType.AdminHome);
+            });
         }
     }
 }

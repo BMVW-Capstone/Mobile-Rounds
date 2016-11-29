@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="AsyncCommand.cs" company="SolarWorld Capstone Team">
+// Copyright (c) SolarWorld Capstone Team. All rights reserved.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +16,6 @@ namespace Mobile_Rounds.ViewModels.Shared.Commands
     /// </summary>
     public class AsyncCommand : ICommand
     {
-        protected Action<object> Action { get; set; }
-        protected Func<object, bool> Condition { get; set; }
-
         /// <summary>
         /// Event for when the command changed.
         /// </summary>
@@ -77,5 +78,15 @@ namespace Mobile_Rounds.ViewModels.Shared.Commands
             this.Action = action;
             this.Condition = condition;
         }
+
+        /// <summary>
+        /// Gets or sets the action to call when the command executes.
+        /// </summary>
+        protected Action<object> Action { get; set; }
+
+        /// <summary>
+        /// Gets or sets the function to determine if the action can execute.
+        /// </summary>
+        protected Func<object, bool> Condition { get; set; }
     }
 }
