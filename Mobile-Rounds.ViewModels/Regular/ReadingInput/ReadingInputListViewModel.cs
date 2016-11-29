@@ -114,6 +114,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
 
             this.Meters = new ObservableCollection<Meter>(MockMeters);
             this.parent = parent;
+            this.Selected = this.Meters.FirstOrDefault();
         }
 
         private ReadingInputScreenViewModel parent;
