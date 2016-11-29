@@ -50,7 +50,7 @@
             </breadcrumb:BreadcrumbControl.SeperatorTemplate>
             <breadcrumb:BreadcrumbControl.HomeTemplate>
                 <DataTemplate>
-                    <TextBlock Text="HOME" FontSize="30" />
+                    <TextBlock Text="HOME > Start Round" FontSize="30" />
                 </DataTemplate>
             </breadcrumb:BreadcrumbControl.HomeTemplate>
             <breadcrumb:BreadcrumbControl.ItemTemplate>
