@@ -31,7 +31,12 @@ namespace Mobile_Rounds.ViewModels.Shared.Navigation
         UnitOfMeasure,
 
         /// <summary>
-        /// Navigate to round-start page
+        /// Navigate to stations page.
+        /// </summary>
+        Stations,
+
+        /// <summary>
+        /// Navigate to start rounds page
         /// </summary>
         StartRound
     }

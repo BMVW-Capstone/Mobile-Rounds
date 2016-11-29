@@ -10,26 +10,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Page.Transitions>
-        <TransitionCollection>
-            <EntranceThemeTransition />
-        </TransitionCollection>
-    </Page.Transitions>
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
         <Grid.DataContext>
-            <vm:HomePageViewModel />
+            <vm:StartRoundViewModel />
         </Grid.DataContext>
 
         <!--Header-->
@@ -50,7 +34,7 @@
             </breadcrumb:BreadcrumbControl.SeperatorTemplate>
             <breadcrumb:BreadcrumbControl.HomeTemplate>
                 <DataTemplate>
-                    <TextBlock Text="HOME > Start Round" FontSize="30" />
+                    <TextBlock Text="Home" FontSize="30" />
                 </DataTemplate>
             </breadcrumb:BreadcrumbControl.HomeTemplate>
             <breadcrumb:BreadcrumbControl.ItemTemplate>
@@ -59,6 +43,17 @@
                 </DataTemplate>
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
+
+        <Grid HorizontalAlignment="Left" Height="680" Margin="712,217,0,0" VerticalAlignment="Top" Width="673"/>
+        <TextBlock x:Name="regionTitle" HorizontalAlignment="Left" Height="65" Margin="88,229,0,0" TextWrapping="Wrap" Text="Select Time" VerticalAlignment="Top" Width="320" FontSize="36"/>
+        <ComboBox x:Name="TimeComboBox" HorizontalAlignment="Left" Margin="88,294,0,0" VerticalAlignment="Top" Width="535" Height="60" FontSize="30" SelectionChanged="TimeComboBox_SelectionChanged">
+            <x:String>02:00</x:String>
+            <x:String>08:00</x:String>
+            <x:String>14:00</x:String>
+            <x:String>20:00</x:String>
+        </ComboBox>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="96" Margin="88,121,0,0" TextWrapping="Wrap" Text="Start Round" VerticalAlignment="Top" Width="320" FontSize="48" FontWeight="Bold"/>
+        <Button x:Name="button" Content="Begin Round" HorizontalAlignment="Right" Height="104" Margin="0,0,26,17" VerticalAlignment="Bottom" FontSize="36" RequestedTheme="Light" Background="#B274FF00" Click="Button_Click"/>
 
     </Grid>
 </Page>

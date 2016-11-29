@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AdminHome\AdminHomeViewModel.cs" />
+    <Compile Include="Admin\Stations\StationsViewModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasure.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureScreenViewModel.cs" />
     <Compile Include="Shared\BaseViewModel.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Shared\Navigation\INavigator.cs" />
     <Compile Include="Shared\Navigation\NavigationType.cs" />
     <Compile Include="Shared\NotificationBase.cs" />
+    <Compile Include="Shared\Home\StartRoundViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
