@@ -1,29 +1,31 @@
-﻿using Mobile_Rounds.ViewModels.Shared;
-using Mobile_Rounds.ViewModels.Shared.Commands;
+﻿// <copyright file="UnitOfMeasure.cs" company="SolarWorld Capstone Team">
+// Copyright (c) SolarWorld Capstone Team. All rights reserved.
+// </copyright>
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Mobile_Rounds.ViewModels.Shared;
+using Mobile_Rounds.ViewModels.Shared.Commands;
 
 namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
 {
-    public enum ModificationType
-    {
-        Create,
-        Update,
-        Delete
-    };
-
+    /// <summary>
+    /// Represents a basic Unit of Measurement model.
+    /// </summary>
     public class UnitOfMeasure : NotificationBase
     {
-        private string abbreviation;
-        private string fullName;
-        private string modificationType;
-
+        /// <summary>
+        /// Gets or sets the unique id of the object.
+        /// </summary>
         public Guid Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets the abbreviation of the unit.
+        /// </summary>
         public string Abbreviation
         {
             get
@@ -40,6 +42,10 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             }
         }
 
+        /// <summary>
+        /// Gets or sets the full name of the unit. This would be akin to Kelvin,
+        /// when the abbreviation is K.
+        /// </summary>
         public string FullName
         {
             get
@@ -56,9 +62,10 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             }
         }
 
-        private AsyncCommand Save { get; set; }
-        private AsyncCommand Cancel { get; set; }
-
+        /// <summary>
+        /// Gets or sets the type of modification that is currently taking place
+        /// on the unit.
+        /// </summary>
         public string ModificationType
         {
             get
@@ -73,6 +80,10 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             }
         }
 
+        /// <summary>
+        /// Sets the modification type for the unit.
+        /// </summary>
+        /// <param name="type">The type of modification taking place.</param>
         public void SetModificationType(ModificationType type)
         {
             const string New = "Save New Unit";
@@ -81,27 +92,39 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
 
             switch (type)
             {
-                case Admin.UnitOfMeasure.ModificationType.Create:
-                    ModificationType = New;
+                case Shared.ModificationType.Create:
+                    this.ModificationType = New;
                     break;
-                case Admin.UnitOfMeasure.ModificationType.Update:
-                    ModificationType = Update;
+                case Shared.ModificationType.Update:
+                    this.ModificationType = Update;
                     break;
-                case Admin.UnitOfMeasure.ModificationType.Delete:
-                    ModificationType = Delete;
+                case Shared.ModificationType.Delete:
+                    this.ModificationType = Delete;
                     break;
                 default:
                     break;
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitOfMeasure"/> class.
+        /// This then caches the save and cancel commands so that it can
+        /// notify any views based on them.
+        /// </summary>
+        /// <param name="save">The save command that is based on this unit.</param>
+        /// <param name="cancel">The cancel command that is based on this unit.</param>
         public UnitOfMeasure(AsyncCommand save, AsyncCommand cancel)
         {
-            ModificationType = "Save New Unit";
+            this.ModificationType = "Save New Unit";
             this.Save = save;
             this.Cancel = cancel;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitOfMeasure"/> class.
+        /// This is a copy constructor so all values will get copied to the new copy.
+        /// </summary>
+        /// <param name="toCopy">The object to copy.</param>
         public UnitOfMeasure(UnitOfMeasure toCopy)
         {
             this.fullName = toCopy.fullName;
@@ -111,5 +134,13 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             this.Cancel = toCopy.Cancel;
             this.modificationType = toCopy.modificationType;
         }
+
+        private string abbreviation;
+        private string fullName;
+        private string modificationType;
+
+        private AsyncCommand Save { get; set; }
+
+        private AsyncCommand Cancel { get; set; }
     }
 }

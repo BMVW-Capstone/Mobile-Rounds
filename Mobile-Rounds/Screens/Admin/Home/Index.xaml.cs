@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="Index.xaml.cs" company="SolarWorld Capstone Team">
+// Copyright (c) SolarWorld Capstone Team. All rights reserved.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

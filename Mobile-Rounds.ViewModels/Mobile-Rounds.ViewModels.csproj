@@ -108,6 +108,7 @@
     <Folder Include="Regular\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AdminHome\AdminHomeViewModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasure.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureScreenViewModel.cs" />
     <Compile Include="Shared\BaseViewModel.cs" />
@@ -117,6 +118,9 @@
     <Compile Include="Shared\Home\HomePageViewModel.cs" />
     <Compile Include="Shared\Commands\StartRoundCommand.cs" />
     <Compile Include="Shared\Commands\SyncCommand.cs" />
+    <Compile Include="Shared\ModificationType.cs" />
+    <Compile Include="Shared\Navigation\INavigator.cs" />
+    <Compile Include="Shared\Navigation\NavigationType.cs" />
     <Compile Include="Shared\NotificationBase.cs" />
   </ItemGroup>
   <ItemGroup>

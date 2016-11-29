@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Mobile_Rounds.Helpers;
 using Mobile_Rounds.Screens.Regular;
+using Mobile_Rounds.ViewModels.Shared;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -36,6 +38,9 @@ namespace Mobile_Rounds
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+
+            // set the navigator for our classses.
+            BaseViewModel.Navigator = new NavigationService();
         }
 
         /// <summary>
@@ -78,7 +83,7 @@ namespace Mobile_Rounds
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(Screens.Admin.UnitOfMeasureScreen), e.Arguments);
+                    rootFrame.Navigate(typeof(HomeScreen), e.Arguments);
                 }
 
                 // Ensure the current window is active

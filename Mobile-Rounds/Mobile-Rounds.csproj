@@ -99,6 +99,7 @@
     <Compile Include="Controls\ColoredTile.xaml.cs">
       <DependentUpon>ColoredTile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\Admin\UnitOfMeasureScreen.xaml.cs">
       <DependentUpon>UnitOfMeasureScreen.xaml</DependentUpon>

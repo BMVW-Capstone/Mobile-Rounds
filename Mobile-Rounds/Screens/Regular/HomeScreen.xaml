@@ -10,6 +10,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition />
+        </TransitionCollection>
+    </Page.Transitions>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -53,13 +59,14 @@
                 </DataTemplate>
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
-        
-        <!--<TextBlock Grid.Row="1" Grid.Column="1" Text="Home" FontSize="50" Padding="15"/>-->
 
         <!-- Content -->
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top">
             <controls:ColoredTile Foreground="White" Background="Purple" Title="Start Round" Command="{Binding StartRound, Mode=OneWay}" />
             <controls:ColoredTile Foreground="White" Background="Green" Title="Sync" Command="{Binding Sync, Mode=OneWay}" />
+            <controls:ColoredTile Foreground="White" Background="Orange" Title="Admin"
+                                  Command="{Binding GoToAdmin}"
+                                  Visibility="{Binding AdminTileVisibility}"/>
         </StackPanel>
     </Grid>
 </Page>
