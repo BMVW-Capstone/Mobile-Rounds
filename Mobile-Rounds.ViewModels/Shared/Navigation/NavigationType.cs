@@ -33,6 +33,11 @@ namespace Mobile_Rounds.ViewModels.Shared.Navigation
         /// <summary>
         /// Navigate to stations page.
         /// </summary>
-        Stations
+        Stations,
+
+        /// <summary>
+        /// Navigate to regions page. 
+        /// </summary>
+        Regions
     }
 }
