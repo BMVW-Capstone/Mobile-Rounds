@@ -31,11 +31,6 @@ namespace Mobile_Rounds.Controls
                 scopeName = new InputScopeName(InputScopeNameValue.NumberFullWidth);
             }
 
-            if (val == BoundType.EitherOr)
-            {
-                throw new NotSupportedException("Either Or keyboard type not supported.");
-            }
-
             scope.Names.Add(scopeName);
 
             return scope;

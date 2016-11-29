@@ -20,16 +20,32 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         {
             this.Crumbs.Add(new BreadcrumbItemModel("My Region"));
             this.Crumbs.Add(new BreadcrumbItemModel("Compressor Room"));
-            this.Crumbs.Add(new BreadcrumbItemModel("Supply Air Receiver Tank"));
-            this.ListModel = new ReadingInputListViewModel();
             this.Input = new ReadingInputViewModel();
+            this.ListModel = new ReadingInputListViewModel(this);
         }
 
         /// <summary>
-        /// Gets or sets the model used for databinding the list part of the view.
+        /// Gets the model used for databinding the list part of the view.
         /// </summary>
         public ReadingInputListViewModel ListModel { get; private set; }
 
-        public ReadingInputViewModel Input { get; private set; }
+        /// <summary>
+        /// Gets or sets the model for the input part of the screen.
+        /// </summary>
+        public ReadingInputViewModel Input
+        {
+            get
+            {
+                return this.input;
+            }
+
+            set
+            {
+                this.input = value;
+                this.RaisePropertyChanged(nameof(this.Input));
+            }
+        }
+
+        private ReadingInputViewModel input;
     }
 }

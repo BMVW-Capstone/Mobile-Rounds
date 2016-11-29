@@ -12,6 +12,9 @@ using Mobile_Rounds.ViewModels.Shared.ReadingType;
 
 namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
 {
+    /// <summary>
+    /// Represents the input fields on the reading screen.
+    /// </summary>
     public class ReadingInputViewModel : BaseViewModel
     {
         /// <summary>
@@ -21,7 +24,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         {
             get
             {
-                return this.data.ValueBounds == BoundType.EitherOr;
+                return this.todaysData.ValueBounds == BoundType.EitherOr;
             }
         }
 
@@ -43,12 +46,12 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         {
             get
             {
-                return this.data.BooleanValue;
+                return this.todaysData.BooleanValue;
             }
 
             set
             {
-                this.data.BooleanValue = value;
+                this.todaysData.BooleanValue = value;
                 this.RaisePropertyChanged(nameof(this.BooleanValue));
             }
         }
@@ -60,12 +63,12 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         {
             get
             {
-                return this.data.StringValue;
+                return this.todaysData.StringValue;
             }
 
             set
             {
-                this.data.StringValue = value;
+                this.todaysData.StringValue = value;
                 this.RaisePropertyChanged(nameof(this.StringValue));
             }
         }
@@ -77,13 +80,29 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         {
             get
             {
-                return this.data.Notes;
+                return this.todaysData.Notes;
             }
 
             set
             {
-                this.data.Notes = value;
+                this.todaysData.Notes = value;
                 this.RaisePropertyChanged(nameof(this.Comments));
+            }
+        }
+
+        /// <summary>
+        /// Gets the header text for the reading field.
+        /// </summary>
+        public string InputHeader
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.todaysData.UnitAbbreviation))
+                {
+                    return "Current";
+                }
+
+                return $"Current ({this.todaysData.UnitAbbreviation})";
             }
         }
 
@@ -94,25 +113,30 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         {
             get
             {
-                if (this.data.ValueBounds == BoundType.Between)
+                if (this.todaysData.ValueBounds == BoundType.Between)
                 {
                     // must be integer
-                    return $"{this.data.MinimumValue} to {this.data.MaximumValue}";
+                    return $"{this.todaysData.MinimumValue} to {this.todaysData.MaximumValue} {this.todaysData.UnitAbbreviation}";
                 }
 
-                if (this.data.ValueBounds == BoundType.GreaterThan)
+                if (this.todaysData.ValueBounds == BoundType.GreaterThan)
                 {
-                    return $"> {this.data.MinimumValue}";
+                    return $"> {this.todaysData.MinimumValue} {this.todaysData.UnitAbbreviation}";
                 }
 
-                if (this.data.ValueBounds == BoundType.LessThan)
+                if (this.todaysData.ValueBounds == BoundType.LessThan)
                 {
-                    return $"< {this.data.MaximumValue}";
+                    return $"< {this.todaysData.MaximumValue} {this.todaysData.UnitAbbreviation}";
                 }
 
-                if (this.data.ValueBounds == BoundType.EqualTo)
+                if (this.todaysData.ValueBounds == BoundType.EqualTo)
                 {
-                    return this.data.ExpectedStringvalue;
+                    return $"{this.todaysData.ExpectedStringValue} {this.todaysData.UnitAbbreviation}";
+                }
+
+                if (this.todaysData.ValueBounds == BoundType.EitherOr)
+                {
+                    return this.todaysData.YesBooleanText;
                 }
 
                 return "N/A";
@@ -120,16 +144,28 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         }
 
         /// <summary>
-        /// Gets or sets the value to display for the yes value of the
+        /// Gets the value to display for the yes value of the
         /// toggle control.
         /// </summary>
-        public string YesBooleanText { get; set; }
+        public string YesBooleanText
+        {
+            get
+            {
+                return this.todaysData.YesBooleanText;
+            }
+        }
 
         /// <summary>
-        /// Gets or sets the value to display for the no value of the
+        /// Gets the value to display for the no value of the
         /// toggle control.
         /// </summary>
-        public string NoBooleanText { get; set; }
+        public string NoBooleanText
+        {
+            get
+            {
+                return this.todaysData.NoBooleanText;
+            }
+        }
 
         /// <summary>
         /// Gets the value indicating what type of bounds the input supports.
@@ -138,7 +174,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         {
             get
             {
-                return this.data.ValueBounds;
+                return this.todaysData.ValueBounds;
             }
         }
 
@@ -149,7 +185,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         {
             get
             {
-                return this.yesterdaysData.StringValue;
+                return $"{this.yesterdaysData.StringValue} {this.yesterdaysData.UnitAbbreviation}";
             }
         }
 
@@ -171,7 +207,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         {
             get
             {
-                return this.data.IsWithinSpec;
+                return this.todaysData.IsWithinSpec;
             }
         }
 
@@ -187,34 +223,43 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         }
 
         /// <summary>
+        /// Gets or sets a value indicating if the input screen should be visible.
+        /// </summary>
+        public bool ShowInput
+        {
+            get
+            {
+                return this.shouldShowInput;
+            }
+
+            set
+            {
+                this.shouldShowInput = value;
+                this.RaisePropertyChanged(nameof(this.ShowInput));
+            }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ReadingInputViewModel"/> class.
         /// </summary>
         public ReadingInputViewModel()
         {
-            this.data = new ReadingInput()
-            {
-                ValueBounds = BoundType.Between,
-                BooleanValue = true,
-                StringValue = "Hello",
-                MaximumValue = 100,
-                MinimumValue = 50,
-                ExpectedStringvalue = "123",
-                IsWithinSpec = false,
-                Notes = "I have some notes!"
-            };
-
-            this.yesterdaysData = new ReadingInput()
-            {
-                Notes = "Did some stuff.",
-                StringValue = "25",
-                IsWithinSpec = false
-            };
-
-            this.YesBooleanText = "True Fact";
-            this.NoBooleanText = "False Fact";
+            this.todaysData = this.yesterdaysData = new ReadingInput();
+            this.ShowInput = false;
         }
 
-        private ReadingInput data;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReadingInputViewModel"/> class.
+        /// </summary>
+        public ReadingInputViewModel(ReadingInput todaysData, ReadingInput yesterdaysData)
+        {
+            this.todaysData = todaysData;
+            this.ShowInput = this.todaysData != null;
+            this.yesterdaysData = yesterdaysData;
+        }
+
+        private ReadingInput todaysData;
         private ReadingInput yesterdaysData;
+        private bool shouldShowInput;
     }
 }

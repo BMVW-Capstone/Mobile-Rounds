@@ -49,5 +49,15 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             this.Id = id;
             this.Name = name;
         }
+
+        /// <summary>
+        /// Gets or sets todays reading.
+        /// </summary>
+        public ReadingInput TodaysReading { get; set; }
+
+        /// <summary>
+        /// Gets or sets yesterdays reading.
+        /// </summary>
+        public ReadingInput YesterdaysReading { get; set; }
     }
 }

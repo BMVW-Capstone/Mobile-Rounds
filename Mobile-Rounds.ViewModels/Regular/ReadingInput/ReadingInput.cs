@@ -50,11 +50,28 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// string value should be. This is really only used
         /// in the case of Exact values.
         /// </summary>
-        public string ExpectedStringvalue { get; set; }
+        public string ExpectedStringValue { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating if the item was within specified spec ranges or not.
+        /// Gets or sets the value indicating if the item was within specified spec ranges or not.
         /// </summary>
         public bool IsWithinSpec { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value to display for the yes value of the
+        /// toggle control.
+        /// </summary>
+        public string YesBooleanText { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value to display for the no value of the
+        /// toggle control.
+        /// </summary>
+        public string NoBooleanText { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value to display for the unit type.
+        /// </summary>
+        public string UnitAbbreviation { get; set; }
     }
 }
