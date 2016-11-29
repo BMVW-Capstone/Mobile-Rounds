@@ -38,6 +38,9 @@ namespace Mobile_Rounds.Helpers
                 case NavigationType.Stations:
                     frame.Navigate(typeof(Screens.Admin.Stations.Index));
                     break;
+                case NavigationType.StartRound:
+                    frame.Navigate(typeof(Screens.Regular.StartRoundScreen));
+                    break;
                 default:
                     break;
             }
