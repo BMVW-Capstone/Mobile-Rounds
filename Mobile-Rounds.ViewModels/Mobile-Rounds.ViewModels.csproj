@@ -123,6 +123,7 @@
     <Compile Include="Shared\Navigation\INavigator.cs" />
     <Compile Include="Shared\Navigation\NavigationType.cs" />
     <Compile Include="Shared\NotificationBase.cs" />
+    <Compile Include="Shared\Home\StartRoundViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />

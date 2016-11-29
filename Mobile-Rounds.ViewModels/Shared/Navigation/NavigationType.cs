@@ -36,7 +36,7 @@ namespace Mobile_Rounds.ViewModels.Shared.Navigation
         Stations,
 
         /// <summary>
-        /// Navigate to round-start page
+        /// Navigate to start rounds page
         /// </summary>
         StartRound
     }

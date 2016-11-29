@@ -30,5 +30,10 @@ namespace Mobile_Rounds.Screens.Admin.Home
         {
             this.InitializeComponent();
         }
+
+        private void ColoredTile_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
