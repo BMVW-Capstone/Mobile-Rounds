@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Mobile_Rounds.ViewModels.Shared.Controls;
 
 namespace Mobile_Rounds.ViewModels.Admin.Stations
 {
@@ -10,8 +6,8 @@ namespace Mobile_Rounds.ViewModels.Admin.Stations
     {
         public StationsViewModel()
         {
-            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Admin", this.GoToAdmin));
-            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Stations"));
+            this.Crumbs.Add(new BreadcrumbItemModel("Admin", this.GoToAdmin));
+            this.Crumbs.Add(new BreadcrumbItemModel("Stations"));
         }
     }
 }
