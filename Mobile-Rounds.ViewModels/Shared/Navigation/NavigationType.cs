@@ -38,6 +38,11 @@ namespace Mobile_Rounds.ViewModels.Shared.Navigation
         /// <summary>
         /// Navigate to regions page. 
         /// </summary>
-        Regions
+        Regions,
+
+        /// <summary>
+        /// Navigate to start rounds page
+        /// </summary>
+        StartRound
     }
 }

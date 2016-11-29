@@ -26,7 +26,7 @@
             <controls:ColoredTile Foreground="White" Background="Blue" Title="Units of Measure" Command="{Binding GoToUnits}" Height="150" Margin="5"/>
         </StackPanel>
         <StackPanel Margin="37,161,806,0" VerticalAlignment="Top">
-            <controls:ColoredTile Foreground="White" Background="Blue" Title="Stations" Command="{Binding GoToStations}" Margin="5"/>
+            <controls:ColoredTile Foreground="White" Background="Blue" Title="Stations" Command="{Binding GoToStations}" Margin="5" Loaded="ColoredTile_Loaded"/>
             <controls:ColoredTile Foreground="White" Background="Blue" Title="History" Margin="5"/>
         </StackPanel>
 

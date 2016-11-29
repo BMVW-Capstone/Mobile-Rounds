@@ -131,6 +131,7 @@
     <Compile Include="Shared\Navigation\INavigator.cs" />
     <Compile Include="Shared\Navigation\NavigationType.cs" />
     <Compile Include="Shared\NotificationBase.cs" />
+    <Compile Include="Shared\Home\StartRoundViewModel.cs" />
     <Compile Include="Shared\ReadingType\BoundType.cs" />
   </ItemGroup>
   <ItemGroup>
