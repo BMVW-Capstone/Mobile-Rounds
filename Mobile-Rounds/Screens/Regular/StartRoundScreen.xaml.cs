@@ -36,7 +36,7 @@ namespace Mobile_Rounds.Screens.Regular
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // placeholder nav
+            // placeholder for region select
             BaseViewModel.Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.Stations);
         }
     }
