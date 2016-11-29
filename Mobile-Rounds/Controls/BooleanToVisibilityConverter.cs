@@ -8,6 +8,9 @@ using Windows.UI.Xaml.Data;
 
 namespace Mobile_Rounds.Controls
 {
+    /// <summary>
+    /// Provides a way to convert between boolean values and Visibitlity.
+    /// </summary>
     public class BooleanToVisibilityConverter : IValueConverter
     {
         /// <inheritdoc/>

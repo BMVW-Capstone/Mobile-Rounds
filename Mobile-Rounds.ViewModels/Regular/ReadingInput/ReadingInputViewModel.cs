@@ -53,12 +53,31 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value to display for the yes value of the
+        /// toggle control.
+        /// </summary>
+        public string YesBooleanText { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value to display for the no value of the
+        /// toggle control.
+        /// </summary>
+        public string NoBooleanText { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReadingInputViewModel"/> class.
+        /// </summary>
         public ReadingInputViewModel()
         {
             this.data = new ReadingInput()
             {
-                ValueBounds = BoundType.EitherOr
+                ValueBounds = BoundType.EitherOr,
+                BooleanValue = true
             };
+
+            this.YesBooleanText = "True Fact";
+            this.NoBooleanText = "False Fact";
         }
 
         private ReadingInput data;

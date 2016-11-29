@@ -95,8 +95,9 @@
 
             <ToggleSwitch 
                 Visibility="{Binding IsBooleanInput, Converter={StaticResource BoolToVis}}"
-                Header="Reading"
-                OnContent="On" OffContent="Off"
+                Header="Reading Value"
+                OnContent="{Binding YesBooleanText}"
+                OffContent="{Binding NoBooleanText}"
                 IsOn="{Binding BooleanValue, Mode=TwoWay}"/>
 
 
