@@ -5,9 +5,44 @@
     xmlns:local="using:Mobile_Rounds.Screens.Admin.Stations"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:breadcrumb="using:GoedWare.Controls.Breadcrumb"
+    xmlns:vm="using:Mobile_Rounds.ViewModels.Admin.Stations"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.DataContext>
+            <vm:StationsViewModel />
+        </Grid.DataContext>
+
+        <!--Header-->
+        <breadcrumb:BreadcrumbControl
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="10,0,0,0"
+            FontSize="30"
+            HomeCommand="{Binding GoHome}"
+            ItemCommand="{Binding CrumbCommand}" 
+            ItemsSource="{Binding Crumbs}">
+
+            <breadcrumb:BreadcrumbControl.SeperatorTemplate>
+                <DataTemplate>
+                    <SymbolIcon Symbol="Play"/>
+                </DataTemplate>
+            </breadcrumb:BreadcrumbControl.SeperatorTemplate>
+            <breadcrumb:BreadcrumbControl.HomeTemplate>
+                <DataTemplate>
+                    <TextBlock Text="HOME" FontSize="30" />
+                </DataTemplate>
+            </breadcrumb:BreadcrumbControl.HomeTemplate>
+            <breadcrumb:BreadcrumbControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Title}" FontSize="30"/>
+                </DataTemplate>
+            </breadcrumb:BreadcrumbControl.ItemTemplate>
+        </breadcrumb:BreadcrumbControl>
+
         <Grid HorizontalAlignment="Left" Height="680" Margin="712,217,0,0" VerticalAlignment="Top" Width="673"/>
         <TextBlock x:Name="itemsTitle" HorizontalAlignment="Left" Height="59" Margin="712,121,0,0" TextWrapping="Wrap" Text="Stations" VerticalAlignment="Top" Width="261" FontSize="48" FontWeight="Bold" RenderTransformOrigin="0.488,-0.297" SelectionChanged="itemsTitle_SelectionChanged"/>
         <TextBlock x:Name="regionTitle" HorizontalAlignment="Left" Height="65" Margin="88,229,0,0" TextWrapping="Wrap" Text="Select Region" VerticalAlignment="Top" Width="320" FontSize="36"/>

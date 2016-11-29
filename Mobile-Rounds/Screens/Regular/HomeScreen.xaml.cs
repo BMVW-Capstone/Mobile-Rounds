@@ -31,11 +31,5 @@ namespace Mobile_Rounds.Screens.Regular
         {
             this.InitializeComponent();
         }
-
-        private void AdminBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Admin.Home.Index), null);
-        }
-
     }
 }

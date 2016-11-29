@@ -25,6 +25,11 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
         public ICommand GoToUnits { get; private set; }
 
         /// <summary>
+        /// Gets the action to call to navigate to the Stations screen
+        /// </summary>
+        public ICommand GoToStations { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="AdminHomeViewModel"/> class.
         /// This also sets up all actions.
         /// </summary>
@@ -34,6 +39,11 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
             this.GoToUnits = new AsyncCommand((obj) =>
             {
                 Navigator.Navigate(Shared.Navigation.NavigationType.UnitOfMeasure);
+            });
+
+            this.GoToStations = new AsyncCommand((obj) =>
+            {
+                Navigator.Navigate(Shared.Navigation.NavigationType.Stations);
             });
         }
     }

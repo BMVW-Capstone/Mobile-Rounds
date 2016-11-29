@@ -30,26 +30,5 @@ namespace Mobile_Rounds.Screens.Admin.Home
         {
             this.InitializeComponent();
         }
-
-        //private void RegionsBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Frame.Navigate(typeof(Regions.Index), null);
-        //}
-
-        private void StationsBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Stations.Index), null);
-        }
-
-        //private void UnitsBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Frame.Navigate(typeof(Units.Index), null);
-        //}
-
-        //private void HistoryBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Frame.Navigate(typeof(History.Index), null);
-        //}
-
     }
 }
