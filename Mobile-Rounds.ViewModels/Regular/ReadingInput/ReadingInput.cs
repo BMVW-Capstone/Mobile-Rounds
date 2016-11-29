@@ -31,13 +31,30 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         public bool BooleanValue { get; set; }
 
         /// <summary>
-        /// Gets or sets a value that is iterpreted as an integer.
-        /// </summary>
-        public int IntegerValue { get; set; }
-
-        /// <summary>
         /// Gets or sets a value that is interpreted as a string.
         /// </summary>
         public string StringValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value that is the lowest acceptable value.
+        /// </summary>
+        public int MinimumValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value that is the maximum acceptable value.
+        /// </summary>
+        public int MaximumValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating what the expected
+        /// string value should be. This is really only used
+        /// in the case of Exact values.
+        /// </summary>
+        public string ExpectedStringvalue { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating if the item was within specified spec ranges or not.
+        /// </summary>
+        public bool IsWithinSpec { get; set; }
     }
 }

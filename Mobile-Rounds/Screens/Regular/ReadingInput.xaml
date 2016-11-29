@@ -25,6 +25,8 @@
             <Setter Property="FontSize" Value="30"/>
         </Style>
         <converters:BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <converters:BoundTypeToInputScopeConverter x:Key="BoundToKeyboard" />
+        <converters:BoolToValidColorConverter x:Key="BoolToColor" />
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root">
@@ -72,7 +74,6 @@
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
 
-        <!-- Content -->
         <ListView DataContext="{Binding ListModel}" ItemsSource="{Binding Meters, Mode=TwoWay}" 
                   Grid.Row="2" Grid.Column="1" SelectionMode="Single"
                   SelectedItem="{Binding Selected, Mode=TwoWay}" Padding="0,0,15,0">
@@ -83,40 +84,74 @@
             </ListView.HeaderTemplate>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Padding="0,5,0,5">
                         <TextBlock Text="{Binding Name}" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <StackPanel Grid.Row="2" Grid.Column="2" DataContext="{Binding Input, Mode=TwoWay}" Padding="0,0,15,0">
-            <TextBlock Text="Current Reading" Style="{StaticResource SectionHeader}" Margin="0,0,0,15"/>
+        <Grid Grid.Row="2" Grid.Column="2" DataContext="{Binding Input, Mode=TwoWay}" Padding="0,0,15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                       Text="Current Reading" 
+                       Style="{StaticResource SectionHeader}"
+                       Margin="0,0,0,15"/>
 
-            <ToggleSwitch 
+            <!--
+                The toggle switch and textbox will change their visiblity based
+                on the kind of input the current meter supports.
+            -->
+            <ToggleSwitch Grid.Row="1" Grid.Column="0"
                 Visibility="{Binding IsBooleanInput, Converter={StaticResource BoolToVis}}"
-                Header="Reading Value"
+                Header="Reading"
                 OnContent="{Binding YesBooleanText}"
                 OffContent="{Binding NoBooleanText}"
                 IsOn="{Binding BooleanValue, Mode=TwoWay}"/>
 
+            <TextBox Grid.Row="1" Grid.Column="0"
+                Visibility="{Binding IsNotBooleanInput, Converter={StaticResource BoolToVis}}"
+                Header="Reading Value"
+                InputScope="{Binding InputType, Converter={StaticResource BoundToKeyboard}}"
+                Text="{Binding StringValue, Mode=TwoWay}"/>
 
-            <!--<TextBox Text="{Binding Abbreviation, Mode=TwoWay}" Style="{StaticResource TextInput}">
-                <TextBox.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock FontSize="22" Text="Abbreviation/Symbol" />
-                    </DataTemplate>
-                </TextBox.HeaderTemplate>
-            </TextBox>
-            <TextBox Text="{Binding FullName, Mode=TwoWay}" Style="{StaticResource TextInput}">
-                <TextBox.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock FontSize="22" Text="Full Name" />
-                    </DataTemplate>
-                </TextBox.HeaderTemplate>
-            </TextBox>-->
+            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+                <TextBlock Text="Acceptable Value" Padding="0,0,0,10"/>
+                <TextBlock Text="{Binding AcceptedValue}" HorizontalAlignment="Center"/>
+            </StackPanel>
 
-            <Grid>
+            <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
+                <TextBlock Text="Yesterdays Value" Padding="0,0,0,10"/>
+                <TextBlock Text="{Binding YesterdaysValue}" HorizontalAlignment="Center"
+                            Foreground="{Binding WasYesterdayInSpec, Converter={StaticResource BoolToColor}}"/>
+            </StackPanel>
+
+            <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                Margin="0,10,0,0"
+                BorderBrush="{Binding IsInSpec, Converter={StaticResource BoolToColor}}"
+                Header="Comments"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                Text="{Binding Comments, Mode=TwoWay}" />
+
+            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,10,0,0">
+                <TextBlock Text="Yesterdays Comments" Padding="0,0,0,5"/>
+                <TextBlock Text="{Binding YesterdaysComments}" />
+            </StackPanel>
+
+            <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -126,7 +161,7 @@
                     Background="Green" Foreground="White" Height="100" 
                     HorizontalContentAlignment="Center"
                     Command="{Binding DataContext.Save, ElementName=root}" 
-                    Content="{Binding ModificationType}" 
+                    Content="Save" 
                     HorizontalAlignment="Stretch"
                     Margin="15"/>
 
@@ -138,13 +173,7 @@
                     Margin="15"/>
 
             </Grid>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-
-            </StackPanel>
-
-        </StackPanel>
-
+        </Grid>
 
     </Grid>
 

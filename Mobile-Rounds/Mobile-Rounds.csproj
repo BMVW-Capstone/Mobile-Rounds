@@ -97,6 +97,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Controls\BoolToValidColorConverter.cs" />
+    <Compile Include="Controls\BoundTypeToInputScopeConverter.cs" />
     <Compile Include="Controls\ColoredTile.xaml.cs">
       <DependentUpon>ColoredTile.xaml</DependentUpon>
     </Compile>
