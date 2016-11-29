@@ -120,7 +120,10 @@
     <Compile Include="Shared\BaseViewModel.cs" />
     <Compile Include="Shared\Commands\AsyncCommand.cs" />
     <Compile Include="Shared\Commands\GoHomeCommand.cs" />
+    <Compile Include="Shared\Commands\EndRoundCommand.cs" />
+    <Compile Include="Shared\Commands\ResumeRoundCommand.cs" />
     <Compile Include="Shared\Controls\BreadcrumbItemModel.cs" />
+    <Compile Include="Shared\Home\PausePageViewModel.cs" />
     <Compile Include="Shared\Home\HomePageViewModel.cs" />
     <Compile Include="Shared\Commands\StartRoundCommand.cs" />
     <Compile Include="Shared\Commands\SyncCommand.cs" />
