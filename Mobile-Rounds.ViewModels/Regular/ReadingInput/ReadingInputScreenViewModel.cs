@@ -3,6 +3,7 @@
 // </copyright>
 
 using Mobile_Rounds.ViewModels.Shared;
+using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
 
 namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
@@ -18,7 +19,11 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// </summary>
         public ReadingInputScreenViewModel()
         {
-            this.Crumbs.Add(new BreadcrumbItemModel("My Region"));
+            var regionNav = new AsyncCommand((obj) =>
+            {
+                Navigator.Navigate(Shared.Navigation.NavigationType.StationSelect);
+            });
+            this.Crumbs.Add(new BreadcrumbItemModel("North Region", regionNav));
             this.Crumbs.Add(new BreadcrumbItemModel("Compressor Room"));
             this.Input = new ReadingInputViewModel();
             this.ListModel = new ReadingInputListViewModel(this);

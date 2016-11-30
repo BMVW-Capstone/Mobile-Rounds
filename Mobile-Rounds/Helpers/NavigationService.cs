@@ -35,7 +35,7 @@ namespace Mobile_Rounds.Helpers
                 case NavigationType.UnitOfMeasure:
                     frame.Navigate(typeof(Screens.Admin.UnitOfMeasureScreen));
                     break;
-                case NavigationType.Stations:
+                case NavigationType.AdminStations:
                     frame.Navigate(typeof(Screens.Admin.Stations.Index));
                     break;
                 case NavigationType.StartRound:
@@ -43,6 +43,12 @@ namespace Mobile_Rounds.Helpers
                     break;
                 case NavigationType.Regions:
                     frame.Navigate(typeof(Screens.Admin.Regions.Index));
+                    break;
+                case NavigationType.StationSelect:
+                    frame.Navigate(typeof(Screens.Regular.StationScreen));
+                    break;
+                case NavigationType.StationInput:
+                    frame.Navigate(typeof(Screens.Regular.ReadingInput));
                     break;
                 default:
                     break;

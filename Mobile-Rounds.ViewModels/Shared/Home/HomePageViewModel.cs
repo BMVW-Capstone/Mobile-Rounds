@@ -43,6 +43,7 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
             // only make us admin if debugging.
             this.IsAdmin = true;
 #endif
+            this.GoHome = null;
             this.AdminTileVisibility = this.IsAdmin ? Visibility.Visible : Visibility.Collapsed;
             this.Sync = new SyncCommand();
             this.StartRound = new StartRoundCommand();
