@@ -84,16 +84,5 @@
             Foreground="White"
             Background="Blue" 
             Title="History" />
-
-        <!-- Content --><!--
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top">
-
-
-            <controls:ColoredTile Foreground="White" Background="Purple" Title="Start Round" Command="{Binding StartRound, Mode=OneWay}" />
-            <controls:ColoredTile Foreground="White" Background="Green" Title="Sync" Command="{Binding Sync, Mode=OneWay}" />
-            <controls:ColoredTile Foreground="White" Background="Orange" Title="Admin"
-                                  Command="{Binding GoToAdmin}"
-                                  Visibility="{Binding AdminTileVisibility}"/>
-        </StackPanel>-->
     </Grid>
 </Page>

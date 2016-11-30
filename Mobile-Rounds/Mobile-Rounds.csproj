@@ -99,6 +99,9 @@
     <Compile Include="Controls\BooleanToVisibilityConverter.cs" />
     <Compile Include="Controls\BoolToValidColorConverter.cs" />
     <Compile Include="Controls\BoundTypeToInputScopeConverter.cs" />
+    <Compile Include="Controls\ColoredListTile.xaml.cs">
+      <DependentUpon>ColoredListTile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ColoredTile.xaml.cs">
       <DependentUpon>ColoredTile.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,9 @@
     <Compile Include="Screens\Regular\ReadingInput.xaml.cs">
       <DependentUpon>ReadingInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\Regular\StationScreen.xaml.cs">
+      <DependentUpon>StationScreen.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -153,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\ColoredListTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ColoredTile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -190,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\Regular\ReadingInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Regular\StationScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

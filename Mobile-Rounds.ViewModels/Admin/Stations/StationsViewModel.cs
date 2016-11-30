@@ -7,7 +7,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Stations
         public StationsViewModel()
         {
             this.Crumbs.Add(new BreadcrumbItemModel("Admin", this.GoToAdmin));
-            this.Crumbs.Add(new BreadcrumbItemModel("Stations"));
+            this.Crumbs.Add(new BreadcrumbItemModel("My Region"));
         }
     }
 }

@@ -117,6 +117,8 @@
     <Compile Include="Regular\ReadingInput\ReadingInputListViewModel.cs" />
     <Compile Include="Regular\ReadingInput\ReadingInputScreenViewModel.cs" />
     <Compile Include="Regular\ReadingInput\ReadingInputViewModel.cs" />
+    <Compile Include="Regular\Station\StationListViewModel.cs" />
+    <Compile Include="Regular\Station\StationModel.cs" />
     <Compile Include="Shared\BaseViewModel.cs" />
     <Compile Include="Shared\Commands\AsyncCommand.cs" />
     <Compile Include="Shared\Commands\GoHomeCommand.cs" />
