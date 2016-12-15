@@ -15,8 +15,7 @@ using Mobile_Rounds.ViewModels.Regular.ReadingInput;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
 using Mobile_Rounds.ViewModels.Shared.Navigation;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Mobile_Rounds.ViewModels.Platform;
 
 namespace Mobile_Rounds.ViewModels.Shared
 {
@@ -85,15 +84,8 @@ namespace Mobile_Rounds.ViewModels.Shared
             this.GoHome = new GoHomeCommand();
             this.CrumbCommand = new AsyncCommand((obj) =>
             {
-                var ev = obj as GoedWare.Controls.Breadcrumb.BreadcrumbEventArgs;
-                if (ev != null)
-                {
-                    var model = ev.Item as BreadcrumbItemModel;
-                    if (model.Command != null)
-                    {
-                        model.Command.Execute(model.Title);
-                    }
-                }
+                IBreadcrumbNavigationEvent e = ServiceResolver.Resolve<IBreadcrumbNavigationEvent>();
+                e.Handle(obj);
             });
 
             this.GoToAdmin = new AsyncCommand((obj) =>
