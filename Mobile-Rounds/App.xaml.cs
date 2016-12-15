@@ -21,6 +21,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Mobile_Rounds.ViewModels.Platform;
 
 namespace Mobile_Rounds
 {
@@ -38,6 +39,9 @@ namespace Mobile_Rounds
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+
+            // register services with PCL
+            ServiceResolver.Register<IBreadcrumbNavigationEvent>(() => new BreadcrumbNavigationHandler());
 
             // set the navigator for our classses.
             BaseViewModel.Navigator = new NavigationService();

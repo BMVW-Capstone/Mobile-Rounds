@@ -31,18 +31,28 @@ namespace Mobile_Rounds.ViewModels.Shared.Navigation
         UnitOfMeasure,
 
         /// <summary>
-        /// Navigate to stations page.
+        /// Navigate to stations admin page.
         /// </summary>
-        Stations,
+        AdminStations,
 
         /// <summary>
-        /// Navigate to regions page. 
+        /// Navigate to the station select screen for a round.
+        /// </summary>
+        StationSelect,
+
+        /// <summary>
+        /// Navigate to regions page.
         /// </summary>
         Regions,
 
         /// <summary>
         /// Navigate to start rounds page
         /// </summary>
-        StartRound
+        StartRound,
+
+        /// <summary>
+        /// Navigate to the station input page.
+        /// </summary>
+        StationInput
     }
 }

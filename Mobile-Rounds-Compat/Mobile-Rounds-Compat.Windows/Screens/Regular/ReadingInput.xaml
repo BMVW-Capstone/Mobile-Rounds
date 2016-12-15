@@ -1,0 +1,184 @@
+﻿<Page
+    x:Class="Mobile_Rounds.Screens.Regular.ReadingInput"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Mobile_Rounds.Screens.Admin"
+    xmlns:converters="using:Mobile_Rounds.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:breadcrumb="using:GoedWare.Controls.Breadcrumb.Compat"
+    xmlns:vm="using:Mobile_Rounds.ViewModels.Regular.ReadingInput"
+    mc:Ignorable="d">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition />
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Page.Resources>
+        <Style TargetType="TextBox" x:Name="TextInput">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Name="SectionHeader">
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        <converters:BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <converters:BoundTypeToInputScopeConverter x:Key="BoundToKeyboard" />
+        <converters:BoolToValidColorConverter x:Key="BoolToColor" />
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.DataContext>
+            <vm:ReadingInputScreenViewModel />
+        </Grid.DataContext>
+
+        <!--Header-->
+        <breadcrumb:BreadcrumbControl
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="10,0,0,0"
+            FontSize="30"
+            HomeCommand="{Binding GoHome}"
+            ItemCommand="{Binding CrumbCommand}" 
+            ItemsSource="{Binding Crumbs}">
+
+            <breadcrumb:BreadcrumbControl.SeperatorTemplate>
+                <DataTemplate>
+                    <SymbolIcon Symbol="Play"/>
+                </DataTemplate>
+            </breadcrumb:BreadcrumbControl.SeperatorTemplate>
+            <breadcrumb:BreadcrumbControl.HomeTemplate>
+                <DataTemplate>
+                    <TextBlock Text="HOME" FontSize="30" />
+                </DataTemplate>
+            </breadcrumb:BreadcrumbControl.HomeTemplate>
+            <breadcrumb:BreadcrumbControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Title}" FontSize="30"/>
+                </DataTemplate>
+            </breadcrumb:BreadcrumbControl.ItemTemplate>
+        </breadcrumb:BreadcrumbControl>
+
+        <ListView DataContext="{Binding ListModel}" ItemsSource="{Binding Meters, Mode=TwoWay}" 
+                  Grid.Row="2" Grid.Column="1" SelectionMode="Single"
+                  SelectedItem="{Binding Selected, Mode=TwoWay}" Padding="0,0,15,0">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock FontSize="30" Text="Meters" Padding="0,0,0,15"/>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Row="2" Grid.Column="2" 
+              DataContext="{Binding Input, Mode=TwoWay}" 
+              Visibility="{Binding ShowInput, Mode=TwoWay, Converter={StaticResource BoolToVis}}"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                       Text="Current Reading" 
+                       Style="{StaticResource SectionHeader}"
+                       Margin="0,0,0,15"/>
+
+            <!--
+                The toggle switch and textbox will change their visiblity based
+                on the kind of input the current meter supports.
+            -->
+            <ToggleSwitch Grid.Row="1" Grid.Column="0"
+                Visibility="{Binding IsBooleanInput, Converter={StaticResource BoolToVis}}"
+                Header="{Binding InputHeader}"
+                OnContent="{Binding YesBooleanText}"
+                OffContent="{Binding NoBooleanText}"
+                IsOn="{Binding BooleanValue}"/>
+
+            <TextBox Grid.Row="1" Grid.Column="0"
+                Visibility="{Binding IsNotBooleanInput, Converter={StaticResource BoolToVis}}"
+                Header="{Binding InputHeader}"
+                InputScope="{Binding InputType, Converter={StaticResource BoundToKeyboard}}"
+                Text="{Binding StringValue}"/>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+                <TextBlock Text="Acceptable Value" Padding="0,0,0,10"/>
+                <TextBlock Text="{Binding AcceptedValue}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
+                <TextBlock Text="Yesterdays Value" Padding="0,0,0,10"/>
+                <TextBlock Text="{Binding YesterdaysValue}" HorizontalAlignment="Center"
+                            Foreground="{Binding WasYesterdayInSpec, Converter={StaticResource BoolToColor}}"/>
+            </StackPanel>
+
+            <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                Margin="0,10,0,0"
+                BorderBrush="{Binding IsInSpec, Converter={StaticResource BoolToColor}}"
+                Header="Comments"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                Text="{Binding Comments}" />
+
+            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,10,0,0">
+                <TextBlock Text="Yesterdays Comments" Padding="0,0,0,5"/>
+                <TextBlock Text="{Binding YesterdaysComments}" />
+            </StackPanel>
+
+            <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                    Background="Green" Foreground="White" Height="100" 
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding DataContext.Save, ElementName=root}" 
+                    Content="Save" 
+                    HorizontalAlignment="Stretch"
+                    Margin="15"/>
+
+                <Button Grid.Column="1"
+                    Background="Gray" Foreground="White" Height="100"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding DataContext.Cancel, ElementName=root}" 
+                    Content="Cancel" HorizontalAlignment="Stretch"
+                    Margin="15"/>
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+
+</Page>
+

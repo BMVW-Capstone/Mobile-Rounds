@@ -42,6 +42,7 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
         public AdminHomeViewModel()
         {
             this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Admin"));
+
             this.GoToUnits = new AsyncCommand((obj) =>
             {
                 Navigator.Navigate(NavigationType.UnitOfMeasure);
@@ -49,7 +50,7 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
 
             this.GoToStations = new AsyncCommand((obj) =>
             {
-                Navigator.Navigate(NavigationType.Stations);
+                Navigator.Navigate(NavigationType.AdminStations);
             });
 
             this.GoToRegions = new AsyncCommand((obj) =>
