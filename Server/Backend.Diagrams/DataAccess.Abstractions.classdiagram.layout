@@ -3,7 +3,7 @@
   <logicalClassDesignerModelMoniker Id="7b999bc1-4307-451a-9686-0473faf49341" />
   <nestedChildShapes>
     <packageShape Id="014fafab-f017-4bce-ad67-332ed6329a7a" absoluteBounds="0.5, 0.875, 3.75, 6.625" customColor="255, 249, 230" hideQualifiedName="false">
-      <packageMoniker Id="7cae274f-c175-46de-88f5-25c00f9381d4" LastKnownName="Backend.DataAccess.Abstractions1" />
+      <packageMoniker Id="7cae274f-c175-46de-88f5-25c00f9381d4" LastKnownName="Backend.DataAccess.Abstractions" />
       <nestedChildShapes>
         <interfaceShape Id="499ca033-b058-4c1d-8d98-c3e877a3e1cd" absoluteBounds="1.125, 1.375, 2.125, 1.2226562251647315" hideQualifiedName="false" increaseHeight="0" customColor="207, 223, 191">
           <interfaceMoniker Id="460943cc-6c08-4278-b449-2ac525f192e0" LastKnownName="IReadonlyRepository" />
