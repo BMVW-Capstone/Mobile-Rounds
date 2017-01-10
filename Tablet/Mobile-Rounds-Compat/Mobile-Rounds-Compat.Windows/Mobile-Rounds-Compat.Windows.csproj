@@ -110,7 +110,7 @@
       <Project>{7800a17a-5fff-4ca9-b40a-eba3fb1784b6}</Project>
       <Name>GoedWare.Controls.Breadcrumb.Compat</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Mobile-Rounds.ViewModels\Mobile-Rounds.ViewModels.csproj">
+    <ProjectReference Include="..\..\..\Shared\Mobile-Rounds.ViewModels\Mobile-Rounds.ViewModels.csproj">
       <Project>{ed818571-b5d0-4fc3-8af3-63a04d806524}</Project>
       <Name>Mobile-Rounds.ViewModels</Name>
     </ProjectReference>
