@@ -17,13 +17,5 @@ namespace Mobile_Rounds.ViewModels.Tests.Shared.Commands
             var cmd = new StartRoundCommand();
             Assert.IsTrue(cmd.CanExecute(null));
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(NotImplementedException))]
-        public void ExecuteThrowsNotImplemented()
-        {
-            var cmd = new StartRoundCommand();
-            cmd.Execute(null);
-        }
     }
 }
