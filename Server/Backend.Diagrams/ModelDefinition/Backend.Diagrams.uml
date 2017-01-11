@@ -221,7 +221,7 @@
             <flowNodeTargets>
               <controlFlow
                 Id="1bdcb253-1000-4068-8cb6-c190679c480f"
-                guard="Create"
+                guard="Create (POST)"
                 isLeaf="false">
                 <callOperationActionMoniker
                   Id="1f9afb3b-c5d7-42ab-9c8c-2a7d06e24cce"
@@ -331,7 +331,7 @@
             <flowNodeTargets>
               <controlFlow
                 Id="77736b99-32dd-4867-b18c-db5d38c63a2a"
-                guard="Update"
+                guard="Update (PUT)"
                 isLeaf="false">
                 <callOperationActionMoniker
                   Id="b995c577-8162-4051-adfb-ccf8f4260227"
@@ -340,7 +340,7 @@
               </controlFlow>
               <controlFlow
                 Id="03b9fa17-9a2b-48ab-9e5e-5b641182cc4b"
-                guard="Delete"
+                guard="Delete (DELETE)"
                 isLeaf="false">
                 <callOperationActionMoniker
                   Id="ddf546ab-602a-430c-a400-a82d26273134"
@@ -426,7 +426,7 @@
               </controlFlow>
               <controlFlow
                 Id="2100b3b7-e93d-421a-bffd-d77656268ec1"
-                guard="Search"
+                guard="Search (GET)"
                 isLeaf="false">
                 <callOperationActionMoniker
                   Id="4a1fc670-acf6-4500-9224-226cd142522c"
