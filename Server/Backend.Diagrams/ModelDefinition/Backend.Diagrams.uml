@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
+  dslVersion="1.0.0.0"
+  Id="8ceb905c-dc21-443f-b4d1-1282d514cb46"
+  name="Backend.Diagrams" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="38286e29-e285-4128-8fd7-9a7882a01d0d">
+      <body>Here, Repo refers to an instance of an IRepository that has a ViewModel as the type (T) parameter. This is instantiated in the Controller constructor. These do not do database operations aside from filling model properties when needed.</body>
+    </comment>
+    <comment
+      Id="2817797b-fc44-49c6-b886-5565a65ada49">
+      <body>Here, Internal Repo refers to an IRepository with a type (T) parameter that is a database schema object. These repo objects are a nested property of the regular external facing Repo class. These are database operations only.</body>
+    </comment>
+  </ownedCommentsInternal>
+  <appliedStereotypesInternal>
+    <stereotypeInstance
+      Id="331b5aa0-b6bd-41b4-a2c3-e1d33026e032"
+      name="namespace"
+      profile="CSharpProfile">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="08b42535-accf-4b13-9560-bd2f6f6d6205">
+          <propertyInstance
+            Id="d78dd6a5-a948-4278-880d-9c33428e1d03"
+            name="BaseName" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="adec2e58-a810-4534-b67e-2ec9baf8bbc6">
+          <propertyInstance
+            Id="3f06deaa-ef06-469e-aae0-3c7e26198e47"
+            name="ClrAttributes" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="89e6accc-d5b4-4c0a-8781-8f96b9a3d0a9">
+          <propertyInstance
+            Id="435291fc-3686-4578-91ad-50eaa60c60bf"
+            name="Usings" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance
+      Id="e0e695fa-3de4-4fa0-99ac-4594d240f8e5"
+      name="TextTemplateBindings"
+      profile="TextTemplateBindings">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="710e3c4f-a1ef-44c1-981b-6ee90cde25ce">
+          <propertyInstance
+            Id="710ec85c-f10a-40b0-9be5-a2519e18db2c"
+            name="Alias"
+            value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="f4bd6367-1019-4a93-a2a9-d202387cddf1">
+          <propertyInstance
+            Id="7c8049ad-364d-440a-9394-a01b5cc4527c"
+            name="TemplateFilePath"
+            value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="a48b02fe-8ed3-47d8-b3bd-a72f46501973">
+          <propertyInstance
+            Id="1c039d99-a12b-41e0-b910-513c933f2e37"
+            name="ProjectPath"
+            value="ClassTemplate=..\Backend.DiagramsLib\Backend.DiagramsLib.csproj|EnumTemplate=..\Backend.DiagramsLib\Backend.DiagramsLib.csproj|InterfaceTemplate=..\Backend.DiagramsLib\Backend.DiagramsLib.csproj|StructTemplate=..\Backend.DiagramsLib\Backend.DiagramsLib.csproj" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="7f6ea310-62a6-4fe6-86fa-efa6380ec9a5">
+          <propertyInstance
+            Id="52a74871-e5ee-4f4a-8779-20136f3654c2"
+            name="TargetDirectory"
+            value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="34153d4e-e575-4f97-9843-ce9dc28f38a9">
+          <propertyInstance
+            Id="1a3ae7a0-f75b-444e-826e-5e765510c5c3"
+            name="TargetName"
+            value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="8806686e-7d3a-4415-9297-f6b475c7bf34">
+          <propertyInstance
+            Id="585a1b2e-f697-42d7-8e73-dc3ef9cd575d"
+            name="Overwrite"
+            value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="201c8351-3516-46a9-8cc0-eff3400b6293">
+          <propertyInstance
+            Id="b203bbce-c867-49f4-9bea-c24cf6380fa9"
+            name="Parameters" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="efafbeac-655e-4563-8e18-5e1d00d7bcc4">
+      <profileInstance
+        Id="b11582f4-990c-46de-b15c-1ab90888e13e"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="5272e7cc-8917-42c4-a46f-a729cb9ca798">
+      <profileInstance
+        Id="d2c5a6e1-6a02-44e1-bf66-13b469c60b18"
+        name="TextTemplateBindings" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="f2572696-f108-497c-841f-9e89f1bf5def"
+        LastKnownName="Backend.Schemas"
+        LastKnownLocation="Package_2228.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="884d7df9-5dcd-45f0-8876-e79620a36360"
+        LastKnownName="Backend.DataAccess.Abstractions"
+        LastKnownLocation="Package_0015.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="00493a06-92f0-4150-9529-45f3b5242a1a"
+        LastKnownName="Backend.DataAccess.Repositories.Internal"
+        LastKnownLocation="Package_0033.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="0fa86c74-99f1-47e5-a06a-372edee11146"
+        LastKnownName="Backend.DataAccess.Abstractions"
+        LastKnownLocation="Package_0039.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="55f83845-067e-473c-8f08-f031c7dedf9a"
+        LastKnownName="Package1"
+        LastKnownLocation="Package_0041.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="e0382724-898f-4f98-864f-e3d839f6b856"
+        LastKnownName="Backend.DataAccess.Repositories"
+        LastKnownLocation="Package_0045.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="a1aa6300-23f1-43f6-ad66-17a031e382ce"
+        name="API-Flow"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="a74d75b4-18b3-4c64-8b0d-66bea01929fc"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="65e6adf9-41b9-4bfa-be0d-cd53bc4613a6"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="76a09c1c-57ce-40b7-9d29-a3229165a086"
+                  LastKnownName="API Request Received"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction
+            Id="76a09c1c-57ce-40b7-9d29-a3229165a086"
+            name="API Request Received"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="f48350d9-6bb6-4388-b30e-e1b87168e643"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="10cd4e69-3e9f-4418-8860-2247057c6a9c"
+                  LastKnownName="Pass any view model to Appropriate ViewModel repo"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="10cd4e69-3e9f-4418-8860-2247057c6a9c"
+            name="Pass any view model to Appropriate ViewModel repo"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="27b67b27-19cc-4ecc-8e88-ce08725cd42e"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="7db7e7ee-a8bd-4fde-b64d-6840c5a9333b"
+                  LastKnownName="Decision2"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="ba0b09a3-7ae5-4055-b2f8-ec1e18a09282"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="1bdcb253-1000-4068-8cb6-c190679c480f"
+                guard="Create"
+                isLeaf="false">
+                <callOperationActionMoniker
+                  Id="1f9afb3b-c5d7-42ab-9c8c-2a7d06e24cce"
+                  LastKnownName="Repo Create"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="7e75919d-e436-4cb8-8a78-2aee3ec2a7ee"
+                guard="Update / Delete"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="33e9c494-2b63-4fee-b7b0-6e0d22011a01"
+                  LastKnownName="Decision3"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+                <description> </description>
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <callOperationAction
+            Id="b995c577-8162-4051-adfb-ccf8f4260227"
+            name="Repo Update"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="15f61524-6c83-4d99-a244-8f8c0da3fd72"
+                isLeaf="false">
+                <callOperationActionMoniker
+                  Id="fcd8379b-6ace-4a97-b354-f653f0d1e5c9"
+                  LastKnownName="Internal Repo Update"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <operation>
+              <operationMoniker
+                Id="49fccd0c-af18-4183-8257-c180c86bc7fe"
+                LastKnownName="GetSingleAsync"
+                LastKnownLocation="Package_0015.uml" />
+            </operation>
+          </callOperationAction>
+          <callOperationAction
+            Id="b7fb420e-0077-43ba-8e54-2badd3656099"
+            name="Internal Repo Create"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="b70b698d-532b-46eb-9a45-11d68ae645a5"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="4b6fedc4-0080-453e-8c0c-7e9e3bfa5013"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <operation>
+              <operationMoniker
+                Id="0a97eb57-4735-4331-9469-d01b65276946"
+                LastKnownName="InsertAsync"
+                LastKnownLocation="Package_0015.uml" />
+            </operation>
+          </callOperationAction>
+          <callOperationAction
+            Id="1f9afb3b-c5d7-42ab-9c8c-2a7d06e24cce"
+            name="Repo Create"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="e61d014a-de1d-496b-8ae6-c404810bfcb1"
+                isLeaf="false">
+                <callOperationActionMoniker
+                  Id="b7fb420e-0077-43ba-8e54-2badd3656099"
+                  LastKnownName="Internal Repo Create"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <operation>
+              <operationMoniker
+                Id="0a97eb57-4735-4331-9469-d01b65276946"
+                LastKnownName="InsertAsync"
+                LastKnownLocation="Package_0015.uml" />
+            </operation>
+          </callOperationAction>
+          <callOperationAction
+            Id="fcd8379b-6ace-4a97-b354-f653f0d1e5c9"
+            name="Internal Repo Update"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="0e24d401-6b2c-4a2a-9aaa-d075ad95dbee"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="4b6fedc4-0080-453e-8c0c-7e9e3bfa5013"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <operation>
+              <operationMoniker
+                Id="49fccd0c-af18-4183-8257-c180c86bc7fe"
+                LastKnownName="GetSingleAsync"
+                LastKnownLocation="Package_0015.uml" />
+            </operation>
+          </callOperationAction>
+          <decisionNode
+            Id="33e9c494-2b63-4fee-b7b0-6e0d22011a01"
+            name="Decision3"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="77736b99-32dd-4867-b18c-db5d38c63a2a"
+                guard="Update"
+                isLeaf="false">
+                <callOperationActionMoniker
+                  Id="b995c577-8162-4051-adfb-ccf8f4260227"
+                  LastKnownName="Repo Update"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="03b9fa17-9a2b-48ab-9e5e-5b641182cc4b"
+                guard="Delete"
+                isLeaf="false">
+                <callOperationActionMoniker
+                  Id="ddf546ab-602a-430c-a400-a82d26273134"
+                  LastKnownName="Repo Delete"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <callOperationAction
+            Id="ddf546ab-602a-430c-a400-a82d26273134"
+            name="Repo Delete"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="310ef581-ce08-43bb-89ee-a31e0d2578bb"
+                isLeaf="false">
+                <callOperationActionMoniker
+                  Id="944746fd-9e83-449e-9ef4-8c6e79b5b99d"
+                  LastKnownName="Internal Repo Delete"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <operation>
+              <operationMoniker
+                Id="22ab4ef4-a255-4c5a-bc70-1b35ad182fbf"
+                LastKnownName="DeleteAsync"
+                LastKnownLocation="Package_0015.uml" />
+            </operation>
+          </callOperationAction>
+          <callOperationAction
+            Id="944746fd-9e83-449e-9ef4-8c6e79b5b99d"
+            name="Internal Repo Delete"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="0d71265f-56fc-4f77-868e-6d46cb866783"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="4b6fedc4-0080-453e-8c0c-7e9e3bfa5013"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <operation>
+              <operationMoniker
+                Id="22ab4ef4-a255-4c5a-bc70-1b35ad182fbf"
+                LastKnownName="DeleteAsync"
+                LastKnownLocation="Package_0015.uml" />
+            </operation>
+          </callOperationAction>
+          <activityFinalNode
+            Id="a42f28fc-8a5b-4776-94f4-f3a52b2c1f96"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <mergeNode
+            Id="4b6fedc4-0080-453e-8c0c-7e9e3bfa5013"
+            name="Merge1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="ef98db20-a7b1-41cf-8372-11c8a0cbf6d4"
+                guard="Return Result"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="a42f28fc-8a5b-4776-94f4-f3a52b2c1f96"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </mergeNode>
+          <decisionNode
+            Id="7db7e7ee-a8bd-4fde-b64d-6840c5a9333b"
+            name="Decision2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="e64af1f6-46a5-4529-9c42-8c997b5730e1"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="ba0b09a3-7ae5-4055-b2f8-ec1e18a09282"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="2100b3b7-e93d-421a-bffd-d77656268ec1"
+                guard="Search"
+                isLeaf="false">
+                <callOperationActionMoniker
+                  Id="4a1fc670-acf6-4500-9224-226cd142522c"
+                  LastKnownName="Repo Search"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <callOperationAction
+            Id="4a1fc670-acf6-4500-9224-226cd142522c"
+            name="Repo Search"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="68b6623e-9bac-4877-b49e-727c11d7544b"
+                isLeaf="false">
+                <callOperationActionMoniker
+                  Id="b0b96834-c4fc-418c-9532-8d390aed068f"
+                  LastKnownName="Internal Repo Search"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <operation>
+              <operationMoniker
+                Id="e0d949d6-33d6-4f6b-a225-d7d360892a39"
+                LastKnownName="GetAsync"
+                LastKnownLocation="Package_0015.uml" />
+            </operation>
+          </callOperationAction>
+          <callOperationAction
+            Id="b0b96834-c4fc-418c-9532-8d390aed068f"
+            name="Internal Repo Search"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="f275b56a-ef6b-4139-bb64-b16bf12de682"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="4b6fedc4-0080-453e-8c0c-7e9e3bfa5013"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="Backend.Diagrams.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <operation>
+              <operationMoniker
+                Id="e0d949d6-33d6-4f6b-a225-d7d360892a39"
+                LastKnownName="GetAsync"
+                LastKnownLocation="Package_0015.uml" />
+            </operation>
+          </callOperationAction>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

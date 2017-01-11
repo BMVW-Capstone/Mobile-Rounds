@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED818571-B5D0-4FC3-8AF3-63A04D806524}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mobile_Rounds.ViewModels</RootNamespace>
+    <AssemblyName>Mobile-Rounds.ViewModels</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <None Include="stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\AdminHome\AdminHomeViewModel.cs" />
+    <Compile Include="Admin\Regions\RegionsViewModel.cs" />
+    <Compile Include="Admin\Stations\StationsViewModel.cs" />
+    <Compile Include="Admin\UnitOfMeasure\UnitOfMeasure.cs" />
+    <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureScreenViewModel.cs" />
+    <Compile Include="Platform\IBreadcrumbNavigationEvent.cs" />
+    <Compile Include="Platform\ServiceResolver.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regular\ReadingInput\Meter.cs" />
+    <Compile Include="Regular\ReadingInput\ReadingInput.cs" />
+    <Compile Include="Regular\ReadingInput\ReadingInputListViewModel.cs" />
+    <Compile Include="Regular\ReadingInput\ReadingInputScreenViewModel.cs" />
+    <Compile Include="Regular\ReadingInput\ReadingInputViewModel.cs" />
+    <Compile Include="Regular\Station\StationListViewModel.cs" />
+    <Compile Include="Regular\Station\StationModel.cs" />
+    <Compile Include="Shared\BaseViewModel.cs" />
+    <Compile Include="Shared\Commands\AsyncCommand.cs" />
+    <Compile Include="Shared\Commands\EndRoundCommand.cs" />
+    <Compile Include="Shared\Commands\GoHomeCommand.cs" />
+    <Compile Include="Shared\Commands\ResumeRoundCommand.cs" />
+    <Compile Include="Shared\Commands\StartRoundCommand.cs" />
+    <Compile Include="Shared\Commands\SyncCommand.cs" />
+    <Compile Include="Shared\Controls\BreadcrumbItemModel.cs" />
+    <Compile Include="Shared\Home\HomePageViewModel.cs" />
+    <Compile Include="Shared\Home\PausePageViewModel.cs" />
+    <Compile Include="Shared\Home\StartRoundViewModel.cs" />
+    <Compile Include="Shared\ModificationType.cs" />
+    <Compile Include="Shared\Navigation\INavigator.cs" />
+    <Compile Include="Shared\Navigation\NavigationType.cs" />
+    <Compile Include="Shared\NotificationBase.cs" />
+    <Compile Include="Shared\ReadingType\BoundType.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

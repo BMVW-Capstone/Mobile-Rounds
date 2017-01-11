@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="e0382724-898f-4f98-864f-e3d839f6b856"
+  name="Backend.DataAccess.Repositories" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="92cf75ff-d1aa-4fce-80d3-ae7bacdf2ad1"
+        name="RegionRepository: AbstractRepository&lt;RegionViewModel&gt;"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="1f2001be-a651-42b4-9ff7-43d2473bda32"
+            name="Storage"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="e00366f1-049b-47ac-8836-fa6aad81f96e"
+                LastKnownName="IRepository&lt;Region&gt;"
+                LastKnownLocation="Package_0045.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="0d6cde6c-0dad-409c-8888-a512291211e6"
+            name="RegionRepository"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bf93a139-f1a7-4eef-8090-ab0556add165"
+                  name="storage"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="e00366f1-049b-47ac-8836-fa6aad81f96e"
+                      LastKnownName="IRepository&lt;Region&gt;"
+                      LastKnownLocation="Package_0045.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="a44c432b-ae90-442e-98c0-a112cf1495f4"
+        name="InternalRegionRepository" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="691f07ae-0229-45ed-a047-75dcf841d76e"
+        name="AbstractRepository&lt;Region&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="e00366f1-049b-47ac-8836-fa6aad81f96e"
+        name="IRepository&lt;Region&gt;" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
