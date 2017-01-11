@@ -30,19 +30,26 @@
       <SubType>Content</SubType>
       <DependentUpon>API-Flow.activitydiagram</DependentUpon>
     </Content>
-    <Content Include="DataAccess.Abstractions.classdiagram">
+    <Content Include="Backend.DataAccess.Abstractions.classdiagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="DataAccess.Abstractions.classdiagram.layout">
+    <Content Include="Backend.DataAccess.Abstractions.classdiagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>DataAccess.Abstractions.classdiagram</DependentUpon>
+      <DependentUpon>Backend.DataAccess.Abstractions.classdiagram</DependentUpon>
     </Content>
-    <Content Include="DataAccess.classdiagram">
+    <Content Include="Backend.DataAccess.DataSources.classdiagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="DataAccess.classdiagram.layout">
+    <Content Include="Backend.DataAccess.DataSources.classdiagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>DataAccess.classdiagram</DependentUpon>
+      <DependentUpon>Backend.DataAccess.DataSources.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Backend.DataAccess.Repositories.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Backend.DataAccess.Repositories.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Backend.DataAccess.Repositories.classdiagram</DependentUpon>
     </Content>
     <Content Include="ModelDefinition\Package_0015.uml">
       <SubType>Content</SubType>
@@ -59,16 +66,19 @@
     <Content Include="ModelDefinition\Package_0045.uml">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="ModelDefinition\Package_1152.uml">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="ModelDefinition\Package_2228.uml">
       <SubType>Content</SubType>
     </Content>
     <Folder Include="ModelDefinition\" />
-    <Content Include="DatabaseSchema.classdiagram">
+    <Content Include="Backend.Schemas.classdiagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="DatabaseSchema.classdiagram.layout">
+    <Content Include="Backend.Schemas.classdiagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>DatabaseSchema.classdiagram</DependentUpon>
+      <DependentUpon>Backend.Schemas.classdiagram</DependentUpon>
     </Content>
     <Content Include="ModelDefinition\Backend.Diagrams.uml">
       <SubType>Content</SubType>

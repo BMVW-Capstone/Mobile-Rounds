@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Backend.DataAccess.DataSources">
+  <logicalClassDesignerModelMoniker Id="fa58c8a2-bb2d-4975-a4d2-1e77addd8544" />
+  <nestedChildShapes>
+    <packageShape Id="c62c52c3-7b87-407f-9562-8cdc5facee7c" absoluteBounds="1.25, 1.5, 3.75, 2.125" customColor="255, 249, 230" hideQualifiedName="false">
+      <packageMoniker Id="fc7cfb0c-b7ad-4515-b2c3-67b31a48479e" LastKnownName="Backend.DataAccess.DataSources" />
+      <nestedChildShapes>
+        <classShape Id="741f22ab-696e-4cdd-9b64-2a25493c9361" absoluteBounds="1.5, 2.25, 3.25, 1.0624999801317849" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
+          <classMoniker Id="1078d4d8-1e7e-4c15-830d-bac1b3961e14" LastKnownName="RegionDataSource : AbstractDataSource&lt;Region&gt;" />
+          <nestedChildShapes>
+            <AttributeElementListCompartment Id="7525fa1f-ccd7-4704-b38b-4b441af83d25" absoluteBounds="1.515, 2.64, 3.2199999999999998, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+            <OperationElementListCompartment Id="6b078d8e-4be3-46c1-8dc5-a2ca0d800fc1" absoluteBounds="1.515, 2.8511718675494193, 3.2199999999999998, 0.36132811258236563" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+          </nestedChildShapes>
+        </classShape>
+      </nestedChildShapes>
+    </packageShape>
+  </nestedChildShapes>
+</logicalClassDesignerDiagram>

@@ -480,6 +480,12 @@
         </nodes>
       </activity>
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="6f3b58f3-2909-4bee-963f-7349f4aa5181"
+        LastKnownName="Backend.DataAccess.DataSources"
+        LastKnownLocation="Package_1152.uml" />
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"
