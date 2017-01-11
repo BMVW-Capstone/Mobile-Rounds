@@ -5,15 +5,11 @@
 using System;
 using System.Web;
 using System.Web.Http;
-using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Backend.Schemas;
 using Ninject;
 using Ninject.Web.Common;
 using Ninject.Web.WebApi;
-using Mobile_Rounds.ViewModels.Admin.Regions;
-using Backend.DataAccess.Abstractions;
-using Backend.DataAccess.Repositories;
-using System.Data.Entity;
-using Backend.Schemas;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(AgencyRM.Tracker.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(AgencyRM.Tracker.App_Start.NinjectWebCommon), "Stop")]
