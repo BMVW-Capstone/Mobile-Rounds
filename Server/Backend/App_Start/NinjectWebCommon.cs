@@ -54,7 +54,6 @@ namespace AgencyRM.Tracker.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
-                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
 
                 return kernel;
             }
