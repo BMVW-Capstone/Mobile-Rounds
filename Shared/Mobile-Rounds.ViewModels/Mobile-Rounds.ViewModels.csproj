@@ -43,6 +43,7 @@
     <Compile Include="Admin\Stations\StationsViewModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasure.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureScreenViewModel.cs" />
+    <Compile Include="Platform\IApiRequest.cs" />
     <Compile Include="Platform\IBreadcrumbNavigationEvent.cs" />
     <Compile Include="Platform\ServiceResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +70,11 @@
     <Compile Include="Shared\Navigation\NavigationType.cs" />
     <Compile Include="Shared\NotificationBase.cs" />
     <Compile Include="Shared\ReadingType\BoundType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Windows.Foundation.UniversalApiContract">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
