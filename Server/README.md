@@ -54,3 +54,7 @@ that is on the same domain as the client devices. This also requires that the ap
 an account that is on the domain. If it isn't on the domain, the application will not pass the currently
 logged in users credentials to the Web API from the mobile client. This is important as the API
 will send back a `401: Unauthorized` response.
+
+Finally, if the server is being located on the network by an IP address or a domain URL, there is one last step to take. In order for the mobile application to think that the *Backend* server is on the local Intranet, the servers url **MUST** be placed in the  trusted Intranet settings in `Internet Options` on the tablet device (not the server). If it isn't placed in there, it will think that the server is on the internet and therefore not local. When it makes that assumption, it will **NOT** send the domain credentials and therefore will want the user to sign in again.
+
+See [Microsoft's link](https://support.microsoft.com/en-us/kb/258063) for more on this topic.
