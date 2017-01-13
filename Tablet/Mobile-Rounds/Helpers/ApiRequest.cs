@@ -17,9 +17,12 @@ namespace Mobile_Rounds.Helpers
     public class ApiRequest : IApiRequest
     {
         public async Task<TResult> GetAsync<TResult>(string url)
-        {            
-
-            using (var client = new HttpClient())
+        {
+            var handler = new HttpBaseProtocolFilter
+            {
+                AllowUI = false
+            };
+            using (var client = new HttpClient(handler))
             {
                 var uri = new Uri(url);
 
