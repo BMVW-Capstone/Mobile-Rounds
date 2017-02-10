@@ -37,7 +37,7 @@ namespace Mobile_Rounds.Screens.Regular
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // placeholder for region select
-            BaseViewModel.Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.StationSelect);
+            BaseViewModel.Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.RegionSelect);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
         {
             this.Navigate = new AsyncCommand((obj) =>
             {
-                BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.RegionInput);
+                BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.RegionSelect);
             });
         }
     }
