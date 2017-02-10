@@ -1,14 +1,28 @@
 ﻿<Page
-    x:Class="Mobile_Rounds.RegionScreen"
+    x:Class="Mobile_Rounds.Screens.Regular.RegionScreen"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Mobile_Rounds"
+    xmlns:local="using:Mobile_Rounds.Screens.Regular"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Mobile_Rounds.ViewModels.Regular.Region"
+    xmlns:controls="using:Mobile_Rounds.Controls"
     xmlns:breadcrumb="using:GoedWare.Controls.Breadcrumb"
     mc:Ignorable="d">
 
-            <!--Header-->
+    <Page.DataContext>
+        <vm:RegionListViewModel/>
+    </Page.DataContext>
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition />
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <!--Header-->
         <breadcrumb:BreadcrumbControl
             Grid.Row="1"
             Grid.Column="1"
@@ -35,8 +49,6 @@
                 </DataTemplate>
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
-    
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        
     </Grid>
 </Page>

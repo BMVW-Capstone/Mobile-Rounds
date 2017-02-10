@@ -132,6 +132,9 @@
     <Compile Include="Screens\Regular\HomeScreen.xaml.cs">
       <DependentUpon>HomeScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\Regular\RegionScreen.xaml.cs">
+      <DependentUpon>RegionScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screens\Regular\StartRoundScreen.xaml.cs">
       <DependentUpon>StartRoundScreen.xaml</DependentUpon>
     </Compile>
