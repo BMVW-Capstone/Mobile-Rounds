@@ -11,6 +11,10 @@ using System.Windows.Input;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Navigation;
+using Windows.Web.Http.Filters;
+using Windows.Web.Http;
+using System.Diagnostics;
+using Mobile_Rounds.ViewModels.Platform;
 
 namespace Mobile_Rounds.ViewModels.Admin.AdminHome
 {
@@ -48,8 +52,12 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
                 Navigator.Navigate(NavigationType.UnitOfMeasure);
             });
 
-            this.GoToStations = new AsyncCommand((obj) =>
+            this.GoToStations = new AsyncCommand(async (obj) =>
             {
+                IApiRequest request = ServiceResolver.Resolve<IApiRequest>();
+
+                var data = await request.GetAsync<string>("http://backend.dc.capstone.com:3316/api/regions");
+
                 Navigator.Navigate(NavigationType.AdminStations);
             });
 
