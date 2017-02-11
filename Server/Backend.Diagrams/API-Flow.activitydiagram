@@ -82,32 +82,6 @@
       </propertyInstances>
     </stereotypeInstance>
   </appliedStereotypesInternal>
-  <profileInstances>
-    <packageHasProfileInstances Id="eafd065c-daba-4f2e-91e1-66031efe0c71">
-      <profileInstance Id="bd6e2ed1-b356-411a-8700-7b79d209294f" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="36da44ad-34c8-4427-891f-daf08c650e5a">
-      <profileInstance Id="735c33c0-c957-40f5-93bb-067a8b586bae" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="f2091565-8cf2-4ae6-accc-fd48155ed521">
-      <profileInstance Id="245e2179-3c16-4e57-b251-69661e89d3a7" name="CSharpProfile">
-        <elementDefinition Id="b11582f4-990c-46de-b15c-1ab90888e13e" />
-      </profileInstance>
-      <elementDefinition Id="efafbeac-655e-4563-8e18-5e1d00d7bcc4" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="bdb39d3e-7267-4c9a-88da-2325653ee4a4">
-      <profileInstance Id="fa849ad6-6d70-4ded-a22e-3ad8eef3695c" name="TextTemplateBindings">
-        <elementDefinition Id="d2c5a6e1-6a02-44e1-bf66-13b469c60b18" />
-      </profileInstance>
-      <elementDefinition Id="5272e7cc-8917-42c4-a46f-a729cb9ca798" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <activityRootModelHasActivity>
       <activity Id="6785571a-8a68-4e74-9b38-d68feab6d63a" name="API-Flow" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
@@ -143,7 +117,7 @@
           <decisionNode Id="95bd418b-7a7c-412b-be6a-0eb486e3a060" name="Decision1" isLeaf="false">
             <elementDefinition Id="ba0b09a3-7ae5-4055-b2f8-ec1e18a09282" />
             <flowNodeTargets>
-              <controlFlow Id="c4237a07-fc20-44de-915d-b2816d14798b" guard="Create" isLeaf="false">
+              <controlFlow Id="c4237a07-fc20-44de-915d-b2816d14798b" guard="Create (POST)" isLeaf="false">
                 <callOperationActionMoniker Id="18b3be7a-5e8a-437f-b8b8-4439986586d5" LastKnownName="Repo Create" />
                 <elementDefinition Id="1bdcb253-1000-4068-8cb6-c190679c480f" />
               </controlFlow>
@@ -193,11 +167,11 @@
           <decisionNode Id="7d53e8cc-13a7-498d-aaf1-b6b12f8fd890" name="Decision3" isLeaf="false">
             <elementDefinition Id="33e9c494-2b63-4fee-b7b0-6e0d22011a01" />
             <flowNodeTargets>
-              <controlFlow Id="17954d38-4921-44e9-9f6e-c14181efe668" guard="Update" isLeaf="false">
+              <controlFlow Id="17954d38-4921-44e9-9f6e-c14181efe668" guard="Update (PUT)" isLeaf="false">
                 <callOperationActionMoniker Id="127bdbc6-a149-4428-bab1-27038412f5f2" LastKnownName="Repo Update" />
                 <elementDefinition Id="77736b99-32dd-4867-b18c-db5d38c63a2a" />
               </controlFlow>
-              <controlFlow Id="dea7d9fb-7473-4d8a-ba6d-8672d0edf711" guard="Delete" isLeaf="false">
+              <controlFlow Id="dea7d9fb-7473-4d8a-ba6d-8672d0edf711" guard="Delete (DELETE)" isLeaf="false">
                 <callOperationActionMoniker Id="337f7752-7811-4251-a323-fb3347726e0f" LastKnownName="Repo Delete" />
                 <elementDefinition Id="03b9fa17-9a2b-48ab-9e5e-5b641182cc4b" />
               </controlFlow>
@@ -240,7 +214,7 @@
                 <decisionNodeMoniker Id="95bd418b-7a7c-412b-be6a-0eb486e3a060" LastKnownName="Decision1" />
                 <elementDefinition Id="e64af1f6-46a5-4529-9c42-8c997b5730e1" />
               </controlFlow>
-              <controlFlow Id="d306314a-2bcc-4cdd-8597-55fe17fbf371" guard="Search" isLeaf="false">
+              <controlFlow Id="d306314a-2bcc-4cdd-8597-55fe17fbf371" guard="Search (GET)" isLeaf="false">
                 <callOperationActionMoniker Id="1f8d7af5-f184-4538-9bc5-72d48f4c5b15" LastKnownName="Repo Search" />
                 <elementDefinition Id="2100b3b7-e93d-421a-bffd-d77656268ec1" />
               </controlFlow>
@@ -270,5 +244,31 @@
   </packagedElements>
   <package Id="ffb5a516-4b34-4c99-96d7-e687b2931882" name="Backend.Diagrams">
     <elementDefinition Id="8ceb905c-dc21-443f-b4d1-1282d514cb46" />
+    <profileInstances>
+      <packageHasProfileInstances Id="eafd065c-daba-4f2e-91e1-66031efe0c71">
+        <profileInstance Id="bd6e2ed1-b356-411a-8700-7b79d209294f" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="36da44ad-34c8-4427-891f-daf08c650e5a">
+        <profileInstance Id="735c33c0-c957-40f5-93bb-067a8b586bae" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="f2091565-8cf2-4ae6-accc-fd48155ed521">
+        <profileInstance Id="245e2179-3c16-4e57-b251-69661e89d3a7" name="CSharpProfile">
+          <elementDefinition Id="b11582f4-990c-46de-b15c-1ab90888e13e" />
+        </profileInstance>
+        <elementDefinition Id="efafbeac-655e-4563-8e18-5e1d00d7bcc4" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="bdb39d3e-7267-4c9a-88da-2325653ee4a4">
+        <profileInstance Id="fa849ad6-6d70-4ded-a22e-3ad8eef3695c" name="TextTemplateBindings">
+          <elementDefinition Id="d2c5a6e1-6a02-44e1-bf66-13b469c60b18" />
+        </profileInstance>
+        <elementDefinition Id="5272e7cc-8917-42c4-a46f-a729cb9ca798" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </activityRootModel>
