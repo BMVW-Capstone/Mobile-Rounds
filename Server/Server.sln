@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedTests", "SeedTests\SeedTests.csproj", "{8639FA2E-76BC-4FFD-9D5E-AD67CC1DE09C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug - Mobile|Any CPU = Debug - Mobile|Any CPU
@@ -86,6 +88,14 @@ Global
 		{9EED13C4-A6D2-41D5-BEE7-9CC439FFA97F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EED13C4-A6D2-41D5-BEE7-9CC439FFA97F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EED13C4-A6D2-41D5-BEE7-9CC439FFA97F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8639FA2E-76BC-4FFD-9D5E-AD67CC1DE09C}.Debug - Mobile|Any CPU.ActiveCfg = Debug|Any CPU
+		{8639FA2E-76BC-4FFD-9D5E-AD67CC1DE09C}.Debug - Mobile|Any CPU.Build.0 = Debug|Any CPU
+		{8639FA2E-76BC-4FFD-9D5E-AD67CC1DE09C}.Debug - Server|Any CPU.ActiveCfg = Debug|Any CPU
+		{8639FA2E-76BC-4FFD-9D5E-AD67CC1DE09C}.Debug - Server|Any CPU.Build.0 = Debug|Any CPU
+		{8639FA2E-76BC-4FFD-9D5E-AD67CC1DE09C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8639FA2E-76BC-4FFD-9D5E-AD67CC1DE09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8639FA2E-76BC-4FFD-9D5E-AD67CC1DE09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8639FA2E-76BC-4FFD-9D5E-AD67CC1DE09C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

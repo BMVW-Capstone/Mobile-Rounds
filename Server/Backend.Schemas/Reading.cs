@@ -27,7 +27,6 @@ namespace Backend.Schemas
         /// example would be Tank 2 C02 or something like that.
         /// </summary>
         [Key, Column(Order = Item.CompositeKey_Name)]
-        [Index(IsUnique = true)]
         [Required(AllowEmptyStrings = false)]
         [ForeignKey(nameof(Item))]
         public string ItemName { get; set; }
@@ -36,7 +35,6 @@ namespace Backend.Schemas
         /// TBD. Cannot remember at them moment...
         /// </summary>
         [Key, Column(Order = Item.CompositeKey_Meter)]
-        [Index]
         [Required(AllowEmptyStrings = false)]
         [ForeignKey(nameof(Item))]
         public string ItemMeter { get; set; }
@@ -47,6 +45,16 @@ namespace Backend.Schemas
         [Key, Column(Order = CompositKey_TimeTaken)]
         [Index(IsUnique = true)]
         public DateTime TimeTaken { get; set; }
+
+        /// <summary>
+        /// The hour for the round.
+        /// </summary>
+        public DateTime RoundHour { get; set; }
+
+        /// <summary>
+        /// The name of the region that the reading was taken in.
+        /// </summary>
+        public string RegionName { get; set; }
 
         /// <summary>
         /// The value that was recorded.
@@ -63,5 +71,10 @@ namespace Backend.Schemas
         /// The <see cref="Item"/> that this reading belongs to.
         /// </summary>
         public virtual Item Item { get; set; }
+
+        /// <summary>
+        /// The current round.
+        /// </summary>
+        public virtual Round Round { get; set; }
     }
 }

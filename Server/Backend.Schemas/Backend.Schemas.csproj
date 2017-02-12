@@ -74,11 +74,45 @@
     <Compile Include="Migrations\201702120218353_AddedReadings.Designer.cs">
       <DependentUpon>201702120218353_AddedReadings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702120309535_AddedRoundInfoToReading.cs" />
+    <Compile Include="Migrations\201702120309535_AddedRoundInfoToReading.Designer.cs">
+      <DependentUpon>201702120309535_AddedRoundInfoToReading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702120351281_NonUniqueRegionOnRound.cs" />
+    <Compile Include="Migrations\201702120351281_NonUniqueRegionOnRound.Designer.cs">
+      <DependentUpon>201702120351281_NonUniqueRegionOnRound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702120359499_SwappedUniqueIndexOnItem.cs" />
+    <Compile Include="Migrations\201702120359499_SwappedUniqueIndexOnItem.Designer.cs">
+      <DependentUpon>201702120359499_SwappedUniqueIndexOnItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702120401273_ItemRemoveMeterUnique.cs" />
+    <Compile Include="Migrations\201702120401273_ItemRemoveMeterUnique.Designer.cs">
+      <DependentUpon>201702120401273_ItemRemoveMeterUnique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702120403177_SpecRemoveUnique.cs" />
+    <Compile Include="Migrations\201702120403177_SpecRemoveUnique.Designer.cs">
+      <DependentUpon>201702120403177_SpecRemoveUnique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702120405531_ReadingRemovedUnique.cs" />
+    <Compile Include="Migrations\201702120405531_ReadingRemovedUnique.Designer.cs">
+      <DependentUpon>201702120405531_ReadingRemovedUnique.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reading.cs" />
     <Compile Include="Region.cs" />
     <Compile Include="Round.cs" />
+    <Compile Include="Seeding\ComparisonTypeSeeder.cs" />
+    <Compile Include="Seeding\DatabaseSeeder.cs" />
+    <Compile Include="Seeding\ISeeder.cs" />
+    <Compile Include="Seeding\ItemSeeder.cs" />
+    <Compile Include="Seeding\ReadingSeeder.cs" />
+    <Compile Include="Seeding\RegionSeeder.cs" />
+    <Compile Include="Seeding\RoundSeeder.cs" />
+    <Compile Include="Seeding\SpecificationSeeder.cs" />
+    <Compile Include="Seeding\StationSeeder.cs" />
+    <Compile Include="Seeding\UnitOfMeasureSeeder.cs" />
     <Compile Include="Specification.cs" />
     <Compile Include="Station.cs" />
     <Compile Include="UnitOfMeasure.cs" />
@@ -102,6 +136,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702120218353_AddedReadings.resx">
       <DependentUpon>201702120218353_AddedReadings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702120309535_AddedRoundInfoToReading.resx">
+      <DependentUpon>201702120309535_AddedRoundInfoToReading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702120351281_NonUniqueRegionOnRound.resx">
+      <DependentUpon>201702120351281_NonUniqueRegionOnRound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702120359499_SwappedUniqueIndexOnItem.resx">
+      <DependentUpon>201702120359499_SwappedUniqueIndexOnItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702120401273_ItemRemoveMeterUnique.resx">
+      <DependentUpon>201702120401273_ItemRemoveMeterUnique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702120403177_SpecRemoveUnique.resx">
+      <DependentUpon>201702120403177_SpecRemoveUnique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702120405531_ReadingRemovedUnique.resx">
+      <DependentUpon>201702120405531_ReadingRemovedUnique.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

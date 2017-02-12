@@ -15,7 +15,6 @@ namespace Backend.Schemas
         /// example would be Tank 2 C02 or something like that.
         /// </summary>
         [Key, Column(Order = Item.CompositeKey_Name)]
-        [Index(IsUnique = true)]
         [Required(AllowEmptyStrings = false)]
         [ForeignKey(nameof(Item))]
         public string ItemName { get; set; }
@@ -24,7 +23,6 @@ namespace Backend.Schemas
         /// TBD. Cannot remember at them moment...
         /// </summary>
         [Key, Column(Order = Item.CompositeKey_Meter)]
-        [Index]
         [Required(AllowEmptyStrings = false)]
         [ForeignKey(nameof(Item))]
         public string ItemMeter { get; set; }

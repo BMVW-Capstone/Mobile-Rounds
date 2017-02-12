@@ -22,7 +22,7 @@ namespace Backend.Schemas
         /// Foreign key to the <see cref="Region"/> as well as the second part of
         /// the composite key for a given round.
         /// </summary>
-        [Key, Index, Column(Order = 1)]
+        [Key, Index(IsUnique = false), Column(Order = 1)]
         [ForeignKey(nameof(Region))]
         public string RegionName { get; set; }
 
