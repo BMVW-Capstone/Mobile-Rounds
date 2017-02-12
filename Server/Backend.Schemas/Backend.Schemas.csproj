@@ -98,6 +98,10 @@
     <Compile Include="Migrations\201702120405531_ReadingRemovedUnique.Designer.cs">
       <DependentUpon>201702120405531_ReadingRemovedUnique.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702120450041_UniqueRemovalFromStation.cs" />
+    <Compile Include="Migrations\201702120450041_UniqueRemovalFromStation.Designer.cs">
+      <DependentUpon>201702120450041_UniqueRemovalFromStation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reading.cs" />
@@ -154,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702120405531_ReadingRemovedUnique.resx">
       <DependentUpon>201702120405531_ReadingRemovedUnique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702120450041_UniqueRemovalFromStation.resx">
+      <DependentUpon>201702120450041_UniqueRemovalFromStation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

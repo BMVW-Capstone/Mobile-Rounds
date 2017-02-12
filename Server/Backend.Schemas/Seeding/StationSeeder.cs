@@ -11,7 +11,7 @@ namespace Backend.Schemas.Seeding
     {
         public void Seed(DatabaseContext ctx)
         {
-            if (ctx.Stations.Any())
+            if (!ctx.Stations.Any())
             {
                 ctx.Stations.AddOrUpdate(s => new { s.Name, s.RegionName },
                     new Station { Name = "Compressor Room", RegionName = "North Side" },

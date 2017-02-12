@@ -31,7 +31,6 @@ namespace Backend.Schemas.Seeding
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.InnerException.Message);
                     Debugger.Break();
                 }
             }

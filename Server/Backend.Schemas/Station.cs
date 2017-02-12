@@ -17,14 +17,14 @@ namespace Backend.Schemas
         /// The name of the station. Like Compressor Room.
         /// </summary>
         [Key, Column(Order = CompositeKey_Name)]
-        [Index(IsUnique = true)]
+        [Index(IsUnique = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The name of the region it belongs to.
         /// </summary>
         [Required(AllowEmptyStrings = false)]
-        [Key, Index, Column(Order = CompositeKey_Region)]
+        [Key, Index(IsUnique = false), Column(Order = CompositeKey_Region)]
         [ForeignKey(nameof(Region))]
         public string RegionName { get; set; }
 
