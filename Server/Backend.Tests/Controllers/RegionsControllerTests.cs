@@ -38,6 +38,42 @@ namespace Backend.Tests
 
         [TestMethod]
         [TestCategory(Category)]
+        public async Task GET_Returns_Ordered_List_Excluding_Deleted()
+        {
+            var controller = new RegionsController(Context);
+            base.ConfigureRequest(controller);
+
+            Context.Regions.Add(new Region
+            {
+                Id = Guid.NewGuid(),
+                Name = "My Custom Region"
+            });
+
+            Context.Regions.Add(new Region
+            {
+                Id = Guid.NewGuid(),
+                Name = "A different name"
+            });
+
+            Context.Regions.Add(new Region
+            {
+                Id = Guid.NewGuid(),
+                Name = "A hidden name",
+                IsMarkedAsDeleted = true
+            });
+            Context.SaveChanges();
+
+            var orderedList = await GetData<List<RegionModel>>(controller.Get());
+
+            Assert.AreEqual(2, orderedList.Count());
+            Assert.AreNotEqual(Guid.Empty, orderedList.First().Id);
+            Assert.AreNotEqual(Guid.Empty, orderedList.Last().Id);
+            Assert.AreEqual("A different name", orderedList.First().Name);
+            Assert.AreEqual("My Custom Region", orderedList.Last().Name);
+        }
+
+        [TestMethod]
+        [TestCategory(Category)]
         public async Task GET_Returns_Ordered_List()
         {
             var controller = new RegionsController(Context);
@@ -54,6 +90,7 @@ namespace Backend.Tests
                 Id = Guid.NewGuid(),
                 Name = "A different name"
             });
+
             Context.SaveChanges();
 
             var orderedList = await GetData<List<RegionModel>>(controller.Get());

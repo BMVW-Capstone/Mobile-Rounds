@@ -83,7 +83,8 @@ namespace Backend.DataAccess.Repositories
             {
                 Id = model.Id,
                 RegionId = model.RegionId,
-                Name = model.Name
+                Name = model.Name,
+                IsDeleted = model.IsMarkedAsDeleted
             };
         }
 
@@ -94,7 +95,8 @@ namespace Backend.DataAccess.Repositories
             {
                 Id = model.Id,
                 RegionId = model.RegionId,
-                Name = model.Name
+                Name = model.Name,
+                IsMarkedAsDeleted = model.IsDeleted
             };
         }
     }

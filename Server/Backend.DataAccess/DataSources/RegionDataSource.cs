@@ -19,12 +19,15 @@ namespace Backend.DataAccess.Repositories.DataSources
 
         public override IQueryable<Region> Get()
         {
-            return Database.Regions;
+            return Database.Regions
+                .Where(r => r.IsMarkedAsDeleted == false);
         }
 
         public override IOrderedQueryable<Region> GetOrdered()
         {
-            return Database.Regions.OrderBy(r => r.Name);
+            return Database.Regions
+                .Where(r => r.IsMarkedAsDeleted == false)
+                .OrderBy(r => r.Name);
         }
 
         public override Task<Region> GetSingleAsync()
@@ -52,7 +55,9 @@ namespace Backend.DataAccess.Repositories.DataSources
             if (tracked == null) return null;
 
             tracked.Name = toUpdate.Name;
-            if(await SaveAsync())
+            tracked.IsMarkedAsDeleted = toUpdate.IsMarkedAsDeleted;
+
+            if (await SaveAsync())
             {
                 return tracked;
             }

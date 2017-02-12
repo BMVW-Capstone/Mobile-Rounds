@@ -12,7 +12,7 @@ namespace Backend.Schemas
     /// An item that can have a value taken from it. This is essentially like a meter
     /// or anything that needs values recorded.
     /// </summary>
-    public class Item
+    public class Item : RemovableRecord
     {
         [Key, ForeignKey(nameof(Specification))]
         public Guid Id { get; set; }

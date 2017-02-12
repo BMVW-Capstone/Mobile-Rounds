@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Schemas
 {
-    public class Region
+    public class Region : RemovableRecord
     {
         [Key]
         public Guid Id { get; set; }
@@ -19,6 +19,7 @@ namespace Backend.Schemas
         [Index(IsUnique = true)]
         [Column(TypeName = "VARCHAR")]
         [StringLength(300)]
+        [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
 
         /// <summary>

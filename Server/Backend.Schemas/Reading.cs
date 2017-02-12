@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Schemas
 {
-    public class Reading
+    public class Reading : RemovableRecord
     {
         public Reading()
         {

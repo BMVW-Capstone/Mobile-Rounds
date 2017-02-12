@@ -62,6 +62,42 @@ namespace Backend.Tests.Repositories
 
         [TestMethod]
         [TestCategory(Category)]
+        public async Task Gets_Only_Non_Deleted()
+        {
+            var repo = new StationRepository(Context);
+
+            Context.Stations.Add(new Station
+            {
+                Id = Guid.NewGuid(),
+                Name = "My Custom Station",
+                RegionId = DefaultRegionId
+            });
+
+            Context.Stations.Add(new Station
+            {
+                Id = Guid.NewGuid(),
+                Name = "A different name",
+                RegionId = DefaultRegionId
+            });
+
+            Context.Stations.Add(new Station
+            {
+                Id = Guid.NewGuid(),
+                Name = "A different name 2",
+                RegionId = DefaultRegionId,
+                IsMarkedAsDeleted = true
+            });
+            Context.SaveChanges();
+
+            var orderedList = await repo.GetAsync();
+
+            Assert.AreEqual(2, orderedList.Count());
+            Assert.AreEqual("A different name", orderedList.First().Name);
+            Assert.AreEqual("My Custom Station", orderedList.Last().Name);
+        }
+
+        [TestMethod]
+        [TestCategory(Category)]
         public async Task Inserts_New()
         {
             var repo = new StationRepository(Context);
@@ -151,6 +187,39 @@ namespace Backend.Tests.Repositories
             Assert.AreEqual(1, Context.Stations.Count());
             Assert.AreNotEqual(inserted.Name, result.Name);
         }
+
+        [TestMethod]
+        [TestCategory(Category)]
+        public async Task Soft_Deletes()
+        {
+            var repo = new StationRepository(Context);
+            var region = Context.Regions.First();
+
+            var station = new Station
+            {
+                Id = Guid.NewGuid(),
+                Name = "My Custom Station",
+                RegionId = region.Id,
+                IsMarkedAsDeleted = false
+            };
+
+            var deletedStation = new StationModel
+            {
+                Id = station.Id,
+                Name = station.Name,
+                RegionId = region.Id,
+                IsDeleted = true
+            };
+
+            Context.Stations.Add(station);
+            Context.SaveChanges();
+
+            var deleted = await repo.UpdateAsync(deletedStation);
+
+            Assert.AreEqual(1, Context.Stations.Count());
+            Assert.IsTrue(deleted.IsDeleted);
+        }
+
 
         [TestMethod]
         [TestCategory(Category)]
