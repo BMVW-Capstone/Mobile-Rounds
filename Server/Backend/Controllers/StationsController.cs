@@ -3,7 +3,6 @@ using System.Web.Http;
 using Backend.DataAccess.Abstractions;
 using Backend.DataAccess.Repositories;
 using Backend.Schemas;
-using Mobile_Rounds.ViewModels.Regular.Region;
 using Mobile_Rounds.ViewModels.Regular.Station;
 
 namespace Backend.Controllers
@@ -18,7 +17,7 @@ namespace Backend.Controllers
         private readonly IRepository<StationModel> datasource;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegionsController"/> class.
+        /// Initializes a new instance of the <see cref="StationsController"/> class.
         /// </summary>
         /// <param name="database">The database used for operations.</param>
         public StationsController(DatabaseContext database)
@@ -41,7 +40,7 @@ namespace Backend.Controllers
         /// from the <see cref="StationModel"/>.
         /// </summary>
         /// <param name="newModel">The object with the values to insert.</param>
-        /// <returns>The newly updated region. If the update failed, returns null.</returns>
+        /// <returns>The newly updated station. If the update failed, returns null.</returns>
         public async Task<IHttpActionResult> Post(StationModel newModel)
         {
             if (newModel == null)
@@ -63,7 +62,7 @@ namespace Backend.Controllers
         /// from the <see cref="StationModel"/>.
         /// </summary>
         /// <param name="updated">The object with the updated values.</param>
-        /// <returns>The newly updated region. If the update failed, returns null.</returns>
+        /// <returns>The newly updated station. If the update failed, returns null.</returns>
         public async Task<IHttpActionResult> Put(StationModel updated)
         {
             if (updated == null)
