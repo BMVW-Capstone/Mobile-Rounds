@@ -59,6 +59,8 @@ namespace Backend.Tests
             var orderedList = await GetData<List<RegionModel>>(controller.Get());
 
             Assert.AreEqual(2, orderedList.Count());
+            Assert.AreNotEqual(Guid.Empty, orderedList.First().Id);
+            Assert.AreNotEqual(Guid.Empty, orderedList.Last().Id);
             Assert.AreEqual("A different name", orderedList.First().Name);
             Assert.AreEqual("My Custom Region", orderedList.Last().Name);
         }

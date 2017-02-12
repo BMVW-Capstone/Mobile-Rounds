@@ -19,13 +19,11 @@ namespace Backend.DataAccess.Repositories.DataSources
 
         public override IQueryable<Region> Get()
         {
-            //TODO: Replace with actual implementation.
             return Database.Regions;
         }
 
         public override IOrderedQueryable<Region> GetOrdered()
         {
-            //TODO: Replace with actual implementation.
             return Database.Regions.OrderBy(r => r.Name);
         }
 

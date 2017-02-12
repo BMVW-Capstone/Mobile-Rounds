@@ -43,6 +43,7 @@ namespace Backend.DataAccess.Repositories
                 //convert records to view models 
                 .Select(r => new RegionModel
                 {
+                    Id = r.Id,
                     Name = r.Name
                 })
                 //load the data

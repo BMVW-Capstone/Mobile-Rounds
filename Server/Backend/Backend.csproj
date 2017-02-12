@@ -147,10 +147,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Databases\DevDatabase.mdf" />
-    <Content Include="App_Data\Databases\DevDatabase_log.ldf">
-      <DependentUpon>DevDatabase.mdf</DependentUpon>
-    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -179,7 +175,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\Databases\" />
+  </ItemGroup>
   <ItemGroup>
     <Analyzer Include="$(SolutionDir)packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
     <Analyzer Include="$(SolutionDir)packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
