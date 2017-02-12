@@ -25,6 +25,11 @@ namespace Mobile_Rounds.ViewModels.Regular.Station
         /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Indicates if this record is marked as deleted.
+        /// </summary>
+        public bool IsDeleted { get; set; }
+
         public AsyncCommand Navigate { get; private set; }
 
         public StationModel()

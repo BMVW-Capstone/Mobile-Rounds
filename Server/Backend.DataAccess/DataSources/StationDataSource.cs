@@ -20,12 +20,15 @@ namespace Backend.DataAccess.Repositories.DataSources
 
         public override IQueryable<Station> Get()
         {
-            return Database.Stations;
+            return Database.Stations
+                .Where(s => s.IsMarkedAsDeleted == false);
         }
 
         public override IOrderedQueryable<Station> GetOrdered()
         {
-            return Database.Stations.OrderBy(r => r.Name);
+            return Database.Stations
+                .Where(s => s.IsMarkedAsDeleted == false)
+                .OrderBy(r => r.Name);
         }
 
         public override Task<Station> GetSingleAsync()
@@ -60,6 +63,8 @@ namespace Backend.DataAccess.Repositories.DataSources
             if (tracked == null) return null;
 
             tracked.Name = toUpdate.Name;
+            tracked.IsMarkedAsDeleted = toUpdate.IsMarkedAsDeleted;
+
             if (await SaveAsync())
             {
                 return tracked;

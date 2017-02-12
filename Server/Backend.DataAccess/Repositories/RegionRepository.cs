@@ -44,7 +44,8 @@ namespace Backend.DataAccess.Repositories
                 .Select(r => new RegionModel
                 {
                     Id = r.Id,
-                    Name = r.Name
+                    Name = r.Name,
+                    IsDeleted = r.IsMarkedAsDeleted
                 })
                 //load the data
                 .ToListAsync();
@@ -80,7 +81,8 @@ namespace Backend.DataAccess.Repositories
             return new RegionModel
             {
                 Id = model.Id,
-                Name = model.Name
+                Name = model.Name,
+                IsDeleted = model.IsMarkedAsDeleted
             };
         }
 
@@ -90,7 +92,8 @@ namespace Backend.DataAccess.Repositories
             return new Region
             {
                 Id = model.Id,
-                Name = model.Name
+                Name = model.Name,
+                IsMarkedAsDeleted = model.IsDeleted
             };
         }
     }

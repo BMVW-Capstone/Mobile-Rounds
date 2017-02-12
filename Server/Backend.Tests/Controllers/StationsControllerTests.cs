@@ -84,6 +84,47 @@ namespace Backend.Tests
 
         [TestMethod]
         [TestCategory(Category)]
+        public async Task GET_Returns_Ordered_List_Excluding_Deleted()
+        {
+            var controller = new StationsController(Context);
+            base.ConfigureRequest(controller);
+
+            var region = Context.Regions.First();
+
+            Context.Stations.Add(new Station
+            {
+                Id = Guid.NewGuid(),
+                Name = "My Custom Station",
+                RegionId = region.Id
+            });
+
+            Context.Stations.Add(new Station
+            {
+                Id = Guid.NewGuid(),
+                Name = "A different name",
+                RegionId = region.Id
+            });
+
+            Context.Stations.Add(new Station
+            {
+                Id = Guid.NewGuid(),
+                Name = "A hidden name",
+                RegionId = region.Id,
+                IsMarkedAsDeleted = true
+            });
+            Context.SaveChanges();
+
+            var orderedList = await GetData<List<StationModel>>(controller.Get());
+
+            Assert.AreEqual(2, orderedList.Count());
+            Assert.AreNotEqual(Guid.Empty, orderedList.First().Id);
+            Assert.AreNotEqual(Guid.Empty, orderedList.Last().Id);
+            Assert.AreEqual("A different name", orderedList.First().Name);
+            Assert.AreEqual("My Custom Station", orderedList.Last().Name);
+        }
+
+        [TestMethod]
+        [TestCategory(Category)]
         public async Task GET_Is_OK()
         {
             var controller = new StationsController(Context);

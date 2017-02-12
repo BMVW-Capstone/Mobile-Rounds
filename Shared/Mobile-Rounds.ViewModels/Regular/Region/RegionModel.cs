@@ -20,5 +20,12 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
         /// The name of a region.
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Marks if the record is percieved as deleted
+        /// in the database. This is considered a soft
+        /// delete.
+        /// </summary>
+        public bool IsDeleted { get; set; }
     }
 }
