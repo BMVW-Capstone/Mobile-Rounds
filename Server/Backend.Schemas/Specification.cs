@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Backend.Schemas
 {
-    public class Specification
+    public class Specification : RemovableRecord
     {
         /// <summary>
         /// The id of an item to take readings from in a <see cref="Station"/>. An

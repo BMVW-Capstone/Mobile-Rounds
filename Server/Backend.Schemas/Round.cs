@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Schemas
 {
-    public class Round
+    public class Round : RemovableRecord
     {
         [Key]
         public Guid Id { get; set; }

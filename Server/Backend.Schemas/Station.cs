@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Schemas
 {
-    public class Station
+    public class Station : RemovableRecord
     {
         [Key]
         public Guid Id { get; set; }

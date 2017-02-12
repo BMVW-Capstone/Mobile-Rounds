@@ -21,8 +21,6 @@ namespace Backend.Tests.Helpers
         [TestInitialize]
         public void Init()
         {
-            AppDomain.CurrentDomain.SetData(
-                "DataDirectory", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ""));
             Context = new DatabaseContext("TestDatabase");
 
             //wrap all tests in a global transaction.

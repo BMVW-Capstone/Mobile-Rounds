@@ -93,10 +93,12 @@
   <ItemGroup>
     <Compile Include="Controllers\StationsControllerTests.cs" />
     <Compile Include="Helpers\BaseTestClass.cs" />
+    <Compile Include="Helpers\TestInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\RegionsControllerTests.cs" />
     <Compile Include="Repositories\StationRepositoryTests.cs" />
     <Compile Include="Repositories\RegionRepositoryTests.cs" />
+    <Compile Include="Schemas\RemovableRecordTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Mobile-Rounds.ViewModels\Mobile-Rounds.ViewModels.csproj">
