@@ -83,6 +83,23 @@ namespace Backend.Tests.Repositories
 
         [TestMethod]
         [TestCategory(Category)]
+        public async Task Insert_Fails_Missing_Region()
+        {
+            var repo = new StationRepository(Context);
+
+            var newStation = new StationModel
+            {
+                Name = "My Custom Station",
+            };
+
+            var inserted = await repo.InsertAsync(newStation);
+
+            Assert.IsNull(inserted);
+            Assert.AreEqual(0, Context.Stations.Count());
+        }
+
+        [TestMethod]
+        [TestCategory(Category)]
         public async Task Cannot_Insert_Duplicate()
         {
             var repo = new StationRepository(Context);
@@ -106,7 +123,6 @@ namespace Backend.Tests.Repositories
             Assert.IsNull(inserted);
             Assert.AreEqual(1, Context.Stations.Count());
         }
-
 
         [TestMethod]
         [TestCategory(Category)]
@@ -133,6 +149,44 @@ namespace Backend.Tests.Repositories
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, Context.Stations.Count());
+            Assert.AreNotEqual(inserted.Name, result.Name);
+        }
+
+        [TestMethod]
+        [TestCategory(Category)]
+        public async Task Update_Changed_Region()
+        {
+            var repo = new StationRepository(Context);
+
+            var newRegionId = Guid.NewGuid();
+
+            Context.Regions.Add(new Region
+            {
+                Id = newRegionId,
+                Name = "New Region"
+            });
+            Context.SaveChanges();
+
+            var original = new StationModel
+            {
+                Id = Guid.Parse("{070F3379-2EE0-4EFB-A44F-600E485F8D6E}"),
+                Name = "My Custom Station",
+                RegionId = DefaultRegionId
+            };
+
+            var inserted = await repo.InsertAsync(original);
+            var updated = new StationModel
+            {
+                Id = inserted.Id,
+                Name = "My New Station",
+                RegionId = newRegionId
+            };
+
+            var result = await repo.UpdateAsync(updated);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, Context.Stations.Count());
+            Assert.AreEqual(inserted.RegionId, result.RegionId);
             Assert.AreNotEqual(inserted.Name, result.Name);
         }
     }

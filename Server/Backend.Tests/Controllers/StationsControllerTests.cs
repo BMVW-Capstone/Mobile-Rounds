@@ -159,6 +159,39 @@ namespace Backend.Tests
             Assert.AreEqual(HttpStatusCode.BadRequest, result.StatusCode);
         }
 
+        [TestMethod]
+        [TestCategory(Category)]
+        public async Task POST_Inserts_Different_Region_Records()
+        {
+            var controller = new StationsController(Context);
+            ConfigureRequest(controller);
+
+            var newRegionId = Guid.NewGuid();
+
+            var model = new StationModel
+            {
+                Name = "Test No Id",
+                RegionId = newRegionId
+            };
+
+            Context.Regions.Add(new Region
+            {
+                Id = newRegionId,
+                Name = "My New Region"
+            });
+
+            Context.Stations.Add(new Station
+            {
+                Id = Guid.NewGuid(),
+                Name = model.Name,
+                RegionId = DefaultRegionId
+            });
+            Context.SaveChanges();
+
+            var result = await GetResponse(controller.Post(model));
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
+        }
+
 
         [TestMethod]
         [TestCategory(Category)]
@@ -180,6 +213,24 @@ namespace Backend.Tests
             ConfigureRequest(controller);
 
             var model = new StationModel { Name = "Test No Id" };
+
+            var result = await GetResponse(controller.Put(model));
+
+            Assert.AreEqual(HttpStatusCode.BadRequest, result.StatusCode);
+        }
+
+        [TestMethod]
+        [TestCategory(Category)]
+        public async Task PUT_Is_Bad_Request_Missing_Region()
+        {
+            var controller = new StationsController(Context);
+            ConfigureRequest(controller);
+
+            var model = new StationModel
+            {
+                Id = Guid.NewGuid(),
+                Name = "Test No Region"
+            };
 
             var result = await GetResponse(controller.Put(model));
 
