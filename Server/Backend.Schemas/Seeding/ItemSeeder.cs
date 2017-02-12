@@ -13,41 +13,44 @@ namespace Backend.Schemas.Seeding
         {
             if (!ctx.Items.Any())
             {
-                ctx.Items.AddOrUpdate(i => new { i.Name, i.Meter },
+                var firstStation = ctx.Stations.First();
+                var secondStation = ctx.Stations.Last();
+
+                ctx.Items.AddOrUpdate(i => i.Id,
                     new Item
                     {
+                        Id = Guid.NewGuid(),
                         Name = "Tank 1",
                         Meter = "Temperature 1",
-                        StationName = "Compressor Room",
-                        RegionName = "North Side"
+                        StationId = firstStation.Id
                     },
                     new Item
                     {
+                        Id = Guid.NewGuid(),
                         Name = "Tank 1",
                         Meter = "Temperature 2",
-                        StationName = "Compressor Room",
-                        RegionName = "North Side"
+                        StationId = firstStation.Id
                     },
                     new Item
                     {
+                        Id = Guid.NewGuid(),
                         Name = "Tank 2",
                         Meter = "Valve",
-                        StationName = "Compressor Room",
-                        RegionName = "North Side"
+                        StationId = firstStation.Id
                     },
                     new Item
                     {
+                        Id = Guid.NewGuid(),
                         Name = "Vent A",
                         Meter = "Is Open",
-                        StationName = "Vent Room",
-                        RegionName = "South Side"
+                        StationId = secondStation.Id
                     },
                     new Item
                     {
+                        Id = Guid.NewGuid(),
                         Name = "Vent B",
                         Meter = "Is Open",
-                        StationName = "Vent Room",
-                        RegionName = "South Side"
+                        StationId = secondStation.Id
                     });
 
                 ctx.SaveChanges();

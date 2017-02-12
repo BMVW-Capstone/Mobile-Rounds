@@ -14,8 +14,8 @@ namespace Backend.Schemas.Seeding
             if (!ctx.Regions.Any())
             {
                 ctx.Regions.AddOrUpdate(r => r.Name,
-                    new Region { Name = "North Side" },
-                    new Region { Name = "South Side" }
+                    new Region { Id = Guid.NewGuid(), Name = "North Side" },
+                    new Region { Id = Guid.NewGuid(), Name = "South Side" }
                 );
                 ctx.SaveChanges();
             }

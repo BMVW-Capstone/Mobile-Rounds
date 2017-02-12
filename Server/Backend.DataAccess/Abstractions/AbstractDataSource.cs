@@ -3,6 +3,7 @@ using Backend.Schemas;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,5 +48,20 @@ namespace Backend.DataAccess.Abstractions
 
         /// <inheritdoc />
         public abstract Task<TModel> DeleteAsync(TModel toDelete);
+
+        protected async Task<bool> SaveAsync()
+        {
+            var success = true;
+            try
+            {
+                await Database.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                Debugger.Break();
+                success = false;
+            }
+            return success;
+        }
     }
 }

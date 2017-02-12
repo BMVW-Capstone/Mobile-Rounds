@@ -10,11 +10,15 @@ namespace Backend.Schemas
 {
     public class Region
     {
+        [Key]
+        public Guid Id { get; set; }
+
         /// <summary>
         /// The name of a region.
         /// </summary>
-        [Key]
         [Index(IsUnique = true)]
+        [Column(TypeName = "VARCHAR")]
+        [StringLength(300)]
         public string Name { get; set; }
 
         /// <summary>

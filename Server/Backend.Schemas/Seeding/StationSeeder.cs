@@ -13,9 +13,22 @@ namespace Backend.Schemas.Seeding
         {
             if (!ctx.Stations.Any())
             {
-                ctx.Stations.AddOrUpdate(s => new { s.Name, s.RegionName },
-                    new Station { Name = "Compressor Room", RegionName = "North Side" },
-                    new Station { Name = "Vent Room", RegionName = "South Side" }
+                var region1 = ctx.Regions.First().Id;
+                var region2 = ctx.Regions.Last().Id;
+
+                ctx.Stations.AddOrUpdate(s => s.Id,
+                    new Station
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Compressor Room",
+                        RegionId = region1
+                    },
+                    new Station
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Vent Room",
+                        RegionId = region2
+                    }
                 );
 
                 ctx.SaveChanges();

@@ -14,15 +14,60 @@ namespace Backend.Schemas.Seeding
             if (!ctx.UnitsOfMeasure.Any())
             {
                 ctx.UnitsOfMeasure.AddOrUpdate(u => u.Name,
-                    new UnitOfMeasure { Name = "Celcius", Abbreviation = "C" },
-                    new UnitOfMeasure { Name = "Fahrenheit", Abbreviation = "F" },
-                    new UnitOfMeasure { Name = "Kelvin", Abbreviation = "K" },
-                    new UnitOfMeasure { Name = "Pounds per Square Inch", Abbreviation = "psi" },
-                    new UnitOfMeasure { Name = "Inches", Abbreviation = "in" },
-                    new UnitOfMeasure { Name = "Centimeters", Abbreviation = "cm" },
-                    new UnitOfMeasure { Name = "Millimeters", Abbreviation = "mm" },
-                    new UnitOfMeasure { Name = "Meter", Abbreviation = "m" },
-                    new UnitOfMeasure { Name = "Open or Closed", Abbreviation = "open or closed" }
+                    new UnitOfMeasure
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Celcius",
+                        Abbreviation = "C"
+                    },
+                    new UnitOfMeasure
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Fahrenheit",
+                        Abbreviation = "F"
+                    },
+                    new UnitOfMeasure
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Kelvin",
+                        Abbreviation = "K"
+                    },
+                    new UnitOfMeasure
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Pounds per Square Inch",
+                        Abbreviation = "psi"
+                    },
+                    new UnitOfMeasure
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Inches",
+                        Abbreviation = "in"
+                    },
+                    new UnitOfMeasure
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Centimeters",
+                        Abbreviation = "cm"
+                    },
+                    new UnitOfMeasure
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Millimeters",
+                        Abbreviation = "mm"
+                    },
+                    new UnitOfMeasure
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Meter",
+                        Abbreviation = "m"
+                    },
+                    new UnitOfMeasure
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Open or Closed",
+                        Abbreviation = "open or closed"
+                    }
                 );
 
                 ctx.SaveChanges();

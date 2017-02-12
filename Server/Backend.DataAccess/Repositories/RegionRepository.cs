@@ -2,6 +2,7 @@
 using Backend.DataAccess.Repositories.DataSources;
 using Backend.Schemas;
 using Mobile_Rounds.ViewModels.Admin.Regions;
+using Mobile_Rounds.ViewModels.Regular.Region;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,7 +16,7 @@ namespace Backend.DataAccess.Repositories
     /// Represents a way to interface with Regions in the database.
     /// </summary>
     public sealed class RegionRepository 
-        : AbstractRepository<RegionsViewModel, Region>
+        : AbstractRepository<RegionModel, Region>
     {
         /// <summary>
         /// Creates a new instance for working with database based regions.
@@ -27,22 +28,23 @@ namespace Backend.DataAccess.Repositories
         }
 
         /// <inheritdoc />
-        public override Task<RegionsViewModel> DeleteAsync(RegionsViewModel toDelete)
+        public override Task<RegionModel> DeleteAsync(RegionModel toDelete)
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public override async Task<IEnumerable<RegionsViewModel>> GetAsync()
+        public override async Task<IEnumerable<RegionModel>> GetAsync()
         {
             //TODO: Remove this sample implementation with a real one.
             return await DataSource
                 //Get the records in order
                 .GetOrdered()
                 //convert records to view models 
-                .Select(r => new RegionsViewModel
+                .Select(r => new RegionModel
                 {
-                    IsAdmin = true
+                    Id = r.Id,
+                    Name = r.Name
                 })
                 //load the data
                 .ToListAsync();
@@ -50,48 +52,46 @@ namespace Backend.DataAccess.Repositories
         }
 
         /// <inheritdoc />
-        public override Task<RegionsViewModel> GetSingleAsync()
+        public override Task<RegionModel> GetSingleAsync()
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
-        public override Task<RegionsViewModel> InsertAsync(RegionsViewModel toCreate)
+        public override async Task<RegionModel> InsertAsync(RegionModel toCreate)
         {
-            throw new NotImplementedException();
+            var model = BuildModel(toCreate);
+            var result = await DataSource.InsertAsync(model);
+            return BuildViewModel(result);
         }
 
         /// <inheritdoc />
-        public override Task<RegionsViewModel> UpdateAsync(RegionsViewModel toUpdate)
+        public override async Task<RegionModel> UpdateAsync(RegionModel toUpdate)
         {
-            throw new NotImplementedException();
+            var model = BuildModel(toUpdate);
+
+            var result = await DataSource.UpdateAsync(model);
+            return BuildViewModel(result);
         }
 
-        protected override RegionsViewModel BuildViewModel(Region model)
+        protected override RegionModel BuildViewModel(Region model)
         {
-            /*
-             * This is where we will actually convert from a 
-             * region object to a region view model object.
-             * 
-             */
-
-            //TODO: Build out actual implementation.
-            return new RegionsViewModel
+            if (model == null) return null;
+            return new RegionModel
             {
-                IsAdmin = true,
+                Id = model.Id,
+                Name = model.Name
             };
         }
 
-        protected override Region BuildModel(RegionsViewModel model)
+        protected override Region BuildModel(RegionModel model)
         {
-            /*
-             * This is where we will actually convert from a 
-             * region view model object to a region database object.
-             * 
-             */
-
-            //TODO: Build out actual implementation.
-            throw new NotImplementedException();
+            if (model == null) return null;
+            return new Region
+            {
+                Id = model.Id,
+                Name = model.Name
+            };
         }
     }
 }

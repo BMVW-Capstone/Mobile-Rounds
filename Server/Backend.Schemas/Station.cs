@@ -10,23 +10,23 @@ namespace Backend.Schemas
 {
     public class Station
     {
-        public const int CompositeKey_Name = 0;
-        public const int CompositeKey_Region = 1;
+        [Key]
+        public Guid Id { get; set; }
 
         /// <summary>
         /// The name of the station. Like Compressor Room.
         /// </summary>
-        [Key, Column(Order = CompositeKey_Name)]
         [Index(IsUnique = false)]
+        [Column(TypeName = "VARCHAR")]
+        [StringLength(300)]
         public string Name { get; set; }
 
         /// <summary>
-        /// The name of the region it belongs to.
+        /// The id of the region it belongs to.
         /// </summary>
-        [Required(AllowEmptyStrings = false)]
-        [Key, Index(IsUnique = false), Column(Order = CompositeKey_Region)]
+        [Index(IsUnique = false)]
         [ForeignKey(nameof(Region))]
-        public string RegionName { get; set; }
+        public Guid RegionId { get; set; }
 
         /// <summary>
         /// The <see cref="Region"/> that these stations belong to.

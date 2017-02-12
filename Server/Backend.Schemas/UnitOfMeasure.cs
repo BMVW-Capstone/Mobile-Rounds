@@ -10,12 +10,16 @@ namespace Backend.Schemas
 {
     public class UnitOfMeasure
     {
+        [Key]
+        public Guid Id { get; set; }
+
         /// <summary>
         /// The name of the unit. Such as kelvin, pounds per square inch, etc...
         /// </summary>
-        [Key]
         [Index(IsUnique = true)]
         [Required(AllowEmptyStrings = false)]
+        [Column(TypeName = "VARCHAR")]
+        [StringLength(300)]
         public string Name { get; set; }
 
         /// <summary>

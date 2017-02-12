@@ -11,34 +11,23 @@ namespace Backend.Schemas
     public class Specification
     {
         /// <summary>
-        /// The name of an item to take readings from in a <see cref="Station"/>. An
+        /// The id of an item to take readings from in a <see cref="Station"/>. An
         /// example would be Tank 2 C02 or something like that.
         /// </summary>
-        [Key, Column(Order = Item.CompositeKey_Name)]
-        [Required(AllowEmptyStrings = false)]
-        [ForeignKey(nameof(Item))]
-        public string ItemName { get; set; }
+        [Key, ForeignKey(nameof(Item))]
+        public Guid ItemId { get; set; }
 
         /// <summary>
-        /// TBD. Cannot remember at them moment...
-        /// </summary>
-        [Key, Column(Order = Item.CompositeKey_Meter)]
-        [Required(AllowEmptyStrings = false)]
-        [ForeignKey(nameof(Item))]
-        public string ItemMeter { get; set; }
-
-        /// <summary>
-        /// The name of the unit of measure.
+        /// The Id of the unit of measure.
         /// </summary>
         [ForeignKey(nameof(Unit))]
-        [Required(AllowEmptyStrings = false)]
-        public string UnitName { get; set; }
+        public Guid UnitId { get; set; }
 
         /// <summary>
         /// The name of the comparison type.
         /// </summary>
-        [ForeignKey(nameof(ComparisonType))]
         [Required(AllowEmptyStrings = false)]
+        [ForeignKey(nameof(ComparisonType))]
         public string ComparisionTypeName { get; set; }
 
         /// <summary>

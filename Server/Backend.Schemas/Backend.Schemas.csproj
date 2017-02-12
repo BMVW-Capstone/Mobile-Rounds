@@ -54,53 +54,9 @@
     <Compile Include="ComparisonType.cs" />
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="Migrations\201701111756398_InitialSetup.cs" />
-    <Compile Include="Migrations\201701111756398_InitialSetup.Designer.cs">
-      <DependentUpon>201701111756398_InitialSetup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702120042521_AddedStationsAndRounds.cs" />
-    <Compile Include="Migrations\201702120042521_AddedStationsAndRounds.Designer.cs">
-      <DependentUpon>201702120042521_AddedStationsAndRounds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702120104033_AddedItemsTable.cs" />
-    <Compile Include="Migrations\201702120104033_AddedItemsTable.Designer.cs">
-      <DependentUpon>201702120104033_AddedItemsTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702120207038_AddedItemsAndSpecs.cs" />
-    <Compile Include="Migrations\201702120207038_AddedItemsAndSpecs.Designer.cs">
-      <DependentUpon>201702120207038_AddedItemsAndSpecs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702120218353_AddedReadings.cs" />
-    <Compile Include="Migrations\201702120218353_AddedReadings.Designer.cs">
-      <DependentUpon>201702120218353_AddedReadings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702120309535_AddedRoundInfoToReading.cs" />
-    <Compile Include="Migrations\201702120309535_AddedRoundInfoToReading.Designer.cs">
-      <DependentUpon>201702120309535_AddedRoundInfoToReading.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702120351281_NonUniqueRegionOnRound.cs" />
-    <Compile Include="Migrations\201702120351281_NonUniqueRegionOnRound.Designer.cs">
-      <DependentUpon>201702120351281_NonUniqueRegionOnRound.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702120359499_SwappedUniqueIndexOnItem.cs" />
-    <Compile Include="Migrations\201702120359499_SwappedUniqueIndexOnItem.Designer.cs">
-      <DependentUpon>201702120359499_SwappedUniqueIndexOnItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702120401273_ItemRemoveMeterUnique.cs" />
-    <Compile Include="Migrations\201702120401273_ItemRemoveMeterUnique.Designer.cs">
-      <DependentUpon>201702120401273_ItemRemoveMeterUnique.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702120403177_SpecRemoveUnique.cs" />
-    <Compile Include="Migrations\201702120403177_SpecRemoveUnique.Designer.cs">
-      <DependentUpon>201702120403177_SpecRemoveUnique.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702120405531_ReadingRemovedUnique.cs" />
-    <Compile Include="Migrations\201702120405531_ReadingRemovedUnique.Designer.cs">
-      <DependentUpon>201702120405531_ReadingRemovedUnique.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702120450041_UniqueRemovalFromStation.cs" />
-    <Compile Include="Migrations\201702120450041_UniqueRemovalFromStation.Designer.cs">
-      <DependentUpon>201702120450041_UniqueRemovalFromStation.cs</DependentUpon>
+    <Compile Include="Migrations\201702120720329_ChangeToIds.cs" />
+    <Compile Include="Migrations\201702120720329_ChangeToIds.Designer.cs">
+      <DependentUpon>201702120720329_ChangeToIds.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,41 +82,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701111756398_InitialSetup.resx">
-      <DependentUpon>201701111756398_InitialSetup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702120042521_AddedStationsAndRounds.resx">
-      <DependentUpon>201702120042521_AddedStationsAndRounds.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702120104033_AddedItemsTable.resx">
-      <DependentUpon>201702120104033_AddedItemsTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702120207038_AddedItemsAndSpecs.resx">
-      <DependentUpon>201702120207038_AddedItemsAndSpecs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702120218353_AddedReadings.resx">
-      <DependentUpon>201702120218353_AddedReadings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702120309535_AddedRoundInfoToReading.resx">
-      <DependentUpon>201702120309535_AddedRoundInfoToReading.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702120351281_NonUniqueRegionOnRound.resx">
-      <DependentUpon>201702120351281_NonUniqueRegionOnRound.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702120359499_SwappedUniqueIndexOnItem.resx">
-      <DependentUpon>201702120359499_SwappedUniqueIndexOnItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702120401273_ItemRemoveMeterUnique.resx">
-      <DependentUpon>201702120401273_ItemRemoveMeterUnique.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702120403177_SpecRemoveUnique.resx">
-      <DependentUpon>201702120403177_SpecRemoveUnique.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702120405531_ReadingRemovedUnique.resx">
-      <DependentUpon>201702120405531_ReadingRemovedUnique.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702120450041_UniqueRemovalFromStation.resx">
-      <DependentUpon>201702120450041_UniqueRemovalFromStation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702120720329_ChangeToIds.resx">
+      <DependentUpon>201702120720329_ChangeToIds.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

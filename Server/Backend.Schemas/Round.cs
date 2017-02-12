@@ -10,21 +10,21 @@ namespace Backend.Schemas
 {
     public class Round
     {
+        [Key]
+        public Guid Id { get; set; }
+
         /// <summary>
         /// This is the date + hour. No minute. This is because a <see cref="Region"/>
         /// should only have one round per hour block.
         /// </summary>
-        [Key]
-        [Column(Order = 0)]
         public DateTime RoundHour { get; set; }
 
         /// <summary>
-        /// Foreign key to the <see cref="Region"/> as well as the second part of
-        /// the composite key for a given round.
+        /// Foreign key to the <see cref="Region"/> for a given round.
         /// </summary>
-        [Key, Index(IsUnique = false), Column(Order = 1)]
+        [Index(IsUnique = false)]
         [ForeignKey(nameof(Region))]
-        public string RegionName { get; set; }
+        public Guid RegionId { get; set; }
 
         /// <summary>
         /// User who is assigned the round. Decided when a person starts the round.
