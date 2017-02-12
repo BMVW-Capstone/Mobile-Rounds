@@ -1,34 +1,24 @@
 namespace Backend.Schemas.Migrations
 {
+    using Seeding;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Backend.Schemas.DatabaseContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DatabaseContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            Database.SetInitializer(new CreateDatabaseIfNotExists<DatabaseContext>());
         }
 
-        protected override void Seed(Backend.Schemas.DatabaseContext context)
+        protected override void Seed(DatabaseContext context)
         {
             //  This method will be called after migrating to the latest version.
-
-            context.Regions.AddOrUpdate(r => r.Name, new Region { Name = "North" });
-            context.Regions.AddOrUpdate(r => r.Name, new Region { Name = "South" });
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            DatabaseSeeder seeder = new DatabaseSeeder();
+            seeder.Seed(context);
         }
     }
 }

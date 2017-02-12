@@ -10,8 +10,16 @@ namespace Backend.Schemas
 {
     public class Region
     {
+        /// <summary>
+        /// The name of a region.
+        /// </summary>
         [Key]
         [Index(IsUnique = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Rounds that have been associated with this region.
+        /// </summary>
+        public virtual ICollection<Round> Rounds { get; set; }
     }
 }

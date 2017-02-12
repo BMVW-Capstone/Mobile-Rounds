@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="8a7f2012-d622-44a4-a371-090e72f9d0d9" name="DatabaseSchema" linkedPackageId="8d66d64f-ed23-4d73-b860-469449116e19" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="8a7f2012-d622-44a4-a371-090e72f9d0d9" name="DatabaseSchema" linkedPackageId="8d66d64f-ed23-4d73-b860-469449116e19" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <appliedStereotypesInternal>
     <stereotypeInstance Id="33c46ca8-221a-4b8a-b888-e79692a37e81" name="namespace" profile="CSharpProfile">
       <elementDefinition Id="331b5aa0-b6bd-41b4-a2c3-e1d33026e032" />
@@ -1046,7 +1046,7 @@
                     <referencedTypeMoniker Id="b13e988f-4ffd-4144-a8f3-e1c5afa4291b" LastKnownName="String" />
                   </type_NamedElement>
                 </property>
-                <property Id="d5ce2763-a8bb-4db9-b6cd-246f4e47caa3" name="Unit" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <property Id="d5ce2763-a8bb-4db9-b6cd-246f4e47caa3" name="Abbreviation" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="4f239f5e-06fd-4af4-ad1d-83b167a36ba3" name="property" profile="CSharpProfile">
                       <elementDefinition Id="9b48a8b0-a015-4639-a303-0beb54e52af2" />
@@ -1098,7 +1098,7 @@
                   </appliedStereotypesInternal>
                   <elementDefinition Id="694b6339-525d-41f8-9d79-56b9172e3e1e" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="b13e988f-4ffd-4144-a8f3-e1c5afa4291b" LastKnownName="String" />
+                    <referencedTypeMoniker Id="13d7b675-6f1a-4807-b42f-4c74454dbe58" LastKnownName="String" />
                   </type_NamedElement>
                 </property>
                 <property Id="da1790d4-9201-430b-8dd0-e1f0b812c77c" name="Specifications" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -2513,6 +2513,11 @@
     <packageHasNamedElement>
       <referencedType Id="bca1511c-3b47-41ca-a05e-dc9cafced5df" name="Item" isAbstract="false" isLeaf="false" cachedFullName="Backend.Diagrams::Backend.Schemas::Item">
         <elementDefinition Id="5b6ff471-1167-48f9-a144-e799571b5bf4" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="13d7b675-6f1a-4807-b42f-4c74454dbe58" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
