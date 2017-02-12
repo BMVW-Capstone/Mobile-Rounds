@@ -7,13 +7,13 @@ namespace Backend.Schemas.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ItemRemoveMeterUnique : IMigrationMetadata
+    public sealed partial class ChangeToIds : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ItemRemoveMeterUnique));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeToIds));
         
         string IMigrationMetadata.Id
         {
-            get { return "201702120401273_ItemRemoveMeterUnique"; }
+            get { return "201702120720329_ChangeToIds"; }
         }
         
         string IMigrationMetadata.Source

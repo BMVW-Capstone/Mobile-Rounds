@@ -14,42 +14,30 @@ namespace Backend.Schemas
     /// </summary>
     public class Item
     {
-        /// <summary>
-        /// These must be two and three since station columns define 0 and 1.
-        /// </summary>
-        public const int CompositeKey_Name = 2;
-        public const int CompositeKey_Meter = 3;
+        [Key, ForeignKey(nameof(Specification))]
+        public Guid Id { get; set; }
 
         /// <summary>
         /// The name of an item to take readings from in a <see cref="Station"/>. An
         /// example would be Tank 2 C02 or something like that.
         /// </summary>
-        [Key, Column(Order = CompositeKey_Name)]
+        [Index(IsUnique = false)]
         [Required(AllowEmptyStrings = false)]
+        [Column(TypeName = "VARCHAR")]
+        [StringLength(300)]
         public string Name { get; set; }
 
         /// <summary>
-        /// TBD. Cannot remember at them moment...
+        /// The name of the instrument that has readings.
         /// </summary>
-        [Key, Column(Order = CompositeKey_Meter)]
         [Required(AllowEmptyStrings = false)]
         public string Meter { get; set; }
 
         /// <summary>
-        /// The name of the station it is in.
+        /// The station it is in.
         /// </summary>
         [ForeignKey(nameof(Station))]
-        [Column(Order = Station.CompositeKey_Name)]
-        [Required(AllowEmptyStrings = false)]
-        public string StationName { get; set; }
-
-        /// <summary>
-        /// The name of the region that the station is in.
-        /// </summary>
-        [ForeignKey(nameof(Station))]
-        [Column(Order = Station.CompositeKey_Region)]
-        [Required(AllowEmptyStrings = false)]
-        public string RegionName { get; set; }
+        public Guid StationId { get; set; }
 
         /// <summary>
         /// The <see cref="Station"/> that the meter belongs in.

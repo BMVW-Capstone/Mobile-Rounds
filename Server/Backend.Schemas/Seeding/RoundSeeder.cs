@@ -14,31 +14,37 @@ namespace Backend.Schemas.Seeding
             var baseTime = new DateTime(2017, 2, 11, 0, 0, 0);
             if (!ctx.Rounds.Any())
             {
-                ctx.Rounds.AddOrUpdate(r => new { r.RoundHour, r.Region },
-                new Round
-                {
-                    RoundHour = baseTime.AddHours(-8),
-                    AssignedTo = "tyler.vanderhoef@wsu.edu",
-                    StartTime = baseTime.AddHours(-8).AddMinutes(30),
-                    EndTime = baseTime.AddHours(-7),
-                    RegionName = "South Side"
-                },
-                new Round
-                {
-                    RoundHour = baseTime.AddHours(-8),
-                    AssignedTo = "matt.burris@wsu.edu",
-                    StartTime = baseTime.AddHours(-8).AddMinutes(30),
-                    EndTime = baseTime.AddHours(-7),
-                    RegionName = "North Side"
-                },
-                new Round
-                {
-                    RoundHour = baseTime.AddHours(-16),
-                    AssignedTo = "cwillette@wsu.edu",
-                    StartTime = baseTime.AddHours(-16).AddMinutes(30),
-                    EndTime = baseTime.AddHours(-15),
-                    RegionName = "North Side"
-                });
+                var regionId = ctx.Regions.First().Id;
+                var region2Id = ctx.Regions.Last().Id;
+
+                ctx.Rounds.AddOrUpdate(r => r.Id,
+                    new Round
+                    {
+                        Id = Guid.NewGuid(),
+                        RoundHour = baseTime.AddHours(-8),
+                        AssignedTo = "tyler.vanderhoef@wsu.edu",
+                        StartTime = baseTime.AddHours(-8).AddMinutes(30),
+                        EndTime = baseTime.AddHours(-7),
+                        RegionId = regionId
+                    },
+                    new Round
+                    {
+                        Id = Guid.NewGuid(),
+                        RoundHour = baseTime.AddHours(-8),
+                        AssignedTo = "matt.burris@wsu.edu",
+                        StartTime = baseTime.AddHours(-8).AddMinutes(30),
+                        EndTime = baseTime.AddHours(-7),
+                        RegionId = region2Id
+                    },
+                    new Round
+                    {
+                        Id = Guid.NewGuid(),
+                        RoundHour = baseTime.AddHours(-16),
+                        AssignedTo = "cwillette@wsu.edu",
+                        StartTime = baseTime.AddHours(-16).AddMinutes(30),
+                        EndTime = baseTime.AddHours(-15),
+                        RegionId = region2Id
+                    });
                 ctx.SaveChanges();
             }
         }

@@ -2,6 +2,7 @@
 using Backend.DataAccess.Repositories;
 using Backend.Schemas;
 using Mobile_Rounds.ViewModels.Admin.Regions;
+using Mobile_Rounds.ViewModels.Regular.Region;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,26 +17,25 @@ namespace Backend.Controllers
     [Authorize]
     public class RegionsController : ApiController
     {
-        private readonly IRepository<RegionsViewModel> datasource;
+        private readonly IRepository<RegionModel> datasource;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegionsController"/> class.
+        /// </summary>
+        /// <param name="database">The database used for operations.</param>
         public RegionsController(DatabaseContext database)
         {
-            datasource = new RegionRepository(database);
+            this.datasource = new RegionRepository(database);
         }
 
+        /// <summary>
+        /// Gets a list of all the regions.
+        /// </summary>
+        /// <returns>A list of regions.</returns>
         public async Task<IHttpActionResult> Get()
         {
-            var user = HttpContext.Current.User;
-            var role = user.IsInRole("Developers");
-
-            var results = await datasource.GetAsync();
-
-            return Ok(new
-            {
-                db = results,
-                user = user.Identity.Name,
-                isDeveloper = role
-            });
+            var results = await this.datasource.GetAsync();
+            return this.Ok(results);
         }
     }
 }

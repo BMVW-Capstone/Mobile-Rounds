@@ -1,12 +1,8 @@
 ﻿using Backend.DataAccess.Abstractions;
 using Backend.Schemas;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entity;
-using Mobile_Rounds.ViewModels.Admin.Regions;
 
 namespace Backend.DataAccess.Repositories.DataSources
 {
@@ -39,14 +35,30 @@ namespace Backend.DataAccess.Repositories.DataSources
         }
 
 
-        public override Task<Region> InsertAsync(Region toCreate)
+        public override async Task<Region> InsertAsync(Region toCreate)
         {
-            throw new NotImplementedException();
+            toCreate.Id = Guid.NewGuid();
+
+            var tracked = Database.Regions.Add(toCreate);
+            if(await SaveAsync())
+            {
+                return tracked;
+            }
+            return null;
         }
 
-        public override Task<Region> UpdateAsync(Region toUpdate)
+        public override async Task<Region> UpdateAsync(Region toUpdate)
         {
-            throw new NotImplementedException();
+            var tracked = Database.Regions.Find(toUpdate.Id);
+
+            if (tracked == null) return null;
+
+            tracked.Name = toUpdate.Name;
+            if(await SaveAsync())
+            {
+                return tracked;
+            }
+            return null;
         }
     }
 }

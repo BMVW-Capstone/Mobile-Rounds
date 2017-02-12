@@ -15,26 +15,28 @@ namespace Backend.Schemas.Seeding
 
             if (!ctx.Readings.Any())
             {
-                ctx.Readings.AddOrUpdate(r => new { r.ItemName, r.ItemMeter },
+                var roundId = ctx.Rounds.First().Id;
+                var itemId = ctx.Items.First().Id;
+                var item2Id = ctx.Items.Last().Id;
+
+                ctx.Readings.AddOrUpdate(r => r.Id,
                     new Reading
                     {
-                        ItemName = "Tank 1",
-                        ItemMeter = "Temperature 1",
+                        Id = Guid.NewGuid(),
                         TimeTaken = DateTime.Now,
                         Value = "5",
                         IsOutOfSpec = false,
-                        RegionName = "North Side",
-                        RoundHour = baseTime.AddHours(-8)
+                        RoundId = roundId,
+                        ItemId = itemId
                     },
                     new Reading
                     {
-                        ItemName = "Tank 1",
-                        ItemMeter = "Temperature 2",
+                        Id = Guid.NewGuid(),
                         TimeTaken = DateTime.Now.AddMinutes(-5),
                         Value = "100",
                         IsOutOfSpec = true,
-                        RegionName = "North Side",
-                        RoundHour = baseTime.AddHours(-8)
+                        RoundId = roundId,
+                        ItemId = item2Id
                     });
                 ctx.SaveChanges();
             }
