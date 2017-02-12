@@ -36,7 +36,10 @@ namespace Backend.DataAccess.Abstractions
         /// </summary>
         /// <param name="model">The model type to copy values from.</param>
         /// <returns>A newly populated view model with the given properties copied.</returns>
-        protected abstract TViewModel BuildViewModel(TModel model);
+        protected virtual TViewModel BuildViewModel(TModel model)
+        {
+            throw new NotImplementedException();
+        }
 
 
         /// <summary>
@@ -45,21 +48,39 @@ namespace Backend.DataAccess.Abstractions
         /// </summary>
         /// <param name="viewModel">The view model type to copy values from.</param>
         /// <returns>A newly populated model with the given properties copied.</returns>
-        protected abstract TModel BuildModel(TViewModel viewModel);
+        protected virtual TModel BuildModel(TViewModel viewModel)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <inheritdoc />
-        public abstract Task<IEnumerable<TViewModel>> GetAsync();
+        public virtual Task<IEnumerable<TViewModel>> GetAsync()
+        {
+            throw new NotImplementedException();
+        }
 
         /// <inheritdoc />
-        public abstract Task<TViewModel> GetSingleAsync();
+        public virtual Task<TViewModel> GetSingleAsync()
+        {
+            throw new NotImplementedException();
+        }
 
         /// <inheritdoc />
-        public abstract Task<TViewModel> DeleteAsync(TViewModel toDelete);
+        public virtual Task<TViewModel> DeleteAsync(TViewModel toDelete)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <inheritdoc />
-        public abstract Task<TViewModel> InsertAsync(TViewModel toCreate);
+        public virtual Task<TViewModel> InsertAsync(TViewModel toCreate)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <inheritdoc />
-        public abstract Task<TViewModel> UpdateAsync(TViewModel toUpdate);
+        public virtual Task<TViewModel> UpdateAsync(TViewModel toUpdate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

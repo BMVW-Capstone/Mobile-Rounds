@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mobile_Rounds.ViewModels.Regular.Region
+namespace Mobile_Rounds.ViewModels.Models
 {
     /// <summary>
     /// Represents the contract between the server and mobile app.

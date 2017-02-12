@@ -16,12 +16,18 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
     /// <summary>
     /// Represents a basic Unit of Measurement model.
     /// </summary>
-    public class UnitOfMeasure : NotificationBase
+    public class UnitOfMeasureViewModel : NotificationBase
     {
         /// <summary>
         /// Gets or sets the unique id of the object.
         /// </summary>
         public Guid Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets if the model is deleted in the database 
+        /// or not.
+        /// </summary>
+        public bool IsDeleted { get; set; }
 
         /// <summary>
         /// Gets or sets the abbreviation of the unit.
@@ -107,33 +113,33 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnitOfMeasure"/> class.
+        /// Initializes a new instance of the <see cref="UnitOfMeasureModel"/> class.
         /// This then caches the save and cancel commands so that it can
         /// notify any views based on them.
         /// </summary>
         /// <param name="save">The save command that is based on this unit.</param>
         /// <param name="cancel">The cancel command that is based on this unit.</param>
-        public UnitOfMeasure(AsyncCommand save, AsyncCommand cancel)
+        public UnitOfMeasureViewModel(AsyncCommand save, AsyncCommand cancel)
         {
             this.ModificationType = "Save New Unit";
             this.Save = save;
             this.Cancel = cancel;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UnitOfMeasure"/> class.
-        /// This is a copy constructor so all values will get copied to the new copy.
-        /// </summary>
-        /// <param name="toCopy">The object to copy.</param>
-        public UnitOfMeasure(UnitOfMeasure toCopy)
-        {
-            this.fullName = toCopy.fullName;
-            this.abbreviation = toCopy.abbreviation;
-            this.Id = toCopy.Id;
-            this.Save = toCopy.Save;
-            this.Cancel = toCopy.Cancel;
-            this.modificationType = toCopy.modificationType;
-        }
+        ///// <summary>
+        ///// Initializes a new instance of the <see cref="UnitOfMeasureModel"/> class.
+        ///// This is a copy constructor so all values will get copied to the new copy.
+        ///// </summary>
+        ///// <param name="toCopy">The object to copy.</param>
+        //public UnitOfMeasureViewModel(UnitOfMeasureModel toCopy)
+        //{
+        //    this.fullName = toCopy.FullName;
+        //    this.abbreviation = toCopy.Abbreviation;
+        //    this.Id = toCopy.Id;
+        //    this.Save = toCopy.Save;
+        //    this.Cancel = toCopy.Cancel;
+        //    this.modificationType = toCopy.modificationType;
+        //}
 
         private string abbreviation;
         private string fullName;

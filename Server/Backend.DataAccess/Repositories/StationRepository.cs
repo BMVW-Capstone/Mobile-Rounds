@@ -1,14 +1,11 @@
 ﻿using Backend.DataAccess.Abstractions;
 using Backend.DataAccess.Repositories.DataSources;
 using Backend.Schemas;
-using Mobile_Rounds.ViewModels.Admin.Regions;
-using Mobile_Rounds.ViewModels.Regular.Region;
-using Mobile_Rounds.ViewModels.Regular.Station;
+using Mobile_Rounds.ViewModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Backend.DataAccess.Repositories

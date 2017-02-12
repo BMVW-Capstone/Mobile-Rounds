@@ -11,21 +11,20 @@ namespace Backend.Controllers
     /// <summary>
     /// The entrypoint into the <see cref="Region"/> resources.
     /// </summary>
-    [RoutePrefix("api/regions")]
+    [RoutePrefix("api/units")]
     [Authorize]
-    public class RegionsController : ApiController
+    public class UnitOfMeasuresController : ApiController
     {
-        private const string SwaggerName = "Regions";
-
-        private readonly IRepository<RegionModel> datasource;
+        private const string SwaggerName = "Units Of Measure";
+        private readonly IRepository<UnitOfMeasureModel> datasource;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegionsController"/> class.
+        /// Initializes a new instance of the <see cref="UnitOfMeasuresController"/> class.
         /// </summary>
         /// <param name="database">The database used for operations.</param>
-        public RegionsController(DatabaseContext database)
+        public UnitOfMeasuresController(DatabaseContext database)
         {
-            this.datasource = new RegionRepository(database);
+            this.datasource = new UnitOfMeasureRepository(database);
         }
 
         /// <summary>
@@ -41,14 +40,14 @@ namespace Backend.Controllers
         }
 
         /// <summary>
-        /// Inserts a given <see cref="Region"/> using the values
-        /// from the <see cref="RegionModel"/>.
+        /// Inserts a given <see cref="UnitOfMeasure"/> using the values
+        /// from the <see cref="UnitOfMeasureModel"/>.
         /// </summary>
         /// <param name="newModel">The object with the values to insert.</param>
-        /// <returns>The newly updated region. If the update failed, returns null.</returns>
+        /// <returns>The newly updated unit. If the update failed, returns null.</returns>
         [Route("")]
         [SwaggerOperation(Tags = new[] { SwaggerName })]
-        public async Task<IHttpActionResult> Post(RegionModel newModel)
+        public async Task<IHttpActionResult> Post(UnitOfMeasureModel newModel)
         {
             if (newModel == null)
             {
@@ -65,14 +64,14 @@ namespace Backend.Controllers
         }
 
         /// <summary>
-        /// Updates a given <see cref="Region"/> using the values
-        /// from the <see cref="RegionModel"/>.
+        /// Updates a given <see cref="UnitOfMeasure"/> using the values
+        /// from the <see cref="UnitOfMeasureModel"/>.
         /// </summary>
         /// <param name="updated">The object with the updated values.</param>
-        /// <returns>The newly updated region. If the update failed, returns null.</returns>
+        /// <returns>The newly updated unit. If the update failed, returns null.</returns>
         [Route("")]
         [SwaggerOperation(Tags = new[] { SwaggerName })]
-        public async Task<IHttpActionResult> Put(RegionModel updated)
+        public async Task<IHttpActionResult> Put(UnitOfMeasureModel updated)
         {
             if (updated == null)
             {

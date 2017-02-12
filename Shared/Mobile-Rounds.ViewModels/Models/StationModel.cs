@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mobile_Rounds.ViewModels.Regular.Station
+namespace Mobile_Rounds.ViewModels.Models
 {
     public class StationModel : NotificationBase
     {

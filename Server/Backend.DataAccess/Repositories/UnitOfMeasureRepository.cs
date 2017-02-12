@@ -2,7 +2,6 @@
 using Backend.DataAccess.Repositories.DataSources;
 using Backend.Schemas;
 using Mobile_Rounds.ViewModels.Models;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -13,30 +12,31 @@ namespace Backend.DataAccess.Repositories
     /// <summary>
     /// Represents a way to interface with Regions in the database.
     /// </summary>
-    public sealed class RegionRepository 
-        : AbstractRepository<RegionModel, Region>
+    public sealed class UnitOfMeasureRepository 
+        : AbstractRepository<UnitOfMeasureModel, UnitOfMeasure>
     {
         /// <summary>
         /// Creates a new instance for working with database based regions.
         /// </summary>
         /// <param name="database">The database to use.</param>
-        public RegionRepository(DatabaseContext database)
-            : base (new RegionDataSource(database))
+        public UnitOfMeasureRepository(DatabaseContext database)
+            : base (new UnitOfMeasureDataSource(database))
         {
         }
 
         /// <inheritdoc />
-        public override async Task<IEnumerable<RegionModel>> GetAsync()
+        public override async Task<IEnumerable<UnitOfMeasureModel>> GetAsync()
         {
             return await DataSource
                 //Get the records in order
                 .GetOrdered()
                 //convert records to view models 
-                .Select(r => new RegionModel
+                .Select(u => new UnitOfMeasureModel
                 {
-                    Id = r.Id,
-                    Name = r.Name,
-                    IsDeleted = r.IsMarkedAsDeleted
+                    Id = u.Id,
+                    Name = u.Name,
+                    Abbreviation = u.Abbreviation,
+                    IsDeleted = u.IsMarkedAsDeleted
                 })
                 //load the data
                 .ToListAsync();
@@ -44,7 +44,7 @@ namespace Backend.DataAccess.Repositories
         }
 
         /// <inheritdoc />
-        public override async Task<RegionModel> InsertAsync(RegionModel toCreate)
+        public override async Task<UnitOfMeasureModel> InsertAsync(UnitOfMeasureModel toCreate)
         {
             var model = BuildModel(toCreate);
             var result = await DataSource.InsertAsync(model);
@@ -52,7 +52,7 @@ namespace Backend.DataAccess.Repositories
         }
 
         /// <inheritdoc />
-        public override async Task<RegionModel> UpdateAsync(RegionModel toUpdate)
+        public override async Task<UnitOfMeasureModel> UpdateAsync(UnitOfMeasureModel toUpdate)
         {
             var model = BuildModel(toUpdate);
 
@@ -60,24 +60,26 @@ namespace Backend.DataAccess.Repositories
             return BuildViewModel(result);
         }
 
-        protected override RegionModel BuildViewModel(Region model)
+        protected override UnitOfMeasureModel BuildViewModel(UnitOfMeasure model)
         {
             if (model == null) return null;
-            return new RegionModel
+            return new UnitOfMeasureModel
             {
                 Id = model.Id,
                 Name = model.Name,
+                Abbreviation = model.Abbreviation,
                 IsDeleted = model.IsMarkedAsDeleted
             };
         }
 
-        protected override Region BuildModel(RegionModel model)
+        protected override UnitOfMeasure BuildModel(UnitOfMeasureModel model)
         {
             if (model == null) return null;
-            return new Region
+            return new UnitOfMeasure
             {
                 Id = model.Id,
                 Name = model.Name,
+                Abbreviation = model.Abbreviation,
                 IsMarkedAsDeleted = model.IsDeleted
             };
         }

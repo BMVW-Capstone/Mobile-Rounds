@@ -2,12 +2,7 @@
 // Copyright (c) SolarWorld Capstone Team. All rights reserved.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
-using System.Web.Routing;
 
 namespace Backend
 {

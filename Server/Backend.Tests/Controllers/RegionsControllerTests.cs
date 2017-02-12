@@ -2,8 +2,7 @@
 using Backend.Schemas;
 using Backend.Tests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Mobile_Rounds.ViewModels.Admin.Regions;
-using Mobile_Rounds.ViewModels.Regular.Region;
+using Mobile_Rounds.ViewModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
