@@ -20,13 +20,51 @@ namespace Backend.Schemas
         /// The name of the connection string in the web.config or the 
         /// connection string itself.
         /// </param>
-        public DatabaseContext(string nameOrConnectionString) : base(nameOrConnectionString)
+        public DatabaseContext(string nameOrConnectionString) 
+            : base(nameOrConnectionString)
         {
-
         }
 
         public DatabaseContext() : this("DevDatabase") { }
 
+        /// <summary>
+        /// The <see cref="Region"/>'s table.
+        /// </summary>
         public IDbSet<Region> Regions { get; set; }
+
+        /// <summary>
+        /// The <see cref="Station"/>'s table.
+        /// </summary>
+        public IDbSet<Station> Stations { get; set; }
+
+        /// <summary>
+        /// The <see cref="Round"/>'s table.
+        /// </summary>
+        public IDbSet<Round> Rounds { get; set; }
+
+        /// <summary>
+        /// The <see cref="Item"/>'s table.
+        /// </summary>
+        public IDbSet<Item> Items { get; set; }
+
+        /// <summary>
+        /// The <see cref="UnitOfMeasure"/>'s table.
+        /// </summary>
+        public IDbSet<UnitOfMeasure> UnitsOfMeasure { get; set; }
+
+        /// <summary>
+        /// The <see cref="ComparisonType"/>'s table.
+        /// </summary>
+        public IDbSet<ComparisonType> ComparisonTypes { get; set; }
+
+        /// <summary>
+        /// The <see cref="Specification"/>'s table.
+        /// </summary>
+        public IDbSet<Specification> Specifications { get; set; }
+
+        /// <summary>
+        /// The <see cref="Reading"/>'s table.
+        /// </summary>
+        public IDbSet<Reading> Readings { get; set; }
     }
 }
