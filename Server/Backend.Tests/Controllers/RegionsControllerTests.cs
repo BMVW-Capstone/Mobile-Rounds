@@ -19,7 +19,10 @@ namespace Backend.Tests
     [TestClass]
     public class RegionsControllerTests : BaseTestClass
     {
+        public const string Category = "Regions";
+
         [TestMethod]
+        [TestCategory(Category)]
         public async Task GET_Returns_List()
         {
             var controller = new RegionsController(Context);
@@ -34,6 +37,7 @@ namespace Backend.Tests
         }
 
         [TestMethod]
+        [TestCategory(Category)]
         public async Task GET_Is_OK()
         {
             var controller = new RegionsController(Context);
@@ -42,6 +46,76 @@ namespace Backend.Tests
             var result = await GetResponse(controller.Get());
 
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
+        }
+
+        [TestMethod]
+        [TestCategory(Category)]
+        public async Task PUT_Is_Bad_Request_Null_Data()
+        {
+            var controller = new RegionsController(Context);
+            ConfigureRequest(controller);
+
+            var result = await GetResponse(controller.Put(null));
+
+            Assert.AreEqual(HttpStatusCode.BadRequest, result.StatusCode);
+        }
+
+        [TestMethod]
+        [TestCategory(Category)]
+        public async Task PUT_Is_Bad_Request_Missing_Id()
+        {
+            var controller = new RegionsController(Context);
+            ConfigureRequest(controller);
+
+            var model = new RegionModel { Name = "Test No Id" };
+
+            var result = await GetResponse(controller.Put(model));
+
+            Assert.AreEqual(HttpStatusCode.BadRequest, result.StatusCode);
+        }
+
+        [TestMethod]
+        public async Task PUT_Is_OK()
+        {
+            var controller = new RegionsController(Context);
+            ConfigureRequest(controller);
+
+            var model = new RegionModel
+            {
+                Id = Guid.Parse("{69EA67A4-C575-472B-B463-C156E5BA61F3}"),
+                Name = "Test No Id"
+            };
+
+            //setup database record
+            Context.Regions.Add(new Region { Id = model.Id, Name = model.Name });
+            Context.SaveChanges();
+
+            var result = await GetResponse(controller.Put(model));
+
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
+        }
+
+        [TestMethod]
+        public async Task PUT_Updates_Data()
+        {
+            var controller = new RegionsController(Context);
+            ConfigureRequest(controller);
+
+            var model = new RegionModel
+            {
+                Id = Guid.Parse("{69EA67A4-C575-472B-B463-C156E5BA61F3}"),
+                Name = "Test No Id"
+            };
+
+            //setup database record
+            Context.Regions.Add(new Region { Id = model.Id, Name = model.Name });
+            Context.SaveChanges();
+
+            model.Name = "My New Name";
+
+            var result = await GetData<RegionModel>(controller.Put(model));
+
+            Assert.AreEqual(model.Name, result.Name);
         }
     }
 }
