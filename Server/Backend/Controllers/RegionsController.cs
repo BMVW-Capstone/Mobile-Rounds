@@ -36,6 +36,28 @@ namespace Backend.Controllers
         }
 
         /// <summary>
+        /// Inserts a given <see cref="Region"/> using the values
+        /// from the <see cref="RegionModel"/>.
+        /// </summary>
+        /// <param name="newModel">The object with the values to insert.</param>
+        /// <returns>The newly updated region. If the update failed, returns null.</returns>
+        public async Task<IHttpActionResult> Post(RegionModel newModel)
+        {
+            if (newModel == null)
+            {
+                return this.BadRequest("Model must not be null.");
+            }
+
+            var results = await this.datasource.InsertAsync(newModel);
+            if (results == null)
+            {
+                return this.BadRequest("The record could not be inserted.");
+            }
+
+            return this.Ok(results);
+        }
+
+        /// <summary>
         /// Updates a given <see cref="Region"/> using the values
         /// from the <see cref="RegionModel"/>.
         /// </summary>
