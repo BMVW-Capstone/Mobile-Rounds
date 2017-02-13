@@ -3,7 +3,8 @@ using System.Web.Http;
 using Backend.DataAccess.Abstractions;
 using Backend.DataAccess.Repositories;
 using Backend.Schemas;
-using Mobile_Rounds.ViewModels.Regular.Station;
+using Mobile_Rounds.ViewModels.Models;
+using Swashbuckle.Swagger.Annotations;
 
 namespace Backend.Controllers
 {
@@ -14,6 +15,7 @@ namespace Backend.Controllers
     [Authorize]
     public class StationsController : ApiController
     {
+        private const string SwaggerName = "Stations";
         private readonly IRepository<StationModel> datasource;
 
         /// <summary>
@@ -29,6 +31,8 @@ namespace Backend.Controllers
         /// Gets a list of all the stations.
         /// </summary>
         /// <returns>A list of stations.</returns>
+        [Route("")]
+        [SwaggerOperation(Tags = new[] { SwaggerName })]
         public async Task<IHttpActionResult> Get()
         {
             var results = await this.datasource.GetAsync();
@@ -41,6 +45,8 @@ namespace Backend.Controllers
         /// </summary>
         /// <param name="newModel">The object with the values to insert.</param>
         /// <returns>The newly updated station. If the update failed, returns null.</returns>
+        [Route("")]
+        [SwaggerOperation(Tags = new[] { SwaggerName })]
         public async Task<IHttpActionResult> Post(StationModel newModel)
         {
             if (newModel == null)
@@ -63,6 +69,8 @@ namespace Backend.Controllers
         /// </summary>
         /// <param name="updated">The object with the updated values.</param>
         /// <returns>The newly updated station. If the update failed, returns null.</returns>
+        [Route("")]
+        [SwaggerOperation(Tags = new[] { SwaggerName })]
         public async Task<IHttpActionResult> Put(StationModel updated)
         {
             if (updated == null)

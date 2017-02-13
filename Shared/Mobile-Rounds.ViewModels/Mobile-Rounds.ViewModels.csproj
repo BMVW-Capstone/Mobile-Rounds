@@ -41,7 +41,8 @@
     <Compile Include="Admin\AdminHome\AdminHomeViewModel.cs" />
     <Compile Include="Admin\Regions\RegionsViewModel.cs" />
     <Compile Include="Admin\Stations\StationsViewModel.cs" />
-    <Compile Include="Admin\UnitOfMeasure\UnitOfMeasure.cs" />
+    <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureViewModel.cs" />
+    <Compile Include="Models\UnitOfMeasureModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureScreenViewModel.cs" />
     <Compile Include="Platform\IApiRequest.cs" />
     <Compile Include="Platform\IBreadcrumbNavigationEvent.cs" />
@@ -52,9 +53,9 @@
     <Compile Include="Regular\ReadingInput\ReadingInputListViewModel.cs" />
     <Compile Include="Regular\ReadingInput\ReadingInputScreenViewModel.cs" />
     <Compile Include="Regular\ReadingInput\ReadingInputViewModel.cs" />
-    <Compile Include="Regular\Region\RegionModel.cs" />
+    <Compile Include="Models\RegionModel.cs" />
     <Compile Include="Regular\Station\StationListViewModel.cs" />
-    <Compile Include="Regular\Station\StationModel.cs" />
+    <Compile Include="Models\StationModel.cs" />
     <Compile Include="Shared\BaseViewModel.cs" />
     <Compile Include="Shared\Commands\AsyncCommand.cs" />
     <Compile Include="Shared\Commands\EndRoundCommand.cs" />

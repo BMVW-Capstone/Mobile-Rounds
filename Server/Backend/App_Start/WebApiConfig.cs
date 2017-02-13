@@ -2,10 +2,8 @@
 // Copyright (c) SolarWorld Capstone Team. All rights reserved.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
+using Backend.App_Start;
 
 namespace Backend
 {
@@ -25,10 +23,7 @@ namespace Backend
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional });
+            RouteConfig.RegisterRoutes(config.Routes);
         }
     }
 }

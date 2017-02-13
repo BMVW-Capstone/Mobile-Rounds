@@ -32,22 +32,40 @@ namespace Backend.DataAccess.Abstractions
         }
 
         /// <inheritdoc />
-        public abstract IQueryable<TModel> Get();
+        public virtual IQueryable<TModel> Get()
+        {
+            throw new NotImplementedException();
+        }
 
         /// <inheritdoc />
-        public abstract IOrderedQueryable<TModel> GetOrdered();
+        public virtual IOrderedQueryable<TModel> GetOrdered()
+        {
+            throw new NotImplementedException();
+        }
 
         /// <inheritdoc />
-        public abstract Task<TModel> GetSingleAsync();
+        public virtual Task<TModel> GetSingleAsync()
+        {
+            throw new NotImplementedException();
+        }
 
         /// <inheritdoc />
-        public abstract Task<TModel> InsertAsync(TModel toCreate);
+        public virtual Task<TModel> InsertAsync(TModel toCreate)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <inheritdoc />
-        public abstract Task<TModel> UpdateAsync(TModel toUpdate);
+        public virtual Task<TModel> UpdateAsync(TModel toUpdate)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <inheritdoc />
-        public abstract Task<TModel> DeleteAsync(TModel toDelete);
+        public virtual Task<TModel> DeleteAsync(TModel toDelete)
+        {
+            throw new NotImplementedException();
+        }
 
         protected async Task<bool> SaveAsync()
         {

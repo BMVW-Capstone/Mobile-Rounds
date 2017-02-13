@@ -154,8 +154,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\UnitOfMeasuresController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\StationsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -16,7 +16,7 @@ using System.Web.Http;
 namespace Backend.Tests
 {
     [TestClass]
-    public class RegionsControllerTests : BaseTestClass
+    public class UnitOfMeasuresControllerTests : BaseTestClass
     {
         public const string Category = "Controllers";
 
@@ -24,11 +24,11 @@ namespace Backend.Tests
         [TestCategory(Category)]
         public async Task GET_Returns_List()
         {
-            var controller = new RegionsController(Context);
+            var controller = new UnitOfMeasuresController(Context);
             base.ConfigureRequest(controller);
 
             // Act
-            var result = await GetData<List<RegionModel>>(controller.Get());
+            var result = await GetData<List<UnitOfMeasureModel>>(controller.Get());
 
             // Assert
             Assert.IsNotNull(result);
@@ -39,22 +39,22 @@ namespace Backend.Tests
         [TestCategory(Category)]
         public async Task GET_Returns_Ordered_List_Excluding_Deleted()
         {
-            var controller = new RegionsController(Context);
+            var controller = new UnitOfMeasuresController(Context);
             base.ConfigureRequest(controller);
 
-            Context.Regions.Add(new Region
+            Context.UnitsOfMeasure.Add(new UnitOfMeasure
             {
                 Id = Guid.NewGuid(),
-                Name = "My Custom Region"
+                Name = "My Custom UnitOfMeasure"
             });
 
-            Context.Regions.Add(new Region
+            Context.UnitsOfMeasure.Add(new UnitOfMeasure
             {
                 Id = Guid.NewGuid(),
                 Name = "A different name"
             });
 
-            Context.Regions.Add(new Region
+            Context.UnitsOfMeasure.Add(new UnitOfMeasure
             {
                 Id = Guid.NewGuid(),
                 Name = "A hidden name",
@@ -62,29 +62,29 @@ namespace Backend.Tests
             });
             Context.SaveChanges();
 
-            var orderedList = await GetData<List<RegionModel>>(controller.Get());
+            var orderedList = await GetData<List<UnitOfMeasureModel>>(controller.Get());
 
             Assert.AreEqual(2, orderedList.Count());
             Assert.AreNotEqual(Guid.Empty, orderedList.First().Id);
             Assert.AreNotEqual(Guid.Empty, orderedList.Last().Id);
             Assert.AreEqual("A different name", orderedList.First().Name);
-            Assert.AreEqual("My Custom Region", orderedList.Last().Name);
+            Assert.AreEqual("My Custom UnitOfMeasure", orderedList.Last().Name);
         }
 
         [TestMethod]
         [TestCategory(Category)]
         public async Task GET_Returns_Ordered_List()
         {
-            var controller = new RegionsController(Context);
+            var controller = new UnitOfMeasuresController(Context);
             base.ConfigureRequest(controller);
 
-            Context.Regions.Add(new Region
+            Context.UnitsOfMeasure.Add(new UnitOfMeasure
             {
                 Id = Guid.NewGuid(),
-                Name = "My Custom Region"
+                Name = "My Custom UnitOfMeasure"
             });
 
-            Context.Regions.Add(new Region
+            Context.UnitsOfMeasure.Add(new UnitOfMeasure
             {
                 Id = Guid.NewGuid(),
                 Name = "A different name"
@@ -92,20 +92,20 @@ namespace Backend.Tests
 
             Context.SaveChanges();
 
-            var orderedList = await GetData<List<RegionModel>>(controller.Get());
+            var orderedList = await GetData<List<UnitOfMeasureModel>>(controller.Get());
 
             Assert.AreEqual(2, orderedList.Count());
             Assert.AreNotEqual(Guid.Empty, orderedList.First().Id);
             Assert.AreNotEqual(Guid.Empty, orderedList.Last().Id);
             Assert.AreEqual("A different name", orderedList.First().Name);
-            Assert.AreEqual("My Custom Region", orderedList.Last().Name);
+            Assert.AreEqual("My Custom UnitOfMeasure", orderedList.Last().Name);
         }
 
         [TestMethod]
         [TestCategory(Category)]
         public async Task GET_Is_OK()
         {
-            var controller = new RegionsController(Context);
+            var controller = new UnitOfMeasuresController(Context);
             ConfigureRequest(controller);
 
             var result = await GetResponse(controller.Get());
@@ -117,10 +117,10 @@ namespace Backend.Tests
         [TestCategory(Category)]
         public async Task POST_Is_OK()
         {
-            var controller = new RegionsController(Context);
+            var controller = new UnitOfMeasuresController(Context);
             ConfigureRequest(controller);
 
-            var model = new RegionModel
+            var model = new UnitOfMeasureModel
             {
                 Name = "Test No Id"
             };
@@ -134,36 +134,38 @@ namespace Backend.Tests
         [TestCategory(Category)]
         public async Task POST_Inserts_Records()
         {
-            var controller = new RegionsController(Context);
+            var controller = new UnitOfMeasuresController(Context);
             ConfigureRequest(controller);
 
-            var initialCount = Context.Regions.Count();
+            var initialCount = Context.UnitsOfMeasure.Count();
 
-            var model = new RegionModel
+            var model = new UnitOfMeasureModel
             {
-                Name = "Test No Id"
+                Name = "Test No Id",
+                Abbreviation = "TNI"
             };
 
-            var result = await GetData<RegionModel>(controller.Post(model));
+            var result = await GetData<UnitOfMeasureModel>(controller.Post(model));
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(model.Name, result.Name);
             Assert.AreNotEqual(Guid.Empty, result.Id);
+            Assert.AreEqual(model.Name, result.Name);
+            Assert.AreEqual(model.Abbreviation, result.Abbreviation);
         }
 
         [TestMethod]
         [TestCategory(Category)]
         public async Task POST_Fails_Duplicate_Records()
         {
-            var controller = new RegionsController(Context);
+            var controller = new UnitOfMeasuresController(Context);
             ConfigureRequest(controller);
 
-            var model = new RegionModel
+            var model = new UnitOfMeasureModel
             {
                 Name = "Test No Id"
             };
 
-            Context.Regions.Add(new Region
+            Context.UnitsOfMeasure.Add(new UnitOfMeasure
             {
                 Name = model.Name
             });
@@ -178,7 +180,7 @@ namespace Backend.Tests
         [TestCategory(Category)]
         public async Task PUT_Is_Bad_Request_Null_Data()
         {
-            var controller = new RegionsController(Context);
+            var controller = new UnitOfMeasuresController(Context);
             ConfigureRequest(controller);
 
             var result = await GetResponse(controller.Put(null));
@@ -190,10 +192,10 @@ namespace Backend.Tests
         [TestCategory(Category)]
         public async Task PUT_Is_Bad_Request_Missing_Id()
         {
-            var controller = new RegionsController(Context);
+            var controller = new UnitOfMeasuresController(Context);
             ConfigureRequest(controller);
 
-            var model = new RegionModel { Name = "Test No Id" };
+            var model = new UnitOfMeasureModel { Name = "Test No Id" };
 
             var result = await GetResponse(controller.Put(model));
 
@@ -204,17 +206,23 @@ namespace Backend.Tests
         [TestCategory(Category)]
         public async Task PUT_Is_OK()
         {
-            var controller = new RegionsController(Context);
+            var controller = new UnitOfMeasuresController(Context);
             ConfigureRequest(controller);
 
-            var model = new RegionModel
+            var model = new UnitOfMeasureModel
             {
                 Id = Guid.Parse("{69EA67A4-C575-472B-B463-C156E5BA61F3}"),
-                Name = "Test No Id"
+                Name = "Test No Id",
+                Abbreviation = "TNO"
             };
 
             //setup database record
-            Context.Regions.Add(new Region { Id = model.Id, Name = model.Name });
+            Context.UnitsOfMeasure.Add(new UnitOfMeasure
+            {
+                Id = model.Id,
+                Name = model.Name,
+                Abbreviation = model.Abbreviation
+            });
             Context.SaveChanges();
 
             var result = await GetResponse(controller.Put(model));
@@ -226,24 +234,32 @@ namespace Backend.Tests
         [TestCategory(Category)]
         public async Task PUT_Updates_Data()
         {
-            var controller = new RegionsController(Context);
+            var controller = new UnitOfMeasuresController(Context);
             ConfigureRequest(controller);
 
-            var model = new RegionModel
+            var model = new UnitOfMeasureModel
             {
                 Id = Guid.Parse("{69EA67A4-C575-472B-B463-C156E5BA61F3}"),
-                Name = "Test No Id"
+                Name = "Test No Id",
+                Abbreviation = "TNI"
             };
 
             //setup database record
-            Context.Regions.Add(new Region { Id = model.Id, Name = model.Name });
+            Context.UnitsOfMeasure.Add(new UnitOfMeasure
+            {
+                Id = model.Id,
+                Name = model.Name,
+                Abbreviation = model.Abbreviation
+            });
             Context.SaveChanges();
 
             model.Name = "My New Name";
+            model.Abbreviation = "MNN";
 
-            var result = await GetData<RegionModel>(controller.Put(model));
+            var result = await GetData<UnitOfMeasureModel>(controller.Put(model));
 
             Assert.AreEqual(model.Name, result.Name);
+            Assert.AreEqual(model.Abbreviation, result.Abbreviation);
         }
     }
 }

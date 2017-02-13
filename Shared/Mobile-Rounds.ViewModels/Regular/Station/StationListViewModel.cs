@@ -2,15 +2,9 @@
 // Copyright (c) SolarWorld Capstone Team. All rights reserved.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Mobile_Rounds.ViewModels.Shared;
-using Mobile_Rounds.ViewModels.Shared.Commands;
 using System.Collections.ObjectModel;
+using Mobile_Rounds.ViewModels.Models;
 
 namespace Mobile_Rounds.ViewModels.Regular.Station
 {
