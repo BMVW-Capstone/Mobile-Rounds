@@ -126,20 +126,20 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             this.Cancel = cancel;
         }
 
-        ///// <summary>
-        ///// Initializes a new instance of the <see cref="UnitOfMeasureModel"/> class.
-        ///// This is a copy constructor so all values will get copied to the new copy.
-        ///// </summary>
-        ///// <param name="toCopy">The object to copy.</param>
-        //public UnitOfMeasureViewModel(UnitOfMeasureModel toCopy)
-        //{
-        //    this.fullName = toCopy.FullName;
-        //    this.abbreviation = toCopy.Abbreviation;
-        //    this.Id = toCopy.Id;
-        //    this.Save = toCopy.Save;
-        //    this.Cancel = toCopy.Cancel;
-        //    this.modificationType = toCopy.modificationType;
-        //}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitOfMeasureModel"/> class.
+        /// This is a copy constructor so all values will get copied to the new copy.
+        /// </summary>
+        /// <param name="toCopy">The object to copy.</param>
+        public UnitOfMeasureViewModel(UnitOfMeasureViewModel toCopy)
+        {
+            this.fullName = toCopy.FullName;
+            this.abbreviation = toCopy.Abbreviation;
+            this.Id = toCopy.Id;
+            this.Save = toCopy.Save;
+            this.Cancel = toCopy.Cancel;
+            this.modificationType = toCopy.modificationType;
+        }
 
         private string abbreviation;
         private string fullName;

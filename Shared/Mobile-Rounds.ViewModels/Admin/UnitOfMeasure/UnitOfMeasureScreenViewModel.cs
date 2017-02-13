@@ -114,10 +114,10 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                     var existing = this.Units.FirstOrDefault(u => u.Id == this.currentUnit.Id);
                     if (existing == null)
                     {
-                        //this.CurrentUnit.Id = Guid.NewGuid();
-                        //var newCopy = new UnitOfMeasureViewModel(this.CurrentUnit);
-                        //this.Units.Add(newCopy);
-                        //MockUnits.Add(newCopy);
+                        this.CurrentUnit.Id = Guid.NewGuid();
+                        var newCopy = new UnitOfMeasureViewModel(this.CurrentUnit);
+                        this.Units.Add(newCopy);
+                        MockUnits.Add(newCopy);
                     }
                     else
                     {
