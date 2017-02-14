@@ -49,6 +49,37 @@
                 </DataTemplate>
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
-        
+
+        <ListView ItemsSource="{Binding Regions}" 
+                  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                  SelectedItem="{Binding Selected, Mode=TwoWay}" Padding="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0"
+                            Text="{Binding Name}"
+                            Foreground="Purple" 
+                            HorizontalAlignment="Stretch"
+                            FontSize="30" Padding="5"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0"
+                            Text="3 items"
+                            Foreground="Black" 
+                            Padding="5,0,0,5"
+                            HorizontalAlignment="Stretch"
+                            FontSize="20"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </Grid>
 </Page>

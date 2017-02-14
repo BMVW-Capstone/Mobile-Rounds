@@ -40,6 +40,8 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
         public RegionListViewModel()
         {
             this.Regions = new ObservableCollection<RegionModel>();
+            this.Regions.Add(new RegionModel() { Name = "North Region" });
+            this.Regions.Add(new RegionModel() { Name = "South Region" });
         }
 
         private RegionModel region;
