@@ -26,5 +26,10 @@ namespace Backend.Schemas
         /// Rounds that have been associated with this region.
         /// </summary>
         public virtual ICollection<Round> Rounds { get; set; }
+
+        /// <summary>
+        /// Station that have been associated with this region.
+        /// </summary>
+        public virtual ICollection<Station> Stations { get; set; }
     }
 }

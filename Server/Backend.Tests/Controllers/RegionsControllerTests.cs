@@ -103,6 +103,54 @@ namespace Backend.Tests
 
         [TestMethod]
         [TestCategory(Category)]
+        public async Task GET_Returns_Nested_Stations()
+        {
+            var controller = new RegionsController(Context);
+            base.ConfigureRequest(controller);
+
+            var region = new Region
+            {
+                Id = Guid.NewGuid(),
+                Name = "My Custom Region"
+            };
+
+            Context.Regions.Add(region);
+            Context.SaveChanges();
+
+            Context.Stations.Add(new Station
+            {
+                Id = Guid.NewGuid(),
+                Name = "My Station",
+                IsMarkedAsDeleted = false,
+                RegionId = region.Id
+            });
+
+            Context.Stations.Add(new Station
+            {
+                Id = Guid.NewGuid(),
+                Name = "An Ordered Station",
+                IsMarkedAsDeleted = false,
+                RegionId = region.Id
+            });
+
+            Context.Stations.Add(new Station
+            {
+                Id = Guid.NewGuid(),
+                Name = "My Deleted Station",
+                IsMarkedAsDeleted = true,
+                RegionId = region.Id
+            });
+            Context.SaveChanges();
+
+            var orderedList = await GetData<List<RegionModel>>(controller.Get());
+
+            Assert.AreEqual(2, orderedList[0].Stations.Count());
+            Assert.AreEqual("An Ordered Station", orderedList[0].Stations.First().Name);
+            Assert.AreEqual("My Station", orderedList[0].Stations.Last().Name);
+        }
+
+        [TestMethod]
+        [TestCategory(Category)]
         public async Task GET_Is_OK()
         {
             var controller = new RegionsController(Context);

@@ -11,6 +11,10 @@ namespace Mobile_Rounds.ViewModels.Models
     /// </summary>
     public class RegionModel
     {
+        public RegionModel()
+        {
+            Stations = new List<StationModel>();
+        }
         /// <summary>
         /// The id of this particular region.
         /// </summary>
@@ -27,5 +31,10 @@ namespace Mobile_Rounds.ViewModels.Models
         /// delete.
         /// </summary>
         public bool IsDeleted { get; set; }
+
+        /// <summary>
+        /// A list of stations that are inside this region.
+        /// </summary>
+        public IEnumerable<StationModel> Stations { get; set; }
     }
 }
