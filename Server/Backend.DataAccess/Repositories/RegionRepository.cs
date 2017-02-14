@@ -36,7 +36,17 @@ namespace Backend.DataAccess.Repositories
                 {
                     Id = r.Id,
                     Name = r.Name,
-                    IsDeleted = r.IsMarkedAsDeleted
+                    IsDeleted = r.IsMarkedAsDeleted,
+                    Stations = r.Stations
+                        .Where(s => s.IsMarkedAsDeleted == false)
+                        .OrderBy(s => s.Name)
+                        .Select(s => new StationModel
+                        {
+                            Id = s.Id,
+                            Name = s.Name,
+                            IsDeleted = s.IsMarkedAsDeleted,
+                            RegionId = s.RegionId
+                        }).ToList()
                 })
                 //load the data
                 .ToListAsync();

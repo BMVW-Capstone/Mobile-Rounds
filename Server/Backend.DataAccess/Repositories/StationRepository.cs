@@ -26,15 +26,8 @@ namespace Backend.DataAccess.Repositories
         }
 
         /// <inheritdoc />
-        public override Task<StationModel> DeleteAsync(StationModel toDelete)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <inheritdoc />
         public override async Task<IEnumerable<StationModel>> GetAsync()
         {
-            //TODO: Remove this sample implementation with a real one.
             return await DataSource
                 //Get the records in order
                 .GetOrdered()
@@ -48,12 +41,6 @@ namespace Backend.DataAccess.Repositories
                 //load the data
                 .ToListAsync();
 
-        }
-
-        /// <inheritdoc />
-        public override Task<StationModel> GetSingleAsync()
-        {
-            throw new NotImplementedException();
         }
 
         /// <inheritdoc />
