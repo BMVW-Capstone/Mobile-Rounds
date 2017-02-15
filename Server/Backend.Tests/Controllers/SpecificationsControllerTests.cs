@@ -36,11 +36,23 @@ namespace Backend.Tests
             };
             var item = new Item
             {
-                Id = Guid.NewGuid(),
+                ItemId = Guid.NewGuid(),
                 IsMarkedAsDeleted = false,
                 Name = "My Item",
                 Meter = "The Meter",
-                StationId = station.Id
+                StationId = station.Id,
+                Specification = new Specification
+                {
+                    ComparisionTypeName = ComparisonType.Between,
+                    LowerBoundValue = "10",
+                    UpperBoundValue = "100",
+                    Unit = new UnitOfMeasure
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Test",
+                        Abbreviation = "ABR"
+                    }
+                }
             };
 
             var unit = new UnitOfMeasure
@@ -69,91 +81,7 @@ namespace Backend.Tests
             return item;
         }
 
-        [TestMethod]
-        [TestCategory(Category)]
-        public async Task POST_Is_OK()
-        {
-            var controller = new SpecificationsController(Context);
-            ConfigureRequest(controller);
-
-            var item = SetupContext();
-
-            var model = new SpecificationModel
-            {
-                UnitOfMeasureId = Context.UnitsOfMeasure.First().Id,
-                ComparisonType = ComparisonType.Between,
-                LowerBound = "0",
-                UpperBound=  "10",
-                Id = item.Id
-            };
-
-            var result = await GetResponse(controller.Post(model));
-
-            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
-        }
-
-        [TestMethod]
-        [TestCategory(Category)]
-        public async Task POST_Inserts_Records()
-        {
-            var controller = new SpecificationsController(Context);
-            ConfigureRequest(controller);
-
-            var initialCount = Context.Specifications.Count();
-
-            var item = SetupContext();
-
-            var model = new SpecificationModel
-            {
-                UnitOfMeasureId = Context.UnitsOfMeasure.First().Id,
-                ComparisonType = ComparisonType.Between,
-                LowerBound = "0",
-                UpperBound = "10",
-                Id = item.Id
-            };
-
-            var result = await GetData<SpecificationModel>(controller.Post(model));
-
-            Assert.IsNotNull(result);
-            Assert.AreEqual(model.UnitOfMeasureId, result.UnitOfMeasureId);
-            Assert.AreEqual(model.ComparisonType, result.ComparisonType);
-            Assert.AreEqual(model.LowerBound, result.LowerBound);
-            Assert.AreEqual(model.UpperBound, result.UpperBound);
-            Assert.AreNotEqual(Guid.Empty, result.Id);
-        }
-
-        [TestMethod]
-        [TestCategory(Category)]
-        public async Task POST_Fails_Duplicate_Records()
-        {
-            var controller = new SpecificationsController(Context);
-            ConfigureRequest(controller);
-
-            var item = SetupContext();
-
-            var model = new SpecificationModel
-            {
-                UnitOfMeasureId = Context.UnitsOfMeasure.First().Id,
-                ComparisonType = ComparisonType.Between,
-                LowerBound = "0",
-                UpperBound = "10",
-                Id = item.Id
-            };
-
-            Context.Specifications.Add(new Specification
-            {
-                ItemId = item.Id,
-                UnitId = model.UnitOfMeasureId,
-                ComparisionTypeName = model.ComparisonType,
-                LowerBoundValue = model.LowerBound,
-                UpperBoundValue = model.UpperBound
-            });
-            Context.SaveChanges();
-
-            var result = await GetResponse(controller.Post(model));
-            Assert.AreEqual(HttpStatusCode.BadRequest, result.StatusCode);
-        }
-
+        
         [TestMethod]
         [TestCategory(Category)]
         public async Task PUT_Is_Bad_Request_Null_Data()
@@ -169,6 +97,23 @@ namespace Backend.Tests
         [TestMethod]
         [TestCategory(Category)]
         public async Task PUT_Is_Bad_Request_Missing_Id()
+        {
+            var controller = new SpecificationsController(Context);
+            ConfigureRequest(controller);
+
+            var model = new SpecificationModel()
+            {
+                UnitOfMeasure = new UnitOfMeasureModel()
+            };
+
+            var result = await GetResponse(controller.Put(model));
+
+            Assert.AreEqual(HttpStatusCode.BadRequest, result.StatusCode);
+        }
+
+        [TestMethod]
+        [TestCategory(Category)]
+        public async Task PUT_Is_Bad_Request_Missing_UnitId()
         {
             var controller = new SpecificationsController(Context);
             ConfigureRequest(controller);
@@ -191,23 +136,15 @@ namespace Backend.Tests
 
             var model = new SpecificationModel
             {
-                Id = item.Id,
-                UnitOfMeasureId = Context.UnitsOfMeasure.First().Id,
+                Id = item.ItemId,
+                UnitOfMeasure = new UnitOfMeasureModel
+                {
+                    Id = Context.UnitsOfMeasure.First().Id
+                },
                 ComparisonType = ComparisonType.Between,
                 LowerBound = "0",
                 UpperBound = "10"
             };
-
-            //setup database record
-            Context.Specifications.Add(new Specification
-            {
-                ItemId = item.Id,
-                UnitId = model.UnitOfMeasureId,
-                ComparisionTypeName = model.ComparisonType,
-                LowerBoundValue = model.LowerBound,
-                UpperBoundValue = model.UpperBound
-            });
-            Context.SaveChanges();
 
             var result = await GetResponse(controller.Put(model));
 
@@ -225,29 +162,21 @@ namespace Backend.Tests
 
             var model = new SpecificationModel
             {
-                Id = item.Id,
-                UnitOfMeasureId = Context.UnitsOfMeasure.First().Id,
+                Id = item.ItemId,
+                UnitOfMeasure = new UnitOfMeasureModel
+                {
+                    Id = Context.UnitsOfMeasure.First().Id
+                },
                 ComparisonType = ComparisonType.Either,
                 LowerBound = "True",
                 UpperBound = "False",
                 IsDeleted = true
             };
 
-            //setup database record
-            Context.Specifications.Add(new Specification
-            {
-                ItemId = item.Id,
-                UnitId = model.UnitOfMeasureId,
-                ComparisionTypeName = model.ComparisonType,
-                LowerBoundValue = model.LowerBound,
-                UpperBoundValue = model.UpperBound
-            });
-            Context.SaveChanges();
-
             var result = await GetData<SpecificationModel>(controller.Put(model));
 
             Assert.AreEqual(model.Id, result.Id);
-            Assert.AreEqual(model.UnitOfMeasureId, result.UnitOfMeasureId);
+            Assert.AreEqual(model.UnitOfMeasure.Id, result.UnitOfMeasure.Id);
             Assert.AreEqual(model.ComparisonType, result.ComparisonType);
             Assert.AreEqual(model.LowerBound, result.LowerBound);
             Assert.IsTrue(result.IsDeleted);

@@ -14,43 +14,80 @@ namespace Backend.Schemas.Seeding
             if (!ctx.Items.Any())
             {
                 var firstStation = ctx.Stations.First();
-                var secondStation = ctx.Stations.Last();
-
-                ctx.Items.AddOrUpdate(i => i.Id,
+                var secondStation = ctx.Stations.ToList().Last();
+                var units = ctx.UnitsOfMeasure.ToList();
+                var compType = ctx.ComparisonTypes.ToList();
+                
+                ctx.Items.AddOrUpdate(i => i.ItemId,
                     new Item
                     {
-                        Id = Guid.NewGuid(),
+                        ItemId = Guid.NewGuid(),
                         Name = "Tank 1",
                         Meter = "Temperature 1",
-                        StationId = firstStation.Id
+                        StationId = firstStation.Id,
+                        Specification = new Specification
+                        {
+                            ComparisionTypeName = ComparisonType.LessThan,
+                            LowerBoundValue = "0",
+                            UpperBoundValue = "10",
+                            UnitId = units[0].Id
+                        }
                     },
                     new Item
                     {
-                        Id = Guid.NewGuid(),
+                        ItemId = Guid.NewGuid(),
                         Name = "Tank 1",
                         Meter = "Temperature 2",
-                        StationId = firstStation.Id
+                        StationId = firstStation.Id,
+                        Specification = new Specification
+                        {
+                            ComparisionTypeName = ComparisonType.EqualTo,
+                            LowerBoundValue = "10",
+                            UpperBoundValue = "10",
+                            UnitId = units[1].Id
+                        }
                     },
                     new Item
                     {
-                        Id = Guid.NewGuid(),
+                        ItemId = Guid.NewGuid(),
                         Name = "Tank 2",
                         Meter = "Valve",
-                        StationId = firstStation.Id
+                        StationId = firstStation.Id,
+                        Specification = new Specification
+                        {
+                            ComparisionTypeName = ComparisonType.Either,
+                            LowerBoundValue = "false",
+                            UpperBoundValue = "true",
+                            UnitId = units[3].Id
+                        }
                     },
                     new Item
                     {
-                        Id = Guid.NewGuid(),
+                        ItemId = Guid.NewGuid(),
                         Name = "Vent A",
                         Meter = "Is Open",
-                        StationId = secondStation.Id
+                        StationId = secondStation.Id,
+                        Specification = new Specification
+                        {
+                            ComparisionTypeName = ComparisonType.NotApplicable,
+                            LowerBoundValue = "N/A",
+                            UpperBoundValue = "N/A",
+                            UnitId = units[4].Id
+                        }
                     },
                     new Item
                     {
-                        Id = Guid.NewGuid(),
+                        ItemId = Guid.NewGuid(),
                         Name = "Vent B",
                         Meter = "Is Open",
-                        StationId = secondStation.Id
+                        StationId = secondStation.Id,
+                        Specification = new Specification
+                        {
+                            ComparisionTypeName = ComparisonType.Either,
+                            LowerBoundValue = "Yes",
+                            UpperBoundValue = "No",
+                            UnitId = units[4].Id
+                        }
                     });
 
                 ctx.SaveChanges();

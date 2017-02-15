@@ -55,6 +55,7 @@ namespace Backend.Schemas
         /// <summary>
         /// The item that this specification is enforced on.
         /// </summary>
+        [Required]
         public virtual Item Item { get; set; }
     }
 }

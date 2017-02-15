@@ -9,32 +9,27 @@ namespace Mobile_Rounds.ViewModels.Models
     /// <summary>
     /// Represents the contract between the server and mobile app.
     /// </summary>
-    public class SpecificationModel
+    public class ItemModel
     {
         /// <summary>
-        /// The id of this particular specification.
+        /// The id of this particular item.
         /// </summary>
         public Guid Id { get; set; }
 
         /// <summary>
-        /// The max value of a specification.
+        /// The name of an item.
         /// </summary>
-        public string UpperBound { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// The min value of a specification.
+        /// The name of the meter.
         /// </summary>
-        public string LowerBound { get; set; }
+        public string Meter { get; set; }
 
         /// <summary>
-        /// The name of a comparison type used.
+        /// The Id of the station.
         /// </summary>
-        public string ComparisonType { get; set; }
-
-        /// <summary>
-        /// The unit of measure used.
-        /// </summary>
-        public UnitOfMeasureModel UnitOfMeasure { get; set; }
+        public Guid StationId { get; set; }
 
         /// <summary>
         /// Marks if the record is percieved as deleted
@@ -42,5 +37,10 @@ namespace Mobile_Rounds.ViewModels.Models
         /// delete.
         /// </summary>
         public bool IsDeleted { get; set; }
+
+        /// <summary>
+        /// The acceptable values for the given item.
+        /// </summary>
+        public SpecificationModel Specification { get; set; }
     }
 }
