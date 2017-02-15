@@ -15,7 +15,7 @@ namespace Backend.Schemas.Seeding
             if (!ctx.Rounds.Any())
             {
                 var regionId = ctx.Regions.First().Id;
-                var region2Id = ctx.Regions.Last().Id;
+                var region2Id = ctx.Regions.ToList().Last().Id;
 
                 ctx.Rounds.AddOrUpdate(r => r.Id,
                     new Round

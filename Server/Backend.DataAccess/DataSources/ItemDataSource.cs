@@ -6,41 +6,36 @@ using System.Threading.Tasks;
 
 namespace Backend.DataAccess.Repositories.DataSources
 {
-    internal sealed class RegionDataSource : AbstractDataSource<Region>
+    internal sealed class ItemDataSource : AbstractDataSource<Item>
     {
-        public RegionDataSource(DatabaseContext ctx) : base(ctx)
+        public ItemDataSource(DatabaseContext ctx) : base(ctx)
         {
         }
 
-        public override Task<Region> DeleteAsync(Region toDelete)
+        public override IQueryable<Item> Get()
         {
-            throw new NotImplementedException();
-        }
-
-        public override IQueryable<Region> Get()
-        {
-            return Database.Regions
+            return Database.Items
                 .Where(r => r.IsMarkedAsDeleted == false);
         }
 
-        public override IOrderedQueryable<Region> GetOrdered()
+        public override IOrderedQueryable<Item> GetOrdered()
         {
-            return Database.Regions
+            return Database.Items
                 .Where(r => r.IsMarkedAsDeleted == false)
                 .OrderBy(r => r.Name);
         }
 
-        public override Region GetSingle(Guid id)
+        public override Item GetSingle(Guid id)
         {
             throw new NotImplementedException();
         }
 
 
-        public override async Task<Region> InsertAsync(Region toCreate)
+        public override async Task<Item> InsertAsync(Item toCreate)
         {
-            toCreate.Id = Guid.NewGuid();
+            toCreate.ItemId = Guid.NewGuid();
 
-            var tracked = Database.Regions.Add(toCreate);
+            var tracked = Database.Items.Add(toCreate);
             if(await SaveAsync())
             {
                 return tracked;
@@ -48,9 +43,9 @@ namespace Backend.DataAccess.Repositories.DataSources
             return null;
         }
 
-        public override async Task<Region> UpdateAsync(Region toUpdate)
+        public override async Task<Item> UpdateAsync(Item toUpdate)
         {
-            var tracked = Database.Regions.Find(toUpdate.Id);
+            var tracked = Database.Items.Find(toUpdate.ItemId);
 
             if (tracked == null) return null;
 

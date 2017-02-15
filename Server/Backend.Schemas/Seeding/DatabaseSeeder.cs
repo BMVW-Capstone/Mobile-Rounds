@@ -31,7 +31,16 @@ namespace Backend.Schemas.Seeding
                 }
                 catch (Exception ex)
                 {
-                    Debugger.Break();
+                    //since this runs under the Package Manager Console,
+                    //if there are any exceptions we want to know about
+                    //we need to attach a debugger to actually catch it.
+                    //Otherwise, it just says that Visual Studio crashed,
+                    //which is no good...
+                    if (Debugger.IsAttached == false)
+                    {
+                        Debugger.Launch();
+                        Debugger.Break();
+                    }
                 }
             }
         }

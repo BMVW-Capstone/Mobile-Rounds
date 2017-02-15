@@ -43,6 +43,8 @@
     <Compile Include="Admin\Stations\StationsViewModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureViewModel.cs" />
     <Compile Include="Models\RoundModel.cs" />
+    <Compile Include="Models\ItemModel.cs" />
+    <Compile Include="Models\SpecificationModel.cs" />
     <Compile Include="Models\UnitOfMeasureModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureScreenViewModel.cs" />
     <Compile Include="Platform\IApiRequest.cs" />

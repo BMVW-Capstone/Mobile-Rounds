@@ -14,8 +14,8 @@ namespace Backend.Schemas
     /// </summary>
     public class Item : RemovableRecord
     {
-        [Key, ForeignKey(nameof(Specification))]
-        public Guid Id { get; set; }
+        [Key]
+        public Guid ItemId { get; set; }
 
         /// <summary>
         /// The name of an item to take readings from in a <see cref="Station"/>. An
@@ -47,6 +47,7 @@ namespace Backend.Schemas
         /// <summary>
         /// The <see cref="Specification"/> that the meter belongs in.
         /// </summary>
+        [Required]
         public virtual Specification Specification { get; set; }
 
         /// <summary>

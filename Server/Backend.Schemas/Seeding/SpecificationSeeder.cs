@@ -13,44 +13,27 @@ namespace Backend.Schemas.Seeding
         {
             if (!ctx.Specifications.Any())
             {
+                /*
+                 * NOTE: We do not save the specs here. We do this
+                 * because the Items table is in charge of actually
+                 * inserting them since it is a one-to-one mapping. 
+                 */
                 var items = ctx.Items.ToList();
                 var units = ctx.UnitsOfMeasure.ToList();
                 var compType = ctx.ComparisonTypes.ToList();
 
-                ctx.Specifications.AddOrUpdate(s => s.ItemId,
-                    new Specification
-                    {
-                        ItemId = items[0].Id,
-                        ComparisionTypeName = ComparisonType.LessThan,
-                        LowerBoundValue = "0",
-                        UpperBoundValue = "10",
-                        UnitId = units[0].Id,
-                    },
-                    new Specification
-                    {
-                        ItemId = items[1].Id,
-                        ComparisionTypeName = ComparisonType.EqualTo,
-                        LowerBoundValue = "10",
-                        UpperBoundValue = "10",
-                        UnitId = units[1].Id
-                    },
-                    new Specification
-                    {
-                        ItemId = items[2].Id,
-                        ComparisionTypeName = ComparisonType.Either,
-                        LowerBoundValue = "false",
-                        UpperBoundValue = "true",
-                        UnitId = units[3].Id
-                    },
-                    new Specification
-                    {
-                        ItemId = items[4].Id,
-                        ComparisionTypeName = ComparisonType.NotApplicable,
-                        LowerBoundValue = "N/A",
-                        UpperBoundValue = "N/A",
-                        UnitId = units[4].Id
-                    });
-                ctx.SaveChanges();
+                //ctx.Specifications.AddOrUpdate(s => s.ItemId,
+                //    ,
+                //    ,
+                //    ,
+                //    new Specification
+                //    {
+                //        ItemId = items[4].ItemId,
+                //        ComparisionTypeName = ComparisonType.NotApplicable,
+                //        LowerBoundValue = "N/A",
+                //        UpperBoundValue = "N/A",
+                //        UnitId = units[4].Id
+                //    });
             }
             
         }

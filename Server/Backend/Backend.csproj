@@ -158,6 +158,8 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\RoundsController.cs" />
+    <Compile Include="Controllers\ItemsController.cs" />
+    <Compile Include="Controllers\SpecificationsController.cs" />
     <Compile Include="Controllers\UnitOfMeasuresController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\StationsController.cs" />

@@ -40,7 +40,6 @@ namespace Backend.DataAccess.Repositories
                 })
                 //load the data
                 .ToListAsync();
-
         }
 
         /// <inheritdoc />

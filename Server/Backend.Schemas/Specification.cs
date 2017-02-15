@@ -28,7 +28,7 @@ namespace Backend.Schemas
         /// </summary>
         [Required(AllowEmptyStrings = false)]
         [ForeignKey(nameof(ComparisonType))]
-        public string ComparisionTypeName { get; set; }
+        public string ComparisonTypeName { get; set; }
 
         /// <summary>
         /// The lower bound value of this spec.
@@ -55,6 +55,7 @@ namespace Backend.Schemas
         /// <summary>
         /// The item that this specification is enforced on.
         /// </summary>
+        [Required]
         public virtual Item Item { get; set; }
     }
 }
