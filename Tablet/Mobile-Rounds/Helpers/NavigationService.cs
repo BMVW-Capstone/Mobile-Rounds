@@ -45,7 +45,7 @@ namespace Mobile_Rounds.Helpers
                     frame.Navigate(typeof(Screens.Admin.Regions.Index));
                     break;
                 case NavigationType.RegionSelect:
-                    frame.Navigate(typeof(Screens.Regular.StationScreen));
+                    frame.Navigate(typeof(Screens.Regular.RegionScreen));
                     break;
                 case NavigationType.StationSelect:
                     frame.Navigate(typeof(Screens.Regular.StationScreen));
