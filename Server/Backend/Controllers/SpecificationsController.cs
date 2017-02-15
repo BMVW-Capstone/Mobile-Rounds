@@ -29,30 +29,6 @@ namespace Backend.Controllers
         }
 
         /// <summary>
-        /// Inserts a given <see cref="Specification"/> using the values
-        /// from the <see cref="SpecificationModel"/>.
-        /// </summary>
-        /// <param name="newModel">The object with the values to insert.</param>
-        /// <returns>The newly updated specification. If the update failed, returns null.</returns>
-        [Route("")]
-        [SwaggerOperation(Tags = new[] { SwaggerName })]
-        public async Task<IHttpActionResult> Post(SpecificationModel newModel)
-        {
-            if (newModel == null)
-            {
-                return this.BadRequest("Model must not be null.");
-            }
-
-            var results = await this.datasource.InsertAsync(newModel);
-            if (results == null)
-            {
-                return this.BadRequest("The record could not be inserted.");
-            }
-
-            return this.Ok(results);
-        }
-
-        /// <summary>
         /// Updates a given <see cref="Specification"/> using the values
         /// from the <see cref="SpecificationModel"/>.
         /// </summary>
@@ -65,6 +41,11 @@ namespace Backend.Controllers
             if (updated == null)
             {
                 return this.BadRequest("Model must not be null.");
+            }
+
+            if (updated.UnitOfMeasure == null)
+            {
+                return this.BadRequest("Unit of measure must not be null.");
             }
 
             var results = await this.datasource.UpdateAsync(updated);

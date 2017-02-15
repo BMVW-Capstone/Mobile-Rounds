@@ -44,7 +44,7 @@ namespace Backend.DataAccess.Abstractions
         }
 
         /// <inheritdoc />
-        public virtual Task<TModel> GetSingleAsync()
+        public virtual TModel GetSingle(Guid id)
         {
             throw new NotImplementedException();
         }

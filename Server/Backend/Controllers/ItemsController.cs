@@ -10,28 +10,29 @@ using System;
 namespace Backend.Controllers
 {
     /// <summary>
-    /// The entrypoint into the <see cref="Station"/> resources.
+    /// The entrypoint into the <see cref="Item"/> resources.
     /// </summary>
-    [RoutePrefix("api/stations")]
+    [RoutePrefix("api/items")]
     [Authorize]
-    public class StationsController : ApiController
+    public class ItemsController : ApiController
     {
-        private const string SwaggerName = "Stations";
-        private readonly IRepository<StationModel> datasource;
+        private const string SwaggerName = "Items";
+
+        private readonly ItemRepository datasource;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StationsController"/> class.
+        /// Initializes a new instance of the <see cref="ItemsController"/> class.
         /// </summary>
         /// <param name="database">The database used for operations.</param>
-        public StationsController(DatabaseContext database)
+        public ItemsController(DatabaseContext database)
         {
-            this.datasource = new StationRepository(database);
+            this.datasource = new ItemRepository(database);
         }
 
         /// <summary>
-        /// Gets a list of all the stations.
+        /// Gets a list of all the Items.
         /// </summary>
-        /// <returns>A list of stations.</returns>
+        /// <returns>A list of Items.</returns>
         [Route("")]
         [SwaggerOperation(Tags = new[] { SwaggerName })]
         public async Task<IHttpActionResult> Get()
@@ -41,14 +42,27 @@ namespace Backend.Controllers
         }
 
         /// <summary>
-        /// Inserts a given <see cref="Station"/> using the values
-        /// from the <see cref="StationModel"/>.
+        /// Gets all the items in a station.
+        /// </summary>
+        /// <returns>A list of items.</returns>
+        /// <param name="stationId">The id of the station.</param>
+        [Route("{stationId}/items")]
+        [SwaggerOperation(Tags = new[] { SwaggerName })]
+        public async Task<IHttpActionResult> Get(Guid stationId)
+        {
+            var results = await this.datasource.GetForStationAsync(stationId);
+            return this.Ok(results);
+        }
+
+        /// <summary>
+        /// Inserts a given <see cref="Item"/> using the values
+        /// from the <see cref="ItemModel"/>.
         /// </summary>
         /// <param name="newModel">The object with the values to insert.</param>
-        /// <returns>The newly updated station. If the update failed, returns null.</returns>
+        /// <returns>The newly updated Item. If the update failed, returns null.</returns>
         [Route("")]
         [SwaggerOperation(Tags = new[] { SwaggerName })]
-        public async Task<IHttpActionResult> Post(StationModel newModel)
+        public async Task<IHttpActionResult> Post(ItemModel newModel)
         {
             if (newModel == null)
             {
@@ -65,14 +79,14 @@ namespace Backend.Controllers
         }
 
         /// <summary>
-        /// Updates a given <see cref="Station"/> using the values
-        /// from the <see cref="StationModel"/>.
+        /// Updates a given <see cref="Item"/> using the values
+        /// from the <see cref="ItemModel"/>.
         /// </summary>
         /// <param name="updated">The object with the updated values.</param>
-        /// <returns>The newly updated station. If the update failed, returns null.</returns>
+        /// <returns>The newly updated Item. If the update failed, returns null.</returns>
         [Route("")]
         [SwaggerOperation(Tags = new[] { SwaggerName })]
-        public async Task<IHttpActionResult> Put(StationModel updated)
+        public async Task<IHttpActionResult> Put(ItemModel updated)
         {
             if (updated == null)
             {

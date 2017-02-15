@@ -16,8 +16,8 @@ namespace Backend.Schemas.Seeding
             if (!ctx.Readings.Any())
             {
                 var roundId = ctx.Rounds.First().Id;
-                var itemId = ctx.Items.First().Id;
-                var item2Id = ctx.Items.Last().Id;
+                var itemId = ctx.Items.First().ItemId;
+                var item2Id = ctx.Items.ToList().Last().ItemId;
 
                 ctx.Readings.AddOrUpdate(r => r.Id,
                     new Reading

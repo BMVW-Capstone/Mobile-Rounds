@@ -50,22 +50,28 @@ namespace Backend.DataAccess.Repositories
             return new SpecificationModel
             {
                 Id = model.ItemId,
-                ComparisonType = model.ComparisionTypeName,
+                ComparisonType = model.ComparisonTypeName,
                 LowerBound = model.LowerBoundValue,
                 UpperBound = model.UpperBoundValue,
-                UnitOfMeasureId = model.UnitId,
-                IsDeleted = model.IsMarkedAsDeleted
+                IsDeleted = model.IsMarkedAsDeleted,
+                UnitOfMeasure = new UnitOfMeasureModel
+                {
+                    Id = model.Unit.Id,
+                    Name = model.Unit.Name,
+                    Abbreviation = model.Unit.Abbreviation,
+                    IsDeleted = model.Unit.IsMarkedAsDeleted
+                }
             };
         }
 
         protected override Specification BuildModel(SpecificationModel model)
         {
-            if (model == null) return null;
+            if (model == null || model.UnitOfMeasure == null) return null;
             return new Specification
             {
                 ItemId = model.Id,
-                UnitId = model.UnitOfMeasureId,
-                ComparisionTypeName = model.ComparisonType,
+                UnitId = model.UnitOfMeasure.Id,
+                ComparisonTypeName = model.ComparisonType,
                 LowerBoundValue = model.LowerBound,
                 UpperBoundValue = model.UpperBound,
                 IsMarkedAsDeleted = model.IsDeleted

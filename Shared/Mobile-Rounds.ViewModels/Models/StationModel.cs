@@ -30,10 +30,17 @@ namespace Mobile_Rounds.ViewModels.Models
         /// </summary>
         public bool IsDeleted { get; set; }
 
+        /// <summary>
+        /// The list of items in this given station. Obtained
+        /// by calling the /api/station/id endpoint.
+        /// </summary>
+        public IEnumerable<ItemModel> Items { get; set; }
+
         public AsyncCommand Navigate { get; private set; }
 
         public StationModel()
         {
+            this.Items = new List<ItemModel>();
             this.Navigate = new AsyncCommand((obj) =>
             {
                 BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationInput);

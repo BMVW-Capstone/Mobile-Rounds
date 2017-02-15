@@ -14,7 +14,7 @@ namespace Backend.Schemas.Seeding
             if (!ctx.Stations.Any())
             {
                 var region1 = ctx.Regions.First().Id;
-                var region2 = ctx.Regions.Last().Id;
+                var region2 = ctx.Regions.ToList().Last().Id;
 
                 ctx.Stations.AddOrUpdate(s => s.Id,
                     new Station

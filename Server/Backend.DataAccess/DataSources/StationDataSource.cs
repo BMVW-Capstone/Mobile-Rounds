@@ -31,9 +31,9 @@ namespace Backend.DataAccess.Repositories.DataSources
                 .OrderBy(r => r.Name);
         }
 
-        public override Task<Station> GetSingleAsync()
+        public override Station GetSingle(Guid id)
         {
-            throw new NotImplementedException();
+            return Database.Stations.Find(id);
         }
 
 
