@@ -21,6 +21,15 @@
     </Page.Transitions>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
         <!--Header-->
         <breadcrumb:BreadcrumbControl
@@ -71,7 +80,7 @@
                             FontSize="30" Padding="5"/>
 
                         <TextBlock Grid.Row="1" Grid.Column="0"
-                            Text="3 items"
+                            Text="2 items"
                             Foreground="Black" 
                             Padding="5,0,0,5"
                             HorizontalAlignment="Stretch"
