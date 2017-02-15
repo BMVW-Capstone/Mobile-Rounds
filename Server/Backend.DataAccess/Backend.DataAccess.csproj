@@ -56,12 +56,14 @@
     <Compile Include="Abstractions\IReadableDataSource.cs" />
     <Compile Include="Abstractions\IRepository.cs" />
     <Compile Include="Abstractions\IWriteableDataSource.cs" />
+    <Compile Include="DataSources\RoundDataSource.cs" />
     <Compile Include="DataSources\ItemDataSource.cs" />
     <Compile Include="DataSources\SpecificationDataSource.cs" />
     <Compile Include="DataSources\UnitOfMeasureDataSource.cs" />
     <Compile Include="DataSources\StationDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataSources\RegionDataSource.cs" />
+    <Compile Include="Repositories\RoundRepository.cs" />
     <Compile Include="Repositories\ItemRepository.cs" />
     <Compile Include="Repositories\SpecificationRepository.cs" />
     <Compile Include="Repositories\UnitOfMeasureRepository.cs" />
