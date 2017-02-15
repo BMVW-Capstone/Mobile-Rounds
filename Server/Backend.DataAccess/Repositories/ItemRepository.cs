@@ -58,33 +58,17 @@ namespace Backend.DataAccess.Repositories
                 .ToListAsync();
         }
 
-
+        /// <summary>
+        /// Returns a list of items for the given station.
+        /// </summary>
+        /// <param name="stationId">The station to fetch items for.</param>
+        /// <returns>A list of items for the station.</returns>
         public async Task<IEnumerable<ItemModel>> GetForStationAsync(Guid stationId)
         {
-            return await DataSource.Get()
-                .Select(r => new ItemModel
-                {
-                    Id = r.ItemId,
-                    Name = r.Name,
-                    IsDeleted = r.IsMarkedAsDeleted,
-                    StationId = r.StationId,
-                    Specification = new SpecificationModel
-                    {
-                        Id = r.Specification.ItemId,
-                        IsDeleted = r.Specification.IsMarkedAsDeleted,
-                        ComparisonType = r.Specification.ComparisonTypeName,
-                        LowerBound = r.Specification.LowerBoundValue,
-                        UpperBound = r.Specification.UpperBoundValue,
-                        UnitOfMeasure = new UnitOfMeasureModel
-                        {
-                            Id = r.Specification.UnitId,
-                            IsDeleted = r.Specification.Unit.IsMarkedAsDeleted,
-                            Abbreviation = r.Specification.Unit.Abbreviation,
-                            Name = r.Specification.Unit.Name
-                        }
-                    }
-                })
-                .ToListAsync();
+            var items = await this.GetAsync();
+            return items.Where(i => i.StationId == stationId)
+                // This final ToList is required for serialization purposes in JSON.
+                .ToList();
         }
 
         /// <inheritdoc />
