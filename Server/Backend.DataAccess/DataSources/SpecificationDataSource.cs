@@ -42,7 +42,7 @@ namespace Backend.DataAccess.Repositories.DataSources
 
             if (tracked == null) return null;
 
-            tracked.ComparisionTypeName = toUpdate.ComparisionTypeName;
+            tracked.ComparisonTypeName = toUpdate.ComparisonTypeName;
             tracked.LowerBoundValue = toUpdate.LowerBoundValue;
             tracked.UpperBoundValue = toUpdate.UpperBoundValue;
             tracked.UnitId = toUpdate.UnitId;

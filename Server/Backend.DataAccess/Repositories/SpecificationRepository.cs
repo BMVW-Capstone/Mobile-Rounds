@@ -50,7 +50,7 @@ namespace Backend.DataAccess.Repositories
             return new SpecificationModel
             {
                 Id = model.ItemId,
-                ComparisonType = model.ComparisionTypeName,
+                ComparisonType = model.ComparisonTypeName,
                 LowerBound = model.LowerBoundValue,
                 UpperBound = model.UpperBoundValue,
                 IsDeleted = model.IsMarkedAsDeleted,
@@ -71,7 +71,7 @@ namespace Backend.DataAccess.Repositories
             {
                 ItemId = model.Id,
                 UnitId = model.UnitOfMeasure.Id,
-                ComparisionTypeName = model.ComparisonType,
+                ComparisonTypeName = model.ComparisonType,
                 LowerBoundValue = model.LowerBound,
                 UpperBoundValue = model.UpperBound,
                 IsMarkedAsDeleted = model.IsDeleted

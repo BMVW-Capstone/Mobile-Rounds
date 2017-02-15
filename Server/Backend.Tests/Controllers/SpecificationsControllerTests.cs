@@ -43,7 +43,7 @@ namespace Backend.Tests
                 StationId = station.Id,
                 Specification = new Specification
                 {
-                    ComparisionTypeName = ComparisonType.Between,
+                    ComparisonTypeName = ComparisonType.Between,
                     LowerBoundValue = "10",
                     UpperBoundValue = "100",
                     Unit = new UnitOfMeasure

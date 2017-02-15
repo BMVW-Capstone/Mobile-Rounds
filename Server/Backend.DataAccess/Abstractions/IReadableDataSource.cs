@@ -30,6 +30,7 @@ namespace Backend.DataAccess.Abstractions
         /// Gets a single model object.
         /// </summary>
         /// <returns>The model object.</returns>
-        Task<TModel> GetSingleAsync();
+        /// <param name="id">The id of the record to obtain.</param>
+        TModel GetSingle(Guid id);
     }
 }

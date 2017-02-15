@@ -42,10 +42,24 @@ namespace Backend.Tests.Helpers
             return result;
         }
 
+        protected TReturn GetData<TReturn>(IHttpActionResult request)
+            where TReturn : new()
+        {
+            var data = GetResponse(request);
+            TReturn result;
+            data.TryGetContentValue(out result);
+            return result;
+        }
+
         protected async Task<HttpResponseMessage> GetResponse(Task<IHttpActionResult> request)
         {
             var response = await request;
             return await response.ExecuteAsync(new CancellationToken());
+        }
+
+        protected HttpResponseMessage GetResponse(IHttpActionResult request)
+        {
+            return request.ExecuteAsync(new CancellationToken()).Result;
         }
 
         [TestCleanup]

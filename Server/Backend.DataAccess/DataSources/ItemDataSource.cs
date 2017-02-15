@@ -25,7 +25,7 @@ namespace Backend.DataAccess.Repositories.DataSources
                 .OrderBy(r => r.Name);
         }
 
-        public override Task<Item> GetSingleAsync()
+        public override Item GetSingle(Guid id)
         {
             throw new NotImplementedException();
         }

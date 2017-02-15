@@ -42,7 +42,7 @@ namespace Backend.DataAccess.Repositories
                     {
                         Id = r.Specification.ItemId,
                         IsDeleted = r.Specification.IsMarkedAsDeleted,
-                        ComparisonType = r.Specification.ComparisionTypeName,
+                        ComparisonType = r.Specification.ComparisonTypeName,
                         LowerBound = r.Specification.LowerBoundValue,
                         UpperBound = r.Specification.UpperBoundValue,
                         UnitOfMeasure = new UnitOfMeasureModel
@@ -56,7 +56,35 @@ namespace Backend.DataAccess.Repositories
                 })
                 //load the data
                 .ToListAsync();
+        }
 
+
+        public async Task<IEnumerable<ItemModel>> GetForStationAsync(Guid stationId)
+        {
+            return await DataSource.Get()
+                .Select(r => new ItemModel
+                {
+                    Id = r.ItemId,
+                    Name = r.Name,
+                    IsDeleted = r.IsMarkedAsDeleted,
+                    StationId = r.StationId,
+                    Specification = new SpecificationModel
+                    {
+                        Id = r.Specification.ItemId,
+                        IsDeleted = r.Specification.IsMarkedAsDeleted,
+                        ComparisonType = r.Specification.ComparisonTypeName,
+                        LowerBound = r.Specification.LowerBoundValue,
+                        UpperBound = r.Specification.UpperBoundValue,
+                        UnitOfMeasure = new UnitOfMeasureModel
+                        {
+                            Id = r.Specification.UnitId,
+                            IsDeleted = r.Specification.Unit.IsMarkedAsDeleted,
+                            Abbreviation = r.Specification.Unit.Abbreviation,
+                            Name = r.Specification.Unit.Name
+                        }
+                    }
+                })
+                .ToListAsync();
         }
 
         /// <inheritdoc />
@@ -89,7 +117,7 @@ namespace Backend.DataAccess.Repositories
                 Specification = new SpecificationModel
                 {
                     Id = model.Specification.ItemId,
-                    ComparisonType = model.Specification.ComparisionTypeName,
+                    ComparisonType = model.Specification.ComparisonTypeName,
                     IsDeleted = model.Specification.IsMarkedAsDeleted,
                     LowerBound = model.Specification.LowerBoundValue,
                     UpperBound = model.Specification.UpperBoundValue,

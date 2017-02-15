@@ -27,7 +27,7 @@ namespace Backend.Schemas.Seeding
                         StationId = firstStation.Id,
                         Specification = new Specification
                         {
-                            ComparisionTypeName = ComparisonType.LessThan,
+                            ComparisonTypeName = ComparisonType.LessThan,
                             LowerBoundValue = "0",
                             UpperBoundValue = "10",
                             UnitId = units[0].Id
@@ -41,7 +41,7 @@ namespace Backend.Schemas.Seeding
                         StationId = firstStation.Id,
                         Specification = new Specification
                         {
-                            ComparisionTypeName = ComparisonType.EqualTo,
+                            ComparisonTypeName = ComparisonType.EqualTo,
                             LowerBoundValue = "10",
                             UpperBoundValue = "10",
                             UnitId = units[1].Id
@@ -55,7 +55,7 @@ namespace Backend.Schemas.Seeding
                         StationId = firstStation.Id,
                         Specification = new Specification
                         {
-                            ComparisionTypeName = ComparisonType.Either,
+                            ComparisonTypeName = ComparisonType.Either,
                             LowerBoundValue = "false",
                             UpperBoundValue = "true",
                             UnitId = units[3].Id
@@ -69,7 +69,7 @@ namespace Backend.Schemas.Seeding
                         StationId = secondStation.Id,
                         Specification = new Specification
                         {
-                            ComparisionTypeName = ComparisonType.NotApplicable,
+                            ComparisonTypeName = ComparisonType.NotApplicable,
                             LowerBoundValue = "N/A",
                             UpperBoundValue = "N/A",
                             UnitId = units[4].Id
@@ -83,7 +83,7 @@ namespace Backend.Schemas.Seeding
                         StationId = secondStation.Id,
                         Specification = new Specification
                         {
-                            ComparisionTypeName = ComparisonType.Either,
+                            ComparisonTypeName = ComparisonType.Either,
                             LowerBoundValue = "Yes",
                             UpperBoundValue = "No",
                             UnitId = units[4].Id

@@ -5,6 +5,7 @@ using Backend.DataAccess.Repositories;
 using Backend.Schemas;
 using Mobile_Rounds.ViewModels.Models;
 using Swashbuckle.Swagger.Annotations;
+using System;
 
 namespace Backend.Controllers
 {
@@ -17,7 +18,7 @@ namespace Backend.Controllers
     {
         private const string SwaggerName = "Items";
 
-        private readonly IRepository<ItemModel> datasource;
+        private readonly ItemRepository datasource;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemsController"/> class.
@@ -37,6 +38,19 @@ namespace Backend.Controllers
         public async Task<IHttpActionResult> Get()
         {
             var results = await this.datasource.GetAsync();
+            return this.Ok(results);
+        }
+
+        /// <summary>
+        /// Gets all the items in a station.
+        /// </summary>
+        /// <returns>A list of items.</returns>
+        /// <param name="stationId">The id of the station.</param>
+        [Route("{stationId}/items")]
+        [SwaggerOperation(Tags = new[] { SwaggerName })]
+        public async Task<IHttpActionResult> Get(Guid stationId)
+        {
+            var results = await this.datasource.GetForStationAsync(stationId);
             return this.Ok(results);
         }
 

@@ -30,7 +30,7 @@ namespace Backend.DataAccess.Repositories.DataSources
                 .OrderBy(r => r.Name);
         }
 
-        public override Task<Region> GetSingleAsync()
+        public override Region GetSingle(Guid id)
         {
             throw new NotImplementedException();
         }

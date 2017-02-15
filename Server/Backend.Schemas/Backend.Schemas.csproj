@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201702150744401_ChangeKeyNameForItems.Designer.cs">
       <DependentUpon>201702150744401_ChangeKeyNameForItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702150847529_SpecComparisonTypeNameRename.cs" />
+    <Compile Include="Migrations\201702150847529_SpecComparisonTypeNameRename.Designer.cs">
+      <DependentUpon>201702150847529_SpecComparisonTypeNameRename.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reading.cs" />
@@ -106,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702150744401_ChangeKeyNameForItems.resx">
       <DependentUpon>201702150744401_ChangeKeyNameForItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702150847529_SpecComparisonTypeNameRename.resx">
+      <DependentUpon>201702150847529_SpecComparisonTypeNameRename.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

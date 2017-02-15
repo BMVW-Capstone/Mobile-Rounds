@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Backend.DataAccess.Abstractions
@@ -18,9 +19,10 @@ namespace Backend.DataAccess.Abstractions
         Task<IEnumerable<TModel>> GetAsync();
 
         /// <summary>
-        /// Gets a single model object.
+        /// Gets a single model object with the given id.
         /// </summary>
         /// <returns>The model object.</returns>
-        Task<TModel> GetSingleAsync();
+        /// <param name="id">The id of the record to fetch.</param>
+        TModel GetSingle(Guid id);
     }
 }
