@@ -1,0 +1,24 @@
+{
+  "station_list": [
+    {
+      "name": "herp room",
+      "id": "place1",
+      "regionId": "region1"
+    },
+    {
+      "name": "derp room",
+      "id": "place2",
+      "regionId": "region3"
+    },
+    {
+      "name": "timeout room",
+      "id": "place3",
+      "regionId": "region2"
+    },
+    {
+      "name": "another room",
+      "id": "place4",
+      "regionId": "region2"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+	"region_list": [
+		{
+			"name":	"North Side",
+			"id": "region1"
+		},
+		{
+			"name": "South Side",
+			"id": "region2"
+		},
+		{
+			"name": "derp side",
+			"id": "region3"
+		}
+	]
+}

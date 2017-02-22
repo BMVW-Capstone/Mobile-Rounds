@@ -1,0 +1,39 @@
+{
+    "meter_list": [
+        {
+            "name": "equipment 1",
+            "id": "meter1",
+            "stationID": "place2",        
+            "IsWithinSpec": true,
+            "ValueBounds": "Shared.ReadingType.BoundType.EitherOr",
+            "YesBooleanText": "Open",
+            "NoBooleanText": "Closed",            
+            "YesterdaysReading": [
+                {
+                    "IsWithinSpec": true,
+                    "StringValue": "Open"
+                }
+            ]
+        },
+        {
+            "name": "Nitrogen Backup Valve",
+            "id": "meter2",
+            "stationID":  "place3",
+            "ValueBounds":  "Shared.ReadingType.BoundType.LessThan",
+            "MinimumValue": 0,
+            "MaximumValue": 76,
+            "UnitAbbreviation": "K",
+            "YesterdaysReading": [
+                {
+                    "IsWithinSpec": false,
+                    "Notes": "Wasn't working at all.",
+                    "StringValue": "89",
+                    "UnitAbbreviation": "k"
+                }
+            ]
+        }
+    ]
+}
+
+
+
