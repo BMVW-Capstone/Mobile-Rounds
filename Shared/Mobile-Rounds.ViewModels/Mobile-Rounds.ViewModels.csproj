@@ -41,8 +41,13 @@
     <Compile Include="Admin\AdminHome\AdminHomeViewModel.cs" />
     <Compile Include="Admin\Regions\RegionsViewModel.cs" />
     <Compile Include="Admin\Stations\StationsViewModel.cs" />
-    <Compile Include="Admin\UnitOfMeasure\UnitOfMeasure.cs" />
+    <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureViewModel.cs" />
+    <Compile Include="Models\RoundModel.cs" />
+    <Compile Include="Models\ItemModel.cs" />
+    <Compile Include="Models\SpecificationModel.cs" />
+    <Compile Include="Models\UnitOfMeasureModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureScreenViewModel.cs" />
+    <Compile Include="Platform\IApiRequest.cs" />
     <Compile Include="Platform\IBreadcrumbNavigationEvent.cs" />
     <Compile Include="Platform\ServiceResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -51,8 +56,9 @@
     <Compile Include="Regular\ReadingInput\ReadingInputListViewModel.cs" />
     <Compile Include="Regular\ReadingInput\ReadingInputScreenViewModel.cs" />
     <Compile Include="Regular\ReadingInput\ReadingInputViewModel.cs" />
+    <Compile Include="Models\RegionModel.cs" />
     <Compile Include="Regular\Station\StationListViewModel.cs" />
-    <Compile Include="Regular\Station\StationModel.cs" />
+    <Compile Include="Models\StationModel.cs" />
     <Compile Include="Shared\BaseViewModel.cs" />
     <Compile Include="Shared\Commands\AsyncCommand.cs" />
     <Compile Include="Shared\Commands\EndRoundCommand.cs" />
@@ -69,6 +75,11 @@
     <Compile Include="Shared\Navigation\NavigationType.cs" />
     <Compile Include="Shared\NotificationBase.cs" />
     <Compile Include="Shared\ReadingType\BoundType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Windows.Foundation.UniversalApiContract">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

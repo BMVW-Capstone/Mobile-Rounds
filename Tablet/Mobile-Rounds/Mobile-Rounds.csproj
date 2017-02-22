@@ -108,6 +108,7 @@
     <Compile Include="Controls\ColoredTile.xaml.cs">
       <DependentUpon>ColoredTile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ApiRequest.cs" />
     <Compile Include="Helpers\BreadcrumbNavigationHandler.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

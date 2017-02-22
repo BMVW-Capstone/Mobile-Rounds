@@ -30,7 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,13 +50,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\AbstractDataSource.cs" />
+    <Compile Include="Abstractions\AbstractRepository.cs" />
+    <Compile Include="Abstractions\IDataSource.cs" />
+    <Compile Include="Abstractions\IReadableDataSource.cs" />
+    <Compile Include="Abstractions\IRepository.cs" />
+    <Compile Include="Abstractions\IWriteableDataSource.cs" />
+    <Compile Include="DataSources\RoundDataSource.cs" />
+    <Compile Include="DataSources\ItemDataSource.cs" />
+    <Compile Include="DataSources\SpecificationDataSource.cs" />
+    <Compile Include="DataSources\UnitOfMeasureDataSource.cs" />
+    <Compile Include="DataSources\StationDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataSources\RegionDataSource.cs" />
+    <Compile Include="Repositories\RoundRepository.cs" />
+    <Compile Include="Repositories\ItemRepository.cs" />
+    <Compile Include="Repositories\SpecificationRepository.cs" />
+    <Compile Include="Repositories\UnitOfMeasureRepository.cs" />
+    <Compile Include="Repositories\StationRepository.cs" />
+    <Compile Include="Repositories\RegionRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Mobile-Rounds.ViewModels\Mobile-Rounds.ViewModels.csproj">
       <Project>{ed818571-b5d0-4fc3-8af3-63a04d806524}</Project>
       <Name>Mobile-Rounds.ViewModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Backend.Schemas\Backend.Schemas.csproj">
+      <Project>{4BD2528E-277F-404B-B036-6F7F273ABC32}</Project>
+      <Name>Backend.Schemas</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

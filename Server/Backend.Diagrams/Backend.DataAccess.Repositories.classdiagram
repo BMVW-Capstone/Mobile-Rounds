@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="e02be1d9-7769-452d-9feb-f91a77085621" name="DataAccess.Repositories" linkedPackageId="3f48bf10-3916-40ca-a0be-1bc760db25a3" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="e02be1d9-7769-452d-9feb-f91a77085621" name="DataAccess.Repositories" linkedPackageId="3f48bf10-3916-40ca-a0be-1bc760db25a3" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <appliedStereotypesInternal>
     <stereotypeInstance Id="320afe68-1d67-44bc-8e1c-46262da28930" name="namespace" profile="CSharpProfile">
       <elementDefinition Id="331b5aa0-b6bd-41b4-a2c3-e1d33026e032" />
@@ -72,98 +72,23 @@
       </propertyInstances>
     </stereotypeInstance>
   </appliedStereotypesInternal>
-  <profileInstances>
-    <packageHasProfileInstances Id="378c123e-8d67-4036-892e-b8366f4143a0">
-      <profileInstance Id="7e0b35e5-bfd6-44b8-938f-123692e5fba7" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="9fe04839-200c-41e8-9f25-c73a32a0ea59">
-      <profileInstance Id="2c002f55-1803-4eb2-ad1a-03fb40e591e8" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="e4118aea-38d5-45c7-9fd2-bc15a91da33a">
-      <profileInstance Id="443a1d90-8fde-4932-a185-bc36bc029b14" name="CSharpProfile">
-        <elementDefinition Id="b11582f4-990c-46de-b15c-1ab90888e13e" />
-      </profileInstance>
-      <elementDefinition Id="efafbeac-655e-4563-8e18-5e1d00d7bcc4" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="a5d4aae9-708e-4a2e-9538-cdd38c02d157">
-      <profileInstance Id="2696082d-3214-445b-9d01-026e2823528d" name="TextTemplateBindings">
-        <elementDefinition Id="d2c5a6e1-6a02-44e1-bf66-13b469c60b18" />
-      </profileInstance>
-      <elementDefinition Id="5272e7cc-8917-42c4-a46f-a729cb9ca798" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
-    <logicalClassDesignerModelHasPackages>
-      <package Id="be3d8232-dc4b-4905-9525-58d3a76b0520" name="Backend.DataAccess.Repositories.Internal">
-        <elementDefinition Id="00493a06-92f0-4150-9529-45f3b5242a1a" />
-        <packagedElements>
-          <packageHasNamedElement>
-            <class Id="827f31ab-ec3b-40da-8750-1c0fee30213e" name="InternalRegionRepository" isAbstract="false" isLeaf="false" isActiveClass="false">
-              <elementDefinition Id="bb27e347-ce02-4d50-b4df-eb4aea1056df" />
-              <signatures>
-                <templateBinding Id="07418b57-e06d-4724-af0f-bf7bc1c917d9">
-                  <templateSignatureProxyMoniker Id="fa73fcd0-a007-4a20-b208-c0af788e407d" />
-                  <elementDefinition Id="f4a3ed9b-407a-44c4-88bb-8a131f5361ec" />
-                </templateBinding>
-              </signatures>
-              <ownedRedefinableTemplateSignatureInternal>
-                <redefinableTemplateSignature Id="22b6aeb8-ad7c-45bf-aa87-539703e35b24" parameters="" isLeaf="false">
-                  <elementDefinition Id="e4dbed02-07ff-4792-90a4-7b9497ef9f72" />
-                  <ownedParameters>
-                    <classifierTemplateParameter Id="1c6a4f5b-8289-4049-a501-1123e96660c8">
-                      <elementDefinition Id="36c51a9a-339c-403e-a080-ab87ea9d8c1d" />
-                      <ownedParameterableElement>
-                        <class Id="549dd15a-01a2-4d2c-a92c-fa71a6abc8e8" name="T" isAbstract="false" isLeaf="false" isActiveClass="false">
-                          <elementDefinition Id="2068f0b8-ea6d-4246-8683-a268d05e05fa" />
-                        </class>
-                      </ownedParameterableElement>
-                      <constrainingClassifier>
-                        <referencedTypeMoniker Id="e29b7d81-4dbe-4523-bd53-dba2afedeaeb" LastKnownName="Region" />
-                      </constrainingClassifier>
-                    </classifierTemplateParameter>
-                  </ownedParameters>
-                </redefinableTemplateSignature>
-              </ownedRedefinableTemplateSignatureInternal>
-            </class>
-          </packageHasNamedElement>
-        </packagedElements>
-      </package>
-    </logicalClassDesignerModelHasPackages>
-    <packageHasNamedElement>
-      <referencedType Id="e29b7d81-4dbe-4523-bd53-dba2afedeaeb" name="Region" isAbstract="false" isLeaf="false" cachedFullName="Backend.Diagrams::Backend.Schemas::Region">
-        <elementDefinition Id="bc5dbb37-1cf5-4ef0-b44d-cf8a4d0b4fdf" />
-      </referencedType>
-    </packageHasNamedElement>
     <logicalClassDesignerModelHasPackages>
       <package Id="6d96381c-3939-4dbc-9c72-b9fab9598c05" name="Backend.DataAccess.Repositories">
         <elementDefinition Id="e0382724-898f-4f98-864f-e3d839f6b856" />
         <packagedElements>
           <packageHasNamedElement>
-            <class Id="3a2b3694-cd21-412b-8b9c-cea3a32e6ba3" name="RegionRepository: AbstractRepository&lt;RegionViewModel&gt;" isAbstract="false" isLeaf="false" isActiveClass="false">
+            <class Id="3a2b3694-cd21-412b-8b9c-cea3a32e6ba3" name="RegionRepository: AbstractRepository&lt;RegionViewModel, Region&gt;" isAbstract="false" isLeaf="false" isActiveClass="false">
               <elementDefinition Id="92cf75ff-d1aa-4fce-80d3-ae7bacdf2ad1" />
-              <ownedAttributesInternal>
-                <property Id="6efa8cb4-3af3-4759-931d-dec35fd6f365" name="Storage" visibility="Protected" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="1f2001be-a651-42b4-9ff7-43d2473bda32" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="fbec01d5-44d7-43d6-991e-91628a98ed42" LastKnownName="IRepository&lt;Region&gt;" />
-                  </type_NamedElement>
-                </property>
-              </ownedAttributesInternal>
               <ownedOperationsInternal>
                 <operation Id="47b3efee-4ca6-4697-a01a-5e4c3a24c4c4" name="RegionRepository" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
                   <elementDefinition Id="0d6cde6c-0dad-409c-8888-a512291211e6" />
                   <ownedParameters>
                     <operationHasOwnedParameters>
-                      <parameter Id="0eef6172-a931-47af-ae92-bebaf92f871f" name="storage" direction="In" isUnique="false">
-                        <elementDefinition Id="bf93a139-f1a7-4eef-8090-ab0556add165" />
+                      <parameter Id="50598063-c468-4e97-8562-ff2177507c82" name="ctx" direction="In" isUnique="false">
+                        <elementDefinition Id="22a1fe69-f258-4b4e-9827-9d983b0ec729" />
                         <type_NamedElement>
-                          <referencedTypeMoniker Id="fbec01d5-44d7-43d6-991e-91628a98ed42" LastKnownName="IRepository&lt;Region&gt;" />
+                          <referencedTypeMoniker Id="f41da40c-1b03-4e6b-bb48-63817e03ceef" LastKnownName="DbContext" />
                         </type_NamedElement>
                       </parameter>
                     </operationHasOwnedParameters>
@@ -176,20 +101,43 @@
       </package>
     </logicalClassDesignerModelHasPackages>
     <packageHasNamedElement>
-      <referencedType Id="fbec01d5-44d7-43d6-991e-91628a98ed42" name="IRepository&lt;Region&gt;" isAbstract="false" isLeaf="false" cachedFullName="IRepository&lt;Region&gt;">
-        <elementDefinition Id="e00366f1-049b-47ac-8836-fa6aad81f96e" />
+      <referencedType Id="f41da40c-1b03-4e6b-bb48-63817e03ceef" name="DbContext" isAbstract="false" isLeaf="false" cachedFullName="DbContext">
+        <elementDefinition Id="6c261a70-7bb2-4006-9c5d-6efcac3f7bd6" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
   <templateSignatureProxies>
-    <templateSignatureProxy Id="fa73fcd0-a007-4a20-b208-c0af788e407d" parameters="" isLeaf="false" signatureId="503e36f6-42a4-4a94-aa45-63b87e66dfe9">
-      <elementDefinition Id="503e36f6-42a4-4a94-aa45-63b87e66dfe9" />
-    </templateSignatureProxy>
     <templateSignatureProxy Id="b0232238-8109-4183-a1cc-b84246d3e94c" parameters="" isLeaf="false" signatureId="eb68a58d-963d-4374-8d87-534191b51a01">
       <elementDefinition Id="eb68a58d-963d-4374-8d87-534191b51a01" />
     </templateSignatureProxy>
   </templateSignatureProxies>
   <package Id="3f48bf10-3916-40ca-a0be-1bc760db25a3" name="Backend.Diagrams">
     <elementDefinition Id="8ceb905c-dc21-443f-b4d1-1282d514cb46" />
+    <profileInstances>
+      <packageHasProfileInstances Id="378c123e-8d67-4036-892e-b8366f4143a0">
+        <profileInstance Id="7e0b35e5-bfd6-44b8-938f-123692e5fba7" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="9fe04839-200c-41e8-9f25-c73a32a0ea59">
+        <profileInstance Id="2c002f55-1803-4eb2-ad1a-03fb40e591e8" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="e4118aea-38d5-45c7-9fd2-bc15a91da33a">
+        <profileInstance Id="443a1d90-8fde-4932-a185-bc36bc029b14" name="CSharpProfile">
+          <elementDefinition Id="b11582f4-990c-46de-b15c-1ab90888e13e" />
+        </profileInstance>
+        <elementDefinition Id="efafbeac-655e-4563-8e18-5e1d00d7bcc4" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="a5d4aae9-708e-4a2e-9538-cdd38c02d157">
+        <profileInstance Id="2696082d-3214-445b-9d01-026e2823528d" name="TextTemplateBindings">
+          <elementDefinition Id="d2c5a6e1-6a02-44e1-bf66-13b469c60b18" />
+        </profileInstance>
+        <elementDefinition Id="5272e7cc-8917-42c4-a46f-a729cb9ca798" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>

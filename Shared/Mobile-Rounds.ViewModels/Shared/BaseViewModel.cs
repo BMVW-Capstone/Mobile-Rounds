@@ -32,7 +32,7 @@ namespace Mobile_Rounds.ViewModels.Shared
         /// <summary>
         /// Gets or sets the mock data in the POC.
         /// </summary>
-        public static List<UnitOfMeasure> MockUnits { get; set; }
+        public static List<UnitOfMeasureViewModel> MockUnits { get; set; }
 
         /// <summary>
         /// Gets or sets the mock data in the POC.
@@ -44,7 +44,7 @@ namespace Mobile_Rounds.ViewModels.Shared
         /// </summary>
         static BaseViewModel()
         {
-            MockUnits = new List<UnitOfMeasure>();
+            MockUnits = new List<UnitOfMeasureViewModel>();
             MockMeters = new List<Meter>();
         }
 
