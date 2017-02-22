@@ -92,6 +92,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="Assets\meters_test.json" />
+    <None Include="Assets\regions_test.json" />
+    <None Include="Assets\stations_test.json" />
     <None Include="project.json" />
     <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
