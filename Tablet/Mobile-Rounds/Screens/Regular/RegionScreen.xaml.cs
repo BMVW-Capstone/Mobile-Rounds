@@ -1,5 +1,4 @@
-﻿using Mobile_Rounds.ViewModels.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,23 +20,11 @@ namespace Mobile_Rounds.Screens.Regular
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class StartRoundScreen : Page
+    public sealed partial class RegionScreen : Page
     {
-        public StartRoundScreen()
+        public RegionScreen()
         {
             this.InitializeComponent();
-        }
-
-        private void TimeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // to do: block button_click until selection is made
-            // pass the time selection backend
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            // placeholder for region select
-            BaseViewModel.Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.RegionSelect);
         }
     }
 }
