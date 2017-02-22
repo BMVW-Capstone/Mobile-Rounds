@@ -42,6 +42,7 @@
     <Compile Include="Admin\Regions\RegionsViewModel.cs" />
     <Compile Include="Admin\Stations\StationsViewModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureViewModel.cs" />
+    <Compile Include="Models\RegionModel.cs" />
     <Compile Include="Models\RoundModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\SpecificationModel.cs" />
@@ -57,7 +58,7 @@
     <Compile Include="Regular\ReadingInput\ReadingInputScreenViewModel.cs" />
     <Compile Include="Regular\ReadingInput\ReadingInputViewModel.cs" />
     <Compile Include="Regular\Region\RegionListViewModel.cs" />
-    <Compile Include="Regular\Region\RegionModel.cs" />
+    <Compile Include="Regular\Region\RegionModelSource.cs" />
     <Compile Include="Regular\Station\StationListViewModel.cs" />
     <Compile Include="Models\StationModel.cs" />
     <Compile Include="Shared\BaseViewModel.cs" />

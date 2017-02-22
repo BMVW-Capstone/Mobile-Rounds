@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Mobile_Rounds.ViewModels.Regular.Region
 {
-    public class RegionModel : NotificationBase
+    public class RegionModelSource : NotificationBase
     {
         public string Name { get; set; }
 
         public AsyncCommand Navigate { get; private set; }
 
-        public RegionModel()
+        public RegionModelSource()
         {
             this.Navigate = new AsyncCommand((obj) =>
             {

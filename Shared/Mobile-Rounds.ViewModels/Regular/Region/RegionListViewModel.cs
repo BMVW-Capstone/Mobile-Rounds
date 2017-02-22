@@ -2,23 +2,16 @@
 // Copyright (c) SolarWorld Capstone Team. All rights reserved.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Mobile_Rounds.ViewModels.Shared;
-using Mobile_Rounds.ViewModels.Shared.Commands;
 using System.Collections.ObjectModel;
 
 namespace Mobile_Rounds.ViewModels.Regular.Region
 {
     public class RegionListViewModel : BaseViewModel
     {
-        public ObservableCollection<RegionModel> Regions { get; set; }
+        public ObservableCollection<RegionModelSource> Regions { get; set; }
 
-        public RegionModel Selected
+        public RegionModelSource Selected
         {
             get
             {
@@ -39,12 +32,12 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
 
         public RegionListViewModel()
         {
-            this.Regions = new ObservableCollection<RegionModel>();
-            this.Regions.Add(new RegionModel() { Name = "North Region" });
-            this.Regions.Add(new RegionModel() { Name = "South Region" });
+            this.Regions = new ObservableCollection<RegionModelSource>();
+            this.Regions.Add(new RegionModelSource() { Name = "North Region" });
+            this.Regions.Add(new RegionModelSource() { Name = "South Region" });
         }
 
-        private RegionModel region;
+        private RegionModelSource region;
 
     }
 }
