@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataAccess">
+  <logicalClassDesignerModelMoniker Id="e02be1d9-7769-452d-9feb-f91a77085621" />
+  <nestedChildShapes>
+    <packageShape Id="041094e3-1db2-4d7f-a9cd-14bec90f31a9" absoluteBounds="0.5, 1, 5, 2.125" customColor="255, 249, 230" hideQualifiedName="false">
+      <packageMoniker Id="6d96381c-3939-4dbc-9c72-b9fab9598c05" LastKnownName="Backend.DataAccess.Repositories" />
+      <nestedChildShapes>
+        <classShape Id="5ebf7b74-8c2a-4ecd-a44f-459137bc829b" absoluteBounds="0.75, 1.625, 4.375, 1.0624999801317849" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
+          <classMoniker Id="3a2b3694-cd21-412b-8b9c-cea3a32e6ba3" LastKnownName="RegionRepository: AbstractRepository&lt;RegionViewModel, Region&gt;" />
+          <nestedChildShapes>
+            <AttributeElementListCompartment Id="914e08c0-0f00-4d4d-8f20-65fd73704b84" absoluteBounds="0.765, 2.0149999999999997, 4.3450000000000006, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+            <OperationElementListCompartment Id="6c2652fc-626f-46b6-ba13-24527fae7e0c" absoluteBounds="0.765, 2.2261718675494193, 4.3450000000000006, 0.36132811258236563" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+          </nestedChildShapes>
+        </classShape>
+      </nestedChildShapes>
+    </packageShape>
+  </nestedChildShapes>
+</logicalClassDesignerDiagram>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
   dslVersion="1.0.0.0"
   Id="e0382724-898f-4f98-864f-e3d839f6b856"
   name="Backend.DataAccess.Repositories" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -7,31 +7,10 @@
     <packageHasNamedElement>
       <class
         Id="92cf75ff-d1aa-4fce-80d3-ae7bacdf2ad1"
-        name="RegionRepository: AbstractRepository&lt;RegionViewModel&gt;"
+        name="RegionRepository: AbstractRepository&lt;RegionViewModel, Region&gt;"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <ownedAttributesInternal>
-          <property
-            Id="1f2001be-a651-42b4-9ff7-43d2473bda32"
-            name="Storage"
-            visibility="Protected"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <undefinedTypeMoniker
-                Id="e00366f1-049b-47ac-8836-fa6aad81f96e"
-                LastKnownName="IRepository&lt;Region&gt;"
-                LastKnownLocation="Package_0045.uml" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
             Id="0d6cde6c-0dad-409c-8888-a512291211e6"
@@ -44,15 +23,15 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="bf93a139-f1a7-4eef-8090-ab0556add165"
-                  name="storage"
+                  Id="22a1fe69-f258-4b4e-9827-9d983b0ec729"
+                  name="ctx"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
-                      Id="e00366f1-049b-47ac-8836-fa6aad81f96e"
-                      LastKnownName="IRepository&lt;Region&gt;"
-                      LastKnownLocation="Package_0045.uml" />
+                      Id="6c261a70-7bb2-4006-9c5d-6efcac3f7bd6"
+                      LastKnownName="DbContext"
+                      LastKnownLocation="Package_0015.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>

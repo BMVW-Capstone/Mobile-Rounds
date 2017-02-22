@@ -24,7 +24,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// <summary>
         /// Gets or sets the list of units that are displayed to the user.
         /// </summary>
-        public ObservableCollection<UnitOfMeasure> Units { get; set; }
+        public ObservableCollection<UnitOfMeasureViewModel> Units { get; set; }
 
         /// <summary>
         /// Gets the save method to call when the users taps save.
@@ -35,7 +35,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// Gets or sets the currently selected unit in the list.
         /// If set to null, it clears out the selection.
         /// </summary>
-        public UnitOfMeasure Selected
+        public UnitOfMeasureViewModel Selected
         {
             get
             {
@@ -58,7 +58,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// Gets or sets the unit of measurement that is currently being modified or added. Used
         /// for data binding to the input fields.
         /// </summary>
-        public UnitOfMeasure CurrentUnit
+        public UnitOfMeasureViewModel CurrentUnit
         {
             get
             {
@@ -104,17 +104,18 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                 (obj) =>
                 {
                     this.Selected = null;
-                    this.CurrentUnit = new UnitOfMeasure(this.Save, this.Cancel);
+                    this.CurrentUnit = new UnitOfMeasureViewModel(this.Save, this.Cancel);
                 }, this.CanCancel);
 
             this.Save = new AsyncCommand(
                 (obj) =>
                 {
+                    //TODO: Implement disk storage
                     var existing = this.Units.FirstOrDefault(u => u.Id == this.currentUnit.Id);
                     if (existing == null)
                     {
                         this.CurrentUnit.Id = Guid.NewGuid();
-                        var newCopy = new UnitOfMeasure(this.CurrentUnit);
+                        var newCopy = new UnitOfMeasureViewModel(this.CurrentUnit);
                         this.Units.Add(newCopy);
                         MockUnits.Add(newCopy);
                     }
@@ -125,51 +126,18 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                         existing.ModificationType = this.currentUnit.ModificationType;
                     }
 
-                    this.CurrentUnit = new UnitOfMeasure(this.Save, this.Cancel);
+                    this.CurrentUnit = new UnitOfMeasureViewModel(this.Save, this.Cancel);
                     this.Selected = null;
                 }, this.ValidateInput);
 
-            // Init test data
-            if (MockUnits.Count == 0)
-            {
-                MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
-                {
-                    Id = Guid.NewGuid(),
-                    FullName = "Pounds per square inch",
-                    Abbreviation = "PSI"
-                });
-
-                MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
-                {
-                    Id = Guid.NewGuid(),
-                    FullName = "Celcius",
-                    Abbreviation = "C"
-                });
-
-                MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
-                {
-                    Id = Guid.NewGuid(),
-                    FullName = "Fahrenheit",
-                    Abbreviation = "F"
-                });
-
-                MockUnits.Add(new UnitOfMeasure(this.Save, this.Cancel)
-                {
-                    Id = Guid.NewGuid(),
-                    FullName = "Percent",
-                    Abbreviation = "%"
-                });
-            }
-
-            this.Units = new ObservableCollection<UnitOfMeasure>(MockUnits);
-
-            this.CurrentUnit = new UnitOfMeasure(this.Save, this.Cancel);
+            this.Units = new ObservableCollection<UnitOfMeasureViewModel>();
+            this.CurrentUnit = new UnitOfMeasureViewModel(this.Save, this.Cancel);
             this.Crumbs.Add(new BreadcrumbItemModel("Admin", this.GoToAdmin));
             this.Crumbs.Add(new BreadcrumbItemModel("Unit of Measure"));
         }
 
-        private UnitOfMeasure currentUnit;
-        private UnitOfMeasure selected;
+        private UnitOfMeasureViewModel currentUnit;
+        private UnitOfMeasureViewModel selected;
 
         private bool ValidateInput(object input)
         {
