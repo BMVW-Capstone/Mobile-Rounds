@@ -16,9 +16,25 @@ namespace Mobile_Rounds.ViewModels.Shared.Navigation
     public interface INavigator
     {
         /// <summary>
+        /// Gets the last data passed to the Navigate method.
+        /// </summary>
+        /// <typeparam name="T">The type of object you expect it to have.</typeparam>
+        /// <returns>The previously stored data.</returns>
+        T GetNavigationData<T>()
+            where T : class;
+
+        /// <summary>
         /// Navigates to the specific type of screen.
         /// </summary>
         /// <param name="type">The screen to go to.</param>
         void Navigate(NavigationType type);
+
+        /// <summary>
+        /// Navigates to the specific type of screen passing the given
+        /// constructor object to the views constructor.
+        /// </summary>
+        /// <param name="type">The screen to go to.</param>
+        /// <param name="constructorParam">The parameter to pass to the page constructor.</param>
+        void Navigate(NavigationType type, object constructorParam);
     }
 }

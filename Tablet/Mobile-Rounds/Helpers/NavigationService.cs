@@ -22,6 +22,13 @@ namespace Mobile_Rounds.Helpers
         /// <inheritdoc/>
         public void Navigate(NavigationType type)
         {
+            this.Navigate(type, null);
+        }
+
+        /// <inheritdoc/>
+        public void Navigate(NavigationType type, object constructorObject)
+        {
+            this.navigationData = constructorObject;
             var frame = Window.Current.Content as Frame;
 
             switch (type)
@@ -57,5 +64,18 @@ namespace Mobile_Rounds.Helpers
                     break;
             }
         }
+
+        public T GetNavigationData<T>()
+            where T : class
+        {
+            if (this.navigationData == null)
+            {
+                return null;
+            }
+
+            return (T)this.navigationData;
+        }
+
+        private object navigationData;
     }
 }
