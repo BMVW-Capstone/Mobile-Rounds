@@ -16,7 +16,7 @@ namespace Backend.Controllers
     [Authorize]
     public class StationsController : ApiController
     {
-        private const string SwaggerName = "Stations";
+        public const string SwaggerName = "Stations";
         private readonly IRepository<StationModel> datasource;
 
         /// <summary>
