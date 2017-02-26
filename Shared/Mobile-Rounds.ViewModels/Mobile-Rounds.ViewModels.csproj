@@ -43,6 +43,7 @@
     <Compile Include="Admin\Regions\RegionsViewModel.cs" />
     <Compile Include="Admin\Stations\StationsViewModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureViewModel.cs" />
+    <Compile Include="Models\ReadingModel.cs" />
     <Compile Include="Models\RegionModel.cs" />
     <Compile Include="Models\RoundModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Regular\ReadingInput\ReadingInputViewModel.cs" />
     <Compile Include="Regular\Region\RegionListViewModel.cs" />
     <Compile Include="Regular\Region\RegionModelSource.cs" />
+    <Compile Include="Regular\StartRounds\RoundTimeViewModel.cs" />
     <Compile Include="Regular\Station\StationListViewModel.cs" />
     <Compile Include="Models\StationModel.cs" />
     <Compile Include="Shared\BaseViewModel.cs" />
@@ -76,7 +78,7 @@
     <Compile Include="Shared\DbModels\StationHandler.cs" />
     <Compile Include="Shared\Home\HomePageViewModel.cs" />
     <Compile Include="Shared\Home\PausePageViewModel.cs" />
-    <Compile Include="Shared\Home\StartRoundViewModel.cs" />
+    <Compile Include="Regular\StartRounds\StartRoundViewModel.cs" />
     <Compile Include="Shared\ModificationType.cs" />
     <Compile Include="Shared\Navigation\INavigator.cs" />
     <Compile Include="Shared\Navigation\NavigationType.cs" />
@@ -95,6 +97,7 @@
       <HintPath>C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

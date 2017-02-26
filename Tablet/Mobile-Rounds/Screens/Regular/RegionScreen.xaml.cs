@@ -29,5 +29,10 @@ namespace Mobile_Rounds.Screens.Regular
             this.DataContext = BaseViewModel.Navigator.GetNavigationData<RegionListViewModel>();
             this.InitializeComponent();
         }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -49,5 +49,15 @@ namespace Mobile_Rounds.Screens.Regular
             //var result = Newtownsoft.JsonConvert.DeserializeObject<RegionModel>(reads);
             BaseViewModel.Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.RegionSelect, vm);
         }
+
+        private void timeTitle_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void textBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
