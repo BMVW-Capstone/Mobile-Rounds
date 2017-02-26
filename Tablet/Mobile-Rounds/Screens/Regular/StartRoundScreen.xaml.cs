@@ -39,5 +39,15 @@ namespace Mobile_Rounds.Screens.Regular
             // placeholder for region select
             BaseViewModel.Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.RegionSelect);
         }
+
+        private void timeTitle_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void textBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
