@@ -42,6 +42,7 @@
     <Compile Include="Admin\Regions\RegionsViewModel.cs" />
     <Compile Include="Admin\Stations\StationsViewModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureViewModel.cs" />
+    <Compile Include="Models\ReadingModel.cs" />
     <Compile Include="Models\RegionModel.cs" />
     <Compile Include="Models\RoundModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
