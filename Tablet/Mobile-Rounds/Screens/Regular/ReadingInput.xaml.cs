@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Mobile_Rounds.ViewModels.Regular.ReadingInput;
+using Mobile_Rounds.ViewModels.Shared;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,6 +26,7 @@ namespace Mobile_Rounds.Screens.Regular
     {
         public ReadingInput()
         {
+            this.DataContext = BaseViewModel.Navigator.GetNavigationData<ReadingInputScreenViewModel>();
             this.InitializeComponent();
         }
     }

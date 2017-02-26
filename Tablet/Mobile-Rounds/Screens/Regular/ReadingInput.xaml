@@ -42,9 +42,6 @@
             <ColumnDefinition Width="50" />
         </Grid.ColumnDefinitions>
 
-        <Grid.DataContext>
-            <vm:ReadingInputScreenViewModel />
-        </Grid.DataContext>
 
         <!--Header-->
         <breadcrumb:BreadcrumbControl

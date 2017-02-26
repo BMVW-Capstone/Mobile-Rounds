@@ -53,66 +53,9 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// </summary>
         public ReadingInputListViewModel(ReadingInputScreenViewModel parent)
         {
-            if (MockMeters.Count == 0)
-            {
-                Meter mock1 = new Meter(Guid.NewGuid(), "Supply Air Receiver Tank")
-                {
-                    TodaysReading = new ReadingInput
-                    {
-                        IsWithinSpec = true,
-                        ValueBounds = Shared.ReadingType.BoundType.EitherOr,
-                        YesBooleanText = "Open",
-                        NoBooleanText = "Closed",
-                    },
-                    YesterdaysReading = new ReadingInput()
-                    {
-                        IsWithinSpec = true,
-                        StringValue = "Open"
-                    }
-                };
-                Meter mock2 = new Meter(Guid.NewGuid(), "Nitrogen Backup Valve")
-                {
-                    TodaysReading = new ReadingInput
-                    {
-                        IsWithinSpec = true,
-                        ValueBounds = Shared.ReadingType.BoundType.LessThan,
-                        MinimumValue = 0,
-                        MaximumValue = 76,
-                        UnitAbbreviation = "K"
-                    },
-                    YesterdaysReading = new ReadingInput
-                    {
-                        IsWithinSpec = false,
-                        ValueBounds = Shared.ReadingType.BoundType.LessThan,
-                        Notes = "Wasn't working at all.",
-                        StringValue = "89",
-                        UnitAbbreviation = "K"
-                    }
-                };
-                Meter mock3 = new Meter(Guid.NewGuid(), "Nitrogen Backup Pressure")
-                {
-                    TodaysReading = new ReadingInput
-                    {
-                        IsWithinSpec = true,
-                        ValueBounds = Shared.ReadingType.BoundType.Between,
-                        MinimumValue = 55,
-                        MaximumValue = 67,
-                        UnitAbbreviation = "PSI"
-                    },
-                    YesterdaysReading = new ReadingInput
-                    {
-                        IsWithinSpec = true,
-                        ValueBounds = Shared.ReadingType.BoundType.Between,
-                        StringValue = "60",
-                        UnitAbbreviation = "PSI"
-                    }
-                };
-                MockMeters.Add(mock1);
-                MockMeters.Add(mock2);
-                MockMeters.Add(mock3);
-            }
+            
 
-            this.Meters = new ObservableCollection<Meter>(MockMeters);
+            this.Meters = new ObservableCollection<Meter>(/*meter list*/);
             this.parent = parent;
             this.Selected = this.Meters.FirstOrDefault();
         }

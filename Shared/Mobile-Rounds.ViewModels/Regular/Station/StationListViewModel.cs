@@ -40,7 +40,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Station
             var result = JsonConvert.DeserializeObject<StationHandler>(reads);
             foreach (var station in result.Stations)
             {
-                this.Stations.Add(new StationModel() { Name = station.Name });
+                this.Stations.Add(new StationModel(regionName) { Name = station.Name });
             }
         }
 

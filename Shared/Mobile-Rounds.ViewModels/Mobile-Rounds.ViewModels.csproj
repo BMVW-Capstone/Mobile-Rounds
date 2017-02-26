@@ -71,7 +71,7 @@
     <Compile Include="Shared\Commands\StartRoundCommand.cs" />
     <Compile Include="Shared\Commands\SyncCommand.cs" />
     <Compile Include="Shared\Controls\BreadcrumbItemModel.cs" />
-    <Compile Include="Shared\DbModels\MeterHandler.cs" />
+    <Compile Include="Shared\DbModels\ItemHandler.cs" />
     <Compile Include="Shared\DbModels\RegionHandler.cs" />
     <Compile Include="Shared\DbModels\StationHandler.cs" />
     <Compile Include="Shared\Home\HomePageViewModel.cs" />
