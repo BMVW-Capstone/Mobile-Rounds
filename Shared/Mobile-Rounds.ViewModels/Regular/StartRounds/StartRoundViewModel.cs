@@ -44,11 +44,6 @@ namespace Mobile_Rounds.ViewModels.Regular.StartRounds
                 RoundTimes.Add(new RoundTimeViewModel() { RoundHour = "20:00" });
                 RoundTimes.Add(new RoundTimeViewModel() { RoundHour = "2:00" });
             }
-
-
-
-
-
         }
 
         public List<RoundTimeViewModel> RoundTimes { get; set; }
