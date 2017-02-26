@@ -1,16 +1,16 @@
 {
-	"region_list": [
+	"Regions": [
 		{
-			"name":	"North Side",
-			"id": "region1"
+			"Name":	"North Side",
+			"Id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
 		},
 		{
-			"name": "South Side",
-			"id": "region2"
+			"Name": "South Side",
+			"Id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
 		},
 		{
 			"name": "derp side",
-			"id": "region3"
+			"id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
 		}
 	]
 }

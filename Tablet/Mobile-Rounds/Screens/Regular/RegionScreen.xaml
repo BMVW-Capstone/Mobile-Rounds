@@ -10,10 +10,7 @@
     xmlns:breadcrumb="using:GoedWare.Controls.Breadcrumb"
     mc:Ignorable="d">
 
-    <Page.DataContext>
-        <vm:RegionListViewModel/>
-    </Page.DataContext>
-
+   
     <Page.Transitions>
         <TransitionCollection>
             <EntranceThemeTransition />

@@ -7,7 +7,13 @@ using Mobile_Rounds.ViewModels.Models;
 using Mobile_Rounds.ViewModels.Admin;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
-
+using System.Threading.Tasks;
+using System;
+using Windows.Storage;
+using Windows.Foundation;
+using Mobile_Rounds.ViewModels.Platform;
+using System.Collections.Generic;
+using Mobile_Rounds.ViewModels.Shared.DbModels;
 
 namespace Mobile_Rounds.ViewModels.Regular.Region
 {
@@ -27,6 +33,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
                 this.region = value;
                 if (this.region != null && this.region.Navigate != null)
                 {
+
                     this.region.Navigate.Execute(this);
                 }
 
@@ -34,17 +41,20 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
             }
         }
 
-        public RegionListViewModel()
+        
+        public RegionListViewModel(string reads)
         {
             this.Regions = new ObservableCollection<RegionModelSource>();
             //this.Regions.Add(new RegionModelSource() { Name = "North Region" });
             //this.Regions.Add(new RegionModelSource() { Name = "South Region" });
 
-
-            //gotta figure out how to pull the region names out and do the thing with new RegionModelSource()
-            Newtonsoft.Json.JsonConvert.DeserializeObject<RegionModel>(File.ReadAllText(@"ms-appx:///region_test.json"));
-            //i assume the deserialization will nicely append to this.Regions, but i don't know because errors.
-            //i'd love to figure out wth is up with the error on File.ReadAllText, because newtonsoft's documentation sport's that same thing
+            //var file = ServiceResolver.Resolve<IFileHandler>();
+            //var reads = file.GetFileAsync("regions_test.json"); //.Result blocks UI thread apparently
+            var result = JsonConvert.DeserializeObject<RegionHandler>(reads);
+            foreach (var region in result.Regions)
+            {
+                this.Regions.Add(new RegionModelSource() { Name = region.Name });
+            }
         }
 
         private RegionModelSource region;

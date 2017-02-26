@@ -51,6 +51,7 @@
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureScreenViewModel.cs" />
     <Compile Include="Platform\IApiRequest.cs" />
     <Compile Include="Platform\IBreadcrumbNavigationEvent.cs" />
+    <Compile Include="Platform\IFileHandler.cs" />
     <Compile Include="Platform\ServiceResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regular\ReadingInput\Meter.cs" />
@@ -70,6 +71,9 @@
     <Compile Include="Shared\Commands\StartRoundCommand.cs" />
     <Compile Include="Shared\Commands\SyncCommand.cs" />
     <Compile Include="Shared\Controls\BreadcrumbItemModel.cs" />
+    <Compile Include="Shared\DbModels\MeterHandler.cs" />
+    <Compile Include="Shared\DbModels\RegionHandler.cs" />
+    <Compile Include="Shared\DbModels\StationHandler.cs" />
     <Compile Include="Shared\Home\HomePageViewModel.cs" />
     <Compile Include="Shared\Home\PausePageViewModel.cs" />
     <Compile Include="Shared\Home\StartRoundViewModel.cs" />
@@ -83,6 +87,9 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Windows.Foundation.FoundationContract">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\2.0.0.0\Windows.Foundation.FoundationContract.winmd</HintPath>
     </Reference>
     <Reference Include="Windows.Foundation.UniversalApiContract">
       <HintPath>C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
