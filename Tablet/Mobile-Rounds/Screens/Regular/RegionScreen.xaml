@@ -61,47 +61,31 @@
 
         <ListView ItemsSource="{Binding Regions}" 
                   Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                  SelectedItem="{Binding Selected, Mode=TwoWay}" Padding="5"
-                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                  ScrollViewer.HorizontalScrollMode="Auto"
-                  ScrollViewer.VerticalScrollMode="Disabled"
-                  ScrollViewer.ZoomMode="Disabled"
-                  
-                  SelectionMode="Single">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsStackPanel Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
+                  SelectedItem="{Binding Selected, Mode=TwoWay}" Padding="5">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <!--<Grid>
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>-->
+                        </Grid.ColumnDefinitions>
 
-                    <controls:ColoredListTile Grid.Row="0" Grid.Column="0"
-                            Title="{Binding Name}"
-                            Foreground="White" 
-                            Background="#234ace"
-                        />
-
-                    <!--<TextBlock Text="{Binding Name}"
+                        <TextBlock Grid.Row="0" Grid.Column="0"
+                            Text="{Binding Name}"
                             Foreground="Purple" 
                             HorizontalAlignment="Stretch"
-                            FontSize="30" Padding="5"/>-->
+                            FontSize="30" Padding="5"/>
 
-                        <!--<TextBlock Text="2 items"
+                        <TextBlock Grid.Row="1" Grid.Column="0"
+                            Text="2 items"
                             Foreground="Black" 
                             Padding="5,0,0,5"
                             HorizontalAlignment="Stretch"
-                            FontSize="20"/>-->
-                    <!--</Grid>-->
+                            FontSize="20"/>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
