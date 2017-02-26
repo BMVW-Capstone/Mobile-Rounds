@@ -11,7 +11,25 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Grid.DataContext>
             <vm:StartRoundViewModel />
         </Grid.DataContext>
@@ -20,8 +38,7 @@
         <breadcrumb:BreadcrumbControl
             Grid.Row="1"
             Grid.Column="1"
-            Grid.ColumnSpan="2"
-            Margin="10,0,0,0"
+            VerticalAlignment="Top"
             FontSize="30"
             HomeCommand="{Binding GoHome}"
             ItemCommand="{Binding CrumbCommand}" 
@@ -44,17 +61,16 @@
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
 
-        <Grid HorizontalAlignment="Left" Height="680" Margin="712,217,0,0" VerticalAlignment="Top" Width="673"/>
-        <TextBlock x:Name="regionTitle" HorizontalAlignment="Left" Height="65" Margin="88,229,0,0" TextWrapping="Wrap" Text="Select Time" VerticalAlignment="Top" Width="320" FontSize="36"/>
-        <ComboBox x:Name="TimeComboBox" SelectedValue="{ Binding SelectedTime }" ItemsSource="{ Binding RoundTimes }" HorizontalAlignment="Left" Margin="88,294,0,0" VerticalAlignment="Top" Width="535" Height="60" FontSize="30" SelectionChanged="TimeComboBox_SelectionChanged">
+        <TextBlock x:Name="textBlock" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Padding="10"  Height="96" TextWrapping="Wrap" Text="Start Round" Width="320" FontSize="48" FontWeight="Bold" SelectionChanged="textBlock_SelectionChanged"/>
+
+        <TextBlock x:Name="timeTitle" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Padding="10" Height="65" TextWrapping="Wrap" Text="Select Time" VerticalAlignment="Top" Width="320" FontSize="36" SelectionChanged="timeTitle_SelectionChanged"/>
+        <ComboBox x:Name="TimeComboBox" Grid.Row="6" Grid.Column="1" Margin="10" SelectedValue="{ Binding SelectedTime }" ItemsSource="{ Binding RoundTimes }" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="535" Height="60" FontSize="30" SelectionChanged="TimeComboBox_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{ Binding RoundHour }"></TextBlock>
+                    <TextBlock Text="{ Binding RoundHour }" Foreground="#224ace" ></TextBlock>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="96" Margin="88,121,0,0" TextWrapping="Wrap" Text="Start Round" VerticalAlignment="Top" Width="320" FontSize="48" FontWeight="Bold"/>
-        <Button x:Name="button" Content="Begin Round" HorizontalAlignment="Right" Height="104" Margin="0,0,26,17" VerticalAlignment="Bottom" FontSize="36" RequestedTheme="Light" Background="#B274FF00" Click="Button_Click"/>
-
+        <Button x:Name="button" Grid.Row="7" Grid.Column="4" Content="Start" HorizontalAlignment="Right" Height="80" Width="200" VerticalAlignment="Bottom" FontSize="30" Foreground="White" Background="#224ace" Click="Button_Click"/>
     </Grid>
 </Page>

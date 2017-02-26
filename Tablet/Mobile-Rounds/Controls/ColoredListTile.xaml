@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    Width="120"
+    Height="120"
     BorderThickness="0"
     Margin="15"
     d:DesignHeight="150"
@@ -17,6 +19,8 @@
             Foreground="{Binding Foreground, ElementName=control}"
             Command="{Binding Command, ElementName=control}">
         <TextBlock
+            Width="120"
+            Height="120"
             HorizontalAlignment="Left" 
             TextWrapping="Wrap" 
             Text="{Binding Title, ElementName=control, FallbackValue=Test words!}"
