@@ -1,9 +1,14 @@
-﻿using Mobile_Rounds.ViewModels.Shared;
+﻿using Mobile_Rounds.ViewModels.Models;
+using Mobile_Rounds.ViewModels.Platform;
+using Mobile_Rounds.ViewModels.Regular.Region;
+using Mobile_Rounds.ViewModels.Shared;
+using Mobile_Rounds.ViewModels.Shared.Home;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -23,6 +28,7 @@ namespace Mobile_Rounds.Screens.Regular
     /// </summary>
     public sealed partial class StartRoundScreen : Page
     {
+
         public StartRoundScreen()
         {
             this.InitializeComponent();
@@ -34,10 +40,14 @@ namespace Mobile_Rounds.Screens.Regular
             // pass the time selection backend
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             // placeholder for region select
-            BaseViewModel.Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.RegionSelect);
+            var file = ServiceResolver.Resolve<IFileHandler>();
+            var reads = await file.GetFileAsync("regions_test.json"); //.Result blocks UI thread apparently
+            var vm = new RegionListViewModel(reads);
+            //var result = Newtownsoft.JsonConvert.DeserializeObject<RegionModel>(reads);
+            BaseViewModel.Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.RegionSelect, vm);
         }
 
         private void timeTitle_SelectionChanged(object sender, RoutedEventArgs e)

@@ -5,6 +5,8 @@
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
+using Mobile_Rounds.ViewModels.Shared.DbModels;
+using Newtonsoft.Json;
 
 namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
 {
@@ -17,16 +19,24 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// Initializes a new instance of the <see cref="ReadingInputScreenViewModel"/> class.
         /// Represents the full view model for the page.
         /// </summary>
-        public ReadingInputScreenViewModel()
+        public ReadingInputScreenViewModel(string regionName, string stationName, string reads)
         {
             var regionNav = new AsyncCommand((obj) =>
             {
                 Navigator.Navigate(Shared.Navigation.NavigationType.StationSelect);
             });
-            this.Crumbs.Add(new BreadcrumbItemModel("North Region", regionNav));
-            this.Crumbs.Add(new BreadcrumbItemModel("Compressor Room"));
+            this.Crumbs.Add(new BreadcrumbItemModel(regionName, regionNav));
+            this.Crumbs.Add(new BreadcrumbItemModel(stationName));
             this.Input = new ReadingInputViewModel();
             this.ListModel = new ReadingInputListViewModel(this);
+            var result = JsonConvert.DeserializeObject<ItemHandler>(reads);
+            foreach (var item in result.Items)
+            {
+                var newMeter = new Meter(item.Meter) { Name = item.Name };
+                newMeter.YesterdaysReading = new ReadingInput();
+                newMeter.TodaysReading = new ReadingInput();
+                this.ListModel.Meters.Add(newMeter);
+            }
         }
 
         /// <summary>

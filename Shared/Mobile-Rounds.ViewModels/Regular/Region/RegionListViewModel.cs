@@ -3,7 +3,17 @@
 // </copyright>
 
 using Mobile_Rounds.ViewModels.Shared;
+using Mobile_Rounds.ViewModels.Models;
+using Mobile_Rounds.ViewModels.Admin;
 using System.Collections.ObjectModel;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System;
+using Windows.Storage;
+using Windows.Foundation;
+using Mobile_Rounds.ViewModels.Platform;
+using System.Collections.Generic;
+using Mobile_Rounds.ViewModels.Shared.DbModels;
 
 namespace Mobile_Rounds.ViewModels.Regular.Region
 {
@@ -23,6 +33,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
                 this.region = value;
                 if (this.region != null && this.region.Navigate != null)
                 {
+
                     this.region.Navigate.Execute(this);
                 }
 
@@ -30,11 +41,20 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
             }
         }
 
-        public RegionListViewModel()
+        
+        public RegionListViewModel(string reads)
         {
             this.Regions = new ObservableCollection<RegionModelSource>();
-            this.Regions.Add(new RegionModelSource() { Name = "North Region" });
-            this.Regions.Add(new RegionModelSource() { Name = "South Region" });
+            //this.Regions.Add(new RegionModelSource() { Name = "North Region" });
+            //this.Regions.Add(new RegionModelSource() { Name = "South Region" });
+
+            //var file = ServiceResolver.Resolve<IFileHandler>();
+            //var reads = file.GetFileAsync("regions_test.json"); //.Result blocks UI thread apparently
+            var result = JsonConvert.DeserializeObject<RegionHandler>(reads);
+            foreach (var region in result.Regions)
+            {
+                this.Regions.Add(new RegionModelSource() { Name = region.Name });
+            }
         }
 
         private RegionModelSource region;

@@ -44,8 +44,8 @@ namespace Mobile_Rounds.ViewModels.Shared
         /// </summary>
         static BaseViewModel()
         {
-            MockUnits = new List<UnitOfMeasureViewModel>();
-            MockMeters = new List<Meter>();
+            //MockUnits = new List<UnitOfMeasureViewModel>();
+            //MockMeters = new List<Meter>();
         }
 
         /// <summary>

@@ -5,6 +5,8 @@
 using Mobile_Rounds.ViewModels.Shared;
 using System.Collections.ObjectModel;
 using Mobile_Rounds.ViewModels.Models;
+using Newtonsoft.Json;
+using Mobile_Rounds.ViewModels.Shared.DbModels;
 
 namespace Mobile_Rounds.ViewModels.Regular.Station
 {
@@ -31,14 +33,15 @@ namespace Mobile_Rounds.ViewModels.Regular.Station
             }
         }
 
-        public StationListViewModel()
+        public StationListViewModel(string reads, string regionName)
         {
-            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("North Region"));
-
+            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel(regionName));
             this.Stations = new ObservableCollection<StationModel>();
-            this.Stations.Add(new StationModel() { Name = "Compressor Room" });
-            this.Stations.Add(new StationModel() { Name = "Air Vents" });
-            this.Stations.Add(new StationModel() { Name = "Cooling Tanks" });
+            var result = JsonConvert.DeserializeObject<StationHandler>(reads);
+            foreach (var station in result.Stations)
+            {
+                this.Stations.Add(new StationModel(regionName) { Name = station.Name });
+            }
         }
 
         private StationModel station;

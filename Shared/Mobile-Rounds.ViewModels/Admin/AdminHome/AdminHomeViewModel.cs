@@ -11,8 +11,6 @@ using System.Windows.Input;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Navigation;
-using Windows.Web.Http.Filters;
-using Windows.Web.Http;
 using System.Diagnostics;
 using Mobile_Rounds.ViewModels.Platform;
 

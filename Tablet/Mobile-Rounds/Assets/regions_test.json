@@ -1,0 +1,16 @@
+{
+	"Regions": [
+		{
+			"Name":	"North Side",
+			"Id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
+		},
+		{
+			"Name": "South Side",
+			"Id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
+		},
+		{
+			"name": "derp side",
+			"id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
+		}
+	]
+}

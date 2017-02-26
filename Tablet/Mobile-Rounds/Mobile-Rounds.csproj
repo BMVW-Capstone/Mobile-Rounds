@@ -92,6 +92,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="Assets\meters_test.json" />
+    <None Include="Assets\regions_test.json" />
+    <None Include="Assets\stations_test.json" />
     <None Include="project.json" />
     <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
@@ -110,6 +113,7 @@
     </Compile>
     <Compile Include="Helpers\ApiRequest.cs" />
     <Compile Include="Helpers\BreadcrumbNavigationHandler.cs" />
+    <Compile Include="Helpers\FileHandler.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\Admin\Regions\Index.xaml.cs">
