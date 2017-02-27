@@ -1,9 +1,9 @@
 {
-    "meter_list": [
+    "Items": [
         {
             "name": "equipment 1",
-            "id": "meter1",
-            "stationID": "place2",        
+            "id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}",
+            "stationID": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}",        
             "IsWithinSpec": true,
             "ValueBounds": "Shared.ReadingType.BoundType.EitherOr",
             "YesBooleanText": "Open",
@@ -17,8 +17,8 @@
         },
         {
             "name": "Nitrogen Backup Valve",
-            "id": "meter2",
-            "stationID":  "place3",
+            "id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}",
+            "stationID":  "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}",
             "ValueBounds":  "Shared.ReadingType.BoundType.LessThan",
             "MinimumValue": 0,
             "MaximumValue": 76,
