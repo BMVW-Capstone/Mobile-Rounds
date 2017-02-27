@@ -1,24 +1,24 @@
 {
-  "station_list": [
+  "Stations": [
     {
       "name": "herp room",
-      "id": "place1",
-      "regionId": "region1"
+      "id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}",
+      "regionId": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
     },
     {
       "name": "derp room",
-      "id": "place2",
-      "regionId": "region3"
+      "id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}",
+      "regionId": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
     },
     {
       "name": "timeout room",
-      "id": "place3",
-      "regionId": "region2"
+      "id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}",
+      "regionId": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
     },
     {
       "name": "another room",
-      "id": "place4",
-      "regionId": "region2"
+      "id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}",
+      "regionId": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
     }
   ]
 }
