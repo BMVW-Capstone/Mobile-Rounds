@@ -44,9 +44,8 @@ namespace Mobile_Rounds.Screens.Regular
         {
             // placeholder for region select
             var file = ServiceResolver.Resolve<IFileHandler>();
-            var reads = await file.GetFileAsync("regions_test.json"); //.Result blocks UI thread apparently
+            var reads = await file.GetFileAsync("regions_test.json");
             var vm = new RegionListViewModel(reads);
-            //var result = Newtownsoft.JsonConvert.DeserializeObject<RegionModel>(reads);
             BaseViewModel.Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.RegionSelect, vm);
         }
 
