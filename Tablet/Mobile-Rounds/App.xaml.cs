@@ -48,6 +48,7 @@ namespace Mobile_Rounds
             ServiceResolver.Register<IBreadcrumbNavigationEvent>(() => new BreadcrumbNavigationHandler());
 
             ServiceResolver.Register<IApiRequest>(() => new ApiRequest());
+            ServiceResolver.Register<IFileHandler>(() => new FileHandler());
 
             // set the navigator for our classses.
             BaseViewModel.Navigator = new NavigationService();

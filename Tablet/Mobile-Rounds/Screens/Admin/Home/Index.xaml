@@ -32,6 +32,9 @@
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
         <!--Header-->
@@ -63,26 +66,30 @@
         </breadcrumb:BreadcrumbControl>
 
         <controls:ColoredTile Grid.Row="2" Grid.Column="1"
+            Margin="10"
             Foreground="White"
-            Background="Blue" 
+            Background="Purple" 
             Title="Regions" 
             Command="{Binding GoToRegions}"/>
 
         <controls:ColoredTile Grid.Row="2" Grid.Column="2"
+            Margin="10"
             Foreground="White"
-            Background="Blue" 
+            Background="Purple" 
             Title="Units of Measure"
             Command="{Binding GoToUnits}" />
 
-        <controls:ColoredTile Grid.Row="4" Grid.Column="1"
+        <controls:ColoredTile Grid.Row="2" Grid.Column="3"
+            Margin="10"
             Foreground="White"
-            Background="Blue" 
+            Background="Purple" 
             Title="Stations"
             Command="{Binding GoToStations}" />
 
-        <controls:ColoredTile Grid.Row="4" Grid.Column="2"
+        <controls:ColoredTile Grid.Row="2" Grid.Column="4"
+            Margin="10"
             Foreground="White"
-            Background="Blue" 
+            Background="Purple" 
             Title="History" />
     </Grid>
 </Page>

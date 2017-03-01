@@ -10,10 +10,6 @@
     xmlns:breadcrumb="using:GoedWare.Controls.Breadcrumb"
     mc:Ignorable="d">
 
-    <Page.DataContext>
-        <vm:StationListViewModel />
-    </Page.DataContext>
-
     <Page.Transitions>
         <TransitionCollection>
             <EntranceThemeTransition />
@@ -75,7 +71,7 @@
    
                         <TextBlock Grid.Row="0" Grid.Column="0"
                             Text="{Binding Name}"
-                            Foreground="Purple" 
+                            Foreground="#234ace" 
                             HorizontalAlignment="Stretch"
                             FontSize="30" Padding="5"/>
 

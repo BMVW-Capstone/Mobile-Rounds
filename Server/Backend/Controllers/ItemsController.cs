@@ -1,11 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Backend.DataAccess.Abstractions;
 using Backend.DataAccess.Repositories;
 using Backend.Schemas;
 using Mobile_Rounds.ViewModels.Models;
 using Swashbuckle.Swagger.Annotations;
-using System;
 
 namespace Backend.Controllers
 {
@@ -46,8 +46,9 @@ namespace Backend.Controllers
         /// </summary>
         /// <returns>A list of items.</returns>
         /// <param name="stationId">The id of the station.</param>
-        [Route("{stationId}/items")]
-        [SwaggerOperation(Tags = new[] { SwaggerName })]
+        //[RoutePrefix("/stations")]
+        [Route("~/api/stations/{stationId}/items")]
+        [SwaggerOperation(Tags = new[] { StationsController.SwaggerName })]
         public async Task<IHttpActionResult> Get(Guid stationId)
         {
             var results = await this.datasource.GetForStationAsync(stationId);
