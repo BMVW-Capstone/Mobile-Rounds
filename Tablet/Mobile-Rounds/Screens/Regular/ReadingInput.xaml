@@ -100,7 +100,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -129,34 +130,69 @@
                 InputScope="{Binding InputType, Converter={StaticResource BoundToKeyboard}}"
                 Text="{Binding StringValue}"/>
 
-            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
-                <TextBlock Text="Acceptable Value" FontSize="18" Padding="0,0,0,10"/>
+            <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
+                <TextBlock Text="SOC" FontSize="18" Padding="0,0,0,10"/>
                 <TextBlock Text="{Binding AcceptedValue}" FontSize="18" HorizontalAlignment="Center"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
-                <TextBlock Text="Yesterdays Value" FontSize="18" Padding="0,0,0,10"/>
-                <TextBlock Text="{Binding YesterdaysValue}" FontSize="18" HorizontalAlignment="Center"
-                            Foreground="{Binding WasYesterdayInSpec, Converter={StaticResource BoolToColor}}"/>
-            </StackPanel>
-
-            <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-                Margin="0,10,0,0"
+            <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1"
+                Margin="0,10,0,10"
                 BorderBrush="{Binding IsInSpec, Converter={StaticResource BoolToColor}}"
                 AcceptsReturn="True"
-                TextWrapping="Wrap"
+                TextWrapping="Wrap" MaxHeight="100"
+                VerticalAlignment="Top"
                 Text="{Binding Comments}">
                 <TextBox.Header>
                     <TextBlock Text="Comments" FontSize="18"></TextBlock>
                 </TextBox.Header>
             </TextBox>
 
-            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,10,0,0">
-                <TextBlock Text="Yesterdays Comments:" FontSize="18" Padding="0,0,0,5"/>
-                <TextBlock Text="{Binding YesterdaysComments}" FontSize="18" Padding="15,0,0,15" />
+            <Grid Grid.Row="3" Grid.Column="0"
+                  VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                  Margin="0,10,0,10"
+                  BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.25*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="0">
+                    <TextBlock FontSize="20" HorizontalAlignment="Center">Test</TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="1">
+                    <TextBlock FontSize="20" HorizontalAlignment="Center">Test</TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="2">
+                    <TextBlock FontSize="20" HorizontalAlignment="Center">Test</TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="3">
+                    <TextBlock FontSize="20" HorizontalAlignment="Center">Test</TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="0">
+                    <TextBlock FontSize="20" HorizontalAlignment="Center">2:00</TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="1">
+                    <TextBlock FontSize="20" HorizontalAlignment="Center">8:00</TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="2">
+                    <TextBlock FontSize="20" HorizontalAlignment="Center">14:00</TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="3">
+                    <TextBlock FontSize="20" HorizontalAlignment="Center">20:00</TextBlock>
+                </Border>
+            </Grid>
+
+            <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" MaxHeight="100" Margin="0,10,0,10">
+                <TextBlock Text="Yesterdays Comments:" FontSize="18" Padding="0,0,0,5" Margin="0,0,0.4,0"/>
+                <TextBlock Text="{Binding YesterdaysComments}" FontSize="18" Padding="15,0,0,15" Margin="0,0,0.4,0" />
             </StackPanel>
 
-            <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
