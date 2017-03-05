@@ -142,9 +142,8 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             this.UnitTypes = new List<string>
             {
                 "Number",
-                "Yes/No",
-                "On/Off",
-                "Text"
+                "Text",
+                "Toggle (On/Off, Yes/No etc.)"
             };
             this.ModificationType = "Save New Unit";
             this.unitType = null;
@@ -162,8 +161,8 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             this.UnitTypes = new List<string>
             {
                 "Number",
-                "Toggle (On/Off, Yes/No etc.)",
-                "Text"
+                "Text",
+                "Toggle (On/Off, Yes/No etc.)"
             };
             this.fullName = toCopy.FullName;
             this.unitType = toCopy.UnitType;
