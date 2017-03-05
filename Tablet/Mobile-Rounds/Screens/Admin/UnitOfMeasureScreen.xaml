@@ -24,7 +24,7 @@
             <Setter Property="FontSize" Value="30"/>
         </Style>
     </Page.Resources>
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root">
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -109,15 +109,20 @@
                     </DataTemplate>
                 </TextBox.HeaderTemplate>
             </TextBox>
-            <ComboBox HorizontalAlignment="Stretch">
+            <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,0,15">
                 <ComboBox.HeaderTemplate>
                     <DataTemplate>
                         <TextBlock FontSize="22" Text="Unit Type" />
                     </DataTemplate>
                 </ComboBox.HeaderTemplate>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{ Binding UnitType }" Foreground="#224ace" FontSize="18"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
-        <Grid Grid.Row="5" Grid.RowSpan="1" Grid.Column="2" VerticalAlignment="Bottom">
+        <Grid Grid.Row="5" Grid.RowSpan="1" Grid.Column="2" VerticalAlignment="Bottom" Margin="0, -60, 0, 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -127,24 +132,24 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Button Grid.Column="0"
-                    Grid.Row="1"
-                    Background="Green" Foreground="White" Height="100" 
-                    HorizontalContentAlignment="Center"
-                    Command="{Binding DataContext.Save, ElementName=root}" 
-                    Content="{Binding ModificationType}" 
-                    HorizontalAlignment="Stretch"
-                    Margin="15" Click="Button_Click"/>
-
-            <Button Grid.Column="1"
-                    Grid.Row="1"
-                    Background="Gray" Foreground="White" Height="100"
+            <Button Grid.Column="0" Grid.Row="1"
+                    Background="DarkGray" Foreground="White" Height="100"
+                    FontSize="25"
                     HorizontalContentAlignment="Center"
                     Command="{Binding DataContext.Cancel, ElementName=root}" 
-                    Content="Cancel" HorizontalAlignment="Stretch"
-                    Margin="15"/>
+                    Content="Cancel"
+                    HorizontalAlignment="Stretch"
+                    Margin="100,80,-10,30"/>
+
+            <Button Grid.Column="1" Grid.Row="1"
+                    Background="#47ce22" Foreground="White" Height="100" 
+                    FontSize="25"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding DataContext.Save, ElementName=root}" 
+                    Content="Save" 
+                    HorizontalAlignment="Stretch"
+                    Click="Button_Click"
+                    Margin="30, 80, 0, 30"/>
         </Grid>
-
     </Grid>
-
 </Page>
