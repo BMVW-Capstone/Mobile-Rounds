@@ -29,6 +29,8 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// </summary>
         public bool IsDeleted { get; set; }
 
+        public List<string> UnitTypes { get; set; }
+
         /// <summary>
         /// Gets or sets the abbreviation of the unit.
         /// </summary>
@@ -68,6 +70,22 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             }
         }
 
+        public string UnitType
+        {
+            get
+            {
+                return this.unitType;
+            }
+
+            set
+            {
+                this.unitType = value;
+                this.RaisePropertyChanged(nameof(this.UnitType));
+                this.Save.RaiseExecuteChanged();
+                this.Cancel.RaiseExecuteChanged();
+            }
+        }
+
         /// <summary>
         /// Gets or sets the type of modification that is currently taking place
         /// on the unit.
@@ -92,9 +110,9 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// <param name="type">The type of modification taking place.</param>
         public void SetModificationType(ModificationType type)
         {
-            const string New = "Save New Unit";
-            const string Update = "Update Unit";
-            const string Delete = "Delete Unit";
+            const string New = "Create";
+            const string Update = "Update";
+            const string Delete = "Delete";
 
             switch (type)
             {
@@ -121,7 +139,17 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// <param name="cancel">The cancel command that is based on this unit.</param>
         public UnitOfMeasureViewModel(AsyncCommand save, AsyncCommand cancel)
         {
-            this.ModificationType = "Save New Unit";
+
+            //Value types for readings. Indicate what type of value a new unit will be.
+            //Volts for example might be a Number, while a text based readout would be Text
+            this.UnitTypes = new List<string>
+            {
+                "Number",
+                "Text",
+                "Toggle (On/Off, Yes/No etc.)"
+            };
+            this.ModificationType = "Create";
+            this.unitType = null;
             this.Save = save;
             this.Cancel = cancel;
         }
@@ -133,7 +161,14 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// <param name="toCopy">The object to copy.</param>
         public UnitOfMeasureViewModel(UnitOfMeasureViewModel toCopy)
         {
+            this.UnitTypes = new List<string>
+            {
+                "Number",
+                "Text",
+                "Toggle (On/Off, Yes/No etc.)"
+            };
             this.fullName = toCopy.FullName;
+            this.unitType = toCopy.UnitType;
             this.abbreviation = toCopy.Abbreviation;
             this.Id = toCopy.Id;
             this.Save = toCopy.Save;
@@ -143,6 +178,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
 
         private string abbreviation;
         private string fullName;
+        private string unitType;
         private string modificationType;
 
         private AsyncCommand Save { get; set; }
