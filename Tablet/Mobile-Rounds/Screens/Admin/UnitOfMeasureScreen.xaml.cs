@@ -30,6 +30,7 @@ namespace Mobile_Rounds.Screens.Admin
         public UnitOfMeasureScreen()
         {
             this.InitializeComponent();
+
         }
     }
 }
