@@ -75,6 +75,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                 this.currentUnit.Id = value.Id;
                 this.currentUnit.Abbreviation = value.Abbreviation;
                 this.currentUnit.FullName = value.FullName;
+                this.currentUnit.UnitType = value.UnitType;
 
                 if (this.currentUnit.Id == Guid.Empty)
                 {
@@ -122,6 +123,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                     else
                     {
                         existing.FullName = this.currentUnit.FullName;
+                        existing.UnitType = this.currentUnit.UnitType;
                         existing.Abbreviation = this.currentUnit.Abbreviation;
                         existing.ModificationType = this.currentUnit.ModificationType;
                     }
@@ -142,13 +144,15 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         private bool ValidateInput(object input)
         {
             return !string.IsNullOrEmpty(this.currentUnit.Abbreviation)
-                && !string.IsNullOrEmpty(this.currentUnit.FullName);
+                && !string.IsNullOrEmpty(this.currentUnit.FullName)
+                && !string.IsNullOrEmpty(this.currentUnit.UnitType);
         }
 
         private bool CanCancel(object input)
         {
             return !string.IsNullOrEmpty(this.currentUnit.Abbreviation)
-                || !string.IsNullOrEmpty(this.currentUnit.FullName);
+                || !string.IsNullOrEmpty(this.currentUnit.FullName)
+                || !string.IsNullOrEmpty(this.currentUnit.UnitType);
         }
     }
 }

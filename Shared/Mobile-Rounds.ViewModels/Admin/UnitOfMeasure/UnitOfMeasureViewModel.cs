@@ -29,6 +29,8 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// </summary>
         public bool IsDeleted { get; set; }
 
+        public List<string> UnitTypes { get; set; }
+
         /// <summary>
         /// Gets or sets the abbreviation of the unit.
         /// </summary>
@@ -137,7 +139,15 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// <param name="cancel">The cancel command that is based on this unit.</param>
         public UnitOfMeasureViewModel(AsyncCommand save, AsyncCommand cancel)
         {
+            this.UnitTypes = new List<string>
+            {
+                "Number",
+                "Yes/No",
+                "On/Off",
+                "Text"
+            };
             this.ModificationType = "Save New Unit";
+            this.unitType = null;
             this.Save = save;
             this.Cancel = cancel;
         }
@@ -149,6 +159,12 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// <param name="toCopy">The object to copy.</param>
         public UnitOfMeasureViewModel(UnitOfMeasureViewModel toCopy)
         {
+            this.UnitTypes = new List<string>
+            {
+                "Number",
+                "Toggle (On/Off, Yes/No etc.)",
+                "Text"
+            };
             this.fullName = toCopy.FullName;
             this.unitType = toCopy.UnitType;
             this.abbreviation = toCopy.Abbreviation;
