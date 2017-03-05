@@ -139,6 +139,9 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// <param name="cancel">The cancel command that is based on this unit.</param>
         public UnitOfMeasureViewModel(AsyncCommand save, AsyncCommand cancel)
         {
+
+            //Value types for readings. Indicate what type of value a new unit will be.
+            //Volts for example might be a Number, while a text based readout would be Text
             this.UnitTypes = new List<string>
             {
                 "Number",
