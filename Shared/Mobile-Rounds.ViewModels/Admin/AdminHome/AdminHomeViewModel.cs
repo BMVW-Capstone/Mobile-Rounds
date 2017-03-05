@@ -54,7 +54,7 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
             {
                 IApiRequest request = ServiceResolver.Resolve<IApiRequest>();
 
-                var data = await request.GetAsync<string>("http://backend.dc.capstone.com:3316/api/regions");
+                //var data = await request.GetAsync<string>("http://backend.dc.capstone.com:3316/api/regions");
 
                 Navigator.Navigate(NavigationType.AdminStations);
             });
