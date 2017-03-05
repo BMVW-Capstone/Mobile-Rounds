@@ -1,38 +1,106 @@
 {
-    "Items": [
+  "Items": [
+    {
+      "name": "equipment 1",
+      "id": "27B2475A-D601-4DDA-BF1A-91AEF265A32F",
+      "stationID": "71440A08-12F5-43A4-893F-DD15F8CAF125",
+      "IsWithinSpec": true,
+      "ValueBounds": "Shared.ReadingType.BoundType.EitherOr",
+      "YesBooleanText": "Open",
+      "NoBooleanText": "Closed",
+      "YesterdaysReading": [
         {
-            "name": "equipment 1",
-            "id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}",
-            "stationID": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}",        
-            "IsWithinSpec": true,
-            "ValueBounds": "Shared.ReadingType.BoundType.EitherOr",
-            "YesBooleanText": "Open",
-            "NoBooleanText": "Closed",            
-            "YesterdaysReading": [
-                {
-                    "IsWithinSpec": true,
-                    "StringValue": "Open"
-                }
-            ]
-        },
-        {
-            "name": "Nitrogen Backup Valve",
-            "id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}",
-            "stationID":  "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}",
-            "ValueBounds":  "Shared.ReadingType.BoundType.LessThan",
-            "MinimumValue": 0,
-            "MaximumValue": 76,
-            "UnitAbbreviation": "K",
-            "YesterdaysReading": [
-                {
-                    "IsWithinSpec": false,
-                    "Notes": "Wasn't working at all.",
-                    "StringValue": "89",
-                    "UnitAbbreviation": "k"
-                }
-            ]
+          "IsWithinSpec": true,
+          "StringValue": "Open"
         }
-    ]
+      ]
+    },
+    {
+      "name": "Nitrogen Backup Valve",
+      "id": "27B2475A-D601-4DDA-BF1A-91AEF265A32F",
+      "stationID": "71440A08-12F5-43A4-893F-DD15F8CAF125",
+      "ValueBounds": "Shared.ReadingType.BoundType.LessThan",
+      "MinimumValue": 0,
+      "MaximumValue": 76,
+      "UnitAbbreviation": "K",
+      "YesterdaysReading": [
+        {
+          "IsWithinSpec": false,
+          "Notes": "Wasn't working at all.",
+          "StringValue": "89",
+          "UnitAbbreviation": "k"
+        }
+      ]
+    },
+    {
+      "name": "test equipment a",
+      "id": "27B2475A-D601-4DDA-BF1A-91AEF265A32F",
+      "stationID": "71440A08-12F5-43A4-893F-DD15F8CAF125",
+      "ValueBounds": "Shared.ReadingType.BoundType.LessThan",
+      "MinimumValue": 0,
+      "MaximumValue": 76,
+      "UnitAbbreviation": "K",
+      "YesterdaysReading": [
+        {
+          "IsWithinSpec": false,
+          "Notes": "Wasn't working at all.",
+          "StringValue": "89",
+          "UnitAbbreviation": "k"
+        }
+      ]
+    },
+    {
+      "name": "test equipment b",
+      "id": "27B2475A-D601-4DDA-BF1A-91AEF265A32F",
+      "stationID": "71440A08-12F5-43A4-893F-DD15F8CAF125",
+      "ValueBounds": "Shared.ReadingType.BoundType.LessThan",
+      "MinimumValue": 0,
+      "MaximumValue": 76,
+      "UnitAbbreviation": "K",
+      "YesterdaysReading": [
+        {
+          "IsWithinSpec": false,
+          "Notes": "Wasn't working at all.",
+          "StringValue": "89",
+          "UnitAbbreviation": "k"
+        }
+      ]
+    },
+    {
+      "name": "test equipment c",
+      "id": "27B2475A-D601-4DDA-BF1A-91AEF265A32F",
+      "stationID": "DCAEA445-965E-48DC-A732-DD5B45FAC33A",
+      "ValueBounds": "Shared.ReadingType.BoundType.LessThan",
+      "MinimumValue": 0,
+      "MaximumValue": 76,
+      "UnitAbbreviation": "K",
+      "YesterdaysReading": [
+        {
+          "IsWithinSpec": false,
+          "Notes": "Wasn't working at all.",
+          "StringValue": "89",
+          "UnitAbbreviation": "k"
+        }
+      ]
+    },
+    {
+      "name": "test equipment d",
+      "id": "27B2475A-D601-4DDA-BF1A-91AEF265A32F",
+      "stationID": "41EBF370-473A-4145-ABC8-E9CE064C684D",
+      "ValueBounds": "Shared.ReadingType.BoundType.LessThan",
+      "MinimumValue": 0,
+      "MaximumValue": 76,
+      "UnitAbbreviation": "K",
+      "YesterdaysReading": [
+        {
+          "IsWithinSpec": false,
+          "Notes": "Wasn't working at all.",
+          "StringValue": "89",
+          "UnitAbbreviation": "k"
+        }
+      ]
+    }
+  ]
 }
 
 

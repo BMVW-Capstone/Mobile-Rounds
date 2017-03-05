@@ -2,15 +2,15 @@
 	"Regions": [
 		{
 			"Name":	"North Side",
-			"Id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
+			"Id": "27B2475A-D601-4DDA-BF1A-91AEF265A32F"
 		},
-		{
-			"Name": "South Side",
-			"Id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
-		},
-		{
-			"name": "derp side",
-			"id": "{27B2475A-D601-4DDA-BF1A-91AEF265A32F}"
-		}
+    {
+      "Name": "South Side",
+      "Id": "3C59906B-E1C5-4F8B-ADD0-035399A7E62F"
+    },
+    {
+      "name": "the b sides",
+      "id": "F54AF9FF-06E1-47BC-9552-7EE07F4B826B"
+    }
 	]
 }

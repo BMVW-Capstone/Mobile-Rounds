@@ -15,14 +15,17 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
         public string Name { get; set; }
 
         public AsyncCommand Navigate { get; private set; }
+        public Guid Id { get; private set; }
 
-        public RegionModelSource()
+        public RegionModelSource(Guid regionId)
         {
             this.Navigate = new AsyncCommand(async(obj) =>
             {
                 var file = Platform.ServiceResolver.Resolve<IFileHandler>();
-                var reads = await file.GetFileAsync("stations_test.json"); //.Result blocks UI thread apparently
-                var vm = new StationListViewModel(reads, this.Name);
+                var reads = await file.GetFileAsync("stations_test.json");
+                //need to figure out proper local file deployment. this doesn't load out of assets
+                //currently have to track down user\appdata\local\packages\thisAppGuid\LocalState and place them manually.
+                var vm = new StationListViewModel(reads, this.Name, regionId);
                 BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationSelect, vm);
             });
         }

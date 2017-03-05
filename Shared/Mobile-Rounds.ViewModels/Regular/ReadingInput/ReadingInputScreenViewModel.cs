@@ -7,6 +7,7 @@ using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
 using Mobile_Rounds.ViewModels.Shared.DbModels;
 using Newtonsoft.Json;
+using System;
 
 namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
 {
@@ -19,7 +20,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// Initializes a new instance of the <see cref="ReadingInputScreenViewModel"/> class.
         /// Represents the full view model for the page.
         /// </summary>
-        public ReadingInputScreenViewModel(string regionName, string stationName, string reads)
+        public ReadingInputScreenViewModel(string regionName, string stationName, string reads, Guid stationId)
         {
             var regionNav = new AsyncCommand((obj) =>
             {
@@ -32,10 +33,13 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             var result = JsonConvert.DeserializeObject<ItemHandler>(reads);
             foreach (var item in result.Items)
             {
-                var newMeter = new Meter(item.Meter) { Name = item.Name };
-                newMeter.YesterdaysReading = new ReadingInput();
-                newMeter.TodaysReading = new ReadingInput();
-                this.ListModel.Meters.Add(newMeter);
+                if (item.StationId == stationId)
+                {
+                    var newMeter = new Meter(item.Meter) { Name = item.Name };
+                    newMeter.YesterdaysReading = new ReadingInput();
+                    newMeter.TodaysReading = new ReadingInput();
+                    this.ListModel.Meters.Add(newMeter);
+                }
             }
         }
 

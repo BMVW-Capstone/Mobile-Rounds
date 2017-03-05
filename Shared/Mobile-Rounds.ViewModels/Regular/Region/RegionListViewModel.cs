@@ -45,15 +45,10 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
         public RegionListViewModel(string reads)
         {
             this.Regions = new ObservableCollection<RegionModelSource>();
-            //this.Regions.Add(new RegionModelSource() { Name = "North Region" });
-            //this.Regions.Add(new RegionModelSource() { Name = "South Region" });
-
-            //var file = ServiceResolver.Resolve<IFileHandler>();
-            //var reads = file.GetFileAsync("regions_test.json"); //.Result blocks UI thread apparently
             var result = JsonConvert.DeserializeObject<RegionHandler>(reads);
             foreach (var region in result.Regions)
             {
-                this.Regions.Add(new RegionModelSource() { Name = region.Name });
+                this.Regions.Add(new RegionModelSource(region.Id) { Name = region.Name });
             }
         }
 
