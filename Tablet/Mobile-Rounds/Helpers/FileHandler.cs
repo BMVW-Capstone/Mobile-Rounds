@@ -13,15 +13,17 @@ namespace Mobile_Rounds.Helpers
     {
         public async Task<string> GetFileAsync(string fileName)
         {
-            /*
-            string path = "ms-appx:///" + fileName;
-            var file = await StorageFile.GetFileFromPathAsync(path);
-            return await FileIO.ReadTextAsync(file);
-            */
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
             StorageFile sampleFile = await storageFolder.GetFileAsync(fileName);
             return await FileIO.ReadTextAsync(sampleFile);
         }
+        public async Task SaveFileAsync(string fileName, object toSave)
+        {
+            var jObject = Newtonsoft.Json.JsonConvert.SerializeObject(toSave);
+            StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Windows.Storage.StorageFile file = await storageFolder.CreateFileAsync(
+                fileName, Windows.Storage.CreationCollisionOption.ReplaceExisting);
+            await Windows.Storage.FileIO.WriteTextAsync(file, jObject);
+        }
     }
 }
-

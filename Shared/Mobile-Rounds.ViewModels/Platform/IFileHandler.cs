@@ -9,7 +9,7 @@ namespace Mobile_Rounds.ViewModels.Platform
     public interface IFileHandler
     {
         Task<string> GetFileAsync(string fileName);
-
+        Task SaveFileAsync(string fileName, object toSave);
         //need to figure out proper local file deployment. this doesn't load out of assets
         //currently have to track down user\appdata\local\packages\thisAppGuid\LocalState and place them manually.
     }

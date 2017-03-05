@@ -62,15 +62,19 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
             {
                 this.IsSyncing = true;
                 IApiRequest request = ServiceResolver.Resolve<IApiRequest>();
+                var handler = Platform.ServiceResolver.Resolve<IFileHandler>();
 
                 var regions = await request.GetAsync<List<RegionModel>>("http://localhost:1797/api/regions");
                 var regionResult = new RegionHandler() { Regions = regions };
+                await handler.SaveFileAsync("regions.json", regionResult);
 
                 var stations = await request.GetAsync<List<StationModel>>("http://localhost:1797/api/stations");
                 var stationResult = new StationHandler() { Stations = stations };
+                await handler.SaveFileAsync("stations.json", stationResult);
 
                 var items = await request.GetAsync<List<ItemModel>>("http://localhost:1797/api/items");
                 var itemResult = new ItemHandler() { Items = items };
+                await handler.SaveFileAsync("items.json", itemResult);
 
                 this.IsSyncing = false;
             });
