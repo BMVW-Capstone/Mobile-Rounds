@@ -42,7 +42,6 @@ namespace Mobile_Rounds.Screens.Regular
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            // placeholder for region select
             var file = ServiceResolver.Resolve<IFileHandler>();
             var reads = await file.GetFileAsync("regions.json");
             var vm = new RegionListViewModel(reads);
