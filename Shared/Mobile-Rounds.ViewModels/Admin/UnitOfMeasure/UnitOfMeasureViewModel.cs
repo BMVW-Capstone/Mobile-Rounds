@@ -68,6 +68,22 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             }
         }
 
+        public string UnitType
+        {
+            get
+            {
+                return this.unitType;
+            }
+
+            set
+            {
+                this.unitType = value;
+                this.RaisePropertyChanged(nameof(this.UnitType));
+                this.Save.RaiseExecuteChanged();
+                this.Cancel.RaiseExecuteChanged();
+            }
+        }
+
         /// <summary>
         /// Gets or sets the type of modification that is currently taking place
         /// on the unit.
@@ -134,6 +150,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         public UnitOfMeasureViewModel(UnitOfMeasureViewModel toCopy)
         {
             this.fullName = toCopy.FullName;
+            this.unitType = toCopy.UnitType;
             this.abbreviation = toCopy.Abbreviation;
             this.Id = toCopy.Id;
             this.Save = toCopy.Save;
@@ -143,6 +160,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
 
         private string abbreviation;
         private string fullName;
+        private string unitType;
         private string modificationType;
 
         private AsyncCommand Save { get; set; }
