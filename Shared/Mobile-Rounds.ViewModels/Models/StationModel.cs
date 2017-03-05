@@ -49,15 +49,14 @@ namespace Mobile_Rounds.ViewModels.Models
                 BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationInput);
             });
         }
-        public StationModel(string regionName)
+        public StationModel(string regionName, Guid stationId)
         {
             this.Items = new List<ItemModel>();
             this.Navigate = new AsyncCommand(async(obj) =>
-            {
-                
+            {                
                 var file = Platform.ServiceResolver.Resolve<IFileHandler>();
                 var reads = await file.GetFileAsync("meters_test.json");
-                var vm = new ReadingInputScreenViewModel(regionName, this.Name, reads);
+                var vm = new ReadingInputScreenViewModel(regionName, this.Name, reads, stationId);
                 BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationInput, vm);
             });
         }
