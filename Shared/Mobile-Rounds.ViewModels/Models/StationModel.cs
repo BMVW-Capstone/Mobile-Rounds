@@ -55,7 +55,7 @@ namespace Mobile_Rounds.ViewModels.Models
             this.Navigate = new AsyncCommand(async(obj) =>
             {                
                 var file = Platform.ServiceResolver.Resolve<IFileHandler>();
-                var reads = await file.GetFileAsync("meters_test.json");
+                var reads = await file.GetFileAsync("meters.json");
                 var vm = new ReadingInputScreenViewModel(regionName, this.Name, reads, stationId);
                 BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationInput, vm);
             });
