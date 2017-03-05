@@ -77,7 +77,9 @@
         <!-- Content -->
         <ListView ItemsSource="{Binding Units, Mode=TwoWay}" 
                   Grid.Row="2" Grid.Column="1" SelectionMode="Single"
-                  SelectedItem="{Binding Selected, Mode=TwoWay}" Padding="0,0,15,0">
+                  Grid.RowSpan="4" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  SelectedItem="{Binding Selected, Mode=TwoWay}" Margin="0, 0, 25, 25">
             <ListView.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock FontSize="30" Text="Available Units" Padding="0,0,0,15"/>
@@ -86,8 +88,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding Abbreviation}" />
-                        <TextBlock Text="{Binding FullName}" />
+                        <TextBlock Text="{Binding FullName}" FontSize="22" Foreground="#234ace"/>
+                        <TextBlock Text="{Binding Abbreviation}" FontSize="18" Foreground="#234ace" Padding="8, 0, 0, 10"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -95,13 +97,6 @@
 
         <StackPanel Grid.Row="2" Grid.Column="2" Grid.RowSpan="3" DataContext="{Binding CurrentUnit, Mode=TwoWay}" Padding="0,0,15,0">
             <TextBlock Text="New/Modify Unit" Style="{StaticResource SectionHeader}" Margin="0,0,0,15"/>
-            <TextBox Text="{Binding Abbreviation, Mode=TwoWay}" Style="{StaticResource TextInput}">
-                <TextBox.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock FontSize="22" Text="Abbreviation/Symbol" />
-                    </DataTemplate>
-                </TextBox.HeaderTemplate>
-            </TextBox>
             <TextBox Text="{Binding FullName, Mode=TwoWay}" Style="{StaticResource TextInput}">
                 <TextBox.HeaderTemplate>
                     <DataTemplate>
@@ -109,11 +104,18 @@
                     </DataTemplate>
                 </TextBox.HeaderTemplate>
             </TextBox>
+            <TextBox Text="{Binding Abbreviation, Mode=TwoWay}" Style="{StaticResource TextInput}">
+                <TextBox.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock FontSize="22" Text="Abbreviation/Symbol" />
+                    </DataTemplate>
+                </TextBox.HeaderTemplate>
+            </TextBox>
             <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,0,15" 
-                      ItemsSource="{ Binding UnitTypes }" SelectedItem="{ Binding UnitType, Mode=TwoWay}">
+                      ItemsSource="{ Binding UnitTypes }" SelectedItem="{ Binding UnitType, Mode=TwoWay}" FontSize="18">
                 <ComboBox.HeaderTemplate>
                     <DataTemplate>
-                        <TextBlock FontSize="22" Text="Unit Type" />
+                        <TextBlock FontSize="22" Text="Value Type" />
                     </DataTemplate>
                 </ComboBox.HeaderTemplate>
             </ComboBox>
@@ -142,9 +144,8 @@
                     FontSize="25"
                     HorizontalContentAlignment="Center"
                     Command="{Binding DataContext.Save, ElementName=root}" 
-                    Content="Save" 
+                    Content="{Binding CurrentUnit.ModificationType}"
                     HorizontalAlignment="Stretch"
-                    Click="Button_Click"
                     Margin="30, 80, 0, 30"/>
         </Grid>
     </Grid>

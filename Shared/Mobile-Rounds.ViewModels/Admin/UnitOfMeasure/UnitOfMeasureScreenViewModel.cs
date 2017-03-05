@@ -118,7 +118,6 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                         this.CurrentUnit.Id = Guid.NewGuid();
                         var newCopy = new UnitOfMeasureViewModel(this.CurrentUnit);
                         this.Units.Add(newCopy);
-                        MockUnits.Add(newCopy);
                     }
                     else
                     {

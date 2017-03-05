@@ -110,9 +110,9 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// <param name="type">The type of modification taking place.</param>
         public void SetModificationType(ModificationType type)
         {
-            const string New = "Save New Unit";
-            const string Update = "Update Unit";
-            const string Delete = "Delete Unit";
+            const string New = "Create";
+            const string Update = "Update";
+            const string Delete = "Delete";
 
             switch (type)
             {
@@ -145,7 +145,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                 "Text",
                 "Toggle (On/Off, Yes/No etc.)"
             };
-            this.ModificationType = "Save New Unit";
+            this.ModificationType = "Create";
             this.unitType = null;
             this.Save = save;
             this.Cancel = cancel;
