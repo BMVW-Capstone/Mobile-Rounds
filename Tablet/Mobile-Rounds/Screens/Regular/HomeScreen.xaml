@@ -5,6 +5,7 @@
     xmlns:local="using:Mobile_Rounds"
     xmlns:vm="using:Mobile_Rounds.ViewModels.Shared.Home"
     xmlns:controls="using:Mobile_Rounds.Controls"
+    xmlns:converters="using:Mobile_Rounds.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -14,6 +15,10 @@
             <EntranceThemeTransition />
         </TransitionCollection>
     </Page.Transitions>
+
+    <Page.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -39,6 +44,7 @@
             <controls:ColoredTile Foreground="White" Background="Purple" Margin="10" Title="Admin"
                                   Command="{Binding GoToAdmin}"
                                   Visibility="{Binding AdminTileVisibility}"/>
+            <ProgressRing IsActive="{Binding IsSyncing, Mode=TwoWay}" Visibility="{Binding IsSyncing, Mode=TwoWay, Converter={StaticResource BoolToVis}}"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -27,7 +27,7 @@ namespace Mobile_Rounds.ViewModels.Tests.Shared.Home
             var vm = new HomePageViewModel();
 
             Assert.IsInstanceOfType(vm.StartRound, typeof(StartRoundCommand));
-            Assert.IsInstanceOfType(vm.Sync, typeof(SyncCommand));
+            Assert.IsInstanceOfType(vm.Sync, typeof(AsyncCommand));
         }
     }
 }

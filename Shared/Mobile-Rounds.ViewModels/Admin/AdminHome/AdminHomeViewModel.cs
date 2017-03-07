@@ -13,6 +13,7 @@ using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Navigation;
 using System.Diagnostics;
 using Mobile_Rounds.ViewModels.Platform;
+using Mobile_Rounds.ViewModels.Models;
 
 namespace Mobile_Rounds.ViewModels.Admin.AdminHome
 {
@@ -54,7 +55,7 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
             {
                 IApiRequest request = ServiceResolver.Resolve<IApiRequest>();
 
-                //var data = await request.GetAsync<string>("http://backend.dc.capstone.com:3316/api/regions");
+                var data = await request.GetAsync<List<RegionModel>>("http://localhost:1797/api/regions");
 
                 Navigator.Navigate(NavigationType.AdminStations);
             });
