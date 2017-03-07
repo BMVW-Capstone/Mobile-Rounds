@@ -22,9 +22,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
             this.Navigate = new AsyncCommand(async(obj) =>
             {
                 var file = Platform.ServiceResolver.Resolve<IFileHandler>();
-                var reads = await file.GetFileAsync("stations_test.json");
-                //need to figure out proper local file deployment. this doesn't load out of assets
-                //currently have to track down user\appdata\local\packages\thisAppGuid\LocalState and place them manually.
+                var reads = await file.GetFileAsync("stations.json");
                 var vm = new StationListViewModel(reads, this.Name, regionId);
                 BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationSelect, vm);
             });

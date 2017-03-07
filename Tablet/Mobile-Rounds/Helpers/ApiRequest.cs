@@ -1,4 +1,5 @@
 ﻿using Mobile_Rounds.ViewModels.Platform;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,7 +31,9 @@ namespace Mobile_Rounds.Helpers
                 {
                     
                     var data = await client.GetStringAsync(uri);
-                    Debugger.Break();
+                    var results = JsonConvert.DeserializeObject<TResult>(data);
+                    return results;
+                    //Debugger.Break();
                 }
                 catch (Exception ex)
                 {
