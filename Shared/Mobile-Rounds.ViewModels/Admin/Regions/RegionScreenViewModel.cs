@@ -117,9 +117,6 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
             this.Regions = new ObservableCollection<RegionViewModel>();
             this.Crumbs.Add(new BreadcrumbItemModel("Admin", this.GoToAdmin));
             this.Crumbs.Add(new BreadcrumbItemModel("Regions"));
-
-            Models.RegionModel model = Navigator.GetNavigationData<Models.RegionModel>();
-            this.Crumbs.Add(new BreadcrumbItemModel(model.Name));
         }
 
         private RegionViewModel currentRegion;

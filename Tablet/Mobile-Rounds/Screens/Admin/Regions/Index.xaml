@@ -9,11 +9,11 @@
     xmlns:breadcrumb="using:GoedWare.Controls.Breadcrumb"
     xmlns:vm="using:Mobile_Rounds.ViewModels.Admin.Regions"
     mc:Ignorable="d">
-
+    <Page.DataContext>
+        <vm:RegionScreenViewModel />
+    </Page.DataContext>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root">
-        <Grid.DataContext>
-            <vm:RegionScreenViewModel />
-        </Grid.DataContext>
+
 
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -59,37 +59,38 @@
                 </DataTemplate>
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
-
-
-        <!--Header-->
-
-
+        
         <TextBlock Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="2"
             VerticalAlignment="Bottom" HorizontalAlignment="Stretch"
             x:Name="textBlock" TextWrapping="Wrap"
             Text="Create Region" FontSize="36"/>
 
-        <TextBlock x:Name="textBlock1" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="20,20,9.4,0.4" Text="Name" FontSize="30"/>
-        <TextBox x:Name="nameTextBox" Text="{Binding CurrentRegion.Name, Mode=TwoWay}"
+        <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="20,10,9.4,0" Text="Name" FontSize="30"/>
+        <TextBox Text="{Binding CurrentRegion.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" 
-                 VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10, 70, 20, 0" TextWrapping="Wrap" FontSize="30"/>
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="20, 40, 20, 0" TextWrapping="Wrap" FontSize="30"/>
+
+        <Button Content="Cancel"
+                Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+                Foreground="White" Height="100" HorizontalContentAlignment="Center" FontSize="36" RequestedTheme="Light"
+                Margin="0, 0, 10, 0" Background="DarkGray" Command="{Binding DataContext.Cancel, ElementName=root}"/>
         
-        <Button x:Name="button" Content="Create"
+        <Button Content="Create"
                 Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
                 Background="#47ce22" Foreground="White" Height="100" HorizontalContentAlignment="Center"
-                FontSize="36" RequestedTheme="Light"
+                FontSize="36" RequestedTheme="Light" Margin="10, 0, 0, 0"
                 Command="{Binding DataContext.Save, ElementName=root}"/>
         <TextBlock Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                x:Name="regionsTitle" Text="Regions" FontSize="36"
+                Text="Regions" FontSize="36"
                 HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
         <ListView ItemsSource="{Binding Regions, Mode=TwoWay}" 
-            SelectedItem="{Binding Selected, Mode=TwoWay}"
-            Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="3"
+            SelectedItem="{Binding Selected, Mode=TwoWay}" Margin="0, 10, 0, 0"
+            Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3"
             ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Enabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding Name}" FontSize="22" Foreground="#234ace"/>
+                        <TextBlock Text="{Binding Name}" FontSize="30" Foreground="#234ace"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
