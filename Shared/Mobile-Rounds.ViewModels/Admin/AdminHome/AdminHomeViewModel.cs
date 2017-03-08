@@ -77,9 +77,12 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
                 var items = await fm.GetFileAsync<ItemHandler>("items.json");
                 var units = await fm.GetFileAsync<UnitHandler>("units.json");
 
+                var east = regions.Regions[0];
+                var nox = stations.Stations.First(r => r.RegionId == east.Id);
+
                 var vm = new ViewModels.Admin.Items.ItemScreenViewModel(
-                    regions.Regions[0],
-                    stations.Stations[0],
+                    east,
+                    nox,
                     units.Units,
                     items.Items);
 
