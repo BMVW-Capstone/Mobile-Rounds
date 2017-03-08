@@ -11,9 +11,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root">
-        <!--<Grid.DataContext>
-            <vm:RegionsViewModel />
-        </Grid.DataContext>-->
+        <Grid.DataContext>
+            <vm:RegionScreenViewModel />
+        </Grid.DataContext>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -70,12 +70,12 @@
             Text="Create Region" FontSize="36"/>
 
         <TextBlock x:Name="textBlock1" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="20,20,9.4,0.4" Text="Name" FontSize="30"/>
-        <TextBox x:Name="nameTextBox" Text="{Binding FullName, Mode=TwoWay}"
+        <TextBox x:Name="nameTextBox" Text="{Binding CurrentRegion.Name, Mode=TwoWay}"
                  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" 
                  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10, 70, 20, 0" TextWrapping="Wrap" FontSize="30"/>
         
         <Button x:Name="button" Content="Create"
-                Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+                Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
                 Background="#47ce22" Foreground="White" Height="100" HorizontalContentAlignment="Center"
                 FontSize="36" RequestedTheme="Light"
                 Command="{Binding DataContext.Save, ElementName=root}"/>

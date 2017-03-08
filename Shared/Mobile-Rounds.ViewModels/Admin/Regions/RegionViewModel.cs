@@ -35,7 +35,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
             set
             {
                 this.name = value;
-                this.RaisePropertyChanged(nameof(this.name));
+                this.RaisePropertyChanged(nameof(this.Name));
                 this.Save.RaiseExecuteChanged();
                 this.Cancel.RaiseExecuteChanged();
             }

@@ -96,7 +96,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
                 (obj) =>
                 {
                                 //TODO: Implement disk storage
-                                var existing = this.Regions.FirstOrDefault(u => u.Id == this.currentRegion.Id);
+                    var existing = this.Regions.FirstOrDefault(u => u.Id == this.currentRegion.Id);
                     if (existing == null)
                     {
                         this.CurrentRegion.Id = Guid.NewGuid();
@@ -113,7 +113,8 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
                     this.Selected = null;
                 }, this.ValidateInput);
 
-
+            this.currentRegion = new RegionViewModel(this.Save, this.Cancel);
+            this.Regions = new ObservableCollection<RegionViewModel>();
             this.Crumbs.Add(new BreadcrumbItemModel("Admin", this.GoToAdmin));
             this.Crumbs.Add(new BreadcrumbItemModel("Regions"));
 
