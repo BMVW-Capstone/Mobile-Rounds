@@ -162,16 +162,16 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="0">
-                    <TextBlock FontSize="20" HorizontalAlignment="Center">Test</TextBlock>
+                    <TextBlock FontSize="20" HorizontalAlignment="Center"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="1">
-                    <TextBlock FontSize="20" HorizontalAlignment="Center">Test</TextBlock>
+                    <TextBlock FontSize="20" HorizontalAlignment="Center"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="2">
-                    <TextBlock FontSize="20" HorizontalAlignment="Center">Test</TextBlock>
+                    <TextBlock FontSize="20" HorizontalAlignment="Center"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="3">
-                    <TextBlock FontSize="20" HorizontalAlignment="Center">Test</TextBlock>
+                    <TextBlock FontSize="20" HorizontalAlignment="Center"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="0">
                     <TextBlock FontSize="20" HorizontalAlignment="Center">2:00</TextBlock>
