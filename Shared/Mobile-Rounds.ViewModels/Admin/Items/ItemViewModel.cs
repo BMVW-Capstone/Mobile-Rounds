@@ -4,6 +4,7 @@ using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,7 +106,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             }
         }
 
-        public IEnumerable<UnitOfMeasureModel> Units { get; set; }
+        public ObservableCollection<UnitOfMeasureModel> Units { get; set; }
         public IEnumerable<string> ComparisonTypes { get; set; }
 
         public UnitOfMeasureModel Unit
@@ -184,6 +185,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                 "Either"
             };
             this.ModificationType = "Create";
+            this.Units = null;
             this.comparisonType = null;
             this.unit = null;
             this.Save = save;
@@ -209,6 +211,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             this.LowerBound = toCopy.LowerBound;
             this.Unit = toCopy.Unit;
             this.IsDeleted = toCopy.IsDeleted;
+            this.Units = toCopy.Units;
             this.Id = toCopy.Id;
             this.Save = toCopy.Save;
             this.Cancel = toCopy.Cancel;

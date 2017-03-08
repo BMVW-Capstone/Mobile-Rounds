@@ -93,7 +93,7 @@
 
         <StackPanel Grid.Row="2" Grid.Column="2" Grid.RowSpan="3" DataContext="{Binding CurrentItem, Mode=TwoWay}" Padding="0,0,15,0">
             <TextBlock Text="New/Modify Item" Style="{StaticResource SectionHeader}" Margin="0,0,0,15"/>
-            <TextBox Text="{Binding Name, Mode=TwoWay}" Style="{StaticResource TextInput}">
+            <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextInput}">
                 <TextBox.HeaderTemplate>
                     <DataTemplate>
                         <TextBlock FontSize="22" Text="Name" />
@@ -124,7 +124,7 @@
                 </TextBox.HeaderTemplate>
             </TextBox>
             <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,0,15" 
-                      ItemsSource="{ Binding Units }" SelectedItem="{ Binding Unit, Mode=TwoWay}" FontSize="18">
+                      ItemsSource="{ Binding Units }" SelectedItem="{ Binding Unit, Mode=TwoWay}" DisplayMemberPath="Name" FontSize="18">
                 <ComboBox.HeaderTemplate>
                     <DataTemplate>
                         <TextBlock FontSize="22" Text="Unit Type" />
@@ -156,7 +156,7 @@
                     FontSize="25"
                     HorizontalContentAlignment="Center"
                     Command="{Binding DataContext.Save, ElementName=root}" 
-                    Content="{Binding CurrentUnit.ModificationType}"
+                    Content="{Binding CurrentItem.ModificationType}"
                     HorizontalAlignment="Stretch"
                     Margin="30, 80, 0, 30"/>
         </Grid>

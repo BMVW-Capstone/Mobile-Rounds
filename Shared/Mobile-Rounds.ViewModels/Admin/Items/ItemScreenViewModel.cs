@@ -24,7 +24,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         /// <summary>
         /// Gets or sets the list of items that are displayed to the user.
         /// </summary>
-        public IEnumerable<UnitOfMeasureModel> Units { get; set; }
+        public ObservableCollection<UnitOfMeasureModel> Units { get; set; }
 
         /// <summary>
         /// Gets the save method to call when the users taps save.
@@ -62,33 +62,33 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         {
             get
             {
-                return this.currentUnit;
+                return this.currentItem;
             }
 
             set
             {
-                if (this.currentUnit == null && value != null)
+                if (this.currentItem == null && value != null)
                 {
-                    this.currentUnit = value;
+                    this.currentItem = value;
                 }
 
-                this.currentUnit.Id = value.Id;
-                this.currentUnit.LowerBound = value.LowerBound;
-                this.currentUnit.UpperBound = value.UpperBound;
-                this.currentUnit.Name = value.Name;
-                this.currentUnit.IsDeleted = value.IsDeleted;
-                this.currentUnit.ComparisonType = value.ComparisonType;
-                this.currentUnit.ComparisonTypes = value.ComparisonTypes;
-                this.currentUnit.Units = value.Units;
-                this.currentUnit.Unit = value.Unit;
+                this.currentItem.Id = value.Id;
+                this.currentItem.LowerBound = value.LowerBound;
+                this.currentItem.UpperBound = value.UpperBound;
+                this.currentItem.Name = value.Name;
+                this.currentItem.IsDeleted = value.IsDeleted;
+                this.currentItem.ComparisonType = value.ComparisonType;
+                this.currentItem.ComparisonTypes = value.ComparisonTypes;
+                this.currentItem.Units = value.Units;
+                this.currentItem.Unit = value.Unit;
 
-                if (this.currentUnit.Id == Guid.Empty)
+                if (this.currentItem.Id == Guid.Empty)
                 {
-                    this.currentUnit.SetModificationType(ModificationType.Create);
+                    this.currentItem.SetModificationType(ModificationType.Create);
                 }
                 else
                 {
-                    this.currentUnit.SetModificationType(ModificationType.Update);
+                    this.currentItem.SetModificationType(ModificationType.Update);
                 }
 
                 this.RaisePropertyChanged(nameof(this.CurrentItem));
@@ -119,7 +119,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                 (obj) =>
                 {
                     //TODO: Implement disk storage
-                    var existing = this.Items.FirstOrDefault(u => u.Id == this.currentUnit.Id);
+                    var existing = this.Items.FirstOrDefault(u => u.Id == this.currentItem.Id);
                     if (existing == null)
                     {
                         this.CurrentItem.Id = Guid.NewGuid();
@@ -128,12 +128,12 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                     }
                     else
                     {
-                        existing.Name = this.currentUnit.Name;
-                        existing.ComparisonType = this.currentUnit.ComparisonType;
-                        existing.IsDeleted = this.currentUnit.IsDeleted;
-                        existing.UpperBound = this.currentUnit.UpperBound;
-                        existing.LowerBound = this.currentUnit.LowerBound;
-                        existing.ModificationType = this.currentUnit.ModificationType;
+                        existing.Name = this.currentItem.Name;
+                        existing.ComparisonType = this.currentItem.ComparisonType;
+                        existing.IsDeleted = this.currentItem.IsDeleted;
+                        existing.UpperBound = this.currentItem.UpperBound;
+                        existing.LowerBound = this.currentItem.LowerBound;
+                        existing.ModificationType = this.currentItem.ModificationType;
                     }
 
                     this.CurrentItem = new ItemViewModel(this.Save, this.Cancel);
@@ -151,7 +151,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             this.Crumbs.Add(new BreadcrumbItemModel(this.BelongsTo.Name));
 
             this.Items = new ObservableCollection<ItemViewModel>();
-            this.Units = unitsOfMeasure;
+            this.Units = new ObservableCollection<UnitOfMeasureModel>(unitsOfMeasure);
 
             foreach (var item in items)
             {
@@ -170,12 +170,12 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             }
         }
 
-        private ItemViewModel currentUnit;
+        private ItemViewModel currentItem;
         private ItemViewModel selected;
 
         private bool ValidateInput(object input)
         {
-            return true;
+            return !string.IsNullOrEmpty(this.CurrentItem.Name);
             //return !string.IsNullOrEmpty(this.currentUnit.Abbreviation)
             //    && !string.IsNullOrEmpty(this.currentUnit.FullName)
             //    && !string.IsNullOrEmpty(this.currentUnit.UnitType);
