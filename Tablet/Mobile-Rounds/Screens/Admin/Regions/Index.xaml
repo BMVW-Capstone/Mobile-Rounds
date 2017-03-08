@@ -79,10 +79,17 @@
         <TextBlock Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
                 x:Name="regionsTitle" Text="Regions" FontSize="36"
                 HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
-        <ListView Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="3">
-            
+        <ListView ItemsSource="{Binding Regions, Mode=TwoWay}" 
+            SelectedItem="{Binding Selected, Mode=TwoWay}"
+            Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="3"
+            ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Enabled">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" FontSize="22" Foreground="#234ace"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
-        
-
     </Grid>
 </Page>

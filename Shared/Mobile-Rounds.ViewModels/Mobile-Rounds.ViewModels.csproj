@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AdminHome\AdminHomeViewModel.cs" />
-    <Compile Include="Admin\Regions\RegionsViewModel.cs" />
+    <Compile Include="Admin\Regions\RegionViewModel.cs" />
     <Compile Include="Admin\Stations\StationsViewModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureViewModel.cs" />
     <Compile Include="Models\ReadingModel.cs" />
