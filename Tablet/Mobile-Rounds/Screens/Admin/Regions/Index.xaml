@@ -3,19 +3,36 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Mobile_Rounds.Screens.Admin.Regions"
+    xmlns:converters="using:Mobile_Rounds.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:breadcrumb="using:GoedWare.Controls.Breadcrumb"
     xmlns:vm="using:Mobile_Rounds.ViewModels.Admin.Regions"
     mc:Ignorable="d">
+    <Page.DataContext>
+        <vm:RegionScreenViewModel />
+    </Page.DataContext>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <Grid.DataContext>
-            <vm:RegionsViewModel />
-        </Grid.DataContext>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50" />
+        </Grid.ColumnDefinitions>
 
-        <!--Header-->
         <breadcrumb:BreadcrumbControl
             Grid.Row="1"
             Grid.Column="1"
@@ -42,16 +59,41 @@
                 </DataTemplate>
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
+        
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="2"
+            VerticalAlignment="Bottom" HorizontalAlignment="Stretch"
+            x:Name="textBlock" TextWrapping="Wrap"
+            Text="Create Region" FontSize="36"/>
 
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="70" Margin="88,121,0,0" TextWrapping="Wrap" Text="Create Region" VerticalAlignment="Top" Width="320" FontSize="48" FontWeight="Bold"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="88,273,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Height="65" Width="320" FontSize="36"/>
-        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="60" Margin="88,343,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="535"/>
-        <Button x:Name="button" Content="Create" HorizontalAlignment="Left" Height="100" Margin="88,793,0,0" VerticalAlignment="Top" Width="320" FontSize="36" RequestedTheme="Light" Background="#B274FF00"/>
-        <TextBlock x:Name="regionsTitle" HorizontalAlignment="Left" Height="70" Margin="712,121,0,0" TextWrapping="Wrap" Text="Regions" VerticalAlignment="Top" Width="261" FontSize="48" FontWeight="Bold" RenderTransformOrigin="0.488,-0.297"/>
-        <Grid HorizontalAlignment="Left" Height="680" Margin="712,217,0,0" VerticalAlignment="Top" Width="673"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="20,10,9.4,0" Text="Name" FontSize="30"/>
+        <TextBox Text="{Binding CurrentRegion.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" 
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="20, 40, 20, 0" TextWrapping="Wrap" FontSize="30"/>
 
-
-
-
+        <Button Content="Cancel"
+                Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+                Foreground="White" Height="100" HorizontalContentAlignment="Center" FontSize="36" RequestedTheme="Light"
+                Margin="0, 0, 10, 0" Background="DarkGray" Command="{Binding DataContext.Cancel, ElementName=root}"/>
+        
+        <Button Content="Create"
+                Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+                Background="#47ce22" Foreground="White" Height="100" HorizontalContentAlignment="Center"
+                FontSize="36" RequestedTheme="Light" Margin="10, 0, 0, 0"
+                Command="{Binding DataContext.Save, ElementName=root}"/>
+        <TextBlock Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
+                Text="Regions" FontSize="36"
+                HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+        <ListView ItemsSource="{Binding Regions, Mode=TwoWay}" 
+            SelectedItem="{Binding Selected, Mode=TwoWay}" Margin="0, 20, 0, 0"
+            Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3"
+            ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Enabled">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" FontSize="30" Foreground="Purple"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
