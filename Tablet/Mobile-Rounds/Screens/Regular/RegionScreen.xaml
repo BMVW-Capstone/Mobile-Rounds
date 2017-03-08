@@ -77,7 +77,7 @@
                             FontSize="30" Padding="5"/>
 
                         <TextBlock Grid.Row="1" Grid.Column="0"
-                            Text="2 items"
+                            Text="{Binding StationCountText}"
                             Foreground="Black" 
                             Padding="5,0,0,5"
                             HorizontalAlignment="Stretch"

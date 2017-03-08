@@ -34,6 +34,23 @@ namespace Mobile_Rounds.ViewModels.Models
         public bool IsDeleted { get; set; }
 
         /// <summary>
+        /// The count of nested items.
+        /// </summary>
+        public int ItemCount { get; set; }
+
+        public string ItemCountString
+        {
+            get
+            {
+                if (ItemCount != 1)
+                {
+                    return $"{ItemCount} Items";
+                }
+                return $"{ItemCount} Item";
+            }
+        }
+
+        /// <summary>
         /// The list of items in this given station. Obtained
         /// by calling the /api/station/id endpoint.
         /// </summary>
