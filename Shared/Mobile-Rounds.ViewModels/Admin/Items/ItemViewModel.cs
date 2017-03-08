@@ -90,7 +90,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             }
         }
 
-        public string ComparisonType
+        public ComparisonTypeViewModel ComparisonType
         {
             get
             {
@@ -107,7 +107,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         }
 
         public ObservableCollection<UnitOfMeasureModel> Units { get; set; }
-        public IEnumerable<string> ComparisonTypes { get; set; }
+        public IEnumerable<ComparisonTypeViewModel> ComparisonTypes { get { return ComparisonTypeViewModel.AllTypesAsViewModels; } }
 
         public UnitOfMeasureModel Unit
         {
@@ -176,14 +176,6 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         {
             //Value types for readings. Indicate what type of value a new unit will be.
             //Volts for example might be a Number, while a text based readout would be Text
-            this.ComparisonTypes = new List<string>
-            {
-                "Less Than",
-                "Greater Than",
-                "Equal To",
-                "Between",
-                "Either"
-            };
             this.ModificationType = "Create";
             this.Units = new ObservableCollection<UnitOfMeasureModel>(units);
             this.comparisonType = null;
@@ -199,14 +191,6 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         /// <param name="toCopy">The object to copy.</param>
         public ItemViewModel(ItemViewModel toCopy)
         {
-            this.ComparisonTypes = new List<string>
-            {
-                "Less Than",
-                "Greater Than",
-                "Equal To",
-                "Between",
-                "Either"
-            };
             this.Save = toCopy.Save;
             this.Cancel = toCopy.Cancel;
 
@@ -224,7 +208,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         private string lowerBound;
         private string upperBound;
         private string name;
-        private string comparisonType;
+        private ComparisonTypeViewModel comparisonType;
         private string modificationType;
         private UnitOfMeasureModel unit;
         private bool isDeleted;

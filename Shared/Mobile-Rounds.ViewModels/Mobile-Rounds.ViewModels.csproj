@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AdminHome\AdminHomeViewModel.cs" />
+    <Compile Include="Admin\Items\ComparisonTypeViewModel.cs" />
     <Compile Include="Admin\Items\ItemScreenViewModel.cs" />
     <Compile Include="Admin\Items\ItemViewModel.cs" />
     <Compile Include="Admin\Regions\RegionsViewModel.cs" />

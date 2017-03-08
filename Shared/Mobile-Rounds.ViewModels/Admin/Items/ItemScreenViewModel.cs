@@ -78,7 +78,6 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                 this.currentItem.Name = value.Name;
                 this.currentItem.IsDeleted = value.IsDeleted;
                 this.currentItem.ComparisonType = value.ComparisonType;
-                this.currentItem.ComparisonTypes = value.ComparisonTypes;
                 this.currentItem.Units = value.Units;
                 this.currentItem.Unit = value.Unit;
 
@@ -160,7 +159,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                 {
                     Id = item.Id,
                     Name = item.Name,
-                    ComparisonType = item.Specification.ComparisonType,
+                    ComparisonType = ComparisonTypeViewModel.Locate(item.Specification.ComparisonType),
                     IsDeleted = item.IsDeleted,
                     LowerBound = item.Specification.LowerBound,
                     UpperBound = item.Specification.UpperBound,
