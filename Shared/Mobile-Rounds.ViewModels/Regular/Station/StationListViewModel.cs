@@ -8,6 +8,7 @@ using Mobile_Rounds.ViewModels.Models;
 using Newtonsoft.Json;
 using Mobile_Rounds.ViewModels.Shared.DbModels;
 using System;
+using Mobile_Rounds.ViewModels.Regular.Region;
 
 namespace Mobile_Rounds.ViewModels.Regular.Station
 {
@@ -34,16 +35,20 @@ namespace Mobile_Rounds.ViewModels.Regular.Station
             }
         }
 
-        public StationListViewModel(string reads, string regionName, Guid regionId)
+        public StationListViewModel(string reads, RegionModelSource region, Guid regionId)
         {
-            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel(regionName));
+            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel(region.Name, region.Navigate));
             this.Stations = new ObservableCollection<StationModel>();
             var result = JsonConvert.DeserializeObject<StationHandler>(reads);
             foreach (var station in result.Stations)
             {
                 if (station.RegionId == regionId)
                 {
-                    this.Stations.Add(new StationModel(regionName, station.Id) { Name = station.Name });
+                    this.Stations.Add(new StationModel(region)
+                    {
+                        Id = station.Id,
+                        Name = station.Name
+                    });
                 }
             }
         }

@@ -97,23 +97,23 @@ namespace Mobile_Rounds
                     // parameter
 
                     //TODO: Remove this...
-                    var fm = ServiceResolver.Resolve<IFileHandler>();
+                    //var fm = ServiceResolver.Resolve<IFileHandler>();
 
-                    var regions = await fm.GetFileAsync<RegionHandler>("regions.json");
-                    var stations = await fm.GetFileAsync<StationHandler>("stations.json");
-                    var items = await fm.GetFileAsync<ItemHandler>("items.json");
-                    var units = await fm.GetFileAsync<UnitHandler>("units.json");
+                    //var regions = await fm.GetFileAsync<RegionHandler>("regions.json");
+                    //var stations = await fm.GetFileAsync<StationHandler>("stations.json");
+                    //var items = await fm.GetFileAsync<ItemHandler>("items.json");
+                    //var units = await fm.GetFileAsync<UnitHandler>("units.json");
 
-                    var vm = new ViewModels.Admin.Items.ItemScreenViewModel(
-                        regions.Regions[0],
-                        stations.Stations[0],
-                        units.Units,
-                        items.Items);
+                    //var vm = new ViewModels.Admin.Items.ItemScreenViewModel(
+                    //    regions.Regions[0],
+                    //    stations.Stations[0],
+                    //    units.Units,
+                    //    items.Items);
 
-                    BaseViewModel.Navigator.Navigate(NavigationType.AdminItems, vm);
+                    //BaseViewModel.Navigator.Navigate(NavigationType.AdminItems, vm);
 
 
-                    //rootFrame.Navigate(typeof(HomeScreen), e.Arguments);
+                    rootFrame.Navigate(typeof(HomeScreen), e.Arguments);
                     //rootFrame.Navigate(typeof(Screens.Admin.Items.Index), e.Arguments);
                 }
 

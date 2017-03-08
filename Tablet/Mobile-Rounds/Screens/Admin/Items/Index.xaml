@@ -102,6 +102,13 @@
                         </DataTemplate>
                     </TextBox.HeaderTemplate>
                 </TextBox>
+                <TextBox Text="{Binding Meter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextInput}">
+                    <TextBox.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock FontSize="22" Text="Meter" />
+                        </DataTemplate>
+                    </TextBox.HeaderTemplate>
+                </TextBox>
                 <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,0,15" 
                       ItemsSource="{ Binding ComparisonTypes }" SelectedItem="{ Binding ComparisonType, Mode=TwoWay}" 
                       DisplayMemberPath="Name" FontSize="18">
@@ -111,7 +118,7 @@
                         </DataTemplate>
                     </ComboBox.HeaderTemplate>
                 </ComboBox>
-                <TextBox Text="{Binding LowerBound, Mode=TwoWay}" Style="{StaticResource TextInput}"
+                <TextBox Text="{Binding LowerBound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextInput}"
                          Visibility="{Binding ComparisonType.UsesTwoInputs, Mode=TwoWay, Converter={StaticResource BoolToVis}}">
                     <TextBox.HeaderTemplate>
                         <DataTemplate>
@@ -119,7 +126,7 @@
                         </DataTemplate>
                     </TextBox.HeaderTemplate>
                 </TextBox>
-                <TextBox Text="{Binding UpperBound, Mode=TwoWay}" Style="{StaticResource TextInput}">
+                <TextBox Text="{Binding UpperBound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextInput}">
                     <TextBox.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock FontSize="22" Text="Upper Bound" />

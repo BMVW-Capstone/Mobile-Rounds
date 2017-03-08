@@ -2,6 +2,8 @@
 // Copyright (c) SolarWorld Capstone Team. All rights reserved.
 // </copyright>
 
+using Mobile_Rounds.ViewModels.Models;
+using Mobile_Rounds.ViewModels.Regular.Region;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
@@ -20,20 +22,20 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// Initializes a new instance of the <see cref="ReadingInputScreenViewModel"/> class.
         /// Represents the full view model for the page.
         /// </summary>
-        public ReadingInputScreenViewModel(string regionName, string stationName, string reads, Guid stationId)
+        public ReadingInputScreenViewModel(RegionModelSource region, StationModel station, string reads)
         {
             var regionNav = new AsyncCommand((obj) =>
             {
                 Navigator.Navigate(Shared.Navigation.NavigationType.StationSelect);
             });
-            this.Crumbs.Add(new BreadcrumbItemModel(regionName, regionNav));
-            this.Crumbs.Add(new BreadcrumbItemModel(stationName));
+            this.Crumbs.Add(new BreadcrumbItemModel(region.Name, region.Navigate));
+            this.Crumbs.Add(new BreadcrumbItemModel(station.Name, station.Navigate));
             this.Input = new ReadingInputViewModel();
             this.ListModel = new ReadingInputListViewModel(this);
             var result = JsonConvert.DeserializeObject<ItemHandler>(reads);
             foreach (var item in result.Items)
             {
-                if (item.StationId == stationId)
+                if (item.StationId == station.Id)
                 {
                     var newMeter = new Meter(item.Meter) { Name = item.Name };
                     newMeter.YesterdaysReading = new ReadingInput();

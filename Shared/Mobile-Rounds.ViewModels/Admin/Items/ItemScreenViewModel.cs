@@ -182,28 +182,31 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
 
         private bool ValidateInput(object input)
         {
-            if (string.IsNullOrEmpty(this.currentItem.Name)) return false;
-            if (string.IsNullOrEmpty(this.CurrentItem.Meter)) return false;
-            if (this.CurrentItem.ComparisonType == null) return false;
+            if (string.IsNullOrEmpty(this.CurrentItem?.Name)) return false;
+            if (string.IsNullOrEmpty(this.CurrentItem?.Meter)) return false;
+            if (string.IsNullOrEmpty(this.CurrentItem?.UpperBound)) return false;
 
-            if (this.CurrentItem.ComparisonType.UsesOneInput)
+            if (this.CurrentItem?.ComparisonType == null) return false;
+
+            if(this.CurrentItem.ComparisonType.UsesTwoInputs)
             {
-                //single input, only validate lower bound.
-                return true;
+                return this.CurrentItem
+                    .ComparisonType.ValidateBoundOrder(
+                        this.CurrentItem.LowerBound, this.CurrentItem.UpperBound);
             }
-            else
-            {
-                //two inputs minimum
-                return true;
-            }
+
+            return true;
         }
 
         private bool CanCancel(object input)
         {
-            return true;
-            //return !string.IsNullOrEmpty(this.currentUnit.Abbreviation)
-            //    || !string.IsNullOrEmpty(this.currentUnit.FullName)
-            //    || !string.IsNullOrEmpty(this.currentUnit.UnitType);
+            if (!string.IsNullOrEmpty(this.CurrentItem?.Name)) return true;
+            if (!string.IsNullOrEmpty(this.CurrentItem?.Meter)) return true;
+            if (!string.IsNullOrEmpty(this.CurrentItem?.LowerBound)) return true;
+            if (!string.IsNullOrEmpty(this.CurrentItem?.UpperBound)) return true;
+            if (this.CurrentItem.ComparisonType != null) return true;
+
+            return false;
         }
 
     }

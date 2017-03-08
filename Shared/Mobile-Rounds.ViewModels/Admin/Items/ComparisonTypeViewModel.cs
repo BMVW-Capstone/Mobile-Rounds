@@ -64,28 +64,40 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             return left.CompareTo(right);
         }
 
+        private int NumberCompare(string left, string right)
+        {
+            float leftNum = float.MinValue;
+            float rightNum = float.MinValue;
+
+            if (!float.TryParse(left, out leftNum)) return -1;
+            if (!float.TryParse(left, out rightNum)) return -1;
+
+            return (int)(leftNum - rightNum);
+        }
+
         private bool ValidateLessThan(string value, string bound)
         {
-            return LowerCompare(value, bound) < 0;
+            return NumberCompare(value, bound) < 0;
         }
 
         private bool ValidateLessThanOrEqual(string value, string bound)
         {
-            return LowerCompare(value, bound) <= 0;
+            return NumberCompare(value, bound) <= 0;
         }
 
         private bool ValidateEqualTo(string value, string bound)
         {
             return LowerCompare(value, bound) == 0;
         }
+
         private bool ValidateGreaterThan(string value, string bound)
         {
-            return LowerCompare(value, bound) > 0;
+            return NumberCompare(value, bound) > 0;
         }
 
         private bool ValidateGreaterThanOrEqual(string value, string bound)
         {
-            return LowerCompare(value, bound) >= 0;
+            return NumberCompare(value, bound) >= 0;
         }
 
         private bool ValidateEither(string value, string min, string max)
@@ -157,6 +169,16 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             }
 
             return value.ToLower();
+        }
+
+        public bool ValidateBoundOrder(string lower, string upper)
+        {
+            if (string.IsNullOrEmpty(lower) || string.IsNullOrEmpty(upper) || !UsesTwoInputs) return false;
+
+            var normalizedLower = Normalize(lower);
+            var normalizedUpper = Normalize(upper);
+
+            return ValidateLessThan(lower, upper);
         }
 
         public bool Validate(string value, string max, string min = null)
