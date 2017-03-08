@@ -44,7 +44,11 @@
             <controls:ColoredTile Foreground="White" Background="Purple" Margin="10" Title="Admin"
                                   Command="{Binding GoToAdmin}"
                                   Visibility="{Binding AdminTileVisibility}"/>
-            <ProgressRing IsActive="{Binding IsSyncing, Mode=TwoWay}" Visibility="{Binding IsSyncing, Mode=TwoWay, Converter={StaticResource BoolToVis}}"/>
         </StackPanel>
+        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center"
+            Width="200" Height="200"
+            Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="1" Grid.Column="1"
+            IsActive="{Binding IsSyncing, Mode=TwoWay}" 
+            Visibility="{Binding IsSyncing, Mode=TwoWay, Converter={StaticResource BoolToVis}}"/>
     </Grid>
 </Page>
