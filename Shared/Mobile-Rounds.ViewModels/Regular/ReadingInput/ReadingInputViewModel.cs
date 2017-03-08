@@ -138,11 +138,11 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
 
                 if (this.todaysData.ValueBounds == BoundType.GreaterThan)
                 {
-                    return $"> {this.todaysData.MinimumValue} {this.todaysData.UnitAbbreviation}";
+                    return $"> {this.todaysData.MaximumValue} {this.todaysData.UnitAbbreviation}";
                 }
                 if (this.todaysData.ValueBounds == BoundType.GreaterThanOrEqual)
                 {
-                    return $">= {this.todaysData.MinimumValue} {this.todaysData.UnitAbbreviation}";
+                    return $">= {this.todaysData.MaximumValue} {this.todaysData.UnitAbbreviation}";
                 }
 
                 if (this.todaysData.ValueBounds == BoundType.LessThan)

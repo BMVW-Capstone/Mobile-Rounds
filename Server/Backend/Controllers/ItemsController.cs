@@ -46,7 +46,6 @@ namespace Backend.Controllers
         /// </summary>
         /// <returns>A list of items.</returns>
         /// <param name="stationId">The id of the station.</param>
-        //[RoutePrefix("/stations")]
         [Route("~/api/stations/{stationId}/items")]
         [SwaggerOperation(Tags = new[] { StationsController.SwaggerName })]
         public async Task<IHttpActionResult> Get(Guid stationId)

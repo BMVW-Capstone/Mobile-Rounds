@@ -35,21 +35,19 @@ namespace Mobile_Rounds.ViewModels.Regular.Station
             }
         }
 
-        public StationListViewModel(string reads, RegionModelSource region)
+        public StationListViewModel(RegionModelSource region)
         {
             this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel(region.Name, region.Navigate));
             this.Stations = new ObservableCollection<StationModel>();
-            var result = JsonConvert.DeserializeObject<StationHandler>(reads);
-            foreach (var station in result.Stations)
+            //var result = JsonConvert.DeserializeObject<StationHandler>(reads);
+            foreach (var station in region.Stations)
             {
-                if (station.RegionId == region.Id)
+                this.Stations.Add(new StationModel(region)
                 {
-                    this.Stations.Add(new StationModel(region)
-                    {
-                        Id = station.Id,
-                        Name = station.Name
-                    });
-                }
+                    Id = station.Id,
+                    Name = station.Name,
+                    ItemCount = station.ItemCount
+                });
             }
         }
 

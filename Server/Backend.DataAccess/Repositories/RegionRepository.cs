@@ -45,7 +45,8 @@ namespace Backend.DataAccess.Repositories
                             Id = s.Id,
                             Name = s.Name,
                             IsDeleted = s.IsMarkedAsDeleted,
-                            RegionId = s.RegionId
+                            RegionId = s.RegionId,
+                            ItemCount = s.Items.Count
                         }).ToList()
                 })
                 //load the data

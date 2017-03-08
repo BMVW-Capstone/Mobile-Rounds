@@ -51,7 +51,8 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
                 this.Regions.Add(new RegionModelSource()
                 {
                     Id = region.Id,
-                    Name = region.Name
+                    Name = region.Name,
+                    Stations = region.Stations
                 });
             }
         }

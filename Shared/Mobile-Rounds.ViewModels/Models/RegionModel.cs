@@ -35,6 +35,6 @@ namespace Mobile_Rounds.ViewModels.Models
         /// <summary>
         /// A list of stations that are inside this region.
         /// </summary>
-        public IEnumerable<StationModel> Stations { get; set; }
+        public List<StationModel> Stations { get; set; }
     }
 }
