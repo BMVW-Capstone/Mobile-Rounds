@@ -105,7 +105,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
 
             set
             {
-                this.name = value;
+                this.meter = value;
                 this.RaisePropertyChanged(nameof(this.Meter));
                 this.Save.RaiseExecuteChanged();
                 this.Cancel.RaiseExecuteChanged();
