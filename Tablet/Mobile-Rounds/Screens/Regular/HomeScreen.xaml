@@ -39,12 +39,23 @@
 
         <!-- Content -->
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Margin="10">
-            <controls:ColoredTile Foreground="White" Background="#224ace" Margin="10" Title="Start Round" Command="{Binding StartRound, Mode=OneWay}" />
-            <controls:ColoredTile Foreground="White" Background="#47ce22" Margin="10" Title="Sync" Command="{Binding Sync, Mode=OneWay}" />
-            <controls:ColoredTile Foreground="White" Background="Purple" Margin="10" Title="Admin"
+            <controls:ColoredTile Foreground="White" Background="#224ace" Margin="10" 
+                                  Title="Start Round" 
+                                  Command="{Binding StartRound, Mode=OneWay}" 
+                                  IsEnabled="{Binding CanProgress, Mode=TwoWay}"/>
+            
+            <controls:ColoredTile Foreground="White" Background="#47ce22"
+                                  Margin="10" Title="Sync"
+                                  Command="{Binding Sync, Mode=OneWay}" 
+                                  IsEnabled="{Binding CanProgress, Mode=TwoWay}"/>
+            
+            <controls:ColoredTile Foreground="White" Background="Purple" 
+                                  Margin="10" Title="Admin"
                                   Command="{Binding GoToAdmin}"
-                                  Visibility="{Binding AdminTileVisibility}"/>
+                                  Visibility="{Binding AdminTileVisibility}"
+                                  IsEnabled="{Binding CanProgress, Mode=TwoWay}"/>
         </StackPanel>
+        
         <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center"
             Width="200" Height="200"
             Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="1" Grid.Column="1"

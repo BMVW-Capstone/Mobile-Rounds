@@ -29,11 +29,9 @@ namespace Mobile_Rounds.Helpers
 
                 try
                 {
-                    
                     var data = await client.GetStringAsync(uri);
                     var results = JsonConvert.DeserializeObject<TResult>(data);
                     return results;
-                    //Debugger.Break();
                 }
                 catch (Exception ex)
                 {
