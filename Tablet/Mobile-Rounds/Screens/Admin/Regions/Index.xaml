@@ -13,8 +13,6 @@
         <vm:RegionScreenViewModel />
     </Page.DataContext>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root">
-
-
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
             <RowDefinition Height="100" />
