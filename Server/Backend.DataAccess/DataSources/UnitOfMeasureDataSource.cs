@@ -16,8 +16,9 @@ namespace Backend.DataAccess.Repositories.DataSources
 
         public override IQueryable<UnitOfMeasure> Get()
         {
-            return Database.UnitsOfMeasure
-                .Where(s => s.IsMarkedAsDeleted == false);
+            return Database.UnitsOfMeasure;
+            //return Database.UnitsOfMeasure
+            //    .Where(s => s.IsMarkedAsDeleted == false);
         }
 
         public override IOrderedQueryable<UnitOfMeasure> GetOrdered()

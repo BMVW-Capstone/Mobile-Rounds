@@ -36,6 +36,11 @@ namespace Mobile_Rounds.ViewModels.Shared.Navigation
         AdminStations,
 
         /// <summary>
+        /// Navigate to the Items list admin page.
+        /// </summary>
+        AdminItems,
+
+        /// <summary>
         /// Navigate to the station select screen for a round.
         /// </summary>
         StationSelect,

@@ -1,4 +1,5 @@
 ﻿using Mobile_Rounds.ViewModels.Platform;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,14 @@ namespace Mobile_Rounds.Helpers
             StorageFile sampleFile = await storageFolder.GetFileAsync(fileName);
             return await FileIO.ReadTextAsync(sampleFile);
         }
+
+        public async Task<TOutput> GetFileAsync<TOutput>(string fileName)
+            where TOutput : new()
+        {
+            var fromFile = await this.GetFileAsync(fileName);
+            return JsonConvert.DeserializeObject<TOutput>(fromFile);
+        }
+
         public async Task SaveFileAsync(string fileName, object toSave)
         {
             var jObject = Newtonsoft.Json.JsonConvert.SerializeObject(toSave);

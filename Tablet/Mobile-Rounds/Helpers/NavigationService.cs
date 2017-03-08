@@ -60,6 +60,9 @@ namespace Mobile_Rounds.Helpers
                 case NavigationType.StationInput:
                     frame.Navigate(typeof(Screens.Regular.ReadingInput));
                     break;
+                case NavigationType.AdminItems:
+                    frame.Navigate(typeof(Screens.Admin.Items.Index));
+                    break;
                 default:
                     break;
             }

@@ -30,16 +30,6 @@ namespace Mobile_Rounds.ViewModels.Shared
         public static INavigator Navigator { get; set; }
 
         /// <summary>
-        /// Gets or sets the mock data in the POC.
-        /// </summary>
-        public static List<UnitOfMeasureViewModel> MockUnits { get; set; }
-
-        /// <summary>
-        /// Gets or sets the mock data in the POC.
-        /// </summary>
-        public static List<Meter> MockMeters { get; set; }
-
-        /// <summary>
         /// Initializes static members of the <see cref="BaseViewModel"/> class.
         /// </summary>
         static BaseViewModel()

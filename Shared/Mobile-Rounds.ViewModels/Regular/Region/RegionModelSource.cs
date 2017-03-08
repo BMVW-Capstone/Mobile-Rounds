@@ -23,7 +23,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
             {
                 var file = Platform.ServiceResolver.Resolve<IFileHandler>();
                 var reads = await file.GetFileAsync("stations.json");
-                var vm = new StationListViewModel(reads, this.Name, regionId);
+                var vm = new StationListViewModel(reads, this, regionId);
                 BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationSelect, vm);
             });
         }

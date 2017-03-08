@@ -51,12 +51,8 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
                 Navigator.Navigate(NavigationType.UnitOfMeasure);
             });
 
-            this.GoToStations = new AsyncCommand(async (obj) =>
+            this.GoToStations = new AsyncCommand((obj) =>
             {
-                IApiRequest request = ServiceResolver.Resolve<IApiRequest>();
-
-                var data = await request.GetAsync<List<RegionModel>>("http://localhost:1797/api/regions");
-
                 Navigator.Navigate(NavigationType.AdminStations);
             });
 

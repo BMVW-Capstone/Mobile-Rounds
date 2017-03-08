@@ -1,5 +1,6 @@
 ﻿using Mobile_Rounds.ViewModels.Platform;
 using Mobile_Rounds.ViewModels.Regular.ReadingInput;
+using Mobile_Rounds.ViewModels.Regular.Region;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using System;
@@ -43,20 +44,16 @@ namespace Mobile_Rounds.ViewModels.Models
         public StationModel()
         {
             this.Items = new List<ItemModel>();
-            this.Navigate = new AsyncCommand((obj) =>
-            {
-                
-                BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationInput);
-            });
         }
-        public StationModel(string regionName, Guid stationId)
+
+        public StationModel(RegionModelSource region)
+            : this()
         {
-            this.Items = new List<ItemModel>();
             this.Navigate = new AsyncCommand(async(obj) =>
             {                
                 var file = Platform.ServiceResolver.Resolve<IFileHandler>();
                 var reads = await file.GetFileAsync("items.json");
-                var vm = new ReadingInputScreenViewModel(regionName, this.Name, reads, stationId);
+                var vm = new ReadingInputScreenViewModel(region, this, reads);
                 BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationInput, vm);
             });
         }
