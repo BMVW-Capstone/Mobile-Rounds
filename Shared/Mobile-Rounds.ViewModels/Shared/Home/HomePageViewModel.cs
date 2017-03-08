@@ -29,7 +29,7 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
         /// <summary>
         /// Gets the property used to handle the syncing of data.
         /// </summary>
-        public ICommand Sync { get; private set; }
+        public AsyncCommand Sync { get; private set; }
 
 
         public bool IsSyncing
@@ -43,8 +43,12 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
             {
                 this.isSyncing = value;
                 this.RaisePropertyChanged(nameof(this.IsSyncing));
+                this.RaisePropertyChanged(nameof(this.CanProgress));
+                this.Sync.RaiseExecuteChanged();
             }
         }
+
+        public bool CanProgress { get { return !this.IsSyncing; } }
 
 
         /// <summary>
@@ -81,11 +85,17 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
                 await handler.SaveFileAsync("units.json", unitResult);
 
                 this.IsSyncing = false;
-            });
+            }, this.CanSync);
 
             this.StartRound = new StartRoundCommand();
             
         }
+
+        private bool CanSync(object sender)
+        {
+            return !this.IsSyncing;
+        }
+
         private bool isSyncing;
     }
 }
