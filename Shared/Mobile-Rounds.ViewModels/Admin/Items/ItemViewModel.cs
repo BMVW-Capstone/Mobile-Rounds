@@ -18,6 +18,8 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         /// </summary>
         public Guid Id { get; set; }
 
+        public ItemModel Model { get; set; }
+
         /// <summary>
         /// Gets or sets if the model is deleted in the database 
         /// or not.
@@ -85,6 +87,26 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             {
                 this.name = value;
                 this.RaisePropertyChanged(nameof(this.Name));
+                this.Save.RaiseExecuteChanged();
+                this.Cancel.RaiseExecuteChanged();
+            }
+        }
+
+
+        /// <summary>
+        /// The name of the meter. This is actually like a product number, gauge type, etc...
+        /// </summary>
+        public string Meter
+        {
+            get
+            {
+                return this.meter;
+            }
+
+            set
+            {
+                this.name = value;
+                this.RaisePropertyChanged(nameof(this.Meter));
                 this.Save.RaiseExecuteChanged();
                 this.Cancel.RaiseExecuteChanged();
             }
@@ -199,6 +221,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             this.UpperBound = toCopy.UpperBound;
             this.LowerBound = toCopy.LowerBound;
             this.Unit = toCopy.Unit;
+            this.Meter = toCopy.Meter;
             this.IsDeleted = toCopy.IsDeleted;
             this.Units = toCopy.Units;
             this.Id = toCopy.Id;
@@ -207,6 +230,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
 
         private string lowerBound;
         private string upperBound;
+        private string meter;
         private string name;
         private ComparisonTypeViewModel comparisonType;
         private string modificationType;

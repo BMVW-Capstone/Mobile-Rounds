@@ -80,6 +80,8 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                 this.currentItem.ComparisonType = value.ComparisonType;
                 this.currentItem.Units = value.Units;
                 this.currentItem.Unit = value.Unit;
+                this.currentItem.Meter = value.Meter;
+                this.currentItem.Model = value.Model;
 
                 if (this.currentItem.Id == Guid.Empty)
                 {
@@ -136,6 +138,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                         existing.LowerBound = this.currentItem.LowerBound;
                         existing.ModificationType = this.currentItem.ModificationType;
                         existing.Unit = this.currentItem.Unit;
+                        existing.Meter = this.currentItem.Meter;
                     }
 
                     this.CurrentItem = new ItemViewModel(this.Save, this.Cancel, this.Units);
@@ -163,7 +166,9 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                     IsDeleted = item.IsDeleted,
                     LowerBound = item.Specification.LowerBound,
                     UpperBound = item.Specification.UpperBound,
-                    Unit = item.Specification.UnitOfMeasure
+                    Unit = item.Specification.UnitOfMeasure,
+                    Meter = item.Meter,
+                    Model = item
                 };
 
                 //find the current unit in our already loaded list. This is so the bindings will work appropriately.
@@ -177,10 +182,20 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
 
         private bool ValidateInput(object input)
         {
-            return !string.IsNullOrEmpty(this.CurrentItem.Name);
-            //return !string.IsNullOrEmpty(this.currentUnit.Abbreviation)
-            //    && !string.IsNullOrEmpty(this.currentUnit.FullName)
-            //    && !string.IsNullOrEmpty(this.currentUnit.UnitType);
+            if (string.IsNullOrEmpty(this.currentItem.Name)) return false;
+            if (string.IsNullOrEmpty(this.CurrentItem.Meter)) return false;
+            if (this.CurrentItem.ComparisonType == null) return false;
+
+            if (this.CurrentItem.ComparisonType.UsesOneInput)
+            {
+                //single input, only validate lower bound.
+                return true;
+            }
+            else
+            {
+                //two inputs minimum
+                return true;
+            }
         }
 
         private bool CanCancel(object input)
