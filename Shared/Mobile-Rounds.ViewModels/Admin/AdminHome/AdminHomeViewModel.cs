@@ -58,8 +58,7 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
 
             this.GoToRegions = new AsyncCommand((obj) =>
             {
-                Navigator.Navigate(NavigationType.Regions,
-                    new Models.RegionModel { Name = "HELLO" });
+                Navigator.Navigate(NavigationType.Regions);
             });
         }
     }

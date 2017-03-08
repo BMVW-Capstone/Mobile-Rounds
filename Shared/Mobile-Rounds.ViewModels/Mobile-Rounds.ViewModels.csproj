@@ -43,7 +43,8 @@
     <Compile Include="Admin\Items\ComparisonTypeViewModel.cs" />
     <Compile Include="Admin\Items\ItemScreenViewModel.cs" />
     <Compile Include="Admin\Items\ItemViewModel.cs" />
-    <Compile Include="Admin\Regions\RegionsViewModel.cs" />
+    <Compile Include="Admin\Regions\RegionScreenViewModel.cs" />
+    <Compile Include="Admin\Regions\RegionViewModel.cs" />
     <Compile Include="Admin\Stations\StationsViewModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureViewModel.cs" />
     <Compile Include="Models\ReadingModel.cs" />
