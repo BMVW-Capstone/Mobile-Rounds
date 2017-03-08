@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Mobile_Rounds.ViewModels.Regular.Region
 {
@@ -16,6 +17,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
         public string Name { get; set; }
 
         public AsyncCommand Navigate { get; private set; }
+        public AsyncCommand NavigateRoot { get; private set; }
         public Guid Id { get; set; }
 
         public List<StationModel> Stations { get; set; }
@@ -32,8 +34,9 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
             }
         }
 
-        public RegionModelSource()
+        public RegionModelSource(AsyncCommand navBack)
         {
+            this.NavigateRoot = navBack;
             this.Navigate = new AsyncCommand((obj) =>
             {
                 //var file = Platform.ServiceResolver.Resolve<IFileHandler>();
