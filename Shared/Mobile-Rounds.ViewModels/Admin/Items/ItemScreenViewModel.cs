@@ -158,6 +158,8 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
 
             foreach (var item in items)
             {
+                if (item.StationId != station.Id) continue;
+
                 var vm = new ItemViewModel(this.Save, this.Cancel, this.Units)
                 {
                     Id = item.Id,

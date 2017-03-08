@@ -33,11 +33,10 @@ namespace Backend.Schemas
         /// <summary>
         /// The lower bound value of this spec.
         /// </summary>
-        [Required(AllowEmptyStrings = false)]
         public string LowerBoundValue { get; set; }
 
         /// <summary>
-        /// The upper bound value of this spec.
+        /// The upper bound value of this spec. All single value bounds are based on this.
         /// </summary>
         [Required(AllowEmptyStrings = false)]
         public string UpperBoundValue { get; set; }

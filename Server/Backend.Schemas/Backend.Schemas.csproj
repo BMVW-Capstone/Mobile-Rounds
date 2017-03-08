@@ -78,6 +78,14 @@
     <Compile Include="Migrations\201703081331065_ReadingComments.Designer.cs">
       <DependentUpon>201703081331065_ReadingComments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703081453368_DontRequireBounds.cs" />
+    <Compile Include="Migrations\201703081453368_DontRequireBounds.Designer.cs">
+      <DependentUpon>201703081453368_DontRequireBounds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703081507330_AlwaysRequireUpperBound.cs" />
+    <Compile Include="Migrations\201703081507330_AlwaysRequireUpperBound.Designer.cs">
+      <DependentUpon>201703081507330_AlwaysRequireUpperBound.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reading.cs" />
@@ -120,6 +128,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703081331065_ReadingComments.resx">
       <DependentUpon>201703081331065_ReadingComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703081453368_DontRequireBounds.resx">
+      <DependentUpon>201703081453368_DontRequireBounds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703081507330_AlwaysRequireUpperBound.resx">
+      <DependentUpon>201703081507330_AlwaysRequireUpperBound.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
