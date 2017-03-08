@@ -76,6 +76,10 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
                 var itemResult = new ItemHandler() { Items = items };
                 await handler.SaveFileAsync("items.json", itemResult);
 
+                var units = await request.GetAsync<List<UnitOfMeasureModel>>("http://localhost:1797/api/units");
+                var unitResult = new UnitHandler() { Units = units };
+                await handler.SaveFileAsync("units.json", unitResult);
+
                 this.IsSyncing = false;
             });
 

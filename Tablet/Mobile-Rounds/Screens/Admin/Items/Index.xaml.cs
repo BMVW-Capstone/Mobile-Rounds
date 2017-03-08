@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Mobile_Rounds.ViewModels.Admin.Items;
+using Mobile_Rounds.ViewModels.Shared;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,6 +26,7 @@ namespace Mobile_Rounds.Screens.Admin.Items
     {
         public Index()
         {
+            this.DataContext = BaseViewModel.Navigator.GetNavigationData<ItemScreenViewModel>();
             this.InitializeComponent();
         }
     }

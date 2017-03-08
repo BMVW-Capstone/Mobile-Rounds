@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mobile_Rounds.ViewModels.Shared.DbModels
 {
-    class ItemHandler
+    public class ItemHandler
     {
         public List<ItemModel> Items { get; set; }
     }

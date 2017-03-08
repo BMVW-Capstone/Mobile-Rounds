@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mobile_Rounds.ViewModels.Shared.DbModels
 {
-    class RegionHandler
+    public class RegionHandler
     {
         public List<RegionModel> Regions { get; set; }
     }

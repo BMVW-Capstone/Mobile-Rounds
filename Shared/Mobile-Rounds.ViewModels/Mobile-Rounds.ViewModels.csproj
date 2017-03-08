@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AdminHome\AdminHomeViewModel.cs" />
+    <Compile Include="Admin\Items\ItemScreenViewModel.cs" />
+    <Compile Include="Admin\Items\ItemViewModel.cs" />
     <Compile Include="Admin\Regions\RegionsViewModel.cs" />
     <Compile Include="Admin\Stations\StationsViewModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureViewModel.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Shared\DbModels\ItemHandler.cs" />
     <Compile Include="Shared\DbModels\RegionHandler.cs" />
     <Compile Include="Shared\DbModels\StationHandler.cs" />
+    <Compile Include="Shared\DbModels\UnitHandler.cs" />
     <Compile Include="Shared\Home\HomePageViewModel.cs" />
     <Compile Include="Shared\Home\PausePageViewModel.cs" />
     <Compile Include="Regular\StartRounds\StartRoundViewModel.cs" />

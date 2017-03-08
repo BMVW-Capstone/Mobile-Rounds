@@ -1,10 +1,10 @@
-﻿using Mobile_Rounds.ViewModels.Regular.ReadingInput;
-using Mobile_Rounds.ViewModels.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Mobile_Rounds.ViewModels.Regular.ReadingInput;
+using Mobile_Rounds.ViewModels.Shared;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
