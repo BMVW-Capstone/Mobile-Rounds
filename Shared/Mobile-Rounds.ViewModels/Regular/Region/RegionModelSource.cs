@@ -15,15 +15,15 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
         public string Name { get; set; }
 
         public AsyncCommand Navigate { get; private set; }
-        public Guid Id { get; private set; }
+        public Guid Id { get; set; }
 
-        public RegionModelSource(Guid regionId)
+        public RegionModelSource()
         {
             this.Navigate = new AsyncCommand(async(obj) =>
             {
                 var file = Platform.ServiceResolver.Resolve<IFileHandler>();
                 var reads = await file.GetFileAsync("stations.json");
-                var vm = new StationListViewModel(reads, this, regionId);
+                var vm = new StationListViewModel(reads, this);
                 BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationSelect, vm);
             });
         }

@@ -35,14 +35,14 @@ namespace Mobile_Rounds.ViewModels.Regular.Station
             }
         }
 
-        public StationListViewModel(string reads, RegionModelSource region, Guid regionId)
+        public StationListViewModel(string reads, RegionModelSource region)
         {
             this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel(region.Name, region.Navigate));
             this.Stations = new ObservableCollection<StationModel>();
             var result = JsonConvert.DeserializeObject<StationHandler>(reads);
             foreach (var station in result.Stations)
             {
-                if (station.RegionId == regionId)
+                if (station.RegionId == region.Id)
                 {
                     this.Stations.Add(new StationModel(region)
                     {
