@@ -108,11 +108,13 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         /// </summary>
         public ItemScreenViewModel(RegionModel region, StationModel station, IEnumerable<UnitOfMeasureModel> unitsOfMeasure, IEnumerable<ItemModel> items)
         {
+            this.Units = new ObservableCollection<UnitOfMeasureModel>(unitsOfMeasure);
+
             this.Cancel = new AsyncCommand(
                 (obj) =>
                 {
                     this.Selected = null;
-                    this.CurrentItem = new ItemViewModel(this.Save, this.Cancel);
+                    this.CurrentItem = new ItemViewModel(this.Save, this.Cancel, this.Units);
                 }, this.CanCancel);
 
             this.Save = new AsyncCommand(
@@ -134,16 +136,16 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                         existing.UpperBound = this.currentItem.UpperBound;
                         existing.LowerBound = this.currentItem.LowerBound;
                         existing.ModificationType = this.currentItem.ModificationType;
+                        existing.Unit = this.currentItem.Unit;
                     }
 
-                    this.CurrentItem = new ItemViewModel(this.Save, this.Cancel);
+                    this.CurrentItem = new ItemViewModel(this.Save, this.Cancel, this.Units);
                     this.Selected = null;
                 }, this.ValidateInput);
 
-
             this.Crumbs.Add(new BreadcrumbItemModel("Admin", this.GoToAdmin));
 
-            this.CurrentItem = new ItemViewModel(this.Save, this.Cancel);
+            this.CurrentItem = new ItemViewModel(this.Save, this.Cancel, this.Units);
 
             this.BelongsTo = station;
 
@@ -151,11 +153,10 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             this.Crumbs.Add(new BreadcrumbItemModel(this.BelongsTo.Name));
 
             this.Items = new ObservableCollection<ItemViewModel>();
-            this.Units = new ObservableCollection<UnitOfMeasureModel>(unitsOfMeasure);
 
             foreach (var item in items)
             {
-                var vm = new ItemViewModel(this.Save, this.Cancel)
+                var vm = new ItemViewModel(this.Save, this.Cancel, this.Units)
                 {
                     Id = item.Id,
                     Name = item.Name,
@@ -163,9 +164,11 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                     IsDeleted = item.IsDeleted,
                     LowerBound = item.Specification.LowerBound,
                     UpperBound = item.Specification.UpperBound,
-                    Unit = item.Specification.UnitOfMeasure,
-                    Units = this.Units
+                    Unit = item.Specification.UnitOfMeasure
                 };
+
+                //find the current unit in our already loaded list. This is so the bindings will work appropriately.
+                vm.Unit = this.Units.FirstOrDefault(u => u.Id == item.Specification.UnitOfMeasure.Id);
                 Items.Add(vm);
             }
         }

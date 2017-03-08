@@ -172,7 +172,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         /// </summary>
         /// <param name="save">The save command that is based on this unit.</param>
         /// <param name="cancel">The cancel command that is based on this unit.</param>
-        public ItemViewModel(AsyncCommand save, AsyncCommand cancel)
+        public ItemViewModel(AsyncCommand save, AsyncCommand cancel, ObservableCollection<UnitOfMeasureModel> units)
         {
             //Value types for readings. Indicate what type of value a new unit will be.
             //Volts for example might be a Number, while a text based readout would be Text
@@ -185,7 +185,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                 "Either"
             };
             this.ModificationType = "Create";
-            this.Units = null;
+            this.Units = new ObservableCollection<UnitOfMeasureModel>(units);
             this.comparisonType = null;
             this.unit = null;
             this.Save = save;
@@ -201,10 +201,15 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         {
             this.ComparisonTypes = new List<string>
             {
-                "Number",
-                "Text",
-                "Toggle (On/Off, Yes/No etc.)"
+                "Less Than",
+                "Greater Than",
+                "Equal To",
+                "Between",
+                "Either"
             };
+            this.Save = toCopy.Save;
+            this.Cancel = toCopy.Cancel;
+
             this.Name = toCopy.Name;
             this.ComparisonType = toCopy.ComparisonType;
             this.UpperBound = toCopy.UpperBound;
@@ -213,8 +218,6 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             this.IsDeleted = toCopy.IsDeleted;
             this.Units = toCopy.Units;
             this.Id = toCopy.Id;
-            this.Save = toCopy.Save;
-            this.Cancel = toCopy.Cancel;
             this.modificationType = toCopy.modificationType;
         }
 

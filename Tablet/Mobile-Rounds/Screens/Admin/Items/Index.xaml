@@ -84,8 +84,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding Name}" FontSize="22" Foreground="#234ace"/>
-                        <TextBlock Text="{Binding ComparisonType}" FontSize="18" Foreground="#234ace" Padding="8, 0, 0, 10"/>
+                        <TextBlock Text="{Binding Name}" FontSize="22" Foreground="Purple"/>
+                        <TextBlock Text="{Binding ComparisonType}" FontSize="18" Foreground="Purple" Padding="8, 0, 0, 10"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -124,7 +124,7 @@
                 </TextBox.HeaderTemplate>
             </TextBox>
             <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,0,15" 
-                      ItemsSource="{ Binding Units }" SelectedItem="{ Binding Unit, Mode=TwoWay}" DisplayMemberPath="Name" FontSize="18">
+                      ItemsSource="{Binding Units}" SelectedItem="{Binding Unit, Mode=TwoWay}" DisplayMemberPath="Name" FontSize="18">
                 <ComboBox.HeaderTemplate>
                     <DataTemplate>
                         <TextBlock FontSize="22" Text="Unit Type" />
