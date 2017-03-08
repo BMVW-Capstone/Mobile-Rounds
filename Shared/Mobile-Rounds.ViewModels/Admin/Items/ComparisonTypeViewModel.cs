@@ -61,8 +61,6 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
 
         private int LowerCompare(string left, string right)
         {
-            var leftLowercase = left.ToLower();
-            var rightLowercase = right.ToLower();
             return left.CompareTo(right);
         }
 
@@ -100,7 +98,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             return ValidateGreaterThanOrEqual(value, min) && ValidateLessThanOrEqual(value, max);
         }
 
-        public bool ValidateWithinBounds(string value, string lowerBound, string upperBound)
+        private bool ValidateWithinBounds(string value, string lowerBound, string upperBound)
         {
             if (this.Name == Either)
             {
@@ -113,7 +111,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
 
             return true;
         }
-        public bool ValidateWithinBounds(string value, string max)
+        private bool ValidateWithinBounds(string value, string max)
         {
             if (this.Name == LessThan)
             {
@@ -139,6 +137,46 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             }
 
             return true;
+        }
+
+        private string Normalize(string value)
+        {
+            int zeroEnds = -1;
+            for(int i = 0; i < value.Length; i++)
+            {
+                if (value[i] == '.') break;
+                if (value[i] != '0') break;
+                if (i == 0) zeroEnds = 0;
+
+                zeroEnds++;
+            }
+
+            if(zeroEnds != -1)
+            {
+                return value.ToLower().Substring(zeroEnds);
+            }
+
+            return value.ToLower();
+        }
+
+        public bool Validate(string value, string max, string min = null)
+        {
+            if (string.IsNullOrEmpty(value) || string.IsNullOrEmpty(max)) return false;
+
+            var valueNormalized = Normalize(value);
+            var maxNormalized = Normalize(max);
+
+            if (UsesOneInput)
+            {
+                return ValidateWithinBounds(valueNormalized, maxNormalized);
+            }
+            else
+            {
+                //two inputs required.
+                if (string.IsNullOrEmpty(min)) return false;
+                var minNormalized = Normalize(min);
+                return ValidateWithinBounds(valueNormalized, minNormalized, maxNormalized);
+            }
         }
 
         public string Name { get; set; }
