@@ -71,6 +71,10 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Button x:Name="button" Grid.Row="7" Grid.Column="4" Content="Start" HorizontalAlignment="Right" Height="80" Width="200" VerticalAlignment="Bottom" FontSize="30" Foreground="White" Background="#224ace" Click="Button_Click"/>
+        <Button x:Name="button" Grid.Row="7" Grid.Column="4" Content="Start" 
+                Command="{Binding Navigate}"
+                HorizontalAlignment="Right" Height="80" Width="200"
+                VerticalAlignment="Bottom" FontSize="30" Foreground="White" 
+                Background="#224ace"/>
     </Grid>
 </Page>

@@ -1,6 +1,7 @@
 ﻿using Mobile_Rounds.ViewModels.Models;
 using Mobile_Rounds.ViewModels.Platform;
 using Mobile_Rounds.ViewModels.Regular.Region;
+using Mobile_Rounds.ViewModels.Regular.StartRounds;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Home;
 using System;
@@ -38,14 +39,6 @@ namespace Mobile_Rounds.Screens.Regular
         {
             // to do: block button_click until selection is made
             // pass the time selection backend
-        }
-
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var file = ServiceResolver.Resolve<IFileHandler>();
-            var reads = await file.GetFileAsync("regions.json");
-            var vm = new RegionListViewModel(reads);
-            BaseViewModel.Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.RegionSelect, vm);
         }
 
         private void timeTitle_SelectionChanged(object sender, RoutedEventArgs e)

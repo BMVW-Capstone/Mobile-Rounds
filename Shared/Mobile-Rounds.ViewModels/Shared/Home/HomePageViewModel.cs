@@ -62,25 +62,28 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
             this.IsAdmin = true;
 #endif
             this.GoHome = null;
+
+            const string Host = "http://localhost:1797";
+
             this.Sync = new AsyncCommand(async (obj) =>
             {
                 this.IsSyncing = true;
                 IApiRequest request = ServiceResolver.Resolve<IApiRequest>();
                 var handler = Platform.ServiceResolver.Resolve<IFileHandler>();
 
-                var regions = await request.GetAsync<List<RegionModel>>("http://localhost:1797/api/regions");
+                var regions = await request.GetAsync<List<RegionModel>>($"{Host}/api/regions");
                 var regionResult = new RegionHandler() { Regions = regions };
                 await handler.SaveFileAsync("regions.json", regionResult);
 
-                var stations = await request.GetAsync<List<StationModel>>("http://localhost:1797/api/stations");
+                var stations = await request.GetAsync<List<StationModel>>($"{Host}/api/stations");
                 var stationResult = new StationHandler() { Stations = stations };
                 await handler.SaveFileAsync("stations.json", stationResult);
 
-                var items = await request.GetAsync<List<ItemModel>>("http://localhost:1797/api/items");
+                var items = await request.GetAsync<List<ItemModel>>($"{Host}/api/items");
                 var itemResult = new ItemHandler() { Items = items };
                 await handler.SaveFileAsync("items.json", itemResult);
 
-                var units = await request.GetAsync<List<UnitOfMeasureModel>>("http://localhost:1797/api/units");
+                var units = await request.GetAsync<List<UnitOfMeasureModel>>($"{Host}/api/units");
                 var unitResult = new UnitHandler() { Units = units };
                 await handler.SaveFileAsync("units.json", unitResult);
 

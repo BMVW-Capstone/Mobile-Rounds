@@ -58,6 +58,8 @@ namespace Mobile_Rounds.ViewModels.Models
 
         public AsyncCommand Navigate { get; private set; }
 
+        public AsyncCommand NavigateRoot { get; set; }
+
         public StationModel()
         {
             this.Items = new List<ItemModel>();
@@ -66,6 +68,7 @@ namespace Mobile_Rounds.ViewModels.Models
         public StationModel(RegionModelSource region)
             : this()
         {
+            this.NavigateRoot = region.NavigateRoot;
             this.Navigate = new AsyncCommand(async(obj) =>
             {                
                 var file = Platform.ServiceResolver.Resolve<IFileHandler>();

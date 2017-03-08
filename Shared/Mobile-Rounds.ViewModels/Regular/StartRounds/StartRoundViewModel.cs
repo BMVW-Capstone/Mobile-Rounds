@@ -1,17 +1,30 @@
-﻿using Mobile_Rounds.ViewModels.Shared;
+﻿using Mobile_Rounds.ViewModels.Platform;
+using Mobile_Rounds.ViewModels.Regular.Region;
+using Mobile_Rounds.ViewModels.Shared;
+using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
 using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace Mobile_Rounds.ViewModels.Regular.StartRounds
 {
     public class StartRoundViewModel : BaseViewModel
     {
+        public AsyncCommand Navigate { get; set; }
         public StartRoundViewModel()
         {
             // this.Crumbs.Add(new BreadcrumbItemModel("Home", this.GoHome));
             this.Crumbs.Add(new BreadcrumbItemModel("Start Round"));
             RoundTimes = new List<RoundTimeViewModel>();
+
+            Navigate = new AsyncCommand(async (obj) =>
+            {
+                var file = ServiceResolver.Resolve<IFileHandler>();
+                var reads = await file.GetFileAsync("regions.json");
+                var vm = new RegionListViewModel(this, reads);
+                Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.RegionSelect, vm);
+            });
 
             var currentHour = DateTime.Now.Hour;
 

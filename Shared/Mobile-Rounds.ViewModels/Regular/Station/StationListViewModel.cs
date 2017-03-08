@@ -37,6 +37,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Station
 
         public StationListViewModel(RegionModelSource region)
         {
+            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Regions", region.NavigateRoot));
             this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel(region.Name, region.Navigate));
             this.Stations = new ObservableCollection<StationModel>();
             //var result = JsonConvert.DeserializeObject<StationHandler>(reads);

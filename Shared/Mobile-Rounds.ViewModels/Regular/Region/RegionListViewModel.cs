@@ -14,6 +14,7 @@ using Windows.Foundation;
 using Mobile_Rounds.ViewModels.Platform;
 using System.Collections.Generic;
 using Mobile_Rounds.ViewModels.Shared.DbModels;
+using Mobile_Rounds.ViewModels.Regular.StartRounds;
 
 namespace Mobile_Rounds.ViewModels.Regular.Region
 {
@@ -42,13 +43,15 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
         }
 
         
-        public RegionListViewModel(string reads)
+        public RegionListViewModel(StartRoundViewModel parent, string reads)
         {
             this.Regions = new ObservableCollection<RegionModelSource>();
             var result = JsonConvert.DeserializeObject<RegionHandler>(reads);
+            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Regions", parent.Navigate));
+
             foreach (var region in result.Regions)
             {
-                this.Regions.Add(new RegionModelSource()
+                this.Regions.Add(new RegionModelSource(parent.Navigate)
                 {
                     Id = region.Id,
                     Name = region.Name,
