@@ -126,11 +126,16 @@
 
             <TextBox Grid.Row="1" Grid.Column="0"
                 Visibility="{Binding IsNotBooleanInput, Converter={StaticResource BoolToVis}}"
-                Header="{Binding InputHeader}"
                 InputScope="{Binding InputType, Converter={StaticResource BoundToKeyboard}}"
-                Text="{Binding StringValue}"/>
+                Text="{Binding StringValue}">
+                <TextBox.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding InputHeader}" FontSize="18"/>
+                    </DataTemplate>
+                </TextBox.HeaderTemplate>
+            </TextBox>
 
-            <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
+            <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left">
                 <TextBlock Text="SOC" FontSize="18" Padding="0,0,0,10"/>
                 <TextBlock Text="{Binding AcceptedValue}" FontSize="18" HorizontalAlignment="Center"/>
             </StackPanel>
