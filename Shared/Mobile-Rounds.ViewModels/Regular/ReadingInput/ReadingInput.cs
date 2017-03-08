@@ -38,12 +38,12 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// <summary>
         /// Gets or sets a value that is the lowest acceptable value.
         /// </summary>
-        public int MinimumValue { get; set; }
+        public string MinimumValue { get; set; }
 
         /// <summary>
         /// Gets or sets a value that is the maximum acceptable value.
         /// </summary>
-        public int MaximumValue { get; set; }
+        public string MaximumValue { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating what the expected

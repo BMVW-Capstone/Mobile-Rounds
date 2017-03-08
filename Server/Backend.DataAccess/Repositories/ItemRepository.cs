@@ -52,7 +52,16 @@ namespace Backend.DataAccess.Repositories
                             Abbreviation = r.Specification.Unit.Abbreviation,
                             Name = r.Specification.Unit.Name
                         }
-                    }
+                    },
+                    PastFourReadings = r.Readings
+                        .OrderBy(i => i.TimeTaken)
+                        .Select(i => new ReadingModel
+                        {
+                            Id = i.Id,
+                            IsOutOfSpec = i.IsOutOfSpec,
+                            Value = i.Value,
+                        })
+                        .Take(4)
                 })
                 //load the data
                 .ToListAsync();
@@ -112,7 +121,16 @@ namespace Backend.DataAccess.Repositories
                         Abbreviation = model.Specification.Unit.Abbreviation,
                         IsDeleted = model.Specification.Unit.IsMarkedAsDeleted
                     }
-                }
+                },
+                PastFourReadings = model.Readings
+                    .OrderBy(i => i.TimeTaken)
+                    .Select(i => new ReadingModel
+                    {
+                        Id = i.Id,
+                        IsOutOfSpec = i.IsOutOfSpec,
+                        Value = i.Value,
+                    })
+                    .Take(4)
             };
         }
 

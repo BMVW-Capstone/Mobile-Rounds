@@ -58,6 +58,23 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// <summary>
         /// Gets or sets yesterdays reading.
         /// </summary>
-        public ReadingInput YesterdaysReading { get; set; }
+        public ReadingInput LastReading { get; set; }
+
+        /// <summary>
+        /// Gets or sets yesterdays reading.
+        /// </summary>
+        public ReadingInput TwoReadingsAgo { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets yesterdays reading.
+        /// </summary>
+        public ReadingInput ThreeReadingsAgo { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets yesterdays reading.
+        /// </summary>
+        public ReadingInput FourReadingsAgo { get; set; }
     }
 }

@@ -123,20 +123,29 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
                 {
                     return $"> {this.todaysData.MinimumValue} {this.todaysData.UnitAbbreviation}";
                 }
+                if (this.todaysData.ValueBounds == BoundType.GreaterThanOrEqual)
+                {
+                    return $">= {this.todaysData.MinimumValue} {this.todaysData.UnitAbbreviation}";
+                }
 
                 if (this.todaysData.ValueBounds == BoundType.LessThan)
                 {
                     return $"< {this.todaysData.MaximumValue} {this.todaysData.UnitAbbreviation}";
                 }
+                if (this.todaysData.ValueBounds == BoundType.LessThanOrEqual)
+                {
+                    return $"<= {this.todaysData.MaximumValue} {this.todaysData.UnitAbbreviation}";
+                }
+
 
                 if (this.todaysData.ValueBounds == BoundType.EqualTo)
                 {
-                    return $"{this.todaysData.ExpectedStringValue} {this.todaysData.UnitAbbreviation}";
+                    return $"{this.todaysData.MaximumValue} {this.todaysData.UnitAbbreviation}";
                 }
 
                 if (this.todaysData.ValueBounds == BoundType.EitherOr)
                 {
-                    return this.todaysData.YesBooleanText;
+                    return this.todaysData.MaximumValue;
                 }
 
                 return "N/A";
@@ -147,11 +156,11 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// Gets the value to display for the yes value of the
         /// toggle control.
         /// </summary>
-        public string YesBooleanText
+        public string MaximumValue
         {
             get
             {
-                return this.todaysData.YesBooleanText;
+                return this.todaysData.MaximumValue;
             }
         }
 
@@ -159,11 +168,11 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// Gets the value to display for the no value of the
         /// toggle control.
         /// </summary>
-        public string NoBooleanText
+        public string MinimumValue
         {
             get
             {
-                return this.todaysData.NoBooleanText;
+                return this.todaysData.MinimumValue;
             }
         }
 
@@ -179,28 +188,6 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         }
 
         /// <summary>
-        /// Gets the value that was submitted from yesterday.
-        /// </summary>
-        public string YesterdaysValue
-        {
-            get
-            {
-                return $"{this.yesterdaysData.StringValue} {this.yesterdaysData.UnitAbbreviation}";
-            }
-        }
-
-        /// <summary>
-        /// Gets the comments from yesterday.
-        /// </summary>
-        public string YesterdaysComments
-        {
-            get
-            {
-                return this.yesterdaysData.Notes;
-            }
-        }
-
-        /// <summary>
         /// Gets the value indicating if the value was within spec or not.
         /// </summary>
         public bool IsInSpec
@@ -212,15 +199,26 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         }
 
         /// <summary>
-        /// Gets the value indicating if the value was within spec or not.
+        /// Gets or sets yesterdays reading.
         /// </summary>
-        public bool WasYesterdayInSpec
-        {
-            get
-            {
-                return this.yesterdaysData.IsWithinSpec;
-            }
-        }
+        public ReadingInput LastReading { get; set; }
+
+        /// <summary>
+        /// Gets or sets yesterdays reading.
+        /// </summary>
+        public ReadingInput TwoReadingsAgo { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets yesterdays reading.
+        /// </summary>
+        public ReadingInput ThreeReadingsAgo { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets yesterdays reading.
+        /// </summary>
+        public ReadingInput FourReadingsAgo { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating if the input screen should be visible.
@@ -244,22 +242,20 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// </summary>
         public ReadingInputViewModel()
         {
-            this.todaysData = this.yesterdaysData = new ReadingInput();
+            this.todaysData = new ReadingInput();
             this.ShowInput = false;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReadingInputViewModel"/> class.
         /// </summary>
-        public ReadingInputViewModel(ReadingInput todaysData, ReadingInput yesterdaysData)
+        public ReadingInputViewModel(ReadingInput todaysData)
         {
             this.todaysData = todaysData;
             this.ShowInput = this.todaysData != null;
-            this.yesterdaysData = yesterdaysData;
         }
 
         private ReadingInput todaysData;
-        private ReadingInput yesterdaysData;
         private bool shouldShowInput;
     }
 }

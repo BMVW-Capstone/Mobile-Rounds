@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mobile_Rounds.ViewModels.Shared.ReadingType;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         private const string EqualTo = "Equal To";
         private const string Between = "Between";
         private const string Either = "Either";
+        private const string NotApplicable = "Not Applicable";
 
         public static ComparisonTypeViewModel Locate(string name)
         {
@@ -203,6 +205,18 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                 var minNormalized = Normalize(min);
                 return ValidateWithinBounds(valueNormalized, minNormalized, maxNormalized);
             }
+        }
+
+        public BoundType AsEnum()
+        {
+            if (this.Name == Between) return BoundType.Between;
+            if (this.Name == Either) return BoundType.EitherOr;
+            if (this.Name == LessThan) return BoundType.LessThan;
+            if (this.Name == GreaterThan) return BoundType.GreaterThan;
+            if (this.Name == LessThanOrEqual) return BoundType.LessThanOrEqual;
+            if (this.Name == GreaterThan) return BoundType.GreaterThan;
+            if (this.Name == EqualTo) return BoundType.EqualTo;
+            return BoundType.NotApplicable;
         }
 
         public string Name { get; set; }

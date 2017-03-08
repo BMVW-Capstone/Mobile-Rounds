@@ -42,5 +42,7 @@ namespace Mobile_Rounds.ViewModels.Models
         /// The acceptable values for the given item.
         /// </summary>
         public SpecificationModel Specification { get; set; }
+
+        public IEnumerable<ReadingModel> PastFourReadings { get; set; }
     }
 }

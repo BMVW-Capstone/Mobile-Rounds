@@ -119,8 +119,8 @@
             <ToggleSwitch Grid.Row="1" Grid.Column="0"
                 Visibility="{Binding IsBooleanInput, Converter={StaticResource BoolToVis}}"
                 Header="{Binding InputHeader}"
-                OnContent="{Binding YesBooleanText}"
-                OffContent="{Binding NoBooleanText}"
+                OnContent="{Binding MaximumValue}"
+                OffContent="{Binding MinimumValue}"
                 IsOn="{Binding BooleanValue}"
                 FontSize="18"/>
 
@@ -167,16 +167,24 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="0">
-                    <TextBlock FontSize="20" HorizontalAlignment="Center"/>
+                    <TextBlock FontSize="20" HorizontalAlignment="Center" 
+                               Foreground="{Binding FourReadingsAgo.IsWithinSpec, Converter={StaticResource BoolToColor}}"
+                               Text="{Binding FourReadingsAgo.StringValue, Mode=TwoWay}"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="1">
-                    <TextBlock FontSize="20" HorizontalAlignment="Center"/>
+                    <TextBlock FontSize="20" HorizontalAlignment="Center"
+                               Foreground="{Binding ThreeReadingsAgo.IsWithinSpec, Converter={StaticResource BoolToColor}}"
+                               Text="{Binding ThreeReadingsAgo.StringValue, Mode=TwoWay}"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="2">
-                    <TextBlock FontSize="20" HorizontalAlignment="Center"/>
+                    <TextBlock FontSize="20" HorizontalAlignment="Center"
+                               Foreground="{Binding TwoReadingsAgo.IsWithinSpec, Converter={StaticResource BoolToColor}}"
+                               Text="{Binding TwoReadingsAgo.StringValue, Mode=TwoWay}"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="3">
-                    <TextBlock FontSize="20" HorizontalAlignment="Center"/>
+                    <TextBlock FontSize="20" HorizontalAlignment="Center"
+                               Foreground="{Binding LastReading.IsWithinSpec, Converter={StaticResource BoolToColor}}"
+                               Text="{Binding LastReading.StringValue, Mode=TwoWay}"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="0">
                     <TextBlock FontSize="20" HorizontalAlignment="Center">2:00</TextBlock>

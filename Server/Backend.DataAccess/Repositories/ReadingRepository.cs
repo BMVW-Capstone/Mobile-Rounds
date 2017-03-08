@@ -79,6 +79,7 @@ namespace Backend.DataAccess.Repositories
         protected override Reading BuildModel(ReadingModel model)
         {
             if (model == null) return null;
+
             return new Reading
             {
                 Id = model.Id,

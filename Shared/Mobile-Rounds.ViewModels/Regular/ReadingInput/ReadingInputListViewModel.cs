@@ -39,9 +39,14 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
                 if (this.selectedMeter != null)
                 {
                     ReadingInput today = this.selectedMeter.TodaysReading;
-                    ReadingInput yesterday = this.selectedMeter.YesterdaysReading;
 
-                    this.parent.Input = new ReadingInputViewModel(today, yesterday);
+                    var newInput = new ReadingInputViewModel(today);
+                    newInput.LastReading = this.selectedMeter.LastReading;
+                    newInput.TwoReadingsAgo = this.selectedMeter.TwoReadingsAgo;
+                    newInput.ThreeReadingsAgo = this.selectedMeter.ThreeReadingsAgo;
+                    newInput.FourReadingsAgo = this.selectedMeter.FourReadingsAgo;
+                    this.parent.Input = newInput;
+
                 }
 
                 this.RaisePropertyChanged(nameof(this.Selected));
@@ -53,8 +58,6 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// </summary>
         public ReadingInputListViewModel(ReadingInputScreenViewModel parent)
         {
-            
-
             this.Meters = new ObservableCollection<Meter>(/*meter list*/);
             this.parent = parent;
             this.Selected = this.Meters.FirstOrDefault();

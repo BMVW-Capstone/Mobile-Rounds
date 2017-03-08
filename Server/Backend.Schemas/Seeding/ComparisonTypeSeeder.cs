@@ -18,7 +18,9 @@ namespace Backend.Schemas.Seeding
                     new ComparisonType { Name = ComparisonType.Either },
                     new ComparisonType { Name = ComparisonType.EqualTo },
                     new ComparisonType { Name = ComparisonType.GreaterThan },
+                    new ComparisonType { Name = ComparisonType.GreaterThanOrEqual },
                     new ComparisonType { Name = ComparisonType.LessThan },
+                    new ComparisonType { Name = ComparisonType.LessThanOrEqual },
                     new ComparisonType { Name = ComparisonType.NotApplicable }
                 );
                 ctx.SaveChanges();
