@@ -57,7 +57,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
                         MinimumValue = item.Specification.LowerBound,
                         MaximumValue = item.Specification.UpperBound,
                         UnitAbbreviation = item.Specification.UnitOfMeasure.Abbreviation,
-                        ValueBounds = compType.AsEnum()
+                        ValueBounds = compType.AsEnum(),
                     };
 
                     var count = item.PastFourReadings.Count();
@@ -66,6 +66,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
                     {
                         newMeter.LastReading.StringValue = item.PastFourReadings.ElementAt(0).Value;
                         newMeter.LastReading.IsWithinSpec = !item.PastFourReadings.ElementAt(0).IsOutOfSpec;
+                        newMeter.LastReading.Notes = item.PastFourReadings.ElementAt(0).Comments;
                     }
 
                     if (count > 1)

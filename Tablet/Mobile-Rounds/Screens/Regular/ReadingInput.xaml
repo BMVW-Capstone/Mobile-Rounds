@@ -201,8 +201,8 @@
             </Grid>
 
             <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" MaxHeight="100" Margin="0,10,0,10">
-                <TextBlock Text="Yesterdays Comments:" FontSize="18" Padding="0,0,0,5" Margin="0,0,0.4,0"/>
-                <TextBlock Text="{Binding YesterdaysComments}" FontSize="18" Padding="15,0,0,15" Margin="0,0,0.4,0" />
+                <TextBlock Text="Last Comments:" FontSize="18" Padding="0,0,0,5" Margin="0,0,0.4,0"/>
+                <TextBlock Text="{Binding LastComments}" FontSize="18" Padding="15,0,0,15" Margin="0,0,0.4,0" />
             </StackPanel>
 
             <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">

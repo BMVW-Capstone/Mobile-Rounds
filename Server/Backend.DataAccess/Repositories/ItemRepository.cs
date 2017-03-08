@@ -60,6 +60,7 @@ namespace Backend.DataAccess.Repositories
                             Id = i.Id,
                             IsOutOfSpec = i.IsOutOfSpec,
                             Value = i.Value,
+                            Comments = i.Comments
                         })
                         .Take(4)
                 })
@@ -129,6 +130,7 @@ namespace Backend.DataAccess.Repositories
                         Id = i.Id,
                         IsOutOfSpec = i.IsOutOfSpec,
                         Value = i.Value,
+                        Comments = i.Comments
                     })
                     .Take(4)
             };

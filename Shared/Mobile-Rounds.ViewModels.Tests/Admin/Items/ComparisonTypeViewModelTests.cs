@@ -18,13 +18,14 @@ namespace Mobile_Rounds.ViewModels.Tests.Admin.Items
         private const string EqualTo = "Equal To";
         private const string Between = "Between";
         private const string Either = "Either";
+        private const string NotApplicable = "Not Applicable";
 
         [TestMethod]
         public void Static_Lists_Have_Correct_Strings()
         {
             var expected = new List<string>
             {
-                LessThan, LessThanOrEqual, GreaterThan, GreaterThanOrEqual, EqualTo, Between, Either
+                LessThan, LessThanOrEqual, GreaterThan, GreaterThanOrEqual, EqualTo, NotApplicable, Between, Either
             };
 
             Assert.AreEqual(expected.Count, ComparisonTypeViewModel.AllTypes.Count);
@@ -41,7 +42,7 @@ namespace Mobile_Rounds.ViewModels.Tests.Admin.Items
         {
             var expected = new List<string>
             {
-                LessThan, LessThanOrEqual, GreaterThan, GreaterThanOrEqual, EqualTo, Between, Either
+                LessThan, LessThanOrEqual, GreaterThan, GreaterThanOrEqual, EqualTo, NotApplicable, Between, Either
             };
             var vms = ComparisonTypeViewModel.AllTypesAsViewModels;
 
@@ -51,7 +52,7 @@ namespace Mobile_Rounds.ViewModels.Tests.Admin.Items
             {
                 var vm = vms[i];
                 Assert.AreEqual(expected[i], vm.Name);
-                if(i > 4)
+                if(i > 5)
                 {
                     //two value check.
                     Assert.IsFalse(vm.UsesOneInput);

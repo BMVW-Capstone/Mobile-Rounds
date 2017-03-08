@@ -91,6 +91,23 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         }
 
         /// <summary>
+        /// Gets or sets the string value from the screen.
+        /// </summary>
+        public string LastComments
+        {
+            get
+            {
+                return this.LastReading?.Notes;
+            }
+
+            set
+            {
+                this.LastReading.Notes = value;
+                this.RaisePropertyChanged(nameof(this.LastComments));
+            }
+        }
+
+        /// <summary>
         /// Gets the header text for the reading field.
         /// </summary>
         public string InputHeader

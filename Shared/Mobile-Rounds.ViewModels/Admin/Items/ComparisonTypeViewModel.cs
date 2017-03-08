@@ -37,7 +37,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
 
             SingleInputs = new List<string>()
             {
-                LessThan, LessThanOrEqual, GreaterThan, GreaterThanOrEqual, EqualTo
+                LessThan, LessThanOrEqual, GreaterThan, GreaterThanOrEqual, EqualTo, NotApplicable
             };
 
             DoubleInputs = new List<string>()

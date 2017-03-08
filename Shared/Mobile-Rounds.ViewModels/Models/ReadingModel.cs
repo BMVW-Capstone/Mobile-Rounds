@@ -42,5 +42,10 @@ namespace Mobile_Rounds.ViewModels.Models
         /// out of spec.
         /// </summary>
         public bool IsOutOfSpec { get; set; }
+
+        /// <summary>
+        /// The comments (if any) for the current reading.
+        /// </summary>
+        public string Comments { get; set; }
     }
 }
