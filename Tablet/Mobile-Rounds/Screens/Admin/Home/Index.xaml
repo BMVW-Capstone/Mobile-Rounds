@@ -83,10 +83,17 @@
             Margin="10"
             Foreground="White"
             Background="Purple" 
+            Title="Items"
+            Command="{Binding GoToItems}" />
+
+        <controls:ColoredTile Grid.Row="2" Grid.Column="4"
+            Margin="10"
+            Foreground="White"
+            Background="Purple" 
             Title="Units of Measure"
             Command="{Binding GoToUnits}" />
 
-        <controls:ColoredTile Grid.Row="2" Grid.Column="4"
+        <controls:ColoredTile Grid.Row="4" Grid.Column="1"
             Margin="10"
             Foreground="White"
             Background="Purple" 

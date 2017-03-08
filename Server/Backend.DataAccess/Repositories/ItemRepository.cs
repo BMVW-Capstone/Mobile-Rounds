@@ -36,6 +36,7 @@ namespace Backend.DataAccess.Repositories
                 {
                     Id = r.ItemId,
                     Name = r.Name,
+                    Meter = r.Meter,
                     IsDeleted = r.IsMarkedAsDeleted,
                     StationId = r.StationId,
                     Specification = new SpecificationModel

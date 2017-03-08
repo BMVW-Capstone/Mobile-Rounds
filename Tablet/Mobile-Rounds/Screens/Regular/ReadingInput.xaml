@@ -82,7 +82,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Padding="0,5,0,5">
-                        <TextBlock Text="{Binding Name}" Foreground="#234ace" FontSize="25"/>
+                        <TextBlock Text="{Binding Name}" FontSize="22" Foreground="#234ace"/>
+                        <TextBlock Text="{Binding MeterName}" FontSize="18" Foreground="#234ace" Padding="8, 0, 0, 10"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

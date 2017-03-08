@@ -41,7 +41,8 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
                 {
                     var newMeter = new Meter(item.Meter)
                     {
-                        Name = item.Name
+                        Name = item.Name,
+                        MeterName = item.Meter
                     };
 
 
