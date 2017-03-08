@@ -82,7 +82,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Padding="0,5,0,5">
-                        <TextBlock Text="{Binding Name}" Foreground="#234ace" FontSize="25"/>
+                        <TextBlock Text="{Binding Name}" FontSize="22" Foreground="#234ace"/>
+                        <TextBlock Text="{Binding MeterName}" FontSize="18" Foreground="#234ace" Padding="8, 0, 0, 10"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -119,8 +120,8 @@
             <ToggleSwitch Grid.Row="1" Grid.Column="0"
                 Visibility="{Binding IsBooleanInput, Converter={StaticResource BoolToVis}}"
                 Header="{Binding InputHeader}"
-                OnContent="{Binding YesBooleanText}"
-                OffContent="{Binding NoBooleanText}"
+                OnContent="{Binding MaximumValue}"
+                OffContent="{Binding MinimumValue}"
                 IsOn="{Binding BooleanValue}"
                 FontSize="18"/>
 
@@ -167,16 +168,24 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="0">
-                    <TextBlock FontSize="20" HorizontalAlignment="Center"/>
+                    <TextBlock FontSize="20" HorizontalAlignment="Center" 
+                               Foreground="{Binding FourReadingsAgo.IsWithinSpec, Converter={StaticResource BoolToColor}}"
+                               Text="{Binding FourReadingsAgo.StringValue, Mode=TwoWay}"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="1">
-                    <TextBlock FontSize="20" HorizontalAlignment="Center"/>
+                    <TextBlock FontSize="20" HorizontalAlignment="Center"
+                               Foreground="{Binding ThreeReadingsAgo.IsWithinSpec, Converter={StaticResource BoolToColor}}"
+                               Text="{Binding ThreeReadingsAgo.StringValue, Mode=TwoWay}"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="2">
-                    <TextBlock FontSize="20" HorizontalAlignment="Center"/>
+                    <TextBlock FontSize="20" HorizontalAlignment="Center"
+                               Foreground="{Binding TwoReadingsAgo.IsWithinSpec, Converter={StaticResource BoolToColor}}"
+                               Text="{Binding TwoReadingsAgo.StringValue, Mode=TwoWay}"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="3">
-                    <TextBlock FontSize="20" HorizontalAlignment="Center"/>
+                    <TextBlock FontSize="20" HorizontalAlignment="Center"
+                               Foreground="{Binding LastReading.IsWithinSpec, Converter={StaticResource BoolToColor}}"
+                               Text="{Binding LastReading.StringValue, Mode=TwoWay}"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="0">
                     <TextBlock FontSize="20" HorizontalAlignment="Center">2:00</TextBlock>
@@ -193,8 +202,8 @@
             </Grid>
 
             <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" MaxHeight="100" Margin="0,10,0,10">
-                <TextBlock Text="Yesterdays Comments:" FontSize="18" Padding="0,0,0,5" Margin="0,0,0.4,0"/>
-                <TextBlock Text="{Binding YesterdaysComments}" FontSize="18" Padding="15,0,0,15" Margin="0,0,0.4,0" />
+                <TextBlock Text="Last Comments:" FontSize="18" Padding="0,0,0,5" Margin="0,0,0.4,0"/>
+                <TextBlock Text="{Binding LastComments}" FontSize="18" Padding="15,0,0,15" Margin="0,0,0.4,0" />
             </StackPanel>
 
             <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">

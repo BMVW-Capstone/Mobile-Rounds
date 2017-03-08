@@ -18,9 +18,14 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the meter.
+        /// Gets or sets the name of the item. This class name actually represents an item...
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the meter.
+        /// </summary>
+        public string MeterName { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Meter"/> class.
@@ -58,6 +63,23 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// <summary>
         /// Gets or sets yesterdays reading.
         /// </summary>
-        public ReadingInput YesterdaysReading { get; set; }
+        public ReadingInput LastReading { get; set; }
+
+        /// <summary>
+        /// Gets or sets yesterdays reading.
+        /// </summary>
+        public ReadingInput TwoReadingsAgo { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets yesterdays reading.
+        /// </summary>
+        public ReadingInput ThreeReadingsAgo { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets yesterdays reading.
+        /// </summary>
+        public ReadingInput FourReadingsAgo { get; set; }
     }
 }

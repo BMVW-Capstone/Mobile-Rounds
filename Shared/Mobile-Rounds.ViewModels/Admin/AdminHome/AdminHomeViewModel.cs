@@ -14,6 +14,7 @@ using Mobile_Rounds.ViewModels.Shared.Navigation;
 using System.Diagnostics;
 using Mobile_Rounds.ViewModels.Platform;
 using Mobile_Rounds.ViewModels.Models;
+using Mobile_Rounds.ViewModels.Shared.DbModels;
 
 namespace Mobile_Rounds.ViewModels.Admin.AdminHome
 {
@@ -32,6 +33,11 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
         /// Gets the action to call to navigate to the Stations screen
         /// </summary>
         public ICommand GoToStations { get; private set; }
+
+        /// <summary>
+        /// Gets the action to call to navigate to the Items screen
+        /// </summary>
+        public ICommand GoToItems { get; private set; }
 
         /// <summary>
         /// Gets the action to call to navigate to the Regions screen
@@ -59,6 +65,25 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
             this.GoToRegions = new AsyncCommand((obj) =>
             {
                 Navigator.Navigate(NavigationType.Regions);
+            });
+
+            this.GoToItems = new AsyncCommand(async (obj) =>
+            {
+                //TODO: This is a hack just for demonstration purposes.
+                var fm = ServiceResolver.Resolve<IFileHandler>();
+
+                var regions = await fm.GetFileAsync<RegionHandler>("regions.json");
+                var stations = await fm.GetFileAsync<StationHandler>("stations.json");
+                var items = await fm.GetFileAsync<ItemHandler>("items.json");
+                var units = await fm.GetFileAsync<UnitHandler>("units.json");
+
+                var vm = new ViewModels.Admin.Items.ItemScreenViewModel(
+                    regions.Regions[0],
+                    stations.Stations[0],
+                    units.Units,
+                    items.Items);
+
+                Navigator.Navigate(NavigationType.AdminItems, vm);
             });
         }
     }

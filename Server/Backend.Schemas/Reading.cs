@@ -51,6 +51,11 @@ namespace Backend.Schemas
         public bool IsOutOfSpec { get; set; }
 
         /// <summary>
+        /// Gets the comments (if any) for the current reading.
+        /// </summary>
+        public string Comments { get; set; }
+
+        /// <summary>
         /// The <see cref="Item"/> that this reading belongs to.
         /// </summary>
         public virtual Item Item { get; set; }

@@ -21,10 +21,21 @@ namespace Mobile_Rounds.ViewModels.Shared.ReadingType
         /// </summary>
         LessThan,
 
+
+        /// <summary>
+        /// Represents a less than value binding.
+        /// </summary>
+        LessThanOrEqual,
+
         /// <summary>
         /// Represents a greater than value binding.
         /// </summary>
         GreaterThan,
+
+        /// <summary>
+        /// Represents a greater than value binding.
+        /// </summary>
+        GreaterThanOrEqual,
 
         /// <summary>
         /// Represents a either or value binding.
@@ -34,6 +45,8 @@ namespace Mobile_Rounds.ViewModels.Shared.ReadingType
         /// <summary>
         /// Represents a binary either or value binding.
         /// </summary>
-        EitherOr
+        EitherOr,
+
+        NotApplicable
     }
 }

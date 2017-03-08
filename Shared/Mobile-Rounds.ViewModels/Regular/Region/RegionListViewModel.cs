@@ -48,7 +48,11 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
             var result = JsonConvert.DeserializeObject<RegionHandler>(reads);
             foreach (var region in result.Regions)
             {
-                this.Regions.Add(new RegionModelSource(region.Id) { Name = region.Name });
+                this.Regions.Add(new RegionModelSource()
+                {
+                    Id = region.Id,
+                    Name = region.Name
+                });
             }
         }
 

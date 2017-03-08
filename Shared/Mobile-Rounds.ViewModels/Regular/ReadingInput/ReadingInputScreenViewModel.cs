@@ -2,6 +2,7 @@
 // Copyright (c) SolarWorld Capstone Team. All rights reserved.
 // </copyright>
 
+using Mobile_Rounds.ViewModels.Admin.Items;
 using Mobile_Rounds.ViewModels.Models;
 using Mobile_Rounds.ViewModels.Regular.Region;
 using Mobile_Rounds.ViewModels.Shared;
@@ -10,6 +11,7 @@ using Mobile_Rounds.ViewModels.Shared.Controls;
 using Mobile_Rounds.ViewModels.Shared.DbModels;
 using Newtonsoft.Json;
 using System;
+using System.Linq;
 
 namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
 {
@@ -37,9 +39,55 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             {
                 if (item.StationId == station.Id)
                 {
-                    var newMeter = new Meter(item.Meter) { Name = item.Name };
-                    newMeter.YesterdaysReading = new ReadingInput();
-                    newMeter.TodaysReading = new ReadingInput();
+                    var newMeter = new Meter(item.Meter)
+                    {
+                        Name = item.Name,
+                        MeterName = item.Meter
+                    };
+
+
+                    newMeter.LastReading = new ReadingInput();
+                    newMeter.TwoReadingsAgo = new ReadingInput();
+                    newMeter.ThreeReadingsAgo = new ReadingInput();
+                    newMeter.FourReadingsAgo = new ReadingInput();
+
+                    var compType = ComparisonTypeViewModel.Locate(item.Specification.ComparisonType);
+                    
+                    newMeter.TodaysReading = new ReadingInput()
+                    {
+                        MinimumValue = item.Specification.LowerBound,
+                        MaximumValue = item.Specification.UpperBound,
+                        UnitAbbreviation = item.Specification.UnitOfMeasure.Abbreviation,
+                        ValueBounds = compType.AsEnum(),
+                    };
+
+                    var count = item.PastFourReadings.Count();
+
+                    if(count > 0)
+                    {
+                        newMeter.LastReading.StringValue = item.PastFourReadings.ElementAt(0).Value;
+                        newMeter.LastReading.IsWithinSpec = !item.PastFourReadings.ElementAt(0).IsOutOfSpec;
+                        newMeter.LastReading.Notes = item.PastFourReadings.ElementAt(0).Comments;
+                    }
+
+                    if (count > 1)
+                    {
+                        newMeter.TwoReadingsAgo.StringValue = item.PastFourReadings.ElementAt(1).Value;
+                        newMeter.TwoReadingsAgo.IsWithinSpec = !item.PastFourReadings.ElementAt(1).IsOutOfSpec;
+                    }
+
+                    if (count > 2)
+                    {
+                        newMeter.ThreeReadingsAgo.StringValue = item.PastFourReadings.ElementAt(2).Value;
+                        newMeter.ThreeReadingsAgo.IsWithinSpec = !item.PastFourReadings.ElementAt(2).IsOutOfSpec;
+                    }
+
+                    if (count > 3)
+                    {
+                        newMeter.FourReadingsAgo.StringValue = item.PastFourReadings.ElementAt(3).Value;
+                        newMeter.FourReadingsAgo.IsWithinSpec = !item.PastFourReadings.ElementAt(3).IsOutOfSpec;
+                    }
+
                     this.ListModel.Meters.Add(newMeter);
                 }
             }

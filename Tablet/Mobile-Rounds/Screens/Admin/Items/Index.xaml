@@ -86,7 +86,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{Binding Name}" FontSize="22" Foreground="Purple"/>
-                        <TextBlock Text="{Binding ComparisonType.Name}" FontSize="18" Foreground="Purple" Padding="8, 0, 0, 10"/>
+                        <TextBlock Text="{Binding Meter}" FontSize="18" Foreground="Purple" Padding="8, 0, 0, 10"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

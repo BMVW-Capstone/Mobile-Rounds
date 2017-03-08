@@ -40,6 +40,7 @@ namespace Backend.DataAccess.Repositories
                     TimeTaken = r.TimeTaken,
                     Value = r.Value,
                     IsOutOfSpec = r.IsOutOfSpec,
+                    Comments = r.Comments
                 })
                 //load the data
                 .ToListAsync();
@@ -72,13 +73,15 @@ namespace Backend.DataAccess.Repositories
                 RoundId = model.RoundId,
                 TimeTaken = model.TimeTaken,
                 Value = model.Value,
-                IsOutOfSpec = model.IsOutOfSpec
+                IsOutOfSpec = model.IsOutOfSpec,
+                Comments = model.Comments
             };
         }
 
         protected override Reading BuildModel(ReadingModel model)
         {
             if (model == null) return null;
+
             return new Reading
             {
                 Id = model.Id,
@@ -86,7 +89,8 @@ namespace Backend.DataAccess.Repositories
                 RoundId = model.RoundId,
                 TimeTaken = model.TimeTaken,
                 Value = model.Value,
-                IsOutOfSpec = model.IsOutOfSpec
+                IsOutOfSpec = model.IsOutOfSpec,
+                Comments = model.Comments
             };
         }
     }
