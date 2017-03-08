@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Mobile_Rounds.ViewModels.Shared.DbModels
 {
-    public class StationHandler
+    public class UnitHandler
     {
-        public List<StationModel> Stations { get; set; }
+        public List<UnitOfMeasureModel> Units { get; set; }
     }
 }

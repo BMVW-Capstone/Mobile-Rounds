@@ -26,6 +26,8 @@ using System.Diagnostics;
 using System.Net;
 using Windows.Web.Http;
 using Windows.Web.Http.Filters;
+using Mobile_Rounds.ViewModels.Shared.DbModels;
+using Mobile_Rounds.ViewModels.Shared.Navigation;
 
 namespace Mobile_Rounds
 {
@@ -41,17 +43,16 @@ namespace Mobile_Rounds
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
-            this.Suspending += this.OnSuspending;
-
             // register services with PCL
             ServiceResolver.Register<IBreadcrumbNavigationEvent>(() => new BreadcrumbNavigationHandler());
-
             ServiceResolver.Register<IApiRequest>(() => new ApiRequest());
             ServiceResolver.Register<IFileHandler>(() => new FileHandler());
 
             // set the navigator for our classses.
             BaseViewModel.Navigator = new NavigationService();
+
+            this.InitializeComponent();
+            this.Suspending += this.OnSuspending;
         }
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace Mobile_Rounds
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
@@ -95,7 +96,25 @@ namespace Mobile_Rounds
                     // configuring the new page by passing required information as a navigation
                     // parameter
 
-                    rootFrame.Navigate(typeof(HomeScreen), e.Arguments);
+                    //TODO: Remove this...
+                    var fm = ServiceResolver.Resolve<IFileHandler>();
+
+                    var regions = await fm.GetFileAsync<RegionHandler>("regions.json");
+                    var stations = await fm.GetFileAsync<StationHandler>("stations.json");
+                    var items = await fm.GetFileAsync<ItemHandler>("items.json");
+                    var units = await fm.GetFileAsync<UnitHandler>("units.json");
+
+                    var vm = new ViewModels.Admin.Items.ItemScreenViewModel(
+                        regions.Regions[0],
+                        stations.Stations[0],
+                        units.Units,
+                        items.Items);
+
+                    BaseViewModel.Navigator.Navigate(NavigationType.AdminItems, vm);
+
+
+                    //rootFrame.Navigate(typeof(HomeScreen), e.Arguments);
+                    //rootFrame.Navigate(typeof(Screens.Admin.Items.Index), e.Arguments);
                 }
 
                 // Ensure the current window is active

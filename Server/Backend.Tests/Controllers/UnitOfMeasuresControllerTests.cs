@@ -64,7 +64,7 @@ namespace Backend.Tests
 
             var orderedList = await GetData<List<UnitOfMeasureModel>>(controller.Get());
 
-            Assert.AreEqual(2, orderedList.Count());
+            Assert.AreEqual(3, orderedList.Count());
             Assert.AreNotEqual(Guid.Empty, orderedList.First().Id);
             Assert.AreNotEqual(Guid.Empty, orderedList.Last().Id);
             Assert.AreEqual("A different name", orderedList.First().Name);
