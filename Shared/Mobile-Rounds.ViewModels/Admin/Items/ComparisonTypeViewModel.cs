@@ -59,26 +59,85 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             UsesTwoInputs = DoubleInputs.Contains(Name);
         }
 
-        public bool ValidateBoundOrder(string lowerBound, string upperBound)
+        private int LowerCompare(string left, string right)
         {
-            var lowerBoundLowercase = lowerBound.ToLower();
-            var upperBoundLowercase = upperBound.ToLower();
-
-            return lowerBoundLowercase.CompareTo(upperBoundLowercase) < 0;
+            var leftLowercase = left.ToLower();
+            var rightLowercase = right.ToLower();
+            return left.CompareTo(right);
         }
 
-        public bool ValidateWithinBounds(string lowerValue, string upperValue, string lowerBound, string upperBound)
+        private bool ValidateLessThan(string value, string bound)
         {
-            var lowerValLowercase = lowerValue.ToLower();
-            var upperValLowercase = upperValue.ToLower();
-            var lowerBoundLowercase = lowerBound.ToLower();
-            var upperBoundLowercase = upperBound.ToLower();
+            return LowerCompare(value, bound) < 0;
+        }
 
+        private bool ValidateLessThanOrEqual(string value, string bound)
+        {
+            return LowerCompare(value, bound) <= 0;
+        }
+
+        private bool ValidateEqualTo(string value, string bound)
+        {
+            return LowerCompare(value, bound) == 0;
+        }
+        private bool ValidateGreaterThan(string value, string bound)
+        {
+            return LowerCompare(value, bound) > 0;
+        }
+
+        private bool ValidateGreaterThanOrEqual(string value, string bound)
+        {
+            return LowerCompare(value, bound) >= 0;
+        }
+
+        private bool ValidateEither(string value, string min, string max)
+        {
+            return LowerCompare(value, min) == 0 || LowerCompare(value, max) == 0;
+        }
+
+        private bool ValidateBetween(string value, string min, string max)
+        {
+            return ValidateGreaterThanOrEqual(value, min) && ValidateLessThanOrEqual(value, max);
+        }
+
+        public bool ValidateWithinBounds(string value, string lowerBound, string upperBound)
+        {
             if (this.Name == Either)
             {
-                var check = lowerValLowercase.CompareTo(upperValLowercase) != 0;
-                if (!check) return false;
+                return ValidateEither(value, lowerBound, upperBound);
             }
+            if (this.Name == Between)
+            {
+                return ValidateBetween(value, lowerBound, upperBound);
+            }
+
+            return true;
+        }
+        public bool ValidateWithinBounds(string value, string max)
+        {
+            if (this.Name == LessThan)
+            {
+                return ValidateLessThan(value, max);
+            }
+            if (this.Name == LessThanOrEqual)
+            {
+                return ValidateLessThanOrEqual(value, max);
+            }
+
+            if (this.Name == GreaterThan)
+            {
+                return ValidateGreaterThan(value, max);
+            }
+            if (this.Name == GreaterThanOrEqual)
+            {
+                return ValidateGreaterThanOrEqual(value, max);
+            }
+
+            if(this.Name == EqualTo)
+            {
+                return ValidateEqualTo(value, max);
+            }
+
             return true;
         }
 
