@@ -14,6 +14,23 @@
         <Grid.DataContext>
             <vm:StationsViewModel />
         </Grid.DataContext>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50" />
+        </Grid.ColumnDefinitions>
 
         <!--Header-->
         <breadcrumb:BreadcrumbControl
@@ -43,14 +60,20 @@
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
 
-        <Grid HorizontalAlignment="Left" Height="680" Margin="712,217,0,0" VerticalAlignment="Top" Width="673"/>
-        <TextBlock x:Name="itemsTitle" HorizontalAlignment="Left" Height="59" Margin="712,121,0,0" TextWrapping="Wrap" Text="Stations" VerticalAlignment="Top" Width="261" FontSize="48" FontWeight="Bold" RenderTransformOrigin="0.488,-0.297" SelectionChanged="itemsTitle_SelectionChanged"/>
-        <TextBlock x:Name="regionTitle" HorizontalAlignment="Left" Height="65" Margin="88,229,0,0" TextWrapping="Wrap" Text="Select Region" VerticalAlignment="Top" Width="320" FontSize="36"/>
-        <ComboBox x:Name="regionsComboBox" HorizontalAlignment="Left" Margin="88,294,0,0" VerticalAlignment="Top" Width="535" Height="60" FontSize="24"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="96" Margin="88,121,0,0" TextWrapping="Wrap" Text="Create Station" VerticalAlignment="Top" Width="320" FontSize="48" FontWeight="Bold"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="88,382,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Height="65" Width="320" FontSize="36"/>
-        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="60" Margin="88,452,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="535"/>
-        <Button x:Name="button" Content="Create" HorizontalAlignment="Left" Height="100" Margin="88,793,0,0" VerticalAlignment="Top" Width="320" FontSize="36" RequestedTheme="Light" Background="#B274FF00"/>
+        <TextBlock Grid.Column="3" Grid.Row="2"
+            Text="Stations" HorizontalAlignment="Stretch" VerticalAlignment="Top" FontSize="36"/>
+        <TextBlock Grid.Row="2" Grid.Column="1"
+            HorizontalAlignment="Left" TextWrapping="Wrap" Text="Select Region" VerticalAlignment="Top" FontSize="36"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5, 0, 20, 0"
+            HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontSize="24"/>
+        
+        <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+            HorizontalAlignment="Left" Text="New Station Name" VerticalAlignment="Top" FontSize="36"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+            HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontSize="24"/>
+
+        <Button Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1"
+            Content="Create" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="36" RequestedTheme="Light" Background="#B274FF00"/>
 
     </Grid>
 </Page>
