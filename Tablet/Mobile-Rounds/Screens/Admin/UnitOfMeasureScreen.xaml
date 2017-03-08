@@ -97,14 +97,14 @@
 
         <StackPanel Grid.Row="2" Grid.Column="2" Grid.RowSpan="3" DataContext="{Binding CurrentUnit, Mode=TwoWay}" Padding="0,0,15,0">
             <TextBlock Text="New/Modify Unit" Style="{StaticResource SectionHeader}" Margin="0,0,0,15"/>
-            <TextBox Text="{Binding FullName, Mode=TwoWay}" Style="{StaticResource TextInput}">
+            <TextBox Text="{Binding FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextInput}">
                 <TextBox.HeaderTemplate>
                     <DataTemplate>
                         <TextBlock FontSize="22" Text="Full Name" />
                     </DataTemplate>
                 </TextBox.HeaderTemplate>
             </TextBox>
-            <TextBox Text="{Binding Abbreviation, Mode=TwoWay}" Style="{StaticResource TextInput}">
+            <TextBox Text="{Binding Abbreviation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextInput}">
                 <TextBox.HeaderTemplate>
                     <DataTemplate>
                         <TextBlock FontSize="22" Text="Abbreviation/Symbol" />
@@ -112,7 +112,7 @@
                 </TextBox.HeaderTemplate>
             </TextBox>
             <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,0,15" 
-                      ItemsSource="{ Binding UnitTypes }" SelectedItem="{ Binding UnitType, Mode=TwoWay}" FontSize="18">
+                      ItemsSource="{ Binding UnitTypes }" SelectedItem="{ Binding UnitType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18">
                 <ComboBox.HeaderTemplate>
                     <DataTemplate>
                         <TextBlock FontSize="22" Text="Value Type" />
