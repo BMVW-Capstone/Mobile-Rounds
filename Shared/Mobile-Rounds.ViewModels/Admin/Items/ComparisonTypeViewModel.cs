@@ -69,10 +69,17 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             float leftNum = float.MinValue;
             float rightNum = float.MinValue;
 
-            if (!float.TryParse(left, out leftNum)) return -1;
-            if (!float.TryParse(left, out rightNum)) return -1;
+            if (!float.TryParse(left, out leftNum))
+                throw new InvalidOperationException("Left value was expected to be a number for comparison.");
 
-            return (int)(leftNum - rightNum);
+            if (!float.TryParse(right, out rightNum))
+                throw new InvalidOperationException("Right value was expected to be a number for comparison.");
+
+            var diff = leftNum - rightNum;
+
+            if (diff == 0) return 0;
+            if (diff < 0) return -1;
+            return 1;
         }
 
         private bool ValidateLessThan(string value, string bound)
@@ -102,7 +109,19 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
 
         private bool ValidateEither(string value, string min, string max)
         {
-            return LowerCompare(value, min) == 0 || LowerCompare(value, max) == 0;
+            if(LowerCompare(value, min) == 0 || LowerCompare(value, max) == 0)
+            {
+                return true;
+            }
+
+            if (!char.IsNumber(value[0]))
+            {
+                //not a number, so the comparison failed.
+                return false;
+            }
+
+            //must be a number, so compare that.
+            return NumberCompare(value, min) == 0 || LowerCompare(value, max) == 0;
         }
 
         private bool ValidateBetween(string value, string min, string max)
@@ -153,21 +172,6 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
 
         private string Normalize(string value)
         {
-            int zeroEnds = -1;
-            for(int i = 0; i < value.Length; i++)
-            {
-                if (value[i] == '.') break;
-                if (value[i] != '0') break;
-                if (i == 0) zeroEnds = 0;
-
-                zeroEnds++;
-            }
-
-            if(zeroEnds != -1)
-            {
-                return value.ToLower().Substring(zeroEnds);
-            }
-
             return value.ToLower();
         }
 
