@@ -31,8 +31,6 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             }
         }
 
-        public List<string> ComparisonTypes { get; set; }
-
         /// <summary>
         /// Gets or sets the abbreviation of the unit.
         /// </summary>
@@ -106,6 +104,9 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                 this.Cancel.RaiseExecuteChanged();
             }
         }
+
+        public IEnumerable<UnitOfMeasureModel> Units { get; set; }
+        public IEnumerable<string> ComparisonTypes { get; set; }
 
         public UnitOfMeasureModel Unit
         {

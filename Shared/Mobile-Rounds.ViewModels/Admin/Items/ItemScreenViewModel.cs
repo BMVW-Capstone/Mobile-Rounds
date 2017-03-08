@@ -24,7 +24,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         /// <summary>
         /// Gets or sets the list of items that are displayed to the user.
         /// </summary>
-        public ObservableCollection<UnitOfMeasureModel> Units { get; set; }
+        public IEnumerable<UnitOfMeasureModel> Units { get; set; }
 
         /// <summary>
         /// Gets the save method to call when the users taps save.
@@ -78,6 +78,8 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                 this.currentUnit.Name = value.Name;
                 this.currentUnit.IsDeleted = value.IsDeleted;
                 this.currentUnit.ComparisonType = value.ComparisonType;
+                this.currentUnit.ComparisonTypes = value.ComparisonTypes;
+                this.currentUnit.Units = value.Units;
                 this.currentUnit.Unit = value.Unit;
 
                 if (this.currentUnit.Id == Guid.Empty)
@@ -149,7 +151,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             this.Crumbs.Add(new BreadcrumbItemModel(this.BelongsTo.Name));
 
             this.Items = new ObservableCollection<ItemViewModel>();
-            this.Units = new ObservableCollection<UnitOfMeasureModel>(unitsOfMeasure);
+            this.Units = unitsOfMeasure;
 
             foreach (var item in items)
             {
@@ -162,6 +164,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                     LowerBound = item.Specification.LowerBound,
                     UpperBound = item.Specification.UpperBound,
                     Unit = item.Specification.UnitOfMeasure,
+                    Units = this.Units
                 };
                 Items.Add(vm);
             }
