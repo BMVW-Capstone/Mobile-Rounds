@@ -17,6 +17,7 @@
     <Page.Resources>
         <converters:BooleanToVisibilityConverter x:Key="BoolToVis" />
         <converters:InvertedBooleanToVisibilityConverter x:Key="InvBoolToVis" />
+        <converters:BoolToValidColorConverter x:Key="BoolToValidColor" />
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root">
@@ -73,6 +74,7 @@
         <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="20,10,9.4,0" Text="Name" FontSize="30"/>
         <TextBox Text="{Binding CurrentRegion.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" 
+                 BorderBrush="{Binding IsNameFieldValid, Mode=TwoWay, Converter={StaticResource BoolToValidColor}}"
                  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="20, 40, 20, 0" TextWrapping="Wrap" FontSize="30"/>
 
         <Button Content="Cancel"

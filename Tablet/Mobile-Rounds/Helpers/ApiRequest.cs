@@ -18,14 +18,14 @@ namespace Mobile_Rounds.Helpers
     public class ApiRequest : IApiRequest
     {
         public async Task<TResult> PutAsync<TResult>(string url, object data)
+            where TResult : class, new()
         {
             using (var client = this.GetClient())
             {
                 var uri = new Uri(url);
                 try
                 {
-                    var json = JsonConvert.SerializeObject(data);
-                    var content = new HttpStringContent(json);
+                    var content = this.AsJsonContent(data);
                     var response = await client.PutAsync(uri, content);
                     response.EnsureSuccessStatusCode();
                     var serverJson = await response.Content.ReadAsStringAsync();
@@ -36,19 +36,19 @@ namespace Mobile_Rounds.Helpers
                     Debugger.Break();
                 }
 
-                return default(TResult);
+                return null;
             }
         }
 
         public async Task<TResult> PostAsync<TResult>(string url, object data)
+            where TResult : class, new()
         {
             using (var client = this.GetClient())
             {
                 var uri = new Uri(url);
                 try
                 {
-                    var json = JsonConvert.SerializeObject(data);
-                    var content = new HttpStringContent(json);
+                    var content = this.AsJsonContent(data);
                     var response = await client.PostAsync(uri, content);
                     response.EnsureSuccessStatusCode();
                     var serverJson = await response.Content.ReadAsStringAsync();
@@ -59,11 +59,12 @@ namespace Mobile_Rounds.Helpers
                     Debugger.Break();
                 }
 
-                return default(TResult);
+                return null;
             }
         }
 
         public async Task<TResult> GetAsync<TResult>(string url)
+            where TResult : class, new()
         {
             using (var client = this.GetClient())
             {
@@ -81,7 +82,13 @@ namespace Mobile_Rounds.Helpers
                 }
             }
 
-            return default(TResult);
+            return null;
+        }
+
+        private IHttpContent AsJsonContent(object data)
+        {
+            var json = JsonConvert.SerializeObject(data);
+            return new HttpStringContent(json, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json");
         }
 
         private HttpClient GetClient()
