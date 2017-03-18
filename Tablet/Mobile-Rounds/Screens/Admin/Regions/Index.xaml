@@ -77,6 +77,12 @@
                  BorderBrush="{Binding IsNameFieldValid, Mode=TwoWay, Converter={StaticResource BoolToValidColor}}"
                  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="20, 40, 20, 0" TextWrapping="Wrap" FontSize="30"/>
 
+        <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="20,10,9.4,0" Text="Is Deleted?" FontSize="30"/>
+
+        <CheckBox IsChecked="{Binding CurrentRegion.IsDeleted, Mode=TwoWay}"
+                  Grid.Row="3" Grid.Column="1" 
+                  Margin="20, 10, 20, 0" Width="50" Height="50"/>
+
         <Button Content="Cancel"
                 Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
                 Foreground="White" Height="100" HorizontalContentAlignment="Center" FontSize="36" RequestedTheme="Light"

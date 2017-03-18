@@ -65,6 +65,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
 
                 this.currentRegion.Id = value.Id;
                 this.currentRegion.Name = value.Name;
+                this.currentRegion.IsDeleted = value.IsDeleted;
 
                 if (this.currentRegion.Id == Guid.Empty)
                 {
@@ -215,7 +216,6 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
             return true;
         }
 
-
         private bool ValidateInput(object input)
         {
             //nothing selected, so must be a new entry
@@ -226,28 +226,6 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
             }
 
             return IsNameFieldValid = ValidateExistingInput(this.CurrentRegion, this.Selected);
-
-            //if (string.IsNullOrEmpty(this.currentRegion.Name))
-            //{
-            //    // name is empty, so error
-            //    return IsNameFieldValid = false;
-            //}
-
-            ////now validate that there is no duplicate name.
-            //foreach (var region in this.Regions)
-            //{
-            //    //skip over self since that technically is not a dup.
-            //    if (region.Id == this.selected.Id) continue;
-            //    if(region.Name.Equals(this.currentRegion.Name, StringComparison.CurrentCultureIgnoreCase))
-            //    {
-            //        //duplicate name, so error.
-            //        return IsNameFieldValid = false;
-            //    }
-            //}
-
-
-            //no errors, so valid name.
-            //return IsNameFieldValid = true;
         }
 
         private bool CanCancel(object input)
