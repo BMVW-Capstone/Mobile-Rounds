@@ -1,4 +1,5 @@
 ﻿using Mobile_Rounds.ViewModels.Admin.Regions;
+using Mobile_Rounds.ViewModels.Shared;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,13 @@ namespace Mobile_Rounds.Screens.Admin.Regions
         public Index()
         {
             this.InitializeComponent();
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            var vm = this.DataContext as RegionScreenViewModel;
+            await vm.LoadDataAsync();
         }
     }
 }

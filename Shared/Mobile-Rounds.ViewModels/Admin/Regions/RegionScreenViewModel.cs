@@ -1,4 +1,5 @@
-﻿using Mobile_Rounds.ViewModels.Shared;
+﻿using Mobile_Rounds.ViewModels.Models;
+using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
 using System;
@@ -83,6 +84,15 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
         /// </summary>
         public AsyncCommand Cancel { get; private set; }
 
+        protected override async Task FetchDataAsync()
+        {
+            var regions = await base.Api.GetAsync<List<RegionModel>>(
+                "http://localhost:1797/api/regions");
+
+            var casted = regions.Select(r => new RegionViewModel(r, Save, Cancel));
+            this.Regions.AddRange(casted);
+        }
+
         public RegionScreenViewModel()
         {
             this.Cancel = new AsyncCommand(
@@ -95,7 +105,6 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
             this.Save = new AsyncCommand(
                 (obj) =>
                 {
-                                //TODO: Implement disk storage
                     var existing = this.Regions.FirstOrDefault(u => u.Id == this.currentRegion.Id);
                     if (existing == null)
                     {
@@ -114,9 +123,10 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
                 }, this.ValidateInput);
 
             this.currentRegion = new RegionViewModel(this.Save, this.Cancel);
-            this.Regions = new ObservableCollection<RegionViewModel>();
             this.Crumbs.Add(new BreadcrumbItemModel("Admin", this.GoToAdmin));
             this.Crumbs.Add(new BreadcrumbItemModel("Regions"));
+
+            this.Regions = new ObservableCollection<RegionViewModel>();
         }
 
         private RegionViewModel currentRegion;

@@ -34,21 +34,5 @@ namespace Mobile_Rounds.Screens.Regular
         {
             this.InitializeComponent();
         }
-
-        private void TimeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // to do: block button_click until selection is made
-            // pass the time selection backend
-        }
-
-        private void timeTitle_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void textBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

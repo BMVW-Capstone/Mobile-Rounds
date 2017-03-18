@@ -9,9 +9,16 @@
     xmlns:breadcrumb="using:GoedWare.Controls.Breadcrumb"
     xmlns:vm="using:Mobile_Rounds.ViewModels.Admin.Regions"
     mc:Ignorable="d">
+
     <Page.DataContext>
         <vm:RegionScreenViewModel />
     </Page.DataContext>
+
+    <Page.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <converters:InvertedBooleanToVisibilityConverter x:Key="InvBoolToVis" />
+    </Page.Resources>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root">
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -72,8 +79,8 @@
                 Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
                 Foreground="White" Height="100" HorizontalContentAlignment="Center" FontSize="36" RequestedTheme="Light"
                 Margin="0, 0, 10, 0" Background="DarkGray" Command="{Binding DataContext.Cancel, ElementName=root}"/>
-        
-        <Button Content="Create"
+
+        <Button Content="{Binding CurrentRegion.ModificationType, Mode=TwoWay}"
                 Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
                 Background="#47ce22" Foreground="White" Height="100" HorizontalContentAlignment="Center"
                 FontSize="36" RequestedTheme="Light" Margin="10, 0, 0, 0"
@@ -81,7 +88,16 @@
         <TextBlock Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
                 Text="Regions" FontSize="36"
                 HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
-        <ListView ItemsSource="{Binding Regions, Mode=TwoWay}" 
+
+
+        <ProgressRing Margin="0, 20, 0, 0"
+            Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3"
+            Width="200" Height="200"
+            IsActive="{Binding IsLoading, Mode=TwoWay}" 
+            Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource BoolToVis}}"/>
+
+        <ListView ItemsSource="{Binding Regions, Mode=TwoWay}"
+            Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}"
             SelectedItem="{Binding Selected, Mode=TwoWay}" Margin="0, 20, 0, 0"
             Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3"
             ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Enabled">
