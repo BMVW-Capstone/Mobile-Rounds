@@ -54,7 +54,7 @@ namespace Backend.DataAccess.Abstractions
         }
 
         /// <inheritdoc />
-        public virtual Task<IEnumerable<TViewModel>> GetAsync()
+        public virtual Task<IEnumerable<TViewModel>> GetAsync(bool includeDeleted)
         {
             throw new NotImplementedException();
         }

@@ -100,7 +100,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
         protected override async Task FetchDataAsync()
         {
             var regions = await base.Api.GetAsync<List<RegionModel>>(
-                "http://localhost:1797/api/regions");
+                "http://localhost:1797/api/regions?includeDeleted=true");
 
             var casted = regions.Select(r => new RegionViewModel(r, Save, Cancel));
             this.Regions.AddRange(casted);
@@ -155,6 +155,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
 
                     this.CurrentRegion = new RegionViewModel(this.Save, this.Cancel);
                     this.Selected = null;
+                    IsNameFieldValid = ValidateInput(this);
                 }, this.ValidateInput);
 
             this.currentRegion = new RegionViewModel(this.Save, this.Cancel);
@@ -168,34 +169,85 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
         private RegionViewModel selected;
         private bool isNameFieldValid;
 
-        private bool ValidateInput(object input)
+        private bool ValidateNewInput(RegionViewModel toValidate)
         {
-            if (this.selected == null)
-            {
-                return IsNameFieldValid = true;
-            }
-
-            if (string.IsNullOrEmpty(this.currentRegion.Name))
+            if (string.IsNullOrEmpty(toValidate.Name))
             {
                 // name is empty, so error
-                return IsNameFieldValid = false;
+                return false;
+            }
+
+            //now validate that there is no duplicate name.
+            foreach (var region in this.Regions)
+            {
+                if (region.Name.Equals(toValidate.Name, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    //duplicate name, so error.
+                    return false;
+                }
+            }
+
+            //no errors, so valid name.
+            return true;
+        }
+
+        private bool ValidateExistingInput(RegionViewModel current, RegionViewModel selected)
+        {
+            if (string.IsNullOrEmpty(current.Name))
+            {
+                // name is empty, so error
+                return false;
             }
 
             //now validate that there is no duplicate name.
             foreach (var region in this.Regions)
             {
                 //skip over self since that technically is not a dup.
-                if (region.Id == this.selected.Id) continue;
-                if(region.Name.Equals(this.currentRegion.Name, StringComparison.CurrentCultureIgnoreCase))
+                if (region.Id == selected.Id) continue;
+                if (region.Name.Equals(current.Name, StringComparison.CurrentCultureIgnoreCase))
                 {
                     //duplicate name, so error.
-                    return IsNameFieldValid = false;
+                    return false;
                 }
             }
 
+            //no errors, so valid name.
+            return true;
+        }
+
+
+        private bool ValidateInput(object input)
+        {
+            //nothing selected, so must be a new entry
+            if (this.selected == null)
+            {
+                //only valid if there is any text
+                return IsNameFieldValid = ValidateNewInput(this.CurrentRegion);
+            }
+
+            return IsNameFieldValid = ValidateExistingInput(this.CurrentRegion, this.Selected);
+
+            //if (string.IsNullOrEmpty(this.currentRegion.Name))
+            //{
+            //    // name is empty, so error
+            //    return IsNameFieldValid = false;
+            //}
+
+            ////now validate that there is no duplicate name.
+            //foreach (var region in this.Regions)
+            //{
+            //    //skip over self since that technically is not a dup.
+            //    if (region.Id == this.selected.Id) continue;
+            //    if(region.Name.Equals(this.currentRegion.Name, StringComparison.CurrentCultureIgnoreCase))
+            //    {
+            //        //duplicate name, so error.
+            //        return IsNameFieldValid = false;
+            //    }
+            //}
+
 
             //no errors, so valid name.
-            return IsNameFieldValid = true;
+            //return IsNameFieldValid = true;
         }
 
         private bool CanCancel(object input)

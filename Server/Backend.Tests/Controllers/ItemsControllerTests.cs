@@ -38,7 +38,7 @@ namespace Backend.Tests.Controllers
             Context.Stations.Add(station);
             Context.SaveChanges();
 
-            var result = await GetResponse(controller.Get(station.Id));
+            var result = await GetResponse(controller.Get(station.Id, true));
 
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
@@ -89,7 +89,7 @@ namespace Backend.Tests.Controllers
             Context.Items.Add(item);
             Context.SaveChanges();
 
-            var result = await GetData<List<ItemModel>>(controller.Get(station.Id));
+            var result = await GetData<List<ItemModel>>(controller.Get(station.Id, true));
 
             Assert.AreEqual(item.ItemId, result[0].Id);
             Assert.AreEqual(item.Name, result[0].Name);
@@ -144,7 +144,7 @@ namespace Backend.Tests.Controllers
             Context.Items.Add(item);
             Context.SaveChanges();
 
-            var result = await GetData<List<ItemModel>>(controller.Get(station.Id));
+            var result = await GetData<List<ItemModel>>(controller.Get(station.Id, false));
 
             Assert.AreEqual(0, result.Count);
         }

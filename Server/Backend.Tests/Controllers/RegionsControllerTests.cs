@@ -28,7 +28,7 @@ namespace Backend.Tests
             base.ConfigureRequest(controller);
 
             // Act
-            var result = await GetData<List<RegionModel>>(controller.Get());
+            var result = await GetData<List<RegionModel>>(controller.Get(true));
 
             // Assert
             Assert.IsNotNull(result);
@@ -62,7 +62,7 @@ namespace Backend.Tests
             });
             Context.SaveChanges();
 
-            var orderedList = await GetData<List<RegionModel>>(controller.Get());
+            var orderedList = await GetData<List<RegionModel>>(controller.Get(false));
 
             Assert.AreEqual(2, orderedList.Count());
             Assert.AreNotEqual(Guid.Empty, orderedList.First().Id);
@@ -92,7 +92,7 @@ namespace Backend.Tests
 
             Context.SaveChanges();
 
-            var orderedList = await GetData<List<RegionModel>>(controller.Get());
+            var orderedList = await GetData<List<RegionModel>>(controller.Get(true));
 
             Assert.AreEqual(2, orderedList.Count());
             Assert.AreNotEqual(Guid.Empty, orderedList.First().Id);
@@ -142,7 +142,7 @@ namespace Backend.Tests
             });
             Context.SaveChanges();
 
-            var orderedList = await GetData<List<RegionModel>>(controller.Get());
+            var orderedList = await GetData<List<RegionModel>>(controller.Get(false));
 
             Assert.AreEqual(2, orderedList[0].Stations.Count());
             Assert.AreEqual("An Ordered Station", orderedList[0].Stations.First().Name);
@@ -156,7 +156,7 @@ namespace Backend.Tests
             var controller = new RegionsController(Context);
             ConfigureRequest(controller);
 
-            var result = await GetResponse(controller.Get());
+            var result = await GetResponse(controller.Get(true));
 
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }

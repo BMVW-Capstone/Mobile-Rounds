@@ -38,7 +38,7 @@ namespace Backend.DataAccess.Abstractions
         }
 
         /// <inheritdoc />
-        public virtual IOrderedQueryable<TModel> GetOrdered()
+        public virtual IOrderedQueryable<TModel> GetOrdered(bool includeDeleted)
         {
             throw new NotImplementedException();
         }

@@ -24,10 +24,10 @@ namespace Backend.DataAccess.Repositories.DataSources
                 .Where(s => s.IsMarkedAsDeleted == false);
         }
 
-        public override IOrderedQueryable<Station> GetOrdered()
+        public override IOrderedQueryable<Station> GetOrdered(bool includeDeleted)
         {
             return Database.Stations
-                .Where(s => s.IsMarkedAsDeleted == false)
+                .Where(s => includeDeleted || s.IsMarkedAsDeleted == false)
                 .OrderBy(r => r.Name);
         }
 

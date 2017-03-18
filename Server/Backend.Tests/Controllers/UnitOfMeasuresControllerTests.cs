@@ -28,7 +28,7 @@ namespace Backend.Tests
             base.ConfigureRequest(controller);
 
             // Act
-            var result = await GetData<List<UnitOfMeasureModel>>(controller.Get());
+            var result = await GetData<List<UnitOfMeasureModel>>(controller.Get(true));
 
             // Assert
             Assert.IsNotNull(result);
@@ -62,9 +62,9 @@ namespace Backend.Tests
             });
             Context.SaveChanges();
 
-            var orderedList = await GetData<List<UnitOfMeasureModel>>(controller.Get());
+            var orderedList = await GetData<List<UnitOfMeasureModel>>(controller.Get(false));
 
-            Assert.AreEqual(3, orderedList.Count());
+            Assert.AreEqual(2, orderedList.Count());
             Assert.AreNotEqual(Guid.Empty, orderedList.First().Id);
             Assert.AreNotEqual(Guid.Empty, orderedList.Last().Id);
             Assert.AreEqual("A different name", orderedList.First().Name);
@@ -92,7 +92,7 @@ namespace Backend.Tests
 
             Context.SaveChanges();
 
-            var orderedList = await GetData<List<UnitOfMeasureModel>>(controller.Get());
+            var orderedList = await GetData<List<UnitOfMeasureModel>>(controller.Get(true));
 
             Assert.AreEqual(2, orderedList.Count());
             Assert.AreNotEqual(Guid.Empty, orderedList.First().Id);
@@ -108,7 +108,7 @@ namespace Backend.Tests
             var controller = new UnitOfMeasuresController(Context);
             ConfigureRequest(controller);
 
-            var result = await GetResponse(controller.Get());
+            var result = await GetResponse(controller.Get(true));
 
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }

@@ -18,10 +18,12 @@ namespace Backend.DataAccess.Repositories.DataSources
                 .Where(s => s.IsMarkedAsDeleted == false);
         }
 
-        public override IOrderedQueryable<Round> GetOrdered()
+        public override IOrderedQueryable<Round> GetOrdered(bool includeDeleted)
         {
             // BY ID FOR NOW
-            return Get().OrderBy(r => r.Id);
+            return Database.Rounds
+                .Where(r => includeDeleted || r.IsMarkedAsDeleted == false)
+                .OrderBy(r => r.EndTime);
         }
 
         public override async Task<Round> InsertAsync(Round toCreate)

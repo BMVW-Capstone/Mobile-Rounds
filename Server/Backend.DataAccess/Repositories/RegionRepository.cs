@@ -26,11 +26,11 @@ namespace Backend.DataAccess.Repositories
         }
 
         /// <inheritdoc />
-        public override async Task<IEnumerable<RegionModel>> GetAsync()
+        public override async Task<IEnumerable<RegionModel>> GetAsync(bool includeDeleted)
         {
             return await DataSource
                 //Get the records in order
-                .GetOrdered()
+                .GetOrdered(includeDeleted)
                 //convert records to view models 
                 .Select(r => new RegionModel
                 {
@@ -38,7 +38,7 @@ namespace Backend.DataAccess.Repositories
                     Name = r.Name,
                     IsDeleted = r.IsMarkedAsDeleted,
                     Stations = r.Stations
-                        .Where(s => s.IsMarkedAsDeleted == false)
+                        .Where(s => includeDeleted || s.IsMarkedAsDeleted == false)
                         .OrderBy(s => s.Name)
                         .Select(s => new StationModel
                         {

@@ -24,7 +24,7 @@ namespace Backend.DataAccess.Abstractions
         /// Fetches a list of models from an internal source.
         /// </summary>
         /// <returns>A list of models.</returns>
-        IOrderedQueryable<TModel> GetOrdered();
+        IOrderedQueryable<TModel> GetOrdered(bool includeDeleted);
 
         /// <summary>
         /// Gets a single model object.

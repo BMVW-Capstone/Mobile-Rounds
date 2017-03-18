@@ -23,8 +23,12 @@ namespace Backend.DataAccess.Repositories.DataSources
                 .Where(r => r.IsMarkedAsDeleted == false);
         }
 
-        public override IOrderedQueryable<Region> GetOrdered()
+        public override IOrderedQueryable<Region> GetOrdered(bool includeDeleted)
         {
+            if (includeDeleted)
+                return Database.Regions
+                    .OrderBy(r => r.Name);
+
             return Database.Regions
                 .Where(r => r.IsMarkedAsDeleted == false)
                 .OrderBy(r => r.Name);

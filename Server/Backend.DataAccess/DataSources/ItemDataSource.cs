@@ -18,10 +18,10 @@ namespace Backend.DataAccess.Repositories.DataSources
                 .Where(r => r.IsMarkedAsDeleted == false);
         }
 
-        public override IOrderedQueryable<Item> GetOrdered()
+        public override IOrderedQueryable<Item> GetOrdered(bool includeDeleted)
         {
             return Database.Items
-                .Where(r => r.IsMarkedAsDeleted == false)
+                .Where(r => includeDeleted || r.IsMarkedAsDeleted == false)
                 .OrderBy(r => r.Name);
         }
 

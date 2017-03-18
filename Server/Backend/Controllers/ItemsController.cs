@@ -32,12 +32,13 @@ namespace Backend.Controllers
         /// <summary>
         /// Gets a list of all the Items.
         /// </summary>
+        /// <param name="includeDeleted">Indicates if the results include deleted items.</param>
         /// <returns>A list of Items.</returns>
         [Route("")]
         [SwaggerOperation(Tags = new[] { SwaggerName })]
-        public async Task<IHttpActionResult> Get()
+        public async Task<IHttpActionResult> Get(bool includeDeleted)
         {
-            var results = await this.datasource.GetAsync();
+            var results = await this.datasource.GetAsync(includeDeleted);
             return this.Ok(results);
         }
 
@@ -46,11 +47,12 @@ namespace Backend.Controllers
         /// </summary>
         /// <returns>A list of items.</returns>
         /// <param name="stationId">The id of the station.</param>
+        /// <param name="includeDeleted">Indicatess if the data returned also has deleted items..</param>
         [Route("~/api/stations/{stationId}/items")]
         [SwaggerOperation(Tags = new[] { StationsController.SwaggerName })]
-        public async Task<IHttpActionResult> Get(Guid stationId)
+        public async Task<IHttpActionResult> Get(Guid stationId, bool includeDeleted)
         {
-            var results = await this.datasource.GetForStationAsync(stationId);
+            var results = await this.datasource.GetForStationAsync(stationId, includeDeleted);
             return this.Ok(results);
         }
 

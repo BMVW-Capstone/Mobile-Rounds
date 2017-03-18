@@ -30,12 +30,13 @@ namespace Backend.Controllers
         /// <summary>
         /// Gets a list of all the rounds.
         /// </summary>
+        /// <param name="includeDeleted">Indicates if the results include deleted items.</param>
         /// <returns>A list of rounds.</returns>
         [Route("")]
         [SwaggerOperation(Tags = new[] { SwaggerName })]
-        public async Task<IHttpActionResult> Get()
+        public async Task<IHttpActionResult> Get(bool includeDeleted)
         {
-            var results = await this.datasource.GetAsync();
+            var results = await this.datasource.GetAsync(includeDeleted);
             return this.Ok(results);
         }
 

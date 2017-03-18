@@ -21,9 +21,11 @@ namespace Backend.DataAccess.Repositories.DataSources
             //    .Where(s => s.IsMarkedAsDeleted == false);
         }
 
-        public override IOrderedQueryable<UnitOfMeasure> GetOrdered()
+        public override IOrderedQueryable<UnitOfMeasure> GetOrdered(bool includeDeleted)
         {
-            return Get().OrderBy(r => r.Name);
+            return Get()
+                .Where(u => includeDeleted || u.IsMarkedAsDeleted == false)
+                .OrderBy(r => r.Name);
         }
 
         public override async Task<UnitOfMeasure> InsertAsync(UnitOfMeasure toCreate)

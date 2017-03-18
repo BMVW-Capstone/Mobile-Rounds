@@ -21,9 +21,10 @@ namespace Backend.DataAccess.Repositories.DataSources
             return Database.Readings;
         }
 
-        public override IOrderedQueryable<Reading> GetOrdered()
+        public override IOrderedQueryable<Reading> GetOrdered(bool includeDeleted)
         {
             return Database.Readings
+                .Where(r => includeDeleted || r.IsMarkedAsDeleted == false)
                 .OrderBy(r => r.TimeTaken);
         }
 
