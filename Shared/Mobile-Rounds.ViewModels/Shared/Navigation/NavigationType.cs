@@ -63,6 +63,11 @@ namespace Mobile_Rounds.ViewModels.Shared.Navigation
         /// <summary>
         /// Navigate to the station input page.
         /// </summary>
-        StationInput
+        StationInput,
+
+        /// <summary>
+        /// Navigate to the configuration input page.
+        /// </summary>
+        Configuration
     }
 }

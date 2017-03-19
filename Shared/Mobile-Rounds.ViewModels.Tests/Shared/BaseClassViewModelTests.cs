@@ -62,6 +62,7 @@ namespace Mobile_Rounds.ViewModels.Tests.Shared
             Assert.IsFalse(vm.IsAdmin);
             Assert.IsNotNull(vm.Api);
             Assert.IsInstanceOfType(vm.Api, typeof(TestAPI));
+            Assert.IsNotNull(vm.GoToConfiguration);
         }
 
         [TestMethod]

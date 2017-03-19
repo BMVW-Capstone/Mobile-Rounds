@@ -18,6 +18,7 @@ namespace Mobile_Rounds.ViewModels.Tests.Shared.Home
         {
             //register dummy api request type.
             ServiceResolver.Register<IApiRequest>(() => null);
+            ServiceResolver.Register<ISettings>(() => null);
         }
 
         [TestMethod]

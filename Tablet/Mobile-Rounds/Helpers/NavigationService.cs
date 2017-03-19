@@ -63,6 +63,9 @@ namespace Mobile_Rounds.Helpers
                 case NavigationType.AdminItems:
                     frame.Navigate(typeof(Screens.Admin.Items.Index));
                     break;
+                case NavigationType.Configuration:
+                    frame.Navigate(typeof(Screens.Regular.Configuration));
+                    break;
                 default:
                     break;
             }

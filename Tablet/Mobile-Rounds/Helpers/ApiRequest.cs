@@ -17,12 +17,15 @@ namespace Mobile_Rounds.Helpers
 {
     public class ApiRequest : IApiRequest
     {
+
+        private ISettings config = ServiceResolver.Resolve<ISettings>();
+
         public async Task<TResult> PutAsync<TResult>(string url, object data)
             where TResult : class, new()
         {
             using (var client = this.GetClient())
             {
-                var uri = new Uri(url);
+                var uri = this.BuildHostUrl(url);
                 try
                 {
                     var content = this.AsJsonContent(data);
@@ -45,7 +48,7 @@ namespace Mobile_Rounds.Helpers
         {
             using (var client = this.GetClient())
             {
-                var uri = new Uri(url);
+                var uri = this.BuildHostUrl(url);
                 try
                 {
                     var content = this.AsJsonContent(data);
@@ -68,7 +71,7 @@ namespace Mobile_Rounds.Helpers
         {
             using (var client = this.GetClient())
             {
-                var uri = new Uri(url);
+                var uri = this.BuildHostUrl(url);
 
                 try
                 {
@@ -100,5 +103,10 @@ namespace Mobile_Rounds.Helpers
             return new HttpClient(handler);
         }
 
+        private Uri BuildHostUrl(string endpoint)
+        {
+            var host = this.config.GetValue<string>(Constants.APIHostConfigKey);
+            return new Uri(new Uri(host), endpoint);
+        }
     }
 }

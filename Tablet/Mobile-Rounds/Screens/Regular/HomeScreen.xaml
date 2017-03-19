@@ -54,6 +54,11 @@
                                   Command="{Binding GoToAdmin}"
                                   Visibility="{Binding AdminTileVisibility}"
                                   IsEnabled="{Binding CanProgress, Mode=TwoWay}"/>
+
+            <controls:ColoredTile Foreground="White" Background="Purple" 
+                                  Margin="10" Title="Settings"
+                                  Command="{Binding GoToConfiguration}"
+                                  IsEnabled="{Binding CanGotToSettings, Mode=TwoWay}"/>
         </StackPanel>
         
         <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center"

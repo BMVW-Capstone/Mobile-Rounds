@@ -44,6 +44,7 @@ namespace Mobile_Rounds
         public App()
         {
             // register services with PCL
+            ServiceResolver.Register<ISettings>(() => new Settings());
             ServiceResolver.Register<IBreadcrumbNavigationEvent>(() => new BreadcrumbNavigationHandler());
             ServiceResolver.Register<IApiRequest>(() => new ApiRequest());
             ServiceResolver.Register<IFileHandler>(() => new FileHandler());

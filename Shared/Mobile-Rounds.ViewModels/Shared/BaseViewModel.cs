@@ -53,6 +53,11 @@ namespace Mobile_Rounds.ViewModels.Shared
         public bool IsAdmin { get; set; }
 
         /// <summary>
+        /// Gets the property used to handle navigating to the configure page.
+        /// </summary>
+        public ICommand GoToConfiguration { get; private set; }
+
+        /// <summary>
         /// Gets or sets the set of breadcrumb items that are visible on the screen, excluding
         /// the home selection.
         /// </summary>
@@ -104,6 +109,12 @@ namespace Mobile_Rounds.ViewModels.Shared
             this.IsAdmin = false;
             this.Crumbs = new List<BreadcrumbItemModel>();
             this.GoHome = new GoHomeCommand();
+
+            this.GoToConfiguration = new AsyncCommand((obj) =>
+            {
+                Navigator.Navigate(NavigationType.Configuration);
+            });
+
             this.CrumbCommand = new AsyncCommand((obj) =>
             {
                 IBreadcrumbNavigationEvent e = ServiceResolver.Resolve<IBreadcrumbNavigationEvent>();
