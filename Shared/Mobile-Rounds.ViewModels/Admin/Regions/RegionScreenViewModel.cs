@@ -1,4 +1,5 @@
-﻿using Mobile_Rounds.ViewModels.Shared;
+﻿using Mobile_Rounds.ViewModels.Models;
+using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
 using System;
@@ -64,6 +65,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
 
                 this.currentRegion.Id = value.Id;
                 this.currentRegion.Name = value.Name;
+                this.currentRegion.IsDeleted = value.IsDeleted;
 
                 if (this.currentRegion.Id == Guid.Empty)
                 {
@@ -78,10 +80,32 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
             }
         }
 
+        public bool IsNameFieldValid
+        {
+            get
+            {
+                return isNameFieldValid;
+            }
+            set
+            {
+                isNameFieldValid = value;
+                RaisePropertyChanged(nameof(IsNameFieldValid));
+            }
+        }
+
         /// <summary>
         /// Gets the command to call when the user taps the cancel button.
         /// </summary>
         public AsyncCommand Cancel { get; private set; }
+
+        protected override async Task FetchDataAsync()
+        {
+            var regions = await base.Api.GetAsync<List<RegionModel>>(
+                "http://localhost:1797/api/regions?includeDeleted=true");
+
+            var casted = regions.Select(r => new RegionViewModel(r, Save, Cancel));
+            this.Regions.AddRange(casted);
+        }
 
         public RegionScreenViewModel()
         {
@@ -90,41 +114,118 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
                 {
                     this.Selected = null;
                     this.CurrentRegion = new RegionViewModel(this.Save, this.Cancel);
+                    this.IsNameFieldValid = true;
                 }, this.CanCancel);
 
             this.Save = new AsyncCommand(
-                (obj) =>
+                async (obj) =>
                 {
-                                //TODO: Implement disk storage
+                    var model = new RegionModel()
+                    {
+                        Id = this.currentRegion.Id,
+                        Name = this.currentRegion.Name,
+                        IsDeleted = this.currentRegion.IsDeleted
+                    };
+
                     var existing = this.Regions.FirstOrDefault(u => u.Id == this.currentRegion.Id);
                     if (existing == null)
                     {
-                        this.CurrentRegion.Id = Guid.NewGuid();
-                        var newCopy = new RegionViewModel(this.CurrentRegion);
+                        model = await base.Api.PostAsync<RegionModel>("http://localhost:1797/api/regions", model);
+                        if(model == null)
+                        {
+                            //error saving, so show field error and return.
+                            IsNameFieldValid = false;
+                            return;
+                        }
+                        var newCopy = new RegionViewModel(model, Save, Cancel);
                         this.Regions.Add(newCopy);
                     }
                     else
                     {
-                        existing.Name = this.currentRegion.Name;
-                        existing.ModificationType = this.currentRegion.ModificationType;
+                        model = await base.Api.PutAsync<RegionModel>("http://localhost:1797/api/regions", model);
+                        if (model == null)
+                        {
+                            //error saving, so show field error and return.
+                            IsNameFieldValid = false;
+                            return;
+                        }
+                        existing.Id = model.Id;
+                        existing.IsDeleted = model.IsDeleted;
+                        existing.Name = model.Name;
                     }
 
                     this.CurrentRegion = new RegionViewModel(this.Save, this.Cancel);
                     this.Selected = null;
+                    IsNameFieldValid = ValidateInput(this);
                 }, this.ValidateInput);
 
             this.currentRegion = new RegionViewModel(this.Save, this.Cancel);
-            this.Regions = new ObservableCollection<RegionViewModel>();
             this.Crumbs.Add(new BreadcrumbItemModel("Admin", this.GoToAdmin));
             this.Crumbs.Add(new BreadcrumbItemModel("Regions"));
+            this.IsNameFieldValid = true;
+            this.Regions = new ObservableCollection<RegionViewModel>();
         }
 
         private RegionViewModel currentRegion;
         private RegionViewModel selected;
+        private bool isNameFieldValid;
+
+        private bool ValidateNewInput(RegionViewModel toValidate)
+        {
+            if (string.IsNullOrEmpty(toValidate.Name))
+            {
+                // name is empty, so error
+                return false;
+            }
+
+            //now validate that there is no duplicate name.
+            foreach (var region in this.Regions)
+            {
+                if (region.Name.Equals(toValidate.Name, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    //duplicate name, so error.
+                    return false;
+                }
+            }
+
+            //no errors, so valid name.
+            return true;
+        }
+
+        private bool ValidateExistingInput(RegionViewModel current, RegionViewModel selected)
+        {
+            if (string.IsNullOrEmpty(current.Name))
+            {
+                // name is empty, so error
+                return false;
+            }
+
+            //now validate that there is no duplicate name.
+            foreach (var region in this.Regions)
+            {
+                //skip over self since that technically is not a dup.
+                if (region.Id == selected.Id) continue;
+                if (region.Name.Equals(current.Name, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    //duplicate name, so error.
+                    return false;
+                }
+            }
+
+            //no errors, so valid name.
+            return true;
+        }
 
         private bool ValidateInput(object input)
         {
-            return !string.IsNullOrEmpty(this.currentRegion.Name);
+            //nothing selected, so must be a new entry
+            if (this.selected == null)
+            {
+                //only valid if there is any text
+                return IsNameFieldValid = ValidateNewInput(this.CurrentRegion);
+            }
+
+            return IsNameFieldValid = ValidateExistingInput(this.CurrentRegion, this.Selected);
         }
 
         private bool CanCancel(object input)

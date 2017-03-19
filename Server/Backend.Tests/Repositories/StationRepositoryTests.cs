@@ -54,7 +54,7 @@ namespace Backend.Tests.Repositories
             });
             Context.SaveChanges();
 
-            var orderedList = await repo.GetAsync();
+            var orderedList = await repo.GetAsync(true);
 
             Assert.AreEqual(2, orderedList.Count());
             Assert.AreEqual("A different name", orderedList.First().Name);
@@ -90,7 +90,7 @@ namespace Backend.Tests.Repositories
             });
             Context.SaveChanges();
 
-            var orderedList = await repo.GetAsync();
+            var orderedList = await repo.GetAsync(false);
 
             Assert.AreEqual(2, orderedList.Count());
             Assert.AreEqual("A different name", orderedList.First().Name);

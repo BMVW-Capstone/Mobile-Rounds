@@ -81,6 +81,7 @@
     <Compile Include="Shared\DbModels\RegionHandler.cs" />
     <Compile Include="Shared\DbModels\StationHandler.cs" />
     <Compile Include="Shared\DbModels\UnitHandler.cs" />
+    <Compile Include="Shared\EnumerableExtensions.cs" />
     <Compile Include="Shared\Home\HomePageViewModel.cs" />
     <Compile Include="Shared\Home\PausePageViewModel.cs" />
     <Compile Include="Regular\StartRounds\StartRoundViewModel.cs" />

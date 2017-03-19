@@ -108,6 +108,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BoolToListColorConverter.cs" />
+    <Compile Include="Controls\InvertedBooleanToVisibilityConverter.cs" />
     <Compile Include="Controls\BooleanToVisibilityConverter.cs" />
     <Compile Include="Controls\BoolToValidColorConverter.cs" />
     <Compile Include="Controls\BoundTypeToInputScopeConverter.cs" />

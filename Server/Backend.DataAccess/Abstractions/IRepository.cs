@@ -16,7 +16,7 @@ namespace Backend.DataAccess.Abstractions
         /// Fetches a list of models from an internal source.
         /// </summary>
         /// <returns>A list of models.</returns>
-        Task<IEnumerable<TModel>> GetAsync();
+        Task<IEnumerable<TModel>> GetAsync(bool includeDeleted);
 
         /// <summary>
         /// Gets a single model object with the given id.

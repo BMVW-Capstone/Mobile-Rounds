@@ -31,12 +31,13 @@ namespace Backend.Controllers
         /// <summary>
         /// Gets a list of all the regions.
         /// </summary>
+        /// <param name="includeDeleted">Indicates if the results should filter out deletions.</param>
         /// <returns>A list of regions.</returns>
         [Route("")]
         [SwaggerOperation(Tags = new[] { SwaggerName })]
-        public async Task<IHttpActionResult> Get()
+        public async Task<IHttpActionResult> Get(bool includeDeleted)
         {
-            var results = await this.datasource.GetAsync();
+            var results = await this.datasource.GetAsync(includeDeleted);
             return this.Ok(results);
         }
 

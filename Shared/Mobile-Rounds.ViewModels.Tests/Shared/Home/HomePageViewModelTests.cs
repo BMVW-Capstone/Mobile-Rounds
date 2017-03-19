@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Mobile_Rounds.ViewModels.Platform;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Home;
 using System;
@@ -12,18 +13,26 @@ namespace Mobile_Rounds.ViewModels.Tests.Shared.Home
     [TestClass]
     public class HomePageViewModelTests
     {
+        [TestInitialize]
+        public void Start()
+        {
+            //register dummy api request type.
+            ServiceResolver.Register<IApiRequest>(() => null);
+        }
+
         [TestMethod]
         public void ConstructorSetsCorrectDefaults()
         {
             var vm = new HomePageViewModel();
-
             Assert.IsNotNull(vm.StartRound);
             Assert.IsNotNull(vm.Sync);
+            Assert.IsFalse(vm.IsLoading);
         }
 
         [TestMethod]
         public void ConstructorSetsCorrectCommandTypes()
         {
+            ServiceResolver.Register<IApiRequest>(() => null);
             var vm = new HomePageViewModel();
 
             Assert.IsInstanceOfType(vm.StartRound, typeof(StartRoundCommand));

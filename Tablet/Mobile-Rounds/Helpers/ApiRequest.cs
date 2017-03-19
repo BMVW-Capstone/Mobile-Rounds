@@ -17,13 +17,56 @@ namespace Mobile_Rounds.Helpers
 {
     public class ApiRequest : IApiRequest
     {
-        public async Task<TResult> GetAsync<TResult>(string url)
+        public async Task<TResult> PutAsync<TResult>(string url, object data)
+            where TResult : class, new()
         {
-            var handler = new HttpBaseProtocolFilter
+            using (var client = this.GetClient())
             {
-                AllowUI = false
-            };
-            using (var client = new HttpClient(handler))
+                var uri = new Uri(url);
+                try
+                {
+                    var content = this.AsJsonContent(data);
+                    var response = await client.PutAsync(uri, content);
+                    response.EnsureSuccessStatusCode();
+                    var serverJson = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<TResult>(serverJson);
+                }
+                catch (Exception ex)
+                {
+                    Debugger.Break();
+                }
+
+                return null;
+            }
+        }
+
+        public async Task<TResult> PostAsync<TResult>(string url, object data)
+            where TResult : class, new()
+        {
+            using (var client = this.GetClient())
+            {
+                var uri = new Uri(url);
+                try
+                {
+                    var content = this.AsJsonContent(data);
+                    var response = await client.PostAsync(uri, content);
+                    response.EnsureSuccessStatusCode();
+                    var serverJson = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<TResult>(serverJson);
+                }
+                catch (Exception ex)
+                {
+                    Debugger.Break();
+                }
+
+                return null;
+            }
+        }
+
+        public async Task<TResult> GetAsync<TResult>(string url)
+            where TResult : class, new()
+        {
+            using (var client = this.GetClient())
             {
                 var uri = new Uri(url);
 
@@ -37,9 +80,25 @@ namespace Mobile_Rounds.Helpers
                 {
                     Debugger.Break();
                 }
-
             }
-            return default(TResult);
+
+            return null;
         }
+
+        private IHttpContent AsJsonContent(object data)
+        {
+            var json = JsonConvert.SerializeObject(data);
+            return new HttpStringContent(json, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json");
+        }
+
+        private HttpClient GetClient()
+        {
+            var handler = new HttpBaseProtocolFilter
+            {
+                AllowUI = false
+            };
+            return new HttpClient(handler);
+        }
+
     }
 }

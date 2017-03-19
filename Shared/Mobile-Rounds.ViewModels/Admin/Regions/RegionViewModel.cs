@@ -2,6 +2,7 @@
 // Copyright (c) SolarWorld Capstone Team. All rights reserved.
 // </copyright>
 
+using Mobile_Rounds.ViewModels.Models;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
@@ -20,7 +21,18 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
         /// Gets or sets if the model is deleted in the database 
         /// or not.
         /// </summary>
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted
+        {
+            get
+            {
+                return isDeleted;
+            }
+            set
+            {
+                isDeleted = value;
+                RaisePropertyChanged(nameof(IsDeleted));
+            }
+        }
 
         /// <summary>
         /// Gets or sets the name of the region. 
@@ -94,9 +106,25 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
         /// <param name="cancel">The cancel command that is based on this region.</param>
         public RegionViewModel(AsyncCommand save, AsyncCommand cancel)
         {
-            this.ModificationType = "Create";
+            SetModificationType(Shared.ModificationType.Create);
             this.Save = save;
             this.Cancel = cancel;
+        }
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegionModel"/> class.
+        /// This is a copy constructor so all values will get copied to the new copy.
+        /// </summary>
+        /// <param name="toCopy">The object to copy.</param>
+        public RegionViewModel(RegionModel toCopy, AsyncCommand save, AsyncCommand cancel)
+        {
+            this.name = toCopy.Name;
+            this.Id = toCopy.Id;
+            this.IsDeleted = toCopy.IsDeleted;
+            this.Save = save;
+            this.Cancel = cancel;
+            SetModificationType(Shared.ModificationType.Create);
         }
 
         /// <summary>
@@ -115,6 +143,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
 
         private string name;
         private string modificationType;
+        private bool isDeleted;
 
         private AsyncCommand Save { get; set; }
 

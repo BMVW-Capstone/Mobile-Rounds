@@ -69,21 +69,26 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
             {
                 this.IsSyncing = true;
                 IApiRequest request = ServiceResolver.Resolve<IApiRequest>();
-                var handler = Platform.ServiceResolver.Resolve<IFileHandler>();
+                var handler = ServiceResolver.Resolve<IFileHandler>();
 
-                var regions = await request.GetAsync<List<RegionModel>>($"{Host}/api/regions");
+                var regions = await request.GetAsync<List<RegionModel>>(
+                    $"{Host}/api/regions?includeDeleted=false");
+
                 var regionResult = new RegionHandler() { Regions = regions };
                 await handler.SaveFileAsync("regions.json", regionResult);
 
-                var stations = await request.GetAsync<List<StationModel>>($"{Host}/api/stations");
+                var stations = await request.GetAsync<List<StationModel>>(
+                    $"{Host}/api/stations?includeDeleted=false");
                 var stationResult = new StationHandler() { Stations = stations };
                 await handler.SaveFileAsync("stations.json", stationResult);
 
-                var items = await request.GetAsync<List<ItemModel>>($"{Host}/api/items");
+                var items = await request.GetAsync<List<ItemModel>>(
+                    $"{Host}/api/items?includeDeleted=false");
                 var itemResult = new ItemHandler() { Items = items };
                 await handler.SaveFileAsync("items.json", itemResult);
 
-                var units = await request.GetAsync<List<UnitOfMeasureModel>>($"{Host}/api/units");
+                var units = await request.GetAsync<List<UnitOfMeasureModel>>(
+                    $"{Host}/api/units?includeDeleted=false");
                 var unitResult = new UnitHandler() { Units = units };
                 await handler.SaveFileAsync("units.json", unitResult);
 

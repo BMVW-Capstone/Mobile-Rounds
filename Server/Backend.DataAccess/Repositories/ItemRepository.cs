@@ -26,11 +26,11 @@ namespace Backend.DataAccess.Repositories
         }
 
         /// <inheritdoc />
-        public override async Task<IEnumerable<ItemModel>> GetAsync()
+        public override async Task<IEnumerable<ItemModel>> GetAsync(bool includeDeleted)
         {
             return await DataSource
                 //Get the records in order
-                .GetOrdered()
+                .GetOrdered(includeDeleted)
                 //convert records to view models 
                 .Select(r => new ItemModel
                 {
@@ -55,6 +55,7 @@ namespace Backend.DataAccess.Repositories
                         }
                     },
                     PastFourReadings = r.Readings
+                        .Where(i => includeDeleted || i.IsMarkedAsDeleted)
                         .OrderBy(i => i.TimeTaken)
                         .Select(i => new ReadingModel
                         {
@@ -74,9 +75,9 @@ namespace Backend.DataAccess.Repositories
         /// </summary>
         /// <param name="stationId">The station to fetch items for.</param>
         /// <returns>A list of items for the station.</returns>
-        public async Task<IEnumerable<ItemModel>> GetForStationAsync(Guid stationId)
+        public async Task<IEnumerable<ItemModel>> GetForStationAsync(Guid stationId, bool includeDeleted)
         {
-            var items = await this.GetAsync();
+            var items = await this.GetAsync(includeDeleted);
             return items.Where(i => i.StationId == stationId)
                 // This final ToList is required for serialization purposes in JSON.
                 .ToList();

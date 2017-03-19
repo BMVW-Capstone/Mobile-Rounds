@@ -25,11 +25,11 @@ namespace Backend.DataAccess.Repositories
         }
 
         /// <inheritdoc />
-        public override async Task<IEnumerable<UnitOfMeasureModel>> GetAsync()
+        public override async Task<IEnumerable<UnitOfMeasureModel>> GetAsync(bool includeDeleted)
         {
             return await DataSource
                 //Get the records in order
-                .GetOrdered()
+                .GetOrdered(includeDeleted)
                 //convert records to view models 
                 .Select(u => new UnitOfMeasureModel
                 {

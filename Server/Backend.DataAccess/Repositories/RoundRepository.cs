@@ -26,11 +26,11 @@ namespace Backend.DataAccess.Repositories
         }
 
         /// <inheritdoc />
-        public override async Task<IEnumerable<RoundModel>> GetAsync()
+        public override async Task<IEnumerable<RoundModel>> GetAsync(bool includeDeleted)
         {
             return await DataSource
                 //Get the records in order
-                .GetOrdered()
+                .GetOrdered(includeDeleted)
                 //convert records to view models 
                 .Select(u => new RoundModel
                 {
