@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
+using Mobile_Rounds.ViewModels.Models;
 
 namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
 {
@@ -27,7 +28,18 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         /// Gets or sets if the model is deleted in the database 
         /// or not.
         /// </summary>
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted
+        {
+            get
+            {
+                return isDeleted;
+            }
+            set
+            {
+                isDeleted = value;
+                this.RaisePropertyChanged(nameof(IsDeleted));
+            }
+        }
 
         public List<string> UnitTypes { get; set; }
 
@@ -156,6 +168,22 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnitOfMeasureModel"/> class.
+        /// This then caches the save and cancel commands so that it can
+        /// notify any views based on them.
+        /// </summary>
+        /// <param name="save">The save command that is based on this unit.</param>
+        /// <param name="cancel">The cancel command that is based on this unit.</param>
+        public UnitOfMeasureViewModel(UnitOfMeasureModel model, AsyncCommand save, AsyncCommand cancel)
+            : this(save, cancel)
+        {
+            this.Id = model.Id;
+            this.FullName = model.Name;
+            this.Abbreviation = model.Abbreviation;
+            this.IsDeleted = model.IsDeleted;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitOfMeasureModel"/> class.
         /// This is a copy constructor so all values will get copied to the new copy.
         /// </summary>
         /// <param name="toCopy">The object to copy.</param>
@@ -180,6 +208,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
         private string fullName;
         private string unitType;
         private string modificationType;
+        private bool isDeleted;
 
         private AsyncCommand Save { get; set; }
 

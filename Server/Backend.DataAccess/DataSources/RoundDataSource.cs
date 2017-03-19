@@ -23,7 +23,8 @@ namespace Backend.DataAccess.Repositories.DataSources
             // BY ID FOR NOW
             return Database.Rounds
                 .Where(r => includeDeleted || r.IsMarkedAsDeleted == false)
-                .OrderBy(r => r.EndTime);
+                .OrderBy(r => r.EndTime)
+                .ThenBy(r => r.IsMarkedAsDeleted);
         }
 
         public override async Task<Round> InsertAsync(Round toCreate)

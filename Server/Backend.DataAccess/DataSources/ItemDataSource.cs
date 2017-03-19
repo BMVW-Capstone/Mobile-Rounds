@@ -22,7 +22,8 @@ namespace Backend.DataAccess.Repositories.DataSources
         {
             return Database.Items
                 .Where(r => includeDeleted || r.IsMarkedAsDeleted == false)
-                .OrderBy(r => r.Name);
+                .OrderBy(r => r.IsMarkedAsDeleted)
+                .ThenBy(r => r.Name);
         }
 
         public override Item GetSingle(Guid id)

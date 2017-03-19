@@ -25,13 +25,10 @@ namespace Backend.DataAccess.Repositories.DataSources
 
         public override IOrderedQueryable<Region> GetOrdered(bool includeDeleted)
         {
-            if (includeDeleted)
-                return Database.Regions
-                    .OrderBy(r => r.Name);
-
             return Database.Regions
-                .Where(r => r.IsMarkedAsDeleted == false)
-                .OrderBy(r => r.Name);
+                .Where(r => includeDeleted || r.IsMarkedAsDeleted == false)
+                .OrderBy(r => r.IsMarkedAsDeleted)
+                .ThenBy(r => r.Name);
         }
 
         public override Region GetSingle(Guid id)
