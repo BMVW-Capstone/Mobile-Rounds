@@ -68,10 +68,6 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
         /// </summary>
         public HomePageViewModel()
         {
-#if DEBUG
-            // only make us admin if debugging.
-            this.IsAdmin = true;
-#endif
             this.GoHome = null;
 
             this.Sync = new AsyncCommand(async (obj) =>
@@ -104,7 +100,12 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
             }, this.CanSync);
 
             this.StartRound = new StartRoundCommand();
-            
+            var settings = ServiceResolver.Resolve<ISettings>();
+            IsAdmin = settings.GetValue<bool>(Constants.UserAdminKey);
+
+#if DEBUG
+            IsAdmin = true;
+#endif
         }
 
         private bool CanSync(object sender)

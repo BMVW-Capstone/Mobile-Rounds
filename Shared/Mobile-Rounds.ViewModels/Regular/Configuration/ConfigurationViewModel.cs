@@ -1,4 +1,5 @@
-﻿using Mobile_Rounds.ViewModels.Platform;
+﻿using Mobile_Rounds.ViewModels.Models;
+using Mobile_Rounds.ViewModels.Platform;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using System;
@@ -31,12 +32,17 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
             this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Settings"));
             settings = ServiceResolver.Resolve<ISettings>();
             apiHost = settings.GetValue<string>(Constants.APIHostConfigKey);
-            Save = new AsyncCommand(SaveCommand, CanSave);
+            Save = new AsyncCommand(async (obj) => await this.SaveCommand(), CanSave);
         }
 
-        private void SaveCommand(object data)
+        private async Task SaveCommand()
         {
+            //save the api config.
             settings.SaveValue(Constants.APIHostConfigKey, this.ApiHost);
+
+            //now get the users metadata.
+            var userInfo = await base.Api.GetAsync<UserModel>(Constants.Endpoints.Users);
+            settings.SaveValue(Constants.UserAdminKey, userInfo.IsAdministrator);
         }
 
         private bool CanSave(object data)

@@ -10,6 +10,8 @@ using Ninject;
 using Ninject.Web.Common;
 using Ninject.Web.WebApi;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using System.Configuration;
+using System.Collections.Generic;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(AgencyRM.Tracker.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(AgencyRM.Tracker.App_Start.NinjectWebCommon), "Stop")]
@@ -71,8 +73,21 @@ namespace AgencyRM.Tracker.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<DatabaseContext>()
-                .ToConstructor((ctx) => new DatabaseContext("DevDatabase"))
+                .ToConstructor((ctx) => new DatabaseContext("Database"))
                 .InRequestScope();
+
+            kernel.Bind<Dictionary<string, string>>()
+                .ToMethod((ctx) =>
+                {
+                    Dictionary<string, string> settings = new Dictionary<string, string>();
+                    foreach (var key in ConfigurationManager.AppSettings.AllKeys)
+                    {
+                        string val = ConfigurationManager.AppSettings[key].ToString();
+                        settings.Add(key, val);
+                    }
+                    return settings;
+                });
+
         }
     }
 }

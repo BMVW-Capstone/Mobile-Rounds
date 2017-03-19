@@ -10,6 +10,24 @@ using System.Threading.Tasks;
 
 namespace Mobile_Rounds.ViewModels.Tests.Shared.Home
 {
+    class TestSettings : ISettings
+    {
+        private object val;
+        public TestSettings(object value)
+        {
+            val = value;
+        }
+        public TReturn GetValue<TReturn>(string key)
+        {
+            return (TReturn)val;
+        }
+
+        public void SaveValue(string key, object value)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     [TestClass]
     public class HomePageViewModelTests
     {
@@ -18,7 +36,7 @@ namespace Mobile_Rounds.ViewModels.Tests.Shared.Home
         {
             //register dummy api request type.
             ServiceResolver.Register<IApiRequest>(() => null);
-            ServiceResolver.Register<ISettings>(() => null);
+            ServiceResolver.Register<ISettings>(() => new TestSettings(true));
         }
 
         [TestMethod]

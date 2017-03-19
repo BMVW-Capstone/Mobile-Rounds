@@ -55,6 +55,7 @@
     <Compile Include="Models\SpecificationModel.cs" />
     <Compile Include="Models\UnitOfMeasureModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureScreenViewModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Platform\Constants.cs" />
     <Compile Include="Platform\IApiRequest.cs" />
     <Compile Include="Platform\IBreadcrumbNavigationEvent.cs" />
