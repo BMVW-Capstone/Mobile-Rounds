@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mobile_Rounds.ViewModels.Admin.Stations;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,9 +28,11 @@ namespace Mobile_Rounds.Screens.Admin.Stations
             this.InitializeComponent();
         }
 
-        private void itemsTitle_SelectionChanged(object sender, RoutedEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-
+            base.OnNavigatedTo(e);
+            var vm = this.DataContext as StationsViewModel;
+            await vm.LoadDataAsync();
         }
     }
 }
