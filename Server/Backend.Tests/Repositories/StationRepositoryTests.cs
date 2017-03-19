@@ -256,7 +256,7 @@ namespace Backend.Tests.Repositories
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, Context.Stations.Count());
-            Assert.AreEqual(inserted.RegionId, result.RegionId);
+            Assert.AreEqual(newRegionId, result.RegionId);
             Assert.AreNotEqual(inserted.Name, result.Name);
         }
     }
