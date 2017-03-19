@@ -18,6 +18,7 @@
         <converters:BooleanToVisibilityConverter x:Key="BoolToVis" />
         <converters:InvertedBooleanToVisibilityConverter x:Key="InvBoolToVis" />
         <converters:BoolToValidColorConverter x:Key="BoolToValidColor" />
+        <converters:BoolToListColorConverter x:Key="BoolToListColor" />
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root">
@@ -109,11 +110,18 @@
             SelectedItem="{Binding Selected, Mode=TwoWay}" Margin="0, 20, 0, 0"
             Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3"
             ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Enabled">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding Name}" FontSize="30" Foreground="Purple"/>
-                    </StackPanel>
+                    <Border HorizontalAlignment="Stretch"
+                                Background="{Binding IsDeleted, Converter={StaticResource BoolToListColor}}">
+                        <TextBlock Text="{Binding Name}" FontSize="30"
+                                   Foreground="Purple" HorizontalAlignment="Stretch"/>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

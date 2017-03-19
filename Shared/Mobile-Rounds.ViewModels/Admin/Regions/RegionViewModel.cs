@@ -21,7 +21,18 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
         /// Gets or sets if the model is deleted in the database 
         /// or not.
         /// </summary>
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted
+        {
+            get
+            {
+                return isDeleted;
+            }
+            set
+            {
+                isDeleted = value;
+                RaisePropertyChanged(nameof(IsDeleted));
+            }
+        }
 
         /// <summary>
         /// Gets or sets the name of the region. 
@@ -132,6 +143,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
 
         private string name;
         private string modificationType;
+        private bool isDeleted;
 
         private AsyncCommand Save { get; set; }
 
