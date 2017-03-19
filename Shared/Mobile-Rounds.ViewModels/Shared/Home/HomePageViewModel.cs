@@ -31,6 +31,14 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
         /// </summary>
         public AsyncCommand Sync { get; private set; }
 
+        public bool HasConfiguration
+        {
+            get
+            {
+                var settings = ServiceResolver.Resolve<ISettings>();
+                return !string.IsNullOrEmpty(settings.GetValue<string>(Constants.APIHostConfigKey));
+            }
+        }
 
         public bool IsSyncing
         {
@@ -44,11 +52,14 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
                 this.isSyncing = value;
                 this.RaisePropertyChanged(nameof(this.IsSyncing));
                 this.RaisePropertyChanged(nameof(this.CanProgress));
+                this.RaisePropertyChanged(nameof(this.CanGoToSettings));
                 this.Sync.RaiseExecuteChanged();
             }
         }
 
-        public bool CanProgress { get { return !this.IsSyncing; } }
+        public bool CanGoToSettings { get { return !this.IsSyncing; } }
+
+        public bool CanProgress { get { return HasConfiguration && !this.IsSyncing; } }
 
 
         /// <summary>
@@ -63,8 +74,6 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
 #endif
             this.GoHome = null;
 
-            const string Host = "http://localhost:1797";
-
             this.Sync = new AsyncCommand(async (obj) =>
             {
                 this.IsSyncing = true;
@@ -72,23 +81,22 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
                 var handler = ServiceResolver.Resolve<IFileHandler>();
 
                 var regions = await request.GetAsync<List<RegionModel>>(
-                    $"{Host}/api/regions?includeDeleted=false");
-
+                    "/api/regions?includeDeleted=false");
                 var regionResult = new RegionHandler() { Regions = regions };
                 await handler.SaveFileAsync("regions.json", regionResult);
 
                 var stations = await request.GetAsync<List<StationModel>>(
-                    $"{Host}/api/stations?includeDeleted=false");
+                    "/api/stations?includeDeleted=false");
                 var stationResult = new StationHandler() { Stations = stations };
                 await handler.SaveFileAsync("stations.json", stationResult);
 
                 var items = await request.GetAsync<List<ItemModel>>(
-                    $"{Host}/api/items?includeDeleted=false");
+                    "/api/items?includeDeleted=false");
                 var itemResult = new ItemHandler() { Items = items };
                 await handler.SaveFileAsync("items.json", itemResult);
 
                 var units = await request.GetAsync<List<UnitOfMeasureModel>>(
-                    $"{Host}/api/units?includeDeleted=false");
+                    "/api/units?includeDeleted=false");
                 var unitResult = new UnitHandler() { Units = units };
                 await handler.SaveFileAsync("units.json", unitResult);
 
@@ -101,6 +109,9 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
 
         private bool CanSync(object sender)
         {
+            //ensure that we have a valid configuration for the app.
+            if (!this.HasConfiguration) return false;
+
             return !this.IsSyncing;
         }
 
