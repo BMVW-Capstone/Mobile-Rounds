@@ -52,7 +52,7 @@
             <controls:ColoredTile Foreground="White" Background="Purple" 
                                   Margin="10" Title="Admin"
                                   Command="{Binding GoToAdmin}"
-                                  Visibility="{Binding AdminTileVisibility}"
+                                  Visibility="{Binding IsAdmin, Mode=TwoWay, Converter={StaticResource BoolToVis}}"
                                   IsEnabled="{Binding CanProgress, Mode=TwoWay}"/>
 
             <controls:ColoredTile Foreground="White" Background="Purple" 

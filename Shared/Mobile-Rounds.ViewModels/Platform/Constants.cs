@@ -9,6 +9,7 @@ namespace Mobile_Rounds.ViewModels.Platform
     public static class Constants
     {
         public const string APIHostConfigKey = "API_Host";
+        public const string UserAdminKey = "USER_Admin";
 
         public static class ApiOptions
         {
@@ -18,6 +19,7 @@ namespace Mobile_Rounds.ViewModels.Platform
 
         public static class Endpoints
         {
+            public const string Users = "/api/users";
             public const string Units = "/api/units";
             public const string Regions = "/api/regions";
             public const string Stations = "/api/stations";
