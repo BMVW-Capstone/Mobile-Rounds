@@ -54,6 +54,7 @@ namespace Backend.Schemas.Seeding
                 {
                     new Station
                     {
+                        Id = Guid.Parse("{CF8AC435-E4F9-49D6-A29B-8633C54D4A58}"),
                         Name = "SA4 NOx 1st Stage",
                         Items = new List<Item>
                         {

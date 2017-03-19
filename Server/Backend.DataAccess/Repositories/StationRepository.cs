@@ -36,7 +36,8 @@ namespace Backend.DataAccess.Repositories
                 {
                     Id = r.Id,
                     RegionId = r.RegionId,
-                    Name = r.Name
+                    Name = r.Name,
+                    IsDeleted = r.IsMarkedAsDeleted
                 })
                 //load the data
                 .ToListAsync();

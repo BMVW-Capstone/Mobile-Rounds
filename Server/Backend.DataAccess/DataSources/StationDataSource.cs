@@ -65,7 +65,7 @@ namespace Backend.DataAccess.Repositories.DataSources
 
             tracked.Name = toUpdate.Name;
             tracked.IsMarkedAsDeleted = toUpdate.IsMarkedAsDeleted;
-
+            tracked.RegionId = toUpdate.RegionId;
             if (await SaveAsync())
             {
                 return tracked;
