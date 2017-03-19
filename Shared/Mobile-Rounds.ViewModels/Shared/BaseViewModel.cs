@@ -32,7 +32,7 @@ namespace Mobile_Rounds.ViewModels.Shared
         /// <summary>
         /// Gets or sets the service to use for API requests.
         /// </summary>
-        protected IApiRequest Api { get; set; }
+        public IApiRequest Api { get; set; }
 
 
         /// <summary>
