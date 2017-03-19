@@ -1,4 +1,5 @@
 ﻿using Mobile_Rounds.ViewModels.Models;
+using Mobile_Rounds.ViewModels.Platform;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
@@ -101,7 +102,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
         protected override async Task FetchDataAsync()
         {
             var regions = await base.Api.GetAsync<List<RegionModel>>(
-                "/api/regions?includeDeleted=true");
+                $"{Constants.Endpoints.Regions}?{Constants.ApiOptions.IncludeDeleted}");
 
             var casted = regions.Select(r => new RegionViewModel(r, Save, Cancel));
             this.Regions.AddRange(casted);
@@ -130,7 +131,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
                     var existing = this.Regions.FirstOrDefault(u => u.Id == this.currentRegion.Id);
                     if (existing == null)
                     {
-                        model = await base.Api.PostAsync<RegionModel>("/api/regions", model);
+                        model = await base.Api.PostAsync<RegionModel>(Constants.Endpoints.Regions, model);
                         if(model == null)
                         {
                             //error saving, so show field error and return.
@@ -142,7 +143,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
                     }
                     else
                     {
-                        model = await base.Api.PutAsync<RegionModel>("/api/regions", model);
+                        model = await base.Api.PutAsync<RegionModel>(Constants.Endpoints.Regions, model);
                         if (model == null)
                         {
                             //error saving, so show field error and return.

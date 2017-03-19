@@ -28,7 +28,8 @@ namespace Backend.DataAccess.Repositories.DataSources
         {
             return Database.Stations
                 .Where(s => includeDeleted || s.IsMarkedAsDeleted == false)
-                .OrderBy(r => r.Name);
+                .OrderBy(r => r.IsMarkedAsDeleted)
+                .ThenBy(r => r.Name);
         }
 
         public override Station GetSingle(Guid id)

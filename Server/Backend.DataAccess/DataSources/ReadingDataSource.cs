@@ -25,7 +25,8 @@ namespace Backend.DataAccess.Repositories.DataSources
         {
             return Database.Readings
                 .Where(r => includeDeleted || r.IsMarkedAsDeleted == false)
-                .OrderBy(r => r.TimeTaken);
+                .OrderBy(r => r.TimeTaken)
+                .ThenBy(r => r.IsMarkedAsDeleted);
         }
 
         public override async Task<Reading> InsertAsync(Reading toCreate)

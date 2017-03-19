@@ -12,6 +12,8 @@ using System.Windows.Input;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
+using Mobile_Rounds.ViewModels.Models;
+using Mobile_Rounds.ViewModels.Platform;
 
 namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
 {
@@ -76,6 +78,7 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                 this.currentUnit.Abbreviation = value.Abbreviation;
                 this.currentUnit.FullName = value.FullName;
                 this.currentUnit.UnitType = value.UnitType;
+                this.currentUnit.IsDeleted = value.IsDeleted;
 
                 if (this.currentUnit.Id == Guid.Empty)
                 {
@@ -109,22 +112,42 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
                 }, this.CanCancel);
 
             this.Save = new AsyncCommand(
-                (obj) =>
+                async (obj) =>
                 {
-                    //TODO: Implement disk storage
+                    var model = new UnitOfMeasureModel
+                    {
+                        Id = this.currentUnit.Id,
+                        Name = this.currentUnit.FullName,
+                        Abbreviation = this.currentUnit.Abbreviation,
+                        IsDeleted = this.currentUnit.IsDeleted
+                    };
+
                     var existing = this.Units.FirstOrDefault(u => u.Id == this.currentUnit.Id);
                     if (existing == null)
                     {
-                        this.CurrentUnit.Id = Guid.NewGuid();
-                        var newCopy = new UnitOfMeasureViewModel(this.CurrentUnit);
+                        model = await base.Api.PostAsync<UnitOfMeasureModel>(Constants.Endpoints.Units, model);
+                        if (model == null)
+                        {
+                            //error saving, so show field error and return.
+                            return;
+                        }
+
+                        var newCopy = new UnitOfMeasureViewModel(model, Save, Cancel);
                         this.Units.Add(newCopy);
                     }
                     else
                     {
-                        existing.FullName = this.currentUnit.FullName;
-                        existing.UnitType = this.currentUnit.UnitType;
-                        existing.Abbreviation = this.currentUnit.Abbreviation;
-                        existing.ModificationType = this.currentUnit.ModificationType;
+                        model = await base.Api.PutAsync<UnitOfMeasureModel>(Constants.Endpoints.Units, model);
+                        if (model == null)
+                        {
+                            //error saving, so show field error and return.
+                            return;
+                        }
+
+                        existing.FullName = model.Name;
+                        existing.Abbreviation = model.Abbreviation;
+                        existing.IsDeleted = model.IsDeleted;
+                        existing.SetModificationType(ModificationType.Update);
                     }
 
                     this.CurrentUnit = new UnitOfMeasureViewModel(this.Save, this.Cancel);
@@ -137,21 +160,26 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
             this.Crumbs.Add(new BreadcrumbItemModel("Unit of Measure"));
         }
 
+        protected override async Task FetchDataAsync()
+        {
+            var data = await base.Api.GetAsync<List<UnitOfMeasureModel>>($"{Constants.Endpoints.Units}?{Constants.ApiOptions.IncludeDeleted}");
+            var casted = data.Select(u => new UnitOfMeasureViewModel(u, this.Save, this.Cancel));
+            this.Units.AddRange(casted);
+        }
+
         private UnitOfMeasureViewModel currentUnit;
         private UnitOfMeasureViewModel selected;
 
         private bool ValidateInput(object input)
         {
             return !string.IsNullOrEmpty(this.currentUnit.Abbreviation)
-                && !string.IsNullOrEmpty(this.currentUnit.FullName)
-                && !string.IsNullOrEmpty(this.currentUnit.UnitType);
+                && !string.IsNullOrEmpty(this.currentUnit.FullName);
         }
 
         private bool CanCancel(object input)
         {
             return !string.IsNullOrEmpty(this.currentUnit.Abbreviation)
-                || !string.IsNullOrEmpty(this.currentUnit.FullName)
-                || !string.IsNullOrEmpty(this.currentUnit.UnitType);
+                || !string.IsNullOrEmpty(this.currentUnit.FullName);
         }
     }
 }

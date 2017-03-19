@@ -103,6 +103,43 @@ namespace Backend.Tests
 
         [TestMethod]
         [TestCategory(Category)]
+        public async Task GET_Returns_Ordered_By_Name_Then_Deleted()
+        {
+            var controller = new UnitOfMeasuresController(Context);
+            base.ConfigureRequest(controller);
+
+            Context.UnitsOfMeasure.Add(new UnitOfMeasure
+            {
+                Id = Guid.NewGuid(),
+                Name = "My Custom UnitOfMeasure"
+            });
+
+            Context.UnitsOfMeasure.Add(new UnitOfMeasure
+            {
+                Id = Guid.NewGuid(),
+                Name = "A different name"
+            });
+
+            Context.UnitsOfMeasure.Add(new UnitOfMeasure
+            {
+                Id = Guid.NewGuid(),
+                Name = "A third name",
+                IsMarkedAsDeleted = true
+            });
+
+            Context.SaveChanges();
+
+            var orderedList = await GetData<List<UnitOfMeasureModel>>(controller.Get(true));
+
+            Assert.AreEqual(3, orderedList.Count());
+            Assert.AreEqual("A different name", orderedList.First().Name);
+            Assert.AreEqual("My Custom UnitOfMeasure", orderedList.ElementAt(1).Name);
+            Assert.AreEqual("A third name", orderedList.Last().Name);
+        }
+
+
+        [TestMethod]
+        [TestCategory(Category)]
         public async Task GET_Is_OK()
         {
             var controller = new UnitOfMeasuresController(Context);

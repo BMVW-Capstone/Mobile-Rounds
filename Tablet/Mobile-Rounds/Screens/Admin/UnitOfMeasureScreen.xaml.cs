@@ -2,6 +2,7 @@
 // Copyright (c) SolarWorld Capstone Team. All rights reserved.
 // </copyright>
 
+using Mobile_Rounds.ViewModels.Admin.UnitOfMeasure;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,7 +31,13 @@ namespace Mobile_Rounds.Screens.Admin
         public UnitOfMeasureScreen()
         {
             this.InitializeComponent();
+        }
 
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            var vm = this.DataContext as UnitOfMeasureScreenViewModel;
+            await vm.LoadDataAsync();
         }
     }
 }

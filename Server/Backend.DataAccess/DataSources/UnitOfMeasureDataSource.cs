@@ -25,7 +25,8 @@ namespace Backend.DataAccess.Repositories.DataSources
         {
             return Get()
                 .Where(u => includeDeleted || u.IsMarkedAsDeleted == false)
-                .OrderBy(r => r.Name);
+                .OrderBy(r => r.IsMarkedAsDeleted)
+                .ThenBy(r => r.Name);
         }
 
         public override async Task<UnitOfMeasure> InsertAsync(UnitOfMeasure toCreate)

@@ -81,22 +81,22 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
                 var handler = ServiceResolver.Resolve<IFileHandler>();
 
                 var regions = await request.GetAsync<List<RegionModel>>(
-                    "/api/regions?includeDeleted=false");
+                    $"{Constants.Endpoints.Regions}?{Constants.ApiOptions.ExcludeDeleted}");
                 var regionResult = new RegionHandler() { Regions = regions };
                 await handler.SaveFileAsync("regions.json", regionResult);
 
                 var stations = await request.GetAsync<List<StationModel>>(
-                    "/api/stations?includeDeleted=false");
+                    $"{Constants.Endpoints.Stations}?{Constants.ApiOptions.ExcludeDeleted}");
                 var stationResult = new StationHandler() { Stations = stations };
                 await handler.SaveFileAsync("stations.json", stationResult);
 
                 var items = await request.GetAsync<List<ItemModel>>(
-                    "/api/items?includeDeleted=false");
+                    $"{Constants.Endpoints.Items}?{Constants.ApiOptions.ExcludeDeleted}");
                 var itemResult = new ItemHandler() { Items = items };
                 await handler.SaveFileAsync("items.json", itemResult);
 
                 var units = await request.GetAsync<List<UnitOfMeasureModel>>(
-                    "/api/units?includeDeleted=false");
+                    $"{Constants.Endpoints.Units}?{Constants.ApiOptions.ExcludeDeleted}");
                 var unitResult = new UnitHandler() { Units = units };
                 await handler.SaveFileAsync("units.json", unitResult);
 
