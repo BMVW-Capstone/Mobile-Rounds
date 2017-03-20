@@ -1,12 +1,15 @@
-﻿using Mobile_Rounds.ViewModels.Platform;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿// <copyright file="PrincipalExtensions.cs" company="SolarWorld Capstone Team">
+// Copyright (c) SolarWorld Capstone Team. All rights reserved.
+// </copyright>
+
 using System.Security.Principal;
-using System.Web;
+using Mobile_Rounds.ViewModels.Platform;
 
 namespace Backend.Helpers
 {
+    /// <summary>
+    /// Provides a static helper method for accessing the users rights.
+    /// </summary>
     public static class PrincipalExtensions
     {
         /// <summary>
