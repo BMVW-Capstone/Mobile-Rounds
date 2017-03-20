@@ -11,21 +11,17 @@ namespace Backend.Schemas.Seeding
     {
         public void Seed(DatabaseContext ctx)
         {
-            if (!ctx.ComparisonTypes.Any())
-            {
-                ctx.ComparisonTypes.AddOrUpdate(t => t.Name,
-                    new ComparisonType { Name = ComparisonType.Between },
-                    new ComparisonType { Name = ComparisonType.Either },
-                    new ComparisonType { Name = ComparisonType.EqualTo },
-                    new ComparisonType { Name = ComparisonType.GreaterThan },
-                    new ComparisonType { Name = ComparisonType.GreaterThanOrEqual },
-                    new ComparisonType { Name = ComparisonType.LessThan },
-                    new ComparisonType { Name = ComparisonType.LessThanOrEqual },
-                    new ComparisonType { Name = ComparisonType.NotApplicable }
-                );
-                ctx.SaveChanges();
-            }
-
+            ctx.ComparisonTypes.AddOrUpdate(t => t.Name,
+                new ComparisonType { Name = ComparisonType.Between },
+                new ComparisonType { Name = ComparisonType.Either },
+                new ComparisonType { Name = ComparisonType.EqualTo },
+                new ComparisonType { Name = ComparisonType.GreaterThan },
+                new ComparisonType { Name = ComparisonType.GreaterThanOrEqual },
+                new ComparisonType { Name = ComparisonType.LessThan },
+                new ComparisonType { Name = ComparisonType.LessThanOrEqual },
+                new ComparisonType { Name = ComparisonType.NotApplicable }
+            );
+            ctx.SaveChanges();
         }
     }
 }

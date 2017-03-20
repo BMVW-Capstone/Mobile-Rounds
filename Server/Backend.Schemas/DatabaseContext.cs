@@ -34,7 +34,7 @@ namespace Backend.Schemas
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
         }
 
-        public DatabaseContext() : this("DevDatabase") { }
+        public DatabaseContext() : this("Database") { }
 
         /// <summary>
         /// The <see cref="Region"/>'s table.

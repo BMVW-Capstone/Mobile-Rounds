@@ -106,6 +106,12 @@ namespace Mobile_Rounds.ViewModels.Admin.Regions
 
             var casted = regions.Select(r => new RegionViewModel(r, Save, Cancel));
             this.Regions.AddRange(casted);
+
+            var selectedRegionId = Navigator.GetNavigationData<Guid>();
+            if (selectedRegionId != null && selectedRegionId != Guid.Empty)
+            {
+                this.Selected = Regions.FirstOrDefault(s => s.Id == selectedRegionId);
+            }
         }
 
         public RegionScreenViewModel()

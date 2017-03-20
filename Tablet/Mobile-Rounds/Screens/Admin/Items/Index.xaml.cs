@@ -29,5 +29,12 @@ namespace Mobile_Rounds.Screens.Admin.Items
             this.DataContext = BaseViewModel.Navigator.GetNavigationData<ItemScreenViewModel>();
             this.InitializeComponent();
         }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            var vm = this.DataContext as ItemScreenViewModel;
+            await vm.LoadDataAsync();
+        }
     }
 }

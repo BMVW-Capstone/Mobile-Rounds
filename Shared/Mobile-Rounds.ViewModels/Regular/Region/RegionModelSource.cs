@@ -3,6 +3,7 @@ using Mobile_Rounds.ViewModels.Platform;
 using Mobile_Rounds.ViewModels.Regular.Station;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
+using Mobile_Rounds.ViewModels.Shared.DbModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,11 +38,13 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
         public RegionModelSource(AsyncCommand navBack)
         {
             this.NavigateRoot = navBack;
-            this.Navigate = new AsyncCommand((obj) =>
+            this.Navigate = new AsyncCommand(async (obj) =>
             {
-                //var file = Platform.ServiceResolver.Resolve<IFileHandler>();
-                //var reads = await file.GetFileAsync("stations.json");
-                var vm = new StationListViewModel(this);
+                var file = Platform.ServiceResolver.Resolve<IFileHandler>();
+                var stations = await file.GetFileAsync<StationHandler>("stations.json");
+                var filtered = stations.Stations.Where(s => s.RegionId == this.Id);
+
+                var vm = new StationListViewModel(this, filtered);
                 BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationSelect, vm);
             });
         }

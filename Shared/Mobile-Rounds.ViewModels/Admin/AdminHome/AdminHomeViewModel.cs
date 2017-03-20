@@ -71,23 +71,7 @@ namespace Mobile_Rounds.ViewModels.Admin.AdminHome
             this.GoToItems = new AsyncCommand(async (obj) =>
             {
                 //TODO: This is a hack just for demonstration purposes.
-                var fm = ServiceResolver.Resolve<IFileHandler>();
-
-                var regions = await fm.GetFileAsync<RegionHandler>("regions.json");
-                var stations = await fm.GetFileAsync<StationHandler>("stations.json");
-                var items = await fm.GetFileAsync<ItemHandler>("items.json");
-                var units = await fm.GetFileAsync<UnitHandler>("units.json");
-
-                var east = regions.Regions[0];
-                var nox = stations.Stations.First(r => r.RegionId == east.Id);
-
-                var vm = new ViewModels.Admin.Items.ItemScreenViewModel(
-                    east,
-                    nox,
-                    units.Units,
-                    items.Items);
-
-                Navigator.Navigate(NavigationType.AdminItems, vm);
+                //Navigator.Navigate(NavigationType.AdminItems, vm);
             });
         }
     }

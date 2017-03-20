@@ -69,11 +69,9 @@ namespace Mobile_Rounds.ViewModels.Models
             : this()
         {
             this.NavigateRoot = region.NavigateRoot;
-            this.Navigate = new AsyncCommand(async(obj) =>
+            this.Navigate = new AsyncCommand((obj) =>
             {                
-                var file = Platform.ServiceResolver.Resolve<IFileHandler>();
-                var reads = await file.GetFileAsync("items.json");
-                var vm = new ReadingInputScreenViewModel(region, this, reads);
+                var vm = new ReadingInputScreenViewModel(region, this);
                 BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationInput, vm);
             });
         }

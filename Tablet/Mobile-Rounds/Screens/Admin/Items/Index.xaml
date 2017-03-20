@@ -25,6 +25,8 @@
             <Setter Property="FontSize" Value="30"/>
         </Style>
         <converters:BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <converters:InvertedBooleanToVisibilityConverter x:Key="InvBoolToVis" />
+        <converters:BoolToListColorConverter x:Key="BoolToListColor" />
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root">
@@ -75,16 +77,28 @@
             </breadcrumb:BreadcrumbControl.ItemTemplate>
         </breadcrumb:BreadcrumbControl>
 
+        <ProgressRing Margin="0, 20, 0, 0"
+            Grid.Column="1" Grid.Row="2" Grid.RowSpan="4" Grid.ColumnSpan="4"
+            Width="200" Height="200"
+            IsActive="{Binding IsLoading, Mode=TwoWay}" 
+            Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource BoolToVis}}"/>
+
         <!-- Content -->
         <TextBlock Grid.Row="2" Grid.Column="1" FontSize="30" Text="Available Items" Padding="0,0,0,15"/>
         <ListView ItemsSource="{Binding Items, Mode=TwoWay}" 
+                  Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}"
                   Grid.Row="3" Grid.Column="1" SelectionMode="Single"
                   Grid.RowSpan="6" ScrollViewer.VerticalScrollBarVisibility="Auto"
                   ScrollViewer.VerticalScrollMode="Enabled"
                   SelectedItem="{Binding Selected, Mode=TwoWay}" Margin="0, 0, 25, 25">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Background="{Binding IsDeleted, Converter={StaticResource BoolToListColor}}">
                         <TextBlock Text="{Binding Name}" FontSize="22" Foreground="Purple"/>
                         <TextBlock Text="{Binding Meter}" FontSize="18" Foreground="Purple" Padding="8, 0, 0, 10"/>
                     </StackPanel>
@@ -93,7 +107,8 @@
         </ListView>
 
         <TextBlock Grid.Row="2" Grid.Column="2" Text="Add/Modify Item" Style="{StaticResource SectionHeader}" Margin="0,0,0,15"/>
-        <ScrollViewer Grid.Row="3" Grid.Column="2" Grid.RowSpan="4" VerticalAlignment="Top">
+        <ScrollViewer Grid.Row="3" Grid.Column="2" Grid.RowSpan="4" VerticalAlignment="Top" 
+                      Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}">
             <StackPanel DataContext="{Binding CurrentItem, Mode=TwoWay}" Padding="0,0,15,0">
                 <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextInput}">
                     <TextBox.HeaderTemplate>
@@ -134,18 +149,25 @@
                     </TextBox.HeaderTemplate>
                 </TextBox>
                 <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,0,15" 
-                      ItemsSource="{Binding Units}" SelectedItem="{Binding Unit, Mode=TwoWay}" DisplayMemberPath="Name" FontSize="18">
+                      ItemsSource="{Binding Units, Mode=TwoWay}" SelectedItem="{Binding Unit, Mode=TwoWay}" DisplayMemberPath="Name" FontSize="18">
                     <ComboBox.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock FontSize="22" Text="Unit Type" />
                         </DataTemplate>
                     </ComboBox.HeaderTemplate>
                 </ComboBox>
+
+                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                   Margin="0,0,0,15" Text="Is Deleted?"/>
+
+                <CheckBox IsChecked="{Binding IsDeleted, Mode=TwoWay}"
+                  Margin="0,0,0,30" Width="50" Height="50" FontSize="36"/>
             </StackPanel>
 
         </ScrollViewer>
         
-        <Grid Grid.Row="7" Grid.RowSpan="2" Grid.Column="2" VerticalAlignment="Bottom" Margin="0, -60, 0, 0">
+        <Grid Grid.Row="7" Grid.RowSpan="2" Grid.Column="2" VerticalAlignment="Bottom" Margin="0, -60, 0, 0"
+              Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />

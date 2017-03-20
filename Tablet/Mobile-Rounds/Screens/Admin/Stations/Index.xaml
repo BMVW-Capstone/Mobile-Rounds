@@ -104,7 +104,12 @@
                    Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}"
                    Grid.Column="1" Grid.Row="4"
                   Margin="0,0,0,30" Width="50" Height="50" FontSize="36"/>
-
+        
+        <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" Margin="10, 0, 0, 0"
+            Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}"
+            Background="Orange" Foreground="White" Height="100" HorizontalContentAlignment="Center"
+            Content="Edit Items" HorizontalAlignment="Stretch" Command="{Binding NavigateToItems}"
+            VerticalAlignment="Bottom" FontSize="36" RequestedTheme="Light"/>
 
         <ListView ItemsSource="{Binding Stations, Mode=TwoWay}" 
                   Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}"

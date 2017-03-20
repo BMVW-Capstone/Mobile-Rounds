@@ -103,7 +103,7 @@ namespace Backend.DataAccess.Repositories
         protected override ItemModel BuildViewModel(Item model)
         {
             if (model == null) return null;
-            return new ItemModel
+            var item = new ItemModel
             {
                 Id = model.ItemId,
                 Name = model.Name,
@@ -125,7 +125,12 @@ namespace Backend.DataAccess.Repositories
                         IsDeleted = model.Specification.Unit.IsMarkedAsDeleted
                     }
                 },
-                PastFourReadings = model.Readings
+                PastFourReadings = new List<ReadingModel>()
+            };
+
+            if(model.Readings != null)
+            {
+                item.PastFourReadings = model.Readings?
                     .OrderBy(i => i.TimeTaken)
                     .Select(i => new ReadingModel
                     {
@@ -134,8 +139,10 @@ namespace Backend.DataAccess.Repositories
                         Value = i.Value,
                         Comments = i.Comments
                     })
-                    .Take(4)
-            };
+                    .Take(4);
+            }
+
+            return item;
         }
 
         protected override Item BuildModel(ItemModel model)
@@ -147,7 +154,16 @@ namespace Backend.DataAccess.Repositories
                 Name = model.Name,
                 IsMarkedAsDeleted = model.IsDeleted,
                 Meter = model.Meter,
-                StationId = model.StationId
+                StationId = model.StationId,
+                Specification = new Specification
+                {
+                    ItemId = model.Id,
+                    IsMarkedAsDeleted = model.IsDeleted,
+                    ComparisonTypeName = model.Specification.ComparisonType,
+                    LowerBoundValue = model.Specification.LowerBound,
+                    UpperBoundValue = model.Specification.UpperBound,
+                    UnitId = model.Specification.UnitOfMeasure.Id
+                }
             };
         }
     }
