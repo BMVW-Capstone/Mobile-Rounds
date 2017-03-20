@@ -167,7 +167,7 @@
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\StationsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Helpers\AuthorizeAdmin.cs" />
+    <Compile Include="Helpers\AuthorizeAdminAttribute.cs" />
     <Compile Include="Helpers\PrincipalExtensions.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
