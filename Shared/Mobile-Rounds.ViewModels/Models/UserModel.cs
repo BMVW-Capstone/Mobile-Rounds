@@ -19,7 +19,12 @@ namespace Mobile_Rounds.ViewModels.Models
         /// <summary>
         /// The Users email address.
         /// </summary>
-        public string Email { get; set; }
+        public string DomainName { get; set; }
+
+        /// <summary>
+        /// Gets the friendly name as displayed on their login page.
+        /// </summary>
+        public string FriendlyName { get; set; }
 
         /// <summary>
         /// Gets or sets the value indicating if the user is an admin or not.

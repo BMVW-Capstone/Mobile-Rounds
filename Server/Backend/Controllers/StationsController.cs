@@ -6,6 +6,7 @@ using Backend.Schemas;
 using Mobile_Rounds.ViewModels.Models;
 using Swashbuckle.Swagger.Annotations;
 using System;
+using Backend.Attributes;
 
 namespace Backend.Controllers
 {
@@ -49,6 +50,7 @@ namespace Backend.Controllers
         /// <returns>The newly updated station. If the update failed, returns null.</returns>
         [Route("")]
         [SwaggerOperation(Tags = new[] { SwaggerName })]
+        [AuthorizeAdmin]
         public async Task<IHttpActionResult> Post(StationModel newModel)
         {
             if (newModel == null)
@@ -73,6 +75,7 @@ namespace Backend.Controllers
         /// <returns>The newly updated station. If the update failed, returns null.</returns>
         [Route("")]
         [SwaggerOperation(Tags = new[] { SwaggerName })]
+        [AuthorizeAdmin]
         public async Task<IHttpActionResult> Put(StationModel updated)
         {
             if (updated == null)

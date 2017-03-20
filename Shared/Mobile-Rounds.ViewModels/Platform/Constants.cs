@@ -26,5 +26,13 @@ namespace Mobile_Rounds.ViewModels.Platform
             public const string Rounds = "/api/rounds";
             public const string Items = "/api/items";
         }
+
+        public static class Web
+        {
+            /// <summary>
+            /// This corresponds to the Web.config key for admin group in the api app.
+            /// </summary>
+            public const string AdminGroupKey = "AppAdminGroup";
+        }
     }
 }

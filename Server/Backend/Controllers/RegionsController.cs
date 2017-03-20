@@ -5,6 +5,7 @@ using Backend.DataAccess.Repositories;
 using Backend.Schemas;
 using Mobile_Rounds.ViewModels.Models;
 using Swashbuckle.Swagger.Annotations;
+using Backend.Attributes;
 
 namespace Backend.Controllers
 {
@@ -49,6 +50,7 @@ namespace Backend.Controllers
         /// <returns>The newly updated region. If the update failed, returns null.</returns>
         [Route("")]
         [SwaggerOperation(Tags = new[] { SwaggerName })]
+        [AuthorizeAdmin]
         public async Task<IHttpActionResult> Post(RegionModel newModel)
         {
             if (newModel == null)
@@ -73,6 +75,7 @@ namespace Backend.Controllers
         /// <returns>The newly updated region. If the update failed, returns null.</returns>
         [Route("")]
         [SwaggerOperation(Tags = new[] { SwaggerName })]
+        [AuthorizeAdmin]
         public async Task<IHttpActionResult> Put(RegionModel updated)
         {
             if (updated == null)
