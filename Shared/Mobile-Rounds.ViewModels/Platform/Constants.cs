@@ -33,6 +33,11 @@ namespace Mobile_Rounds.ViewModels.Platform
             /// This corresponds to the Web.config key for admin group in the api app.
             /// </summary>
             public const string AdminGroupKey = "AppAdminGroup";
+
+            /// <summary>
+            /// This corresponds to the Web.config key for admin group in the api app.
+            /// </summary>
+            public const string ModeKey = "Mode";
         }
     }
 }

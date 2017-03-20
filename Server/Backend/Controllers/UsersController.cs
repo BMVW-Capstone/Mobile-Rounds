@@ -40,14 +40,18 @@ namespace Backend.Controllers
         public IHttpActionResult Get()
         {
             var ident = this.RequestContext.Principal;
-            var nameSplit = ident.Identity.Name.Split('\\');
-            DirectoryEntry userEntry = new DirectoryEntry($"WinNT://{nameSplit[0]}/{nameSplit[1]}");
             var user = new UserModel
             {
                 DomainName = ident.Identity.Name,
-                FriendlyName = userEntry.Properties["FullName"].Value.ToString(),
                 IsAdministrator = ident.IsAppAdmin(this.settings)
             };
+
+            if (this.settings.GetValue<string>(Constants.Web.ModeKey) != "development")
+            {
+                var nameSplit = ident.Identity.Name.Split('\\');
+                DirectoryEntry userEntry = new DirectoryEntry($"WinNT://{nameSplit[0]}/{nameSplit[1]}");
+                user.FriendlyName = userEntry.Properties["FullName"].Value.ToString();
+            }
 
             return this.Ok(user);
         }

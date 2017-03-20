@@ -22,10 +22,15 @@ namespace Backend.Attributes
             {
                 return authed;
             }
-
-            // now verify against the user specified admin group
             var settings = new Settings();
-            return actionContext.RequestContext.Principal.IsAppAdmin(settings);
+
+            if (settings.GetValue<string>(Constants.Web.ModeKey) != "development")
+            {
+                // now verify against the user specified admin group
+                return actionContext.RequestContext.Principal.IsAppAdmin(settings);
+            }
+
+            return true;
         }
     }
 }
