@@ -6,6 +6,9 @@ using System.Web;
 using System.Web.Http;
 using Mobile_Rounds.ViewModels.Models;
 using Swashbuckle.Swagger.Annotations;
+using System.DirectoryServices;
+using Mobile_Rounds.ViewModels.Platform;
+using Backend.Helpers;
 
 namespace Backend.Controllers
 {
@@ -17,13 +20,13 @@ namespace Backend.Controllers
     public class UsersController : ApiController
     {
         private const string SwaggerName = "Users";
-        private readonly Dictionary<string, string> settings;
+        private readonly ISettings settings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UsersController"/> class.
         /// </summary>
         /// <param name="settings">The app settings from the Web.config.</param>
-        public UsersController(Dictionary<string, string> settings)
+        public UsersController(ISettings settings)
         {
             this.settings = settings;
         }
@@ -39,9 +42,16 @@ namespace Backend.Controllers
             var ident = this.RequestContext.Principal;
             var user = new UserModel
             {
-                Email = ident.Identity.Name,
-                IsAdministrator = ident.IsInRole(this.settings["AppAdminGroup"])
+                DomainName = ident.Identity.Name,
+                IsAdministrator = ident.IsAppAdmin(this.settings)
             };
+
+            if (this.settings.GetValue<string>(Constants.Web.ModeKey) != "development")
+            {
+                var nameSplit = ident.Identity.Name.Split('\\');
+                DirectoryEntry userEntry = new DirectoryEntry($"WinNT://{nameSplit[0]}/{nameSplit[1]}");
+                user.FriendlyName = userEntry.Properties["FullName"].Value.ToString();
+            }
 
             return this.Ok(user);
         }
