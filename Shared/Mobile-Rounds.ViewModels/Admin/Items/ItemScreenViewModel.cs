@@ -1,4 +1,6 @@
-﻿using Mobile_Rounds.ViewModels.Admin.UnitOfMeasure;
+﻿using Mobile_Rounds.ViewModels.Admin.Regions;
+using Mobile_Rounds.ViewModels.Admin.Stations;
+using Mobile_Rounds.ViewModels.Admin.UnitOfMeasure;
 using Mobile_Rounds.ViewModels.Models;
 using Mobile_Rounds.ViewModels.Platform;
 using Mobile_Rounds.ViewModels.Shared;
@@ -107,9 +109,10 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
         /// Initializes a new instance of the <see cref="UnitOfMeasureScreenViewModel"/> class.
         /// This also sets up all commands and data objects in the view.
         /// </summary>
-        public ItemScreenViewModel(RegionModel region, StationModel station, IEnumerable<UnitOfMeasureModel> unitsOfMeasure, IEnumerable<ItemModel> items)
+        public ItemScreenViewModel(RegionViewModel region, StationViewModel station)
         {
-            this.Units = new ObservableCollection<UnitOfMeasureModel>(unitsOfMeasure);
+            this.Units = new ObservableCollection<UnitOfMeasureModel>();
+            this.Items = new ObservableCollection<ItemViewModel>();
 
             this.Cancel = new AsyncCommand(
                 (obj) =>
@@ -119,26 +122,55 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                 }, this.CanCancel);
 
             this.Save = new AsyncCommand(
-                (obj) =>
+                async (obj) =>
                 {
-                    //TODO: Implement disk storage
+                    var model = new ItemModel
+                    {
+                        Id = this.currentItem.Id,
+                        Name = this.currentItem.Name,
+                        IsDeleted = this.currentItem.IsDeleted,
+                        Meter = this.currentItem.Meter,
+                        StationId = this.BelongsTo.Id,
+                        Specification = new SpecificationModel
+                        {
+                            ComparisonType = this.currentItem.ComparisonType.Name,
+                            LowerBound = this.currentItem.LowerBound,
+                            UpperBound = this.currentItem.UpperBound,
+                            UnitOfMeasure = this.currentItem.Unit
+                        }
+                    };
+
                     var existing = this.Items.FirstOrDefault(u => u.Id == this.currentItem.Id);
                     if (existing == null)
                     {
-                        this.CurrentItem.Id = Guid.NewGuid();
-                        var newCopy = new ItemViewModel(this.CurrentItem);
+                        model = await base.Api.PostAsync<ItemModel>(
+                            $"{Constants.Endpoints.Items}", model);
+                        if(model == null)
+                        {
+                            return;
+                        }
+
+                        var newCopy = new ItemViewModel(model, Save, Cancel, Units);
                         this.Items.Add(newCopy);
                     }
                     else
                     {
-                        existing.Name = this.currentItem.Name;
-                        existing.ComparisonType = this.currentItem.ComparisonType;
-                        existing.IsDeleted = this.currentItem.IsDeleted;
-                        existing.UpperBound = this.currentItem.UpperBound;
-                        existing.LowerBound = this.currentItem.LowerBound;
-                        existing.ModificationType = this.currentItem.ModificationType;
-                        existing.Unit = this.currentItem.Unit;
-                        existing.Meter = this.currentItem.Meter;
+                        model = await base.Api.PutAsync<ItemModel>(
+                            $"{Constants.Endpoints.Items}", model);
+
+                        if(model == null)
+                        {
+                            return;
+                        }
+
+                        existing.Name = model.Name;
+                        existing.ComparisonType = ComparisonTypeViewModel.Locate(model.Specification.ComparisonType);
+                        existing.IsDeleted = model.IsDeleted;
+                        existing.UpperBound = model.Specification.UpperBound;
+                        existing.LowerBound = model.Specification.LowerBound;
+                        existing.Unit = model.Specification.UnitOfMeasure;
+                        existing.Meter = model.Meter;
+                        existing.SetModificationType(ModificationType.Update);
                     }
 
                     this.CurrentItem = new ItemViewModel(this.Save, this.Cancel, this.Units);
@@ -149,52 +181,72 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
 
             this.CurrentItem = new ItemViewModel(this.Save, this.Cancel, this.Units);
 
-            this.BelongsTo = station;
+            this.BelongsTo = station.Model;
 
-            this.Crumbs.Add(new BreadcrumbItemModel(region.Name));
-            this.Crumbs.Add(new BreadcrumbItemModel(this.BelongsTo.Name));
+            this.SetupRegionBreadcrumb(region);
+            this.SetupStationBreadcrumb(station);
+        }
 
-            this.Items = new ObservableCollection<ItemViewModel>();
+        protected override async Task FetchDataAsync()
+        {
+            //get items using /api/stations/{stationid}/items
+            var itemsData = await base.Api.GetAsync<List<ItemModel>>(
+                $"{Constants.Endpoints.Stations}/{this.BelongsTo.Id}/items?{Constants.ApiOptions.IncludeDeleted}");
 
-            foreach (var item in items)
-            {
-                if (item.StationId != station.Id) continue;
+            //get units of measure
+            var unitsData = await base.Api.GetAsync<List<UnitOfMeasureModel>>(
+                $"{Constants.Endpoints.Units}?{Constants.ApiOptions.IncludeDeleted}");
 
-                var vm = new ItemViewModel(this.Save, this.Cancel, this.Units)
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    ComparisonType = ComparisonTypeViewModel.Locate(item.Specification.ComparisonType),
-                    IsDeleted = item.IsDeleted,
-                    LowerBound = item.Specification.LowerBound,
-                    UpperBound = item.Specification.UpperBound,
-                    Unit = item.Specification.UnitOfMeasure,
-                    Meter = item.Meter,
-                    Model = item
-                };
+            this.Units.AddRange(unitsData);
 
-                //find the current unit in our already loaded list. This is so the bindings will work appropriately.
-                vm.Unit = this.Units.FirstOrDefault(u => u.Id == item.Specification.UnitOfMeasure.Id);
-                Items.Add(vm);
-            }
+            var castedItems = itemsData.Select(i => new ItemViewModel(i, Save, Cancel, Units));
+            this.Items.AddRange(castedItems);
         }
 
         private ItemViewModel currentItem;
         private ItemViewModel selected;
+        
+        private void SetupRegionBreadcrumb(RegionViewModel region)
+        {
+            var navigateToAdminRegion = new AsyncCommand((obj) =>
+            {
+                Navigator.Navigate(Shared.Navigation.NavigationType.Regions, region?.Id);
+            });
+
+            this.Crumbs.Add(new BreadcrumbItemModel(region?.Name, navigateToAdminRegion));
+        }
+
+        private void SetupStationBreadcrumb(StationViewModel station)
+        {
+            var navigateToAdminStation = new AsyncCommand((obj) =>
+            {
+                Navigator.Navigate(Shared.Navigation.NavigationType.AdminStations, station.Model.Id);
+            });
+            this.Crumbs.Add(new BreadcrumbItemModel(station.Name, navigateToAdminStation));
+        }
 
         private bool ValidateInput(object input)
         {
             if (string.IsNullOrEmpty(this.CurrentItem?.Name)) return false;
             if (string.IsNullOrEmpty(this.CurrentItem?.Meter)) return false;
             if (string.IsNullOrEmpty(this.CurrentItem?.UpperBound)) return false;
+            if (this.CurrentItem?.Unit == null) return false;
 
             if (this.CurrentItem?.ComparisonType == null) return false;
 
             if(this.CurrentItem.ComparisonType.UsesTwoInputs)
             {
-                return this.CurrentItem
-                    .ComparisonType.ValidateBoundOrder(
-                        this.CurrentItem.LowerBound, this.CurrentItem.UpperBound);
+                try
+                {
+                    return this.CurrentItem
+                        .ComparisonType.ValidateBoundOrder(
+                            this.CurrentItem.LowerBound, this.CurrentItem.UpperBound);
+                }
+                catch
+                {
+                    //error with validation, so not valid.
+                    return false;
+                }
             }
 
             return true;
@@ -206,6 +258,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             if (!string.IsNullOrEmpty(this.CurrentItem?.Meter)) return true;
             if (!string.IsNullOrEmpty(this.CurrentItem?.LowerBound)) return true;
             if (!string.IsNullOrEmpty(this.CurrentItem?.UpperBound)) return true;
+            if (this.CurrentItem?.Unit != null) return true;
             if (this.CurrentItem.ComparisonType != null) return true;
 
             return false;

@@ -83,13 +83,16 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
 
                 var stations = await request.GetAsync<List<StationModel>>(
                     $"{Constants.Endpoints.Stations}?{Constants.ApiOptions.ExcludeDeleted}");
+
+                foreach (var station in stations)
+                {
+                    var stationItems = await request.GetAsync<List<ItemModel>>(
+                        $"{Constants.Endpoints.Stations}/{station.Id}/items?{Constants.ApiOptions.ExcludeDeleted}");
+                    station.Items = stationItems;
+                }
+
                 var stationResult = new StationHandler() { Stations = stations };
                 await handler.SaveFileAsync("stations.json", stationResult);
-
-                var items = await request.GetAsync<List<ItemModel>>(
-                    $"{Constants.Endpoints.Items}?{Constants.ApiOptions.ExcludeDeleted}");
-                var itemResult = new ItemHandler() { Items = items };
-                await handler.SaveFileAsync("items.json", itemResult);
 
                 var units = await request.GetAsync<List<UnitOfMeasureModel>>(
                     $"{Constants.Endpoints.Units}?{Constants.ApiOptions.ExcludeDeleted}");

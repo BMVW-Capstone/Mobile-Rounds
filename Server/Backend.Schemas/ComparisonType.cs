@@ -11,9 +11,9 @@ namespace Backend.Schemas
     public class ComparisonType
     {
         public const string LessThan = "Less Than";
-        public const string LessThanOrEqual = "Less Than Or Equal";
+        public const string LessThanOrEqual = "Less Than Or Equal To";
         public const string GreaterThan = "Greater Than";
-        public const string GreaterThanOrEqual = "Greater Than Or Equal";
+        public const string GreaterThanOrEqual = "Greater Than Or Equal To";
         public const string EqualTo = "Equal To";
         public const string Between = "Between";
         public const string Either = "Either";

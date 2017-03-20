@@ -199,11 +199,35 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
             //Value types for readings. Indicate what type of value a new unit will be.
             //Volts for example might be a Number, while a text based readout would be Text
             this.ModificationType = "Create";
-            this.Units = new ObservableCollection<UnitOfMeasureModel>(units);
+            this.Units = units;
             this.comparisonType = null;
             this.unit = null;
             this.Save = save;
             this.Cancel = cancel;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitOfMeasureModel"/> class.
+        /// This then caches the save and cancel commands so that it can
+        /// notify any views based on them.
+        /// </summary>
+        /// <param name="model">The model data to copy.</param>
+        /// <param name="save">The save command that is based on this unit.</param>
+        /// <param name="cancel">The cancel command that is based on this unit.</param>
+        public ItemViewModel(ItemModel model, AsyncCommand save, AsyncCommand cancel, ObservableCollection<UnitOfMeasureModel> units)
+            : this(save, cancel, units)
+        {
+            this.Model = model;
+
+            this.Id = model.Id;
+            this.name = model.Name;
+            this.lowerBound = model.Specification.LowerBound;
+            this.upperBound = model.Specification.UpperBound;
+            this.unit = units.FirstOrDefault(u => u.Id == model.Specification.UnitOfMeasure.Id);
+            this.isDeleted = model.IsDeleted;
+            this.meter = model.Meter;
+            this.comparisonType = ComparisonTypeViewModel.Locate(model.Specification.ComparisonType);
+            this.SetModificationType(Shared.ModificationType.Update);
         }
 
         /// <summary>

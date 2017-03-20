@@ -24,7 +24,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// Initializes a new instance of the <see cref="ReadingInputScreenViewModel"/> class.
         /// Represents the full view model for the page.
         /// </summary>
-        public ReadingInputScreenViewModel(RegionModelSource region, StationModel station, string reads)
+        public ReadingInputScreenViewModel(RegionModelSource region, StationModel station)
         {
             var regionNav = new AsyncCommand((obj) =>
             {
@@ -35,8 +35,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             this.Crumbs.Add(new BreadcrumbItemModel(station.Name, station.Navigate));
             this.Input = new ReadingInputViewModel();
             this.ListModel = new ReadingInputListViewModel(this);
-            var result = JsonConvert.DeserializeObject<ItemHandler>(reads);
-            foreach (var item in result.Items)
+            foreach (var item in station.Items)
             {
                 if (item.StationId == station.Id)
                 {

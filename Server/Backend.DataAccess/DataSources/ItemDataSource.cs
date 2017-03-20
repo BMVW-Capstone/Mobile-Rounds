@@ -28,17 +28,22 @@ namespace Backend.DataAccess.Repositories.DataSources
 
         public override Item GetSingle(Guid id)
         {
-            throw new NotImplementedException();
+            return Database.Items.FirstOrDefault(i => i.ItemId == id);
         }
 
 
         public override async Task<Item> InsertAsync(Item toCreate)
         {
             toCreate.ItemId = Guid.NewGuid();
+            toCreate.Specification.ItemId = toCreate.ItemId;
 
             var tracked = Database.Items.Add(toCreate);
             if(await SaveAsync())
             {
+                tracked = Database.Items.Attach(tracked);
+                tracked.Specification = Database.Specifications.Attach(tracked.Specification);
+                tracked.Specification.Unit = Database.UnitsOfMeasure.Find(tracked.Specification.UnitId);
+                tracked.Specification.ComparisonType = Database.ComparisonTypes.Find(tracked.Specification.ComparisonTypeName);
                 return tracked;
             }
             return null;
@@ -50,8 +55,18 @@ namespace Backend.DataAccess.Repositories.DataSources
 
             if (tracked == null) return null;
 
+            var trackedSpec = Database.Specifications.Attach(tracked.Specification);
+            if (trackedSpec == null) return null;
+
             tracked.Name = toUpdate.Name;
             tracked.IsMarkedAsDeleted = toUpdate.IsMarkedAsDeleted;
+            tracked.Meter = toUpdate.Meter;
+            tracked.StationId = toUpdate.StationId;
+
+            trackedSpec.UpperBoundValue = toUpdate.Specification.UpperBoundValue;
+            trackedSpec.LowerBoundValue = toUpdate.Specification.LowerBoundValue;
+            trackedSpec.UnitId = toUpdate.Specification.UnitId;
+            trackedSpec.ComparisonTypeName = toUpdate.Specification.ComparisonTypeName;
 
             if (await SaveAsync())
             {

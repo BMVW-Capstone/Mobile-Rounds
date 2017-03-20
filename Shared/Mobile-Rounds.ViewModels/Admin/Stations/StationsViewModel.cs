@@ -9,6 +9,7 @@ using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared;
 using System;
 using Mobile_Rounds.ViewModels.Admin.Regions;
+using Mobile_Rounds.ViewModels.Admin.Items;
 
 namespace Mobile_Rounds.ViewModels.Admin.Stations
 {
@@ -19,6 +20,8 @@ namespace Mobile_Rounds.ViewModels.Admin.Stations
 
         public AsyncCommand Save { get; private set; }
         public AsyncCommand Cancel { get; private set; }
+
+        public AsyncCommand NavigateToItems { get; private set; }
 
         /// <summary>
         /// Gets or sets the currently selected region in the list.
@@ -39,6 +42,7 @@ namespace Mobile_Rounds.ViewModels.Admin.Stations
                     this.CurrentStation = this.selected;
                 }
 
+                this.NavigateToItems.RaiseExecuteChanged();
                 this.RaisePropertyChanged(nameof(this.Selected));
             }
         }
@@ -104,6 +108,14 @@ namespace Mobile_Rounds.ViewModels.Admin.Stations
             }, this.CanSave);
 
             this.Cancel = new AsyncCommand(this.CancelStation, this.CanCancel);
+            this.NavigateToItems = new AsyncCommand((obj) =>
+            {
+                var region = this.Regions.FirstOrDefault(r => r.Id == this.currentStation.RegionId);
+
+                var vm = new ItemScreenViewModel(region, this.CurrentStation);
+                Navigator.Navigate(Shared.Navigation.NavigationType.AdminItems, vm);
+            }, this.CanNavigateToItems);
+
             this.currentStation = new StationViewModel(this.Save, this.Cancel);
         }
 
@@ -120,6 +132,12 @@ namespace Mobile_Rounds.ViewModels.Admin.Stations
 
             Stations.AddRange(castedStations);
             Regions.AddRange(castedRegions);
+
+            var selectedStationId = Navigator.GetNavigationData<Guid>();
+            if(selectedStationId != null && selectedStationId != Guid.Empty)
+            {
+                this.Selected = Stations.FirstOrDefault(s => s.Id == selectedStationId);
+            }
         }
 
         private void CancelStation(object data)
@@ -185,6 +203,12 @@ namespace Mobile_Rounds.ViewModels.Admin.Stations
         {
             return !string.IsNullOrEmpty(currentStation.Name)
                 || currentStation.RegionId != Guid.Empty;
+        }
+
+        private bool CanNavigateToItems(object data)
+        {
+            return this.selected?.Id != null
+                && this.selected?.Id != Guid.Empty;
         }
 
         private StationViewModel selected;

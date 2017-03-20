@@ -184,6 +184,17 @@ namespace Mobile_Rounds.ViewModels.Admin.UnitOfMeasure
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnitOfMeasureModel"/> class.
+        /// This then caches the save and cancel commands so that it can
+        /// notify any views based on them.
+        /// </summary>
+        /// <param name="model">The data to copy into the view model.</param>
+        public UnitOfMeasureViewModel(UnitOfMeasureModel model)
+            : this(model, null, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitOfMeasureModel"/> class.
         /// This is a copy constructor so all values will get copied to the new copy.
         /// </summary>
         /// <param name="toCopy">The object to copy.</param>

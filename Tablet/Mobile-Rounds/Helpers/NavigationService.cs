@@ -72,11 +72,10 @@ namespace Mobile_Rounds.Helpers
         }
 
         public T GetNavigationData<T>()
-            where T : class
         {
             if (this.navigationData == null)
             {
-                return null;
+                return default(T);
             }
 
             return (T)this.navigationData;

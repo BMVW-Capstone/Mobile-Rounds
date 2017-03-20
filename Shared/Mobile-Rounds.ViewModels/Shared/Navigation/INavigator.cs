@@ -20,8 +20,7 @@ namespace Mobile_Rounds.ViewModels.Shared.Navigation
         /// </summary>
         /// <typeparam name="T">The type of object you expect it to have.</typeparam>
         /// <returns>The previously stored data.</returns>
-        T GetNavigationData<T>()
-            where T : class;
+        T GetNavigationData<T>();
 
         /// <summary>
         /// Navigates to the specific type of screen.
