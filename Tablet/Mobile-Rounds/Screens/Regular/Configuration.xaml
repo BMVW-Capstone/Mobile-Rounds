@@ -67,6 +67,7 @@
             <TextBox Text="{Binding ApiHost, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                      HorizontalContentAlignment="Stretch" />
             <Button Content="Save"  Command="{Binding Save}"/>
+            <Button Content="Test Connection" Command="{Binding TestConnection}"/>
         </StackPanel>
     </Grid>
 </Page>

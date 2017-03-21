@@ -13,6 +13,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
     public class ConfigurationViewModel : BaseViewModel
     {
         public AsyncCommand Save { get; private set; }
+        public AsyncCommand TestConnection { get; private set; }
         public string ApiHost
         {
             get
@@ -24,6 +25,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
                 this.apiHost = value;
                 this.RaisePropertyChanged(nameof(this.ApiHost));
                 this.Save.RaiseExecuteChanged();
+                this.TestConnection.RaiseExecuteChanged();
             }
         }
 
@@ -33,6 +35,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
             settings = ServiceResolver.Resolve<ISettings>();
             apiHost = settings.GetValue<string>(Constants.APIHostConfigKey);
             Save = new AsyncCommand(async (obj) => await this.SaveCommand(), CanSave);
+            TestConnection = new AsyncCommand(async (obj) => await this.TestApiConnection(), CanSave);
         }
 
         private async Task SaveCommand()
@@ -42,7 +45,17 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
 
             //now get the users metadata.
             var userInfo = await base.Api.GetAsync<UserModel>(Constants.Endpoints.Users);
-            settings.SaveValue(Constants.UserAdminKey, userInfo.IsAdministrator);
+            if (userInfo  != null)
+                settings.SaveValue(Constants.UserAdminKey, userInfo.IsAdministrator);
+        }
+
+        private async Task TestApiConnection()
+        {
+
+            //now get the users metadata.
+            var userInfo = await base.Api.GetAsync<UserModel>(Constants.Endpoints.Users);
+            if (userInfo == null)
+                throw new NullReferenceException("API Could not be contacted");
         }
 
         private bool CanSave(object data)
