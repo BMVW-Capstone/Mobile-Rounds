@@ -10,6 +10,12 @@ namespace Mobile_Rounds.ViewModels.Platform
     {
         public const string APIHostConfigKey = "API_Host";
         public const string UserAdminKey = "USER_Admin";
+        public const string UserDomainName = "USER_Domain_Name";
+
+        public static class FileNames
+        {
+            public const string CurrentRound = "current_round.json";
+        }
 
         public static class ApiOptions
         {

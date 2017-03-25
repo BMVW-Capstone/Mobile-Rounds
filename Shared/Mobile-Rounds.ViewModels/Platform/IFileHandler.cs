@@ -11,6 +11,7 @@ namespace Mobile_Rounds.ViewModels.Platform
         Task<string> GetFileAsync(string fileName);
         Task<TOutput> GetFileAsync<TOutput>(string fileName) where TOutput: new();
         Task SaveFileAsync(string fileName, object toSave);
+        Task<bool> DeleteFileAsync(string fileName);
         //need to figure out proper local file deployment. this doesn't load out of assets
         //currently have to track down user\appdata\local\packages\thisAppGuid\LocalState and place them manually.
     }

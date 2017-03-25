@@ -99,6 +99,16 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
                 var unitResult = new UnitHandler() { Units = units };
                 await handler.SaveFileAsync("units.json", unitResult);
 
+                // Check if we have a round to save or not.
+                if (RoundManager.CurrentRound != null)
+                {
+                    //Tell the server that we completed the round.
+                    var didComplete = await RoundManager.CompleteRoundAsync();
+
+                    //TODO: Do something with the didComplete. Perhaps this happens before the other syncs
+                    //so we can skip overwriting the existing files since the round couldn't be sync'ed.
+                }
+
                 this.IsSyncing = false;
             }, this.CanSync);
 

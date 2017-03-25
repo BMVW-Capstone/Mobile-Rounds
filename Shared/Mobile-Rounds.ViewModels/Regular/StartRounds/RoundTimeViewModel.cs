@@ -13,8 +13,13 @@ namespace Mobile_Rounds.ViewModels.Regular.StartRounds
 
         }
 
-
         public string RoundHour { get; set; }
-
+        public int RoundHourAsInt
+        {
+            get
+            {
+                return int.Parse(RoundHour.Split(':')[0]);
+            }
+        }
     }
 }

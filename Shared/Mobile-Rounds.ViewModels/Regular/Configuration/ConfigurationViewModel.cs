@@ -43,6 +43,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
             //now get the users metadata.
             var userInfo = await base.Api.GetAsync<UserModel>(Constants.Endpoints.Users);
             settings.SaveValue(Constants.UserAdminKey, userInfo.IsAdministrator);
+            settings.SaveValue(Constants.UserDomainName, userInfo.DomainName);
         }
 
         private bool CanSave(object data)

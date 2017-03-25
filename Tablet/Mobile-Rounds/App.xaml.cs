@@ -69,6 +69,8 @@ namespace Mobile_Rounds
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+            // First thing is to load any current round. It is OK if there is not one that loads.
+            await RoundManager.LoadCurrentRoundAsync();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
