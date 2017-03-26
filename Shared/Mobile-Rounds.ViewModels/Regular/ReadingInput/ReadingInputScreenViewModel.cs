@@ -61,6 +61,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
                         MaximumValue = item.Specification.UpperBound,
                         UnitAbbreviation = item.Specification.UnitOfMeasure.Abbreviation,
                         ValueBounds = newMeter.ComparisonType.AsEnum(),
+                        IsWithinSpec = false
                     };
 
                     var count = item.PastFourReadings.Count();

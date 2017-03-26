@@ -131,7 +131,7 @@
                 Header="{Binding InputHeader}"
                 OnContent="{Binding MaximumValue}"
                 OffContent="{Binding MinimumValue}"
-                IsOn="{Binding BooleanValue}"
+                IsOn="{Binding BooleanValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 FontSize="18"/>
 
             <TextBox Grid.Row="1" Grid.Column="0"

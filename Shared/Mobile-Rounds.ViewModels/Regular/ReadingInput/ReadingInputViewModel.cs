@@ -20,6 +20,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
     /// </summary>
     public class ReadingInputViewModel : BaseViewModel
     {
+
         /// <summary>
         /// Gets a value indicating whether if the input type is not.
         /// </summary>
@@ -315,13 +316,28 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             else
             {
                 var valToTest = this.IsBooleanInput ? this.BooleanValue.ToString() : this.StringValue;
+
+                if (this.IsBooleanInput)
+                {
+                    valToTest = this.BooleanValue ? TrueValue : FalseValue;
+                }
+
                 valid = validator.Validate(
                         value: valToTest,
                         min: item.Specification.LowerBound,
                         max: item.Specification.UpperBound);
+
+                if(valid && this.IsBooleanInput)
+                {
+                    //expect the upper bound to be the actual value we want.
+                    valid = valToTest.ToLower().Equals(this.item.Specification.UpperBound, StringComparison.CurrentCultureIgnoreCase);
+                }
             }
             return valid;
         }
+
+        private string FalseValue => item.Specification.LowerBound;
+        private string TrueValue => item.Specification.UpperBound;
 
         private ReadingInput todaysData;
         private ItemModel item;
