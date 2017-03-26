@@ -11,6 +11,6 @@ namespace Mobile_Rounds.ViewModels.Platform
         Task<string> GetFileAsync(string fileName);
         Task<TOutput> GetFileAsync<TOutput>(string fileName) where TOutput: new();
         Task SaveFileAsync(string fileName, object toSave);
-
+        Task<bool> DeleteFileAsync(string fileName);
     }
 }

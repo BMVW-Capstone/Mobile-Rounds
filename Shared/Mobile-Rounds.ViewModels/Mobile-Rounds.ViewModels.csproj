@@ -83,6 +83,7 @@
     <Compile Include="Shared\Commands\SyncCommand.cs" />
     <Compile Include="Shared\Controls\BreadcrumbItemModel.cs" />
     <Compile Include="Shared\DbModels\ItemHandler.cs" />
+    <Compile Include="Shared\DbModels\ReadingHandler.cs" />
     <Compile Include="Shared\DbModels\RegionHandler.cs" />
     <Compile Include="Shared\DbModels\StationHandler.cs" />
     <Compile Include="Shared\DbModels\UnitHandler.cs" />
@@ -94,7 +95,9 @@
     <Compile Include="Shared\Navigation\INavigator.cs" />
     <Compile Include="Shared\Navigation\NavigationType.cs" />
     <Compile Include="Shared\NotificationBase.cs" />
+    <Compile Include="Shared\ReadingManager.cs" />
     <Compile Include="Shared\ReadingType\BoundType.cs" />
+    <Compile Include="Shared\RoundManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

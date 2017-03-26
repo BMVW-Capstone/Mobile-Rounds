@@ -34,7 +34,6 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
                 this.region = value;
                 if (this.region != null && this.region.Navigate != null)
                 {
-
                     this.region.Navigate.Execute(this);
                 }
 
@@ -51,12 +50,19 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
 
             foreach (var region in result.Regions)
             {
-                this.Regions.Add(new RegionModelSource(parent.Navigate)
+                var vm = new RegionModelSource(parent.Navigate)
                 {
                     Id = region.Id,
                     Name = region.Name,
                     Stations = region.Stations
-                });
+                };
+                this.Regions.Add(vm);
+
+                if(region.Id == RoundManager.CurrentRound.RegionId)
+                {
+                    vm.Navigate.Execute(vm);
+                    break;
+                }
             }
         }
 

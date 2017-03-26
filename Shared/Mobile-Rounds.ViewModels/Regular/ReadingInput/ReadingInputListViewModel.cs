@@ -40,13 +40,27 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
                 {
                     ReadingInput today = this.selectedMeter.TodaysReading;
 
-                    var newInput = new ReadingInputViewModel(today);
+                    var newInput = new ReadingInputViewModel(today, this.selectedMeter.Item, this.parent.Save, null);
+                    newInput.ItemId = this.selectedMeter.Id;
+
+                    // here we get the last known reading, and set the value for the user to see.
+                    var currentReading = ReadingManager.Find(newInput.ItemId);
+                    newInput.StringValue = currentReading?.Value;
+
+                    // just try to set the boolean value, that way we can skip actually checking the
+                    //type of value it should be.
+                    bool output = false;
+                    if (bool.TryParse(currentReading?.Value, out output))
+                    {
+                        newInput.BooleanValue = output;
+                    }
+                    newInput.IsInSpec = currentReading?.IsOutOfSpec == false;
+                    newInput.Comments = currentReading?.Comments;
                     newInput.LastReading = this.selectedMeter.LastReading;
                     newInput.TwoReadingsAgo = this.selectedMeter.TwoReadingsAgo;
                     newInput.ThreeReadingsAgo = this.selectedMeter.ThreeReadingsAgo;
                     newInput.FourReadingsAgo = this.selectedMeter.FourReadingsAgo;
                     this.parent.Input = newInput;
-
                 }
 
                 this.RaisePropertyChanged(nameof(this.Selected));

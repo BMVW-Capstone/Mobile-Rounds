@@ -64,7 +64,11 @@
         <TextBlock x:Name="textBlock" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Padding="10"  Height="96" TextWrapping="Wrap" Text="Start Round" Width="320" FontSize="48" FontWeight="Bold"/>
 
         <TextBlock x:Name="timeTitle" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Padding="10" Height="65" TextWrapping="Wrap" Text="Select Time" VerticalAlignment="Top" Width="320" FontSize="36"/>
-        <ComboBox x:Name="TimeComboBox" Grid.Row="6" Grid.Column="1" Margin="10" SelectedValue="{ Binding SelectedTime }" ItemsSource="{ Binding RoundTimes }" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="535" Height="60" FontSize="30">
+        <ComboBox x:Name="TimeComboBox" Grid.Row="6" Grid.Column="1" Margin="10"
+                  SelectedItem="{Binding SelectedTime, Mode=TwoWay}"
+                  ItemsSource="{ Binding RoundTimes }" 
+                  HorizontalAlignment="Left"  VerticalAlignment="Bottom" 
+                  Width="535" Height="60" FontSize="30">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{ Binding RoundHour }" Foreground="#224ace" ></TextBlock>

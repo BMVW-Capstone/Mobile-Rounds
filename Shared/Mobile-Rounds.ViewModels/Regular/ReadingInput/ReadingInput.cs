@@ -73,5 +73,6 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// Gets or sets the value to display for the unit type.
         /// </summary>
         public string UnitAbbreviation { get; set; }
+
     }
 }

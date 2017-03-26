@@ -56,6 +56,8 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
             var userInfo = await base.Api.GetAsync<UserModel>(Constants.Endpoints.Users);
             if (userInfo == null)
                 throw new NullReferenceException("API Could not be contacted");
+            settings.SaveValue(Constants.UserAdminKey, userInfo.IsAdministrator);
+            settings.SaveValue(Constants.UserDomainName, userInfo.DomainName);
         }
 
         private bool CanSave(object data)

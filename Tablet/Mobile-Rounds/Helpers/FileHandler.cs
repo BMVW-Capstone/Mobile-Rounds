@@ -34,5 +34,26 @@ namespace Mobile_Rounds.Helpers
                 fileName, Windows.Storage.CreationCollisionOption.ReplaceExisting);
             await Windows.Storage.FileIO.WriteTextAsync(file, jObject);
         }
+
+        public async Task<bool> DeleteFileAsync(string fileName)
+        {
+            var success = false;
+            try
+            {
+                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                StorageFile file = await storageFolder.GetFileAsync(fileName);
+                // If this throws and doesn't delete, then the catch will return false.
+                await file.DeleteAsync(StorageDeleteOption.Default);
+
+                // delete worked, so return true
+                success = true;
+            }
+            catch
+            {
+                success = false;
+            }
+
+            return success;
+        }
     }
 }
