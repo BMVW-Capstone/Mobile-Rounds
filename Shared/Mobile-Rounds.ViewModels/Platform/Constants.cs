@@ -15,6 +15,7 @@ namespace Mobile_Rounds.ViewModels.Platform
         public static class FileNames
         {
             public const string CurrentRound = "current_round.json";
+            public const string CurrentReadings = "current_readings.json";
         }
 
         public static class ApiOptions
@@ -31,6 +32,7 @@ namespace Mobile_Rounds.ViewModels.Platform
             public const string Stations = "/api/stations";
             public const string Rounds = "/api/rounds";
             public const string Items = "/api/items";
+            public const string Readings = "/api/readings";
         }
 
         public static class Web

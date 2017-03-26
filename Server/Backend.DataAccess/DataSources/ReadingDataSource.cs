@@ -41,7 +41,7 @@ namespace Backend.DataAccess.Repositories.DataSources
 
             toCreate.IsOutOfSpec = validator.Validate(toCreate.Value,
                 min: item.Specification.LowerBoundValue,
-                max: item.Specification.UpperBoundValue);
+                max: item.Specification.UpperBoundValue) == false;
 
             var tracked = Database.Readings.Add(toCreate);
             if(await SaveAsync())

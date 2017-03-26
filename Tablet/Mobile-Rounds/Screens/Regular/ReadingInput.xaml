@@ -137,7 +137,7 @@
             <TextBox Grid.Row="1" Grid.Column="0"
                 Visibility="{Binding IsNotBooleanInput, Converter={StaticResource BoolToVis}}"
                 InputScope="{Binding InputType, Converter={StaticResource BoundToKeyboard}}"
-                Text="{Binding StringValue}">
+                Text="{Binding StringValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <TextBox.HeaderTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding InputHeader}" FontSize="18"/>
@@ -152,11 +152,11 @@
 
             <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1"
                 Margin="0,10,0,10"
-                BorderBrush="{Binding IsInSpec, Converter={StaticResource BoolToColor}}"
+                BorderBrush="{Binding IsInSpec, Converter={StaticResource BoolToColor}, UpdateSourceTrigger=PropertyChanged}"
                 AcceptsReturn="True"
                 TextWrapping="Wrap" MaxHeight="100"
                 VerticalAlignment="Top"
-                Text="{Binding Comments}">
+                Text="{Binding Comments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <TextBox.Header>
                     <TextBlock Text="Comments" FontSize="18"></TextBlock>
                 </TextBox.Header>

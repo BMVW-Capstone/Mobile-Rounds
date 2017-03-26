@@ -71,6 +71,9 @@ namespace Mobile_Rounds
 #endif
             // First thing is to load any current round. It is OK if there is not one that loads.
             await RoundManager.LoadCurrentRoundAsync();
+
+            // Second thing is to load any readings that have been created.
+            await ReadingManager.LoadCurrentReadingsAsync();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,

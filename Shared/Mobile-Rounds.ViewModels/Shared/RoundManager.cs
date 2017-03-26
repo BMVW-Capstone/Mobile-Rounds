@@ -62,7 +62,10 @@ namespace Mobile_Rounds.ViewModels.Shared
             };
         }
 
-        public static async Task<bool> CompleteRoundAsync()
+        /// <summary>
+        /// Uploads the round to the server and clears the current round. Returns null if it could not upload the round correctly.
+        /// </summary>
+        public static async Task<RoundModel> CompleteRoundAsync()
         {
             //Upload the current round to the server.
             var request = ServiceResolver.Resolve<IApiRequest>();
@@ -80,11 +83,14 @@ namespace Mobile_Rounds.ViewModels.Shared
                 //the file.
 
                 //means the upload was a success, so continue with the deletion of the round.
-                return await DeleteCurrentRoundAsync();
+                if(await DeleteCurrentRoundAsync())
+                {
+                    return completedRound;
+                }
             }
 
-            //upload to the server failed, so return false.
-            return false;
+            //upload to the server failed, so return null.
+            return null;
         }
 
         /// <summary>

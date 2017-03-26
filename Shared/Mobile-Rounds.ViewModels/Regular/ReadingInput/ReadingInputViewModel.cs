@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.ReadingType;
+using Mobile_Rounds.ViewModels.Admin.Items;
+using Mobile_Rounds.ViewModels.Models;
+using Mobile_Rounds.ViewModels.Shared.Commands;
 
 namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
 {
@@ -52,7 +55,10 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             set
             {
                 this.todaysData.BooleanValue = value;
+                this.todaysData.IsWithinSpec = this.Validate();
                 this.RaisePropertyChanged(nameof(this.BooleanValue));
+                this.RaisePropertyChanged(nameof(this.IsInSpec));
+                this.Save.RaiseExecuteChanged();
             }
         }
 
@@ -69,7 +75,10 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             set
             {
                 this.todaysData.StringValue = value;
+                this.todaysData.IsWithinSpec = this.Validate();
+                this.RaisePropertyChanged(nameof(this.IsInSpec));
                 this.RaisePropertyChanged(nameof(this.StringValue));
+                this.Save.RaiseExecuteChanged();
             }
         }
 
@@ -87,6 +96,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             {
                 this.todaysData.Notes = value;
                 this.RaisePropertyChanged(nameof(this.Comments));
+                this.Save.RaiseExecuteChanged();
             }
         }
 
@@ -213,7 +223,15 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             {
                 return this.todaysData.IsWithinSpec;
             }
+
+            set
+            {
+                this.todaysData.IsWithinSpec = value;
+                this.RaisePropertyChanged(nameof(this.IsInSpec));
+            }
         }
+
+        public Guid ItemId { get; set; }
 
         /// <summary>
         /// Gets or sets yesterdays reading.
@@ -237,6 +255,8 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// </summary>
         public ReadingInput FourReadingsAgo { get; set; }
 
+        public ComparisonTypeViewModel ComparisonType { get; set; }
+
         /// <summary>
         /// Gets or sets a value indicating if the input screen should be visible.
         /// </summary>
@@ -257,22 +277,54 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// <summary>
         /// Initializes a new instance of the <see cref="ReadingInputViewModel"/> class.
         /// </summary>
-        public ReadingInputViewModel()
+        public ReadingInputViewModel(AsyncCommand save, AsyncCommand cancel)
         {
             this.todaysData = new ReadingInput();
             this.ShowInput = false;
+            this.Save = save;
+            this.Cancel = cancel;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReadingInputViewModel"/> class.
         /// </summary>
-        public ReadingInputViewModel(ReadingInput todaysData)
+        public ReadingInputViewModel(ReadingInput todaysData, ItemModel item, AsyncCommand save, AsyncCommand cancel)
+            : this(save, cancel)
         {
+            this.item = item;
+            this.ComparisonType = ComparisonTypeViewModel.Locate(this.item.Specification.ComparisonType);
             this.todaysData = todaysData;
             this.ShowInput = this.todaysData != null;
         }
 
+        public AsyncCommand Save { get; private set; }
+        public AsyncCommand Cancel { get; private set; }
+
+        public bool Validate()
+        {
+            var validator = this.ComparisonType;
+            if (validator == null) return false;
+
+            var valid = false;
+            if (validator.UsesOneInput)
+            {
+                valid = validator.Validate(
+                    value: this.StringValue,
+                    max: this.item.Specification.UpperBound);
+            }
+            else
+            {
+                var valToTest = this.IsBooleanInput ? this.BooleanValue.ToString() : this.StringValue;
+                valid = validator.Validate(
+                        value: valToTest,
+                        min: item.Specification.LowerBound,
+                        max: item.Specification.UpperBound);
+            }
+            return valid;
+        }
+
         private ReadingInput todaysData;
+        private ItemModel item;
         private bool shouldShowInput;
     }
 }
