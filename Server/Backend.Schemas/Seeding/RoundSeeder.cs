@@ -21,7 +21,7 @@ namespace Backend.Schemas.Seeding
                     new Round
                     {
                         Id = Guid.NewGuid(),
-                        RoundHour = baseTime.AddHours(-8),
+                        RoundHour = baseTime.AddHours(-8).Hour,
                         AssignedTo = "tyler.vanderhoef@wsu.edu",
                         StartTime = baseTime.AddHours(-8).AddMinutes(30),
                         EndTime = baseTime.AddHours(-7),
@@ -30,7 +30,7 @@ namespace Backend.Schemas.Seeding
                     new Round
                     {
                         Id = Guid.NewGuid(),
-                        RoundHour = baseTime.AddHours(-8),
+                        RoundHour = baseTime.AddHours(-8).Hour,
                         AssignedTo = "matt.burris@wsu.edu",
                         StartTime = baseTime.AddHours(-8).AddMinutes(30),
                         EndTime = baseTime.AddHours(-7),
@@ -39,7 +39,7 @@ namespace Backend.Schemas.Seeding
                     new Round
                     {
                         Id = Guid.NewGuid(),
-                        RoundHour = baseTime.AddHours(-16),
+                        RoundHour = baseTime.AddHours(-16).Hour,
                         AssignedTo = "cwillette@wsu.edu",
                         StartTime = baseTime.AddHours(-16).AddMinutes(30),
                         EndTime = baseTime.AddHours(-15),

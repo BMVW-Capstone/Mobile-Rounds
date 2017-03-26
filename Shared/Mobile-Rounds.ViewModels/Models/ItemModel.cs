@@ -43,6 +43,8 @@ namespace Mobile_Rounds.ViewModels.Models
         /// </summary>
         public SpecificationModel Specification { get; set; }
 
+        public ReadingModel CurrentReading { get; set; }
+
         public IEnumerable<ReadingModel> PastFourReadings { get; set; }
     }
 }
