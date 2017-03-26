@@ -24,6 +24,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
             {
                 this.apiHost = value;
                 this.RaisePropertyChanged(nameof(this.ApiHost));
+                this.testResult = false;
                 this.Save.RaiseExecuteChanged();
                 this.TestConnection.RaiseExecuteChanged();
             }
@@ -54,12 +55,13 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
             //now get the users metadata.
             try
             {
+                settings.SaveValue(Constants.APIHostConfigKey, this.ApiHost);
                 var userInfo = await base.Api.GetAsync<UserModel>(Constants.Endpoints.Users);
                 if (userInfo != null)
                     testResult = true;
                 //throw new NullReferenceException("API Could not be contacted");
             }
-            catch
+            catch(Exception ex)
             {
                 testResult = false;
             }
