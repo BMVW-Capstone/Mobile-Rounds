@@ -35,7 +35,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
             settings = ServiceResolver.Resolve<ISettings>();
             apiHost = settings.GetValue<string>(Constants.APIHostConfigKey);
             Save = new AsyncCommand(async (obj) => await this.SaveCommand(), CanSave);
-            TestConnection = new AsyncCommand(async (obj) => await this.TestApiConnection(), CanSave);
+            TestConnection = new AsyncCommand(async (obj) => await this.TestApiConnection(), CanTest);
         }
 
         private async Task SaveCommand()
@@ -51,19 +51,32 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
 
         private async Task TestApiConnection()
         {
-
             //now get the users metadata.
-            var userInfo = await base.Api.GetAsync<UserModel>(Constants.Endpoints.Users);
-            if (userInfo == null)
-                throw new NullReferenceException("API Could not be contacted");
+            try
+            {
+                var userInfo = await base.Api.GetAsync<UserModel>(Constants.Endpoints.Users);
+                if (userInfo != null)
+                    testResult = true;
+                //throw new NullReferenceException("API Could not be contacted");
+            }
+            catch
+            {
+                testResult = false;
+            }
+            this.Save.RaiseExecuteChanged();
         }
 
         private bool CanSave(object data)
+        {
+            return (!string.IsNullOrEmpty(this.ApiHost) && this.testResult);
+        }
+        private bool CanTest(object data)
         {
             return !string.IsNullOrEmpty(this.ApiHost);
         }
 
         private ISettings settings;
         private string apiHost;
+        private bool testResult;
     }
 }
