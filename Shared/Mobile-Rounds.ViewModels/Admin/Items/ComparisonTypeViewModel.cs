@@ -30,6 +30,44 @@ namespace Mobile_Rounds.ViewModels.Admin.Items
                 .FirstOrDefault(i => i.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase));
         }
 
+        public static ComparisonTypeViewModel Locate(BoundType type)
+        {
+            var name = string.Empty;
+
+            switch (type)
+            {
+                case BoundType.EqualTo:
+                    name = EqualTo;
+                    break;
+                case BoundType.LessThan:
+                    name = LessThan;
+                    break;
+                case BoundType.LessThanOrEqual:
+                    name = LessThanOrEqual;
+                    break;
+                case BoundType.GreaterThan:
+                    name = GreaterThan;
+                    break;
+                case BoundType.GreaterThanOrEqual:
+                    name = GreaterThanOrEqual;
+                    break;
+                case BoundType.Between:
+                    name = Between;
+                    break;
+                case BoundType.EitherOr:
+                    name = Either;
+                    break;
+                case BoundType.NotApplicable:
+                    name = NotApplicable;
+                    break;
+                default:
+                    break;
+            }
+
+            return AllTypesAsViewModels
+                .FirstOrDefault(i => i.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase));
+        }
+
         static ComparisonTypeViewModel()
         {
             AllTypes = new List<string>();

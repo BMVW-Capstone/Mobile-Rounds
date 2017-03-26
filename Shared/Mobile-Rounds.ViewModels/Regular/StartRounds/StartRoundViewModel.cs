@@ -5,6 +5,7 @@ using Mobile_Rounds.ViewModels.Shared.Commands;
 using Mobile_Rounds.ViewModels.Shared.Controls;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Mobile_Rounds.ViewModels.Regular.StartRounds
@@ -20,11 +21,20 @@ namespace Mobile_Rounds.ViewModels.Regular.StartRounds
 
             Navigate = new AsyncCommand(async (obj) =>
             {
+                //start the new round.
+                StartRound();
+
                 var file = ServiceResolver.Resolve<IFileHandler>();
                 var reads = await file.GetFileAsync("regions.json");
                 var vm = new RegionListViewModel(this, reads);
                 Navigator.Navigate(ViewModels.Shared.Navigation.NavigationType.RegionSelect, vm);
             });
+
+            if(RoundManager.CurrentRound != null)
+            {
+                //round already running, so skip this screen and go to the next.
+                this.Navigate.Execute(this);
+            }
 
             var currentHour = DateTime.Now.Hour;
 
@@ -61,7 +71,31 @@ namespace Mobile_Rounds.ViewModels.Regular.StartRounds
 
         public List<RoundTimeViewModel> RoundTimes { get; set; }
 
-        public RoundTimeViewModel SelectedTime { get; set; }
+        public RoundTimeViewModel SelectedTime
+        {
+            get { return selected; }
+            set
+            {
+                selected = value;
+                this.RaisePropertyChanged(nameof(SelectedTime));
+            }
+        }
 
+        private void StartRound()
+        {
+            var newRound = RoundManager.StartNewRound();
+            if(newRound == null)
+            {
+                //previous round didn't get removed, which probably means we shouldn't
+                //be in this spot...
+                //throw new InvalidOperationException(
+                //    "Previous round was not completed prior to this screen.");
+                return;
+            }
+
+            newRound.RoundHour = SelectedTime.RoundHourAsInt;
+        }
+
+        private RoundTimeViewModel selected;
     }
 }
