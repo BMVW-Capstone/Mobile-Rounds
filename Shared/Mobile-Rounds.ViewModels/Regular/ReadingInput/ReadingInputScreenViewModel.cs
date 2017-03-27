@@ -174,6 +174,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             //finally, write out the result to file so that way it doesn't get lost.
             item.CurrentReading = existingReading;
             await ReadingManager.SaveReadingsToDiskAsync();
+            //place binding for completed items here. probably.
         }
 
         private ReadingInputViewModel input;
