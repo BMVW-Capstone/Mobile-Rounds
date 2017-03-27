@@ -49,7 +49,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
                 }
 
                 var file = ServiceResolver.Resolve<IFileHandler>();
-                var stations = await file.GetFileAsync<StationHandler>("stations.json");
+                var stations = await file.GetFileAsync<StationHandler>(Constants.FileNames.Stations);
                 var filtered = stations.Stations.Where(s => s.RegionId == RoundManager.CurrentRound?.RegionId);
 
                 var vm = new StationListViewModel(this, filtered);

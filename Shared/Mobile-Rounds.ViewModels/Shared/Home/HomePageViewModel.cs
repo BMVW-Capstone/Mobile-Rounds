@@ -79,7 +79,7 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
                 var regions = await request.GetAsync<List<RegionModel>>(
                     $"{Constants.Endpoints.Regions}?{Constants.ApiOptions.ExcludeDeleted}");
                 var regionResult = new RegionHandler() { Regions = regions };
-                await handler.SaveFileAsync("regions.json", regionResult);
+                await handler.SaveFileAsync(Constants.FileNames.Regions, regionResult);
 
                 var stations = await request.GetAsync<List<StationModel>>(
                     $"{Constants.Endpoints.Stations}?{Constants.ApiOptions.ExcludeDeleted}");
@@ -92,12 +92,12 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
                 }
 
                 var stationResult = new StationHandler() { Stations = stations };
-                await handler.SaveFileAsync("stations.json", stationResult);
+                await handler.SaveFileAsync(Constants.FileNames.Stations, stationResult);
 
                 var units = await request.GetAsync<List<UnitOfMeasureModel>>(
                     $"{Constants.Endpoints.Units}?{Constants.ApiOptions.ExcludeDeleted}");
                 var unitResult = new UnitHandler() { Units = units };
-                await handler.SaveFileAsync("units.json", unitResult);
+                await handler.SaveFileAsync(Constants.FileNames.Units, unitResult);
 
                 //upload the current round. This needs to hapen first, so we can set all RoundId values on the readings.
                 var round = await UploadRoundAsync();
