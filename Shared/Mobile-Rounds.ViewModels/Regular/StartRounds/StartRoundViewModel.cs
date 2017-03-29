@@ -60,7 +60,7 @@ namespace Mobile_Rounds.ViewModels.Regular.StartRounds
                 RoundTimes.Add(new RoundTimeViewModel() { RoundHour = "14:00" });
                 RoundTimes.Add(new RoundTimeViewModel() { RoundHour = "20:00" });
             }
-            else if (currentHour >= 20 || currentHour <= 2)
+            else if (currentHour >= 20 || currentHour < 2)
             {
                 //enable 20 and 2
                 RoundTimes.Clear();
