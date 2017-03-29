@@ -16,6 +16,9 @@ namespace Mobile_Rounds.ViewModels.Platform
         {
             public const string CurrentRound = "current_round.json";
             public const string CurrentReadings = "current_readings.json";
+            public const string Regions = "regions.json";
+            public const string Stations = "stations.json";
+            public const string Units = "units.json";
         }
 
         public static class ApiOptions
