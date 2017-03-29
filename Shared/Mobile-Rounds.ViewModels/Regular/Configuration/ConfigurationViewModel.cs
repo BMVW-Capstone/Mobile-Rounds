@@ -46,25 +46,18 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
 
             //now get the users metadata.
             var userInfo = await base.Api.GetAsync<UserModel>(Constants.Endpoints.Users);
-            if (userInfo  != null)
+            if (userInfo != null)
+            {
                 settings.SaveValue(Constants.UserAdminKey, userInfo.IsAdministrator);
+                settings.SaveValue(Constants.UserDomainName, userInfo.DomainName);
+
+            }
         }
 
         private async Task TestApiConnection()
         {
-            //now get the users metadata.
-            try
-            {
-                settings.SaveValue(Constants.APIHostConfigKey, this.ApiHost);
-                var userInfo = await base.Api.GetAsync<UserModel>(Constants.Endpoints.Users);
-                if (userInfo != null)
-                    testResult = true;
-                //throw new NullReferenceException("API Could not be contacted");
-            }
-            catch(Exception ex)
-            {
-                testResult = false;
-            }
+            settings.SaveValue(Constants.APIHostConfigKey, this.ApiHost);
+            this.testResult = await base.Api.TestConnectionAsync(Constants.Endpoints.Users);    
             this.Save.RaiseExecuteChanged();
         }
 
