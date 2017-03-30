@@ -26,6 +26,11 @@ namespace Mobile_Rounds.ViewModels.Tests.Shared
         {
             throw new NotImplementedException();
         }
+
+        public Task<bool> TestConnectionAsync(string uri)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     class TestVM : BaseViewModel

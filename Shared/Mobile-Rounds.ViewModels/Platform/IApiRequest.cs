@@ -39,5 +39,12 @@ namespace Mobile_Rounds.ViewModels.Platform
         /// <returns>The resulting object returned by the server.</returns>
         Task<TResult> PutAsync<TResult>(string uri, object updatedData)
             where TResult : class, new();
+        
+        /// <summary>
+        /// performs a HEAD request to test server connection
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <returns></returns>
+        Task<bool> TestConnectionAsync(string uri);
     }
 }

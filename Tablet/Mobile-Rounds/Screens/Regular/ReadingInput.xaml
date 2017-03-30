@@ -232,7 +232,7 @@
                     HorizontalContentAlignment="Center"
                     Command="{Binding DataContext.Cancel, ElementName=root}" 
                     Content="Clear" HorizontalAlignment="Stretch"
-                    Margin="100,15,-10,0"/>
+                    Margin="0,15,25,0"/>
 
                 <Button Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom"
                     Background="#47ce22" Foreground="White" Height="100" 
@@ -241,7 +241,7 @@
                     Command="{Binding DataContext.Save, ElementName=root}" 
                     Content="Save" 
                     HorizontalAlignment="Stretch"
-                    Margin="30, 15, 0, 0"/>
+                    Margin="25, 15, 0, 0"/>
 
             </Grid>
         </Grid>

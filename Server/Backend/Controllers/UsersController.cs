@@ -55,5 +55,15 @@ namespace Backend.Controllers
 
             return this.Ok(user);
         }
+        /// <summary>
+        /// Responds to head request
+        /// </summary>
+        /// <returns>The logged in users metadata.</returns>
+        [Route("")]
+        [SwaggerOperation(Tags = new[] { SwaggerName })]
+        public IHttpActionResult Head()
+        {
+            return this.Ok();
+        }
     }
 }
