@@ -2,6 +2,7 @@
 using Backend.DataAccess.Repositories.DataSources;
 using Backend.Schemas;
 using Mobile_Rounds.ViewModels.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -14,7 +15,6 @@ namespace Backend.DataAccess.Repositories
     /// </summary>
     public sealed class RoundRepository : AbstractRepository<RoundModel, Round>
     {
-
         /// <summary>
         /// Creates a new instance for working with database based rounds.
         /// </summary>
@@ -22,7 +22,6 @@ namespace Backend.DataAccess.Repositories
         public RoundRepository(DatabaseContext database)
             : base (new RoundDataSource(database))
         {
-
         }
 
         /// <inheritdoc />
@@ -45,7 +44,6 @@ namespace Backend.DataAccess.Repositories
                 })
                 //load the data
                 .ToListAsync();
-
         }
 
         /// <inheritdoc />

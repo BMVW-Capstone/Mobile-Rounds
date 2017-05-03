@@ -47,5 +47,10 @@ namespace Backend.Schemas
         /// </summary>
         public virtual Region Region { get; set; }
 
+        /// <summary>
+        /// The readings associated with the round.
+        /// </summary>
+        public virtual ICollection<Reading> Readings { get; set; }
+
     }
 }

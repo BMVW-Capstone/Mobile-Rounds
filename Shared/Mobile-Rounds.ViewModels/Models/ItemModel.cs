@@ -31,6 +31,10 @@ namespace Mobile_Rounds.ViewModels.Models
         /// </summary>
         public Guid StationId { get; set; }
 
+        public string StationName { get; set; }
+
+        public string RegionName { get; set; }
+
         /// <summary>
         /// Marks if the record is percieved as deleted
         /// in the database. This is considered a soft
