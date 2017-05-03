@@ -39,7 +39,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Station
 
         public StationListViewModel(RegionModelSource region, IEnumerable<StationModel> stations)
         {
-            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Regions", region.NavigateRoot));
+            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Areas", region.NavigateRoot));
             this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel(region.Name, region.Navigate));
             this.Stations = new ObservableCollection<StationModel>();
             foreach (var station in stations)

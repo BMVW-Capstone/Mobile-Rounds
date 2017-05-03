@@ -35,7 +35,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             this.Save = new AsyncCommand((obj) => this.SaveInput(this.input), this.CanSave);
 
             this.station = station;
-            this.Crumbs.Add(new BreadcrumbItemModel("Regions", region.NavigateRoot));
+            this.Crumbs.Add(new BreadcrumbItemModel("Areas", region.NavigateRoot));
             this.Crumbs.Add(new BreadcrumbItemModel(region.Name, region.Navigate));
             this.Crumbs.Add(new BreadcrumbItemModel(station.Name, station.Navigate));
             this.Input = new ReadingInputViewModel(this.Save, null);

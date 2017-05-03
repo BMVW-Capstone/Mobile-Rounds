@@ -81,7 +81,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" FontSize="36" Text="Items" Padding="0,0,0,15"/>
+            <TextBlock Grid.Row="0" FontSize="36" Text="Devices" Padding="0,0,0,15"/>
             <ListView DataContext="{Binding ListModel}" ItemsSource="{Binding Meters, Mode=TwoWay}" 
                   Grid.Row="1" Grid.Column="1" SelectionMode="Single" Grid.RowSpan="5"
                   SelectedItem="{Binding Selected, Mode=TwoWay}" Padding="0,0,15,0" Margin="0, 0, 25, 0">
@@ -146,7 +146,7 @@
             </TextBox>
 
             <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left">
-                <TextBlock Text="SOC" FontSize="18" Padding="0,0,0,10"/>
+                <TextBlock Text="Spec" FontSize="18" Padding="0,0,0,10"/>
                 <TextBlock Text="{Binding AcceptedValue}" FontSize="18" HorizontalAlignment="Center"/>
             </StackPanel>
 
