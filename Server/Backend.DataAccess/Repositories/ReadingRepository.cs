@@ -28,10 +28,13 @@ namespace Backend.DataAccess.Repositories
         /// <inheritdoc />
         public async Task<DateBasedReport> GetReportAsync(DateTime reportDate)
         {
+            var beginingOfDay = reportDate.Date;
+            var endOfDay = reportDate.AddDays(1).AddMilliseconds(-1);
+
             var theDaysReadings = await DataSource
                 //Get the records in order
                 .GetOrdered(false)
-                .Where(r => r.TimeTaken.Date == reportDate.Date)
+                .Where(r => r.TimeTaken >= beginingOfDay && r.TimeTaken <= endOfDay)
                 //convert records to view models 
                 .Select(r => new ReportModel
                 {
@@ -49,9 +52,6 @@ namespace Backend.DataAccess.Repositories
                     },
                     Reading = new ReadingModel
                     {
-                        Id = r.Id,
-                        ItemId = r.ItemId,
-                        RoundId = r.RoundId,
                         TimeTaken = r.TimeTaken,
                         Value = r.Value,
                         IsOutOfSpec = r.IsOutOfSpec,
@@ -62,14 +62,15 @@ namespace Backend.DataAccess.Repositories
                 .ToListAsync();
 
             var roundHours = theDaysReadings
-                    .Select(h => h.Round.RoundHour.Hour)
-                    .Distinct();
+                .GroupBy(k => k.Round.RoundHour)
+                .Where(g => g.Count() < 2)
+                .Select(g => g.Key);
 
             var hoursMissed = new List<int> { 2, 8, 14, 20 }.Except(roundHours);
 
             return new DateBasedReport
             {
-                Readings = theDaysReadings,
+                Readings = theDaysReadings.Where(r => r.Reading.IsOutOfSpec),
                 HoursMissed = hoursMissed
             };
         }

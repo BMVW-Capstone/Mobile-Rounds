@@ -48,7 +48,7 @@
     <Compile Include="Admin\Stations\StationsViewModel.cs" />
     <Compile Include="Admin\Stations\StationViewModel.cs" />
     <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureViewModel.cs" />
-    <Compile Include="Models\PastDayReport.cs" />
+    <Compile Include="Models\DateBasedReport.cs" />
     <Compile Include="Models\ReadingModel.cs" />
     <Compile Include="Models\RegionModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
