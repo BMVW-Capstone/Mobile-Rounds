@@ -64,11 +64,15 @@
 
         <!-- Content -->
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" 
-                    VerticalAlignment="Top" Margin="10">
+                    VerticalAlignment="Top" Margin="10,10,10,0" Height="213">
             <TextBlock Text="Host URL" FontSize="36" Margin="0, 0, 0, 20"/>
             <TextBox Text="{Binding ApiHost, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                      HorizontalContentAlignment="Stretch" FontSize="25" />
-            <Button Content="Save"  Command="{Binding Save}" Margin="0, 20, 0, 0" Height="60" Width="100" FontSize="25"/>
+            <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" 
+                    VerticalAlignment="Top" Margin="0, 20">
+                <Button Content="Test" Command="{Binding TestConnection}" Margin="0, 0, 0, 0" Height="60" Width="100" FontSize="25"/>
+                <Button Content="Save" Command="{Binding Save}" Margin="20, 0, 0, 0" Height="60" Width="100" FontSize="25"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

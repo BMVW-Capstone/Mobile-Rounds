@@ -34,7 +34,6 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
                 this.region = value;
                 if (this.region != null && this.region.Navigate != null)
                 {
-
                     this.region.Navigate.Execute(this);
                 }
 
@@ -47,16 +46,23 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
         {
             this.Regions = new ObservableCollection<RegionModelSource>();
             var result = JsonConvert.DeserializeObject<RegionHandler>(reads);
-            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Regions", parent.Navigate));
+            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Areas", parent.Navigate));
 
             foreach (var region in result.Regions)
             {
-                this.Regions.Add(new RegionModelSource(parent.Navigate)
+                var vm = new RegionModelSource(parent.Navigate)
                 {
                     Id = region.Id,
                     Name = region.Name,
                     Stations = region.Stations
-                });
+                };
+                this.Regions.Add(vm);
+
+                if(region.Id == RoundManager.CurrentRound.RegionId)
+                {
+                    vm.Navigate.Execute(vm);
+                    break;
+                }
             }
         }
 

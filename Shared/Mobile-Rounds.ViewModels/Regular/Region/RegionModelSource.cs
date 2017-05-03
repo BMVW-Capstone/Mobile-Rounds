@@ -38,11 +38,19 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
         public RegionModelSource(AsyncCommand navBack)
         {
             this.NavigateRoot = navBack;
+
             this.Navigate = new AsyncCommand(async (obj) =>
             {
-                var file = Platform.ServiceResolver.Resolve<IFileHandler>();
-                var stations = await file.GetFileAsync<StationHandler>("stations.json");
-                var filtered = stations.Stations.Where(s => s.RegionId == this.Id);
+                if(RoundManager.CurrentRound?.Id == Guid.Empty && this.Id != Guid.Empty)
+                {
+                    // only set id if the round has yet to begin
+                    RoundManager.CurrentRound.RegionId = this.Id;
+                    await RoundManager.SaveRoundToDiskAsync();
+                }
+
+                var file = ServiceResolver.Resolve<IFileHandler>();
+                var stations = await file.GetFileAsync<StationHandler>(Constants.FileNames.Stations);
+                var filtered = stations.Stations.Where(s => s.RegionId == RoundManager.CurrentRound?.RegionId);
 
                 var vm = new StationListViewModel(this, filtered);
                 BaseViewModel.Navigator.Navigate(Shared.Navigation.NavigationType.StationSelect, vm);

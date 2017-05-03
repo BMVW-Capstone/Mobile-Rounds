@@ -4,6 +4,8 @@
 
 using System;
 using Mobile_Rounds.ViewModels.Shared;
+using Mobile_Rounds.ViewModels.Models;
+using Mobile_Rounds.ViewModels.Admin.Items;
 
 namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
 {
@@ -31,7 +33,7 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// Initializes a new instance of the <see cref="Meter"/> class.
         /// </summary>
         public Meter()
-            : this(Guid.Empty, string.Empty)
+            : this(Guid.Empty, string.Empty, null)
         {
         }
 
@@ -39,8 +41,8 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// Initializes a new instance of the <see cref="Meter"/> class.
         /// </summary>
         /// <param name="name">The name of the record.</param>
-        public Meter(string name)
-            : this(Guid.Empty, name)
+        public Meter(string name, ItemModel item)
+            : this(Guid.Empty, name, item)
         {
         }
 
@@ -49,10 +51,11 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// </summary>
         /// <param name="id">The id of the record.</param>
         /// <param name="name">The name of the record.</param>
-        public Meter(Guid id, string name)
+        public Meter(Guid id, string name, ItemModel item)
         {
             this.Id = id;
             this.Name = name;
+            this.Item = item;
         }
 
         /// <summary>
@@ -81,5 +84,9 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// Gets or sets yesterdays reading.
         /// </summary>
         public ReadingInput FourReadingsAgo { get; set; }
+
+        public ItemModel Item { get; private set; }
+
+        public ComparisonTypeViewModel ComparisonType { get; set; }
     }
 }

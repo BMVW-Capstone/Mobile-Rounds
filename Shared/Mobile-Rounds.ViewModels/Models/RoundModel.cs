@@ -18,6 +18,11 @@ namespace Mobile_Rounds.ViewModels.Models
     /// </summary>
     public class RoundModel
     {
+        public RoundModel()
+        {
+            RoundHour = -1;
+        }
+
         /// <summary>
         /// Gets or sets the unique id of the object.
         /// </summary>
@@ -33,7 +38,7 @@ namespace Mobile_Rounds.ViewModels.Models
         /// This is the date + hour. No minute. This is because a <see cref="Region"/>
         /// should only have one round per hour block.
         /// </summary>
-        public DateTime RoundHour { get; set; }
+        public int RoundHour { get; set; }
 
         /// <summary>
         /// Foreign key to the <see cref="Region"/> for a given round.

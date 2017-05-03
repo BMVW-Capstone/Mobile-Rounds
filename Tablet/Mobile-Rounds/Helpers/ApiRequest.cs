@@ -88,6 +88,30 @@ namespace Mobile_Rounds.Helpers
             return null;
         }
 
+
+        public async Task<bool> TestConnectionAsync(string url)
+        {
+            using (var client = this.GetClient())
+            {
+                var uri = this.BuildHostUrl(url);
+
+                try
+                {
+                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Head, uri);
+                    var results = await client.SendRequestAsync(request);
+                    results.EnsureSuccessStatusCode();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Debugger.Break();
+                }
+            }
+
+            return false;
+        }
+
+
         private IHttpContent AsJsonContent(object data)
         {
             var json = JsonConvert.SerializeObject(data);

@@ -79,7 +79,7 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
                 var regions = await request.GetAsync<List<RegionModel>>(
                     $"{Constants.Endpoints.Regions}?{Constants.ApiOptions.ExcludeDeleted}");
                 var regionResult = new RegionHandler() { Regions = regions };
-                await handler.SaveFileAsync("regions.json", regionResult);
+                await handler.SaveFileAsync(Constants.FileNames.Regions, regionResult);
 
                 var stations = await request.GetAsync<List<StationModel>>(
                     $"{Constants.Endpoints.Stations}?{Constants.ApiOptions.ExcludeDeleted}");
@@ -92,13 +92,20 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
                 }
 
                 var stationResult = new StationHandler() { Stations = stations };
-                await handler.SaveFileAsync("stations.json", stationResult);
+                await handler.SaveFileAsync(Constants.FileNames.Stations, stationResult);
 
                 var units = await request.GetAsync<List<UnitOfMeasureModel>>(
                     $"{Constants.Endpoints.Units}?{Constants.ApiOptions.ExcludeDeleted}");
                 var unitResult = new UnitHandler() { Units = units };
-                await handler.SaveFileAsync("units.json", unitResult);
+                await handler.SaveFileAsync(Constants.FileNames.Units, unitResult);
 
+                //upload the current round. This needs to hapen first, so we can set all RoundId values on the readings.
+                var round = await UploadRoundAsync();
+                if(round != null && round.Id != Guid.Empty)
+                {
+                    //update the RoundId on all the readings PRIOR to sending to the server.
+                    await UploadReadingsAsync(round.Id);
+                }
                 this.IsSyncing = false;
             }, this.CanSync);
 
@@ -117,6 +124,41 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
             if (!this.HasConfiguration) return false;
 
             return !this.IsSyncing;
+        }
+
+        private async Task<RoundModel> UploadRoundAsync()
+        {
+            // Check if we have a round to save or not.
+            if (RoundManager.CurrentRound != null)
+            {
+                //Tell the server that we completed the round.
+                return await RoundManager.CompleteRoundAsync();
+
+                //TODO: Do something with the didComplete. Perhaps this happens before the other syncs
+                //so we can skip overwriting the existing files since the round couldn't be sync'ed.
+            }
+
+            return null;
+        }
+
+        private async Task UploadReadingsAsync(Guid roundId)
+        {
+            foreach (var reading in ReadingManager.Readings)
+            {
+                //skip anything that was added, but not really entered.
+                if (string.IsNullOrEmpty(reading.Value)) continue;
+
+                //set the round id for all the readings.
+                reading.RoundId = roundId;
+
+                //for each reading that we have, upload it to the server.
+                var readingResult = await this.Api.PostAsync<ReadingModel>(Constants.Endpoints.Readings, reading);
+
+                //TODO: Figure out what to do if one of the uploads fails...
+            }
+
+            //all good, so remove the items.
+            await ReadingManager.Reset();
         }
 
         private bool isSyncing;

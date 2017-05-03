@@ -10,6 +10,16 @@ namespace Mobile_Rounds.ViewModels.Platform
     {
         public const string APIHostConfigKey = "API_Host";
         public const string UserAdminKey = "USER_Admin";
+        public const string UserDomainName = "USER_Domain_Name";
+
+        public static class FileNames
+        {
+            public const string CurrentRound = "current_round.json";
+            public const string CurrentReadings = "current_readings.json";
+            public const string Regions = "regions.json";
+            public const string Stations = "stations.json";
+            public const string Units = "units.json";
+        }
 
         public static class ApiOptions
         {
@@ -25,6 +35,7 @@ namespace Mobile_Rounds.ViewModels.Platform
             public const string Stations = "/api/stations";
             public const string Rounds = "/api/rounds";
             public const string Items = "/api/items";
+            public const string Readings = "/api/readings";
         }
 
         public static class Web

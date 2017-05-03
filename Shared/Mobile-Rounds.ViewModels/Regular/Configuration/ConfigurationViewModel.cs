@@ -13,6 +13,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
     public class ConfigurationViewModel : BaseViewModel
     {
         public AsyncCommand Save { get; private set; }
+        public AsyncCommand TestConnection { get; private set; }
         public string ApiHost
         {
             get
@@ -23,7 +24,9 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
             {
                 this.apiHost = value;
                 this.RaisePropertyChanged(nameof(this.ApiHost));
+                this.testResult = false;
                 this.Save.RaiseExecuteChanged();
+                this.TestConnection.RaiseExecuteChanged();
             }
         }
 
@@ -33,6 +36,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
             settings = ServiceResolver.Resolve<ISettings>();
             apiHost = settings.GetValue<string>(Constants.APIHostConfigKey);
             Save = new AsyncCommand(async (obj) => await this.SaveCommand(), CanSave);
+            TestConnection = new AsyncCommand(async (obj) => await this.TestApiConnection(), CanTest);
         }
 
         private async Task SaveCommand()
@@ -42,15 +46,32 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
 
             //now get the users metadata.
             var userInfo = await base.Api.GetAsync<UserModel>(Constants.Endpoints.Users);
-            settings.SaveValue(Constants.UserAdminKey, userInfo.IsAdministrator);
+            if (userInfo != null)
+            {
+                settings.SaveValue(Constants.UserAdminKey, userInfo.IsAdministrator);
+                settings.SaveValue(Constants.UserDomainName, userInfo.DomainName);
+
+            }
+        }
+
+        private async Task TestApiConnection()
+        {
+            settings.SaveValue(Constants.APIHostConfigKey, this.ApiHost);
+            this.testResult = await base.Api.TestConnectionAsync(Constants.Endpoints.Users);    
+            this.Save.RaiseExecuteChanged();
         }
 
         private bool CanSave(object data)
+        {
+            return (!string.IsNullOrEmpty(this.ApiHost) && this.testResult);
+        }
+        private bool CanTest(object data)
         {
             return !string.IsNullOrEmpty(this.ApiHost);
         }
 
         private ISettings settings;
         private string apiHost;
+        private bool testResult;
     }
 }

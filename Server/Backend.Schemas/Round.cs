@@ -14,10 +14,10 @@ namespace Backend.Schemas
         public Guid Id { get; set; }
 
         /// <summary>
-        /// This is the date + hour. No minute. This is because a <see cref="Region"/>
+        /// This is the hour. No minute. This is because a <see cref="Region"/>
         /// should only have one round per hour block.
         /// </summary>
-        public DateTime RoundHour { get; set; }
+        public int RoundHour { get; set; }
 
         /// <summary>
         /// Foreign key to the <see cref="Region"/> for a given round.
