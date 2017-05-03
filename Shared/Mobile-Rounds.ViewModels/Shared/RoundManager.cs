@@ -1,5 +1,6 @@
 ﻿using Mobile_Rounds.ViewModels.Models;
 using Mobile_Rounds.ViewModels.Platform;
+using Mobile_Rounds.ViewModels.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -119,6 +120,18 @@ namespace Mobile_Rounds.ViewModels.Shared
 
             await FileHandler.SaveFileAsync(Constants.FileNames.CurrentRound, Singleton);
         }
+
+
+        public static async Task checkTimeout()
+        {
+            var currentHour = DateTime.Now.Hour;
+            if ( currentHour > (CurrentRound.RoundHour + 2))
+            {
+                await CompleteRoundAsync();
+                BaseViewModel.Navigator.Navigate(Navigation.NavigationType.PauseScreen);
+            }
+        }
+
 
         private static IFileHandler FileHandler;
     }
