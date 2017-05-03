@@ -127,10 +127,10 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             {
                 if (string.IsNullOrEmpty(this.todaysData.UnitAbbreviation))
                 {
-                    return "Current";
+                    return "Parameter";
                 }
 
-                return $"Current ({this.todaysData.UnitAbbreviation})";
+                return $"Parameter ({this.todaysData.UnitAbbreviation})";
             }
         }
 

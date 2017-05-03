@@ -120,7 +120,7 @@
                 <TextBox Text="{Binding Meter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextInput}">
                     <TextBox.HeaderTemplate>
                         <DataTemplate>
-                            <TextBlock FontSize="22" Text="Meter" />
+                            <TextBlock FontSize="22" Text="Parameter" />
                         </DataTemplate>
                     </TextBox.HeaderTemplate>
                 </TextBox>
