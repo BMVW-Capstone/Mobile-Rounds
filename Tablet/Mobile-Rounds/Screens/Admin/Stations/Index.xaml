@@ -76,7 +76,7 @@
 
         <TextBlock Grid.Row="2" Grid.Column="1"
                   Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}"
-                  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Select Region" VerticalAlignment="Top" FontSize="36"/>
+                  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Select Area" VerticalAlignment="Top" FontSize="36"/>
         <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5, 25, 20, 0"
                   Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}"
                   ItemsSource="{Binding Regions, Mode=TwoWay}"
@@ -85,7 +85,7 @@
 
         <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                   Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}"
-            HorizontalAlignment="Left" Text="Station Name" VerticalAlignment="Top" FontSize="36"/>
+            HorizontalAlignment="Left" Text="System Name" VerticalAlignment="Top" FontSize="36"/>
         <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="5, 25, 20, 0"
                   Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}"
                  Text="{Binding CurrentStation.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -93,7 +93,7 @@
 
         <TextBlock Grid.Column="3" Grid.Row="1"
             Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}"
-            Text="Stations" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontSize="36"/>
+            Text="Systems" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontSize="36"/>
 
         <TextBlock VerticalAlignment="Top" HorizontalAlignment="Stretch"
                    Grid.Column="1" Grid.Row="4"
@@ -108,7 +108,7 @@
         <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" Margin="10, 0, 0, 0"
             Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}"
             Background="Orange" Foreground="White" Height="100" HorizontalContentAlignment="Center"
-            Content="Edit Items" HorizontalAlignment="Stretch" Command="{Binding NavigateToItems}"
+            Content="Edit Devices" HorizontalAlignment="Stretch" Command="{Binding NavigateToItems}"
             VerticalAlignment="Bottom" FontSize="36" RequestedTheme="Light"/>
 
         <ListView ItemsSource="{Binding Stations, Mode=TwoWay}" 

@@ -84,7 +84,7 @@
             Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource BoolToVis}}"/>
 
         <!-- Content -->
-        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="30" Text="Available Items" Padding="0,0,0,15"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="30" Text="Available Devices" Padding="0,0,0,15"/>
         <ListView ItemsSource="{Binding Items, Mode=TwoWay}" 
                   Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}"
                   Grid.Row="3" Grid.Column="1" SelectionMode="Single"
@@ -106,7 +106,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <TextBlock Grid.Row="2" Grid.Column="2" Text="Add/Modify Item" Style="{StaticResource SectionHeader}" Margin="0,0,0,15"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="Add/Modify Device" Style="{StaticResource SectionHeader}" Margin="0,0,0,15"/>
         <ScrollViewer Grid.Row="3" Grid.Column="2" Grid.RowSpan="4" VerticalAlignment="Top" 
                       Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource InvBoolToVis}}">
             <StackPanel DataContext="{Binding CurrentItem, Mode=TwoWay}" Padding="0,0,15,0">
