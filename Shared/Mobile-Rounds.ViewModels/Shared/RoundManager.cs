@@ -63,6 +63,8 @@ namespace Mobile_Rounds.ViewModels.Shared
             };
         }
 
+        public static 
+
         /// <summary>
         /// Uploads the round to the server and clears the current round. Returns null if it could not upload the round correctly.
         /// </summary>
@@ -108,6 +110,17 @@ namespace Mobile_Rounds.ViewModels.Shared
         }
 
         /// <summary>
+        /// Deletes the current round and redirects to the home screen without uploading anything.
+        /// This gets invoked if the user has exceeded the time window for completing a round.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task CancelRound()
+        {
+            await DeleteCurrentRoundAsync();
+            BaseViewModel.IsRoundLocked = false;
+        }
+
+        /// <summary>
         /// Saves the current round to disk. Should be called whenever you want to ensure
         /// that it persists per app instance.
         /// </summary>
@@ -136,7 +149,6 @@ namespace Mobile_Rounds.ViewModels.Shared
             {
                 //Navigate back to pause screen, disable continue button
                 BaseViewModel.IsRoundLocked = true;
-                BaseViewModel.Navigator.Navigate(Navigation.NavigationType.PauseScreen);
             }
         }
 

@@ -37,6 +37,21 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
             return IsRoundLocked;
         }
 
+        private async void StopRound(object obj)
+        {
+            //If round is locked, end round without uploading
+            if (IsRoundLocked)
+            {
+                await RoundManager.CancelRound();
+            }
+            else
+            {
+                await RoundManager.CompleteRoundAsync();
+                Navigator.Navigate(Navigation.NavigationType.Home);
+            }
+        }
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="HomePageViewModel"/> class.
         /// Creates and sets defaults for the view model.
@@ -49,7 +64,7 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
 #endif
             this.Sync = new SyncCommand();
             this.ResumeRound = new AsyncCommand(null, CanResume);
-            this.EndRound = new ResumeRoundCommand();
+            this.EndRound = new AsyncCommand(StopRound);
 
         }
     }
