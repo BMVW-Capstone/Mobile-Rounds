@@ -5,7 +5,7 @@ Function GetTodaysReadings([string] $apiHost) {
     $todaysDate = Get-Date -Format "MM-dd-yyyy"
 
     # Build up the query for todays date.
-    $query = "/api/reports?reportDate=" + "3-26-2017"
+    $query = "/api/reports?reportDate=" + $todaysDate
 
     # Build up the API request url
     $url = New-Object System.Uri -ArgumentList @([System.Uri]$apiHost, $query)
