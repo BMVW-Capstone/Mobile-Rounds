@@ -117,6 +117,6 @@ Function Run([String] $apiHost,
 Run -apiHost "https://localhost:44363" `
     -smtp_host "smtp.gmail.com" `
     -smtp_user "tyler.j.vanderhoef@gmail.com" `
-    -smtp_pass "300savage!" `
+    -smtp_pass "" `
     -smtp_port 587 `
     -recips "tyler.j.vanderhoef@gmail.com"
