@@ -8,7 +8,7 @@ namespace Mobile_Rounds.ViewModels.Models
 {
     public sealed class DateBasedReport
     {
-        public IEnumerable<ReportModel> Readings { get; set; }
+        public IEnumerable<ReportModel> OutOfSpecReadings { get; set; }
 
         public IEnumerable<int> HoursMissed { get; set; }
     }

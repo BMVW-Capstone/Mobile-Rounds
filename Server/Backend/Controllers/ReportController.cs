@@ -13,7 +13,6 @@ namespace Backend.Controllers
     /// <summary>
     /// Provides the means for getting reports.
     /// </summary>
-    [Authorize]
     [RoutePrefix("api/reports")]
     public class ReportController : ApiController
     {

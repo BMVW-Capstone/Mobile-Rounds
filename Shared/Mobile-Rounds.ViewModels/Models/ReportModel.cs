@@ -13,6 +13,7 @@ namespace Mobile_Rounds.ViewModels.Models
 
         public string Item { get; set; }
         public string ItemMeter { get; set; }
+        public string UnitAbbreviation { get; set; }
 
         public RoundModel Round { get; set; }
 

@@ -42,6 +42,7 @@ namespace Backend.DataAccess.Repositories
                     Station = r.Item.Station.Name,
                     Item = r.Item.Name,
                     ItemMeter = r.Item.Meter,
+                    UnitAbbreviation = r.Item.Specification.Unit.Abbreviation,
 
                     Round = new RoundModel
                     {
@@ -55,7 +56,7 @@ namespace Backend.DataAccess.Repositories
                         TimeTaken = r.TimeTaken,
                         Value = r.Value,
                         IsOutOfSpec = r.IsOutOfSpec,
-                        Comments = r.Comments
+                        Comments = r.Comments,
                     }
                 })
                 //load the data
@@ -70,7 +71,7 @@ namespace Backend.DataAccess.Repositories
 
             return new DateBasedReport
             {
-                Readings = theDaysReadings.Where(r => r.Reading.IsOutOfSpec),
+                OutOfSpecReadings = theDaysReadings.Where(r => r.Reading.IsOutOfSpec),
                 HoursMissed = hoursMissed
             };
         }
