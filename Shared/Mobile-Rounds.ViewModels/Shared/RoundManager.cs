@@ -121,17 +121,47 @@ namespace Mobile_Rounds.ViewModels.Shared
             await FileHandler.SaveFileAsync(Constants.FileNames.CurrentRound, Singleton);
         }
 
-
-        public static async Task checkTimeout()
+        /// <summary>
+        /// Determines if the current round needs to be timed out due to time constraints.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task CheckTimeout()
         {
-            var currentHour = DateTime.Now.Hour;
-            if ( currentHour > (CurrentRound.RoundHour + 2))
+
+            var currentDate = DateTime.Now;
+            var roundDate = CurrentRound.StartTime;
+            var timeDiff = currentDate.Subtract(roundDate);
+
+
+
+
+            if (CurrentRound.RoundHour == 2)
+            {
+                if (Math.Abs(CurrentRound.RoundHour - currentHour) > 2)
+                {
+                    if (currentHour != 23)
+                    {
+                        // Timeout
+                    }
+                }
+
+            }
+            else if (CurrentRound.RoundHour == 8 || CurrentRound.RoundHour == 14)
+            {
+                if ()
+
+            }
+            else if (CurrentRound.RoundHour == 20)
+            {
+
+            }
+
+            if ( currentHour > (CurrentRound.RoundHour + 2) || currentHour < (CurrentRound.RoundHour  - 3))
             {
                 await CompleteRoundAsync();
                 BaseViewModel.Navigator.Navigate(Navigation.NavigationType.PauseScreen);
             }
         }
-
 
         private static IFileHandler FileHandler;
     }
