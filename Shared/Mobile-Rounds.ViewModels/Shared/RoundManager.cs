@@ -63,8 +63,6 @@ namespace Mobile_Rounds.ViewModels.Shared
             };
         }
 
-        public static 
-
         /// <summary>
         /// Uploads the round to the server and clears the current round. Returns null if it could not upload the round correctly.
         /// </summary>
@@ -140,15 +138,20 @@ namespace Mobile_Rounds.ViewModels.Shared
         /// <returns></returns>
         public static async Task CheckTimeout()
         {
-
             var currentDate = DateTime.Now;
-            var roundDate = CurrentRound.StartTime;
-            var timeDiff = currentDate.Subtract(roundDate);
+            var hourDiff = Math.Abs(currentDate.Hour - CurrentRound.RoundHour);
 
-            if (timeDiff.Hours >= 3)
+            if (hourDiff > 3)
             {
-                //Navigate back to pause screen, disable continue button
                 BaseViewModel.IsRoundLocked = true;
+            }
+            else if (hourDiff == 3)
+            {
+                var temp = currentDate.AddHours(-3);
+                if (temp.Minute > 0)
+                {
+                    BaseViewModel.IsRoundLocked = true;
+                }
             }
         }
 

@@ -37,6 +37,10 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
             return IsRoundLocked;
         }
 
+        /// <summary>
+        /// Stops the current Round
+        /// </summary>
+        /// <param name="obj"></param>
         private async void StopRound(object obj)
         {
             //If round is locked, end round without uploading
