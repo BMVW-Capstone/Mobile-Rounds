@@ -14,7 +14,6 @@ namespace Backend.DataAccess.Repositories
     /// </summary>
     public sealed class RoundRepository : AbstractRepository<RoundModel, Round>
     {
-
         /// <summary>
         /// Creates a new instance for working with database based rounds.
         /// </summary>
@@ -22,7 +21,6 @@ namespace Backend.DataAccess.Repositories
         public RoundRepository(DatabaseContext database)
             : base (new RoundDataSource(database))
         {
-
         }
 
         /// <inheritdoc />
@@ -45,7 +43,6 @@ namespace Backend.DataAccess.Repositories
                 })
                 //load the data
                 .ToListAsync();
-
         }
 
         /// <inheritdoc />

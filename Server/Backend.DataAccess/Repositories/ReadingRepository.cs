@@ -26,6 +26,57 @@ namespace Backend.DataAccess.Repositories
         }
 
         /// <inheritdoc />
+        public async Task<DateBasedReport> GetReportAsync(DateTime reportDate)
+        {
+            var beginingOfDay = reportDate.Date;
+            var endOfDay = reportDate.AddDays(1).AddMilliseconds(-1);
+
+            var theDaysReadings = await DataSource
+                //Get the records in order
+                .GetOrdered(false)
+                .Where(r => r.TimeTaken >= beginingOfDay && r.TimeTaken <= endOfDay)
+                //convert records to view models 
+                .Select(r => new ReportModel
+                {
+                    Region = r.Item.Station.Region.Name,
+                    Station = r.Item.Station.Name,
+                    Item = r.Item.Name,
+                    ItemMeter = r.Item.Meter,
+                    UnitAbbreviation = r.Item.Specification.Unit.Abbreviation,
+
+                    Round = new RoundModel
+                    {
+                        AssignedTo = r.Round.AssignedTo,
+                        EndTime = r.Round.EndTime,
+                        StartTime = r.Round.StartTime,
+                        RoundHour = r.Round.RoundHour
+                    },
+                    Reading = new ReadingModel
+                    {
+                        TimeTaken = r.TimeTaken,
+                        Value = r.Value,
+                        IsOutOfSpec = r.IsOutOfSpec,
+                        Comments = r.Comments,
+                    }
+                })
+                //load the data
+                .ToListAsync();
+
+            var roundHours = theDaysReadings
+                .GroupBy(k => k.Round.RoundHour)
+                .Where(g => g.Count() < 2)
+                .Select(g => g.Key);
+
+            var hoursMissed = new List<int> { 2, 8, 14, 20 }.Except(roundHours);
+
+            return new DateBasedReport
+            {
+                OutOfSpecReadings = theDaysReadings.Where(r => r.Reading.IsOutOfSpec),
+                HoursMissed = hoursMissed
+            };
+        }
+
+        /// <inheritdoc />
         public override async Task<IEnumerable<ReadingModel>> GetAsync(bool includeDeleted)
         {
             return await DataSource
