@@ -132,33 +132,10 @@ namespace Mobile_Rounds.ViewModels.Shared
             var roundDate = CurrentRound.StartTime;
             var timeDiff = currentDate.Subtract(roundDate);
 
-
-
-
-            if (CurrentRound.RoundHour == 2)
+            if (timeDiff.Hours >= 3)
             {
-                if (Math.Abs(CurrentRound.RoundHour - currentHour) > 2)
-                {
-                    if (currentHour != 23)
-                    {
-                        // Timeout
-                    }
-                }
-
-            }
-            else if (CurrentRound.RoundHour == 8 || CurrentRound.RoundHour == 14)
-            {
-                if ()
-
-            }
-            else if (CurrentRound.RoundHour == 20)
-            {
-
-            }
-
-            if ( currentHour > (CurrentRound.RoundHour + 2) || currentHour < (CurrentRound.RoundHour  - 3))
-            {
-                await CompleteRoundAsync();
+                //Navigate back to pause screen, disable continue button
+                BaseViewModel.IsRoundLocked = true;
                 BaseViewModel.Navigator.Navigate(Navigation.NavigationType.PauseScreen);
             }
         }

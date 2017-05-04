@@ -32,6 +32,11 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
         /// </summary>
         public ICommand Sync { get; private set; }
 
+        private bool CanResume(object obj)
+        {
+            return IsRoundLocked;
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="HomePageViewModel"/> class.
         /// Creates and sets defaults for the view model.
@@ -43,7 +48,7 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
             this.IsAdmin = true;
 #endif
             this.Sync = new SyncCommand();
-            this.ResumeRound = new ResumeRoundCommand();
+            this.ResumeRound = new AsyncCommand(null, CanResume);
             this.EndRound = new ResumeRoundCommand();
 
         }

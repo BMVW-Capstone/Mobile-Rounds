@@ -53,6 +53,12 @@ namespace Mobile_Rounds.ViewModels.Shared
         public bool IsAdmin { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the round is locked. Rounds are locked in the event of a 
+        /// round timeout (a user opens the app after starting a round outside the +- 3 hour window for that hour).
+        /// </summary>
+        public static bool IsRoundLocked { get; set; } = false;
+
+        /// <summary>
         /// Gets the property used to handle navigating to the configure page.
         /// </summary>
         public ICommand GoToConfiguration { get; private set; }
