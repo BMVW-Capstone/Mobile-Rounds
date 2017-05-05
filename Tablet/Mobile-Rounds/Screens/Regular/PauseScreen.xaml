@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid.DataContext>
-            <vm:HomePageViewModel />
+            <vm:PausePageViewModel />
         </Grid.DataContext>
 
         <!--Header-->
