@@ -43,7 +43,7 @@ namespace Backend.Controllers
             var user = new UserModel
             {
                 DomainName = ident.Identity.Name,
-                IsAdministrator = ident.IsAppAdmin(this.settings)
+                //IsAdministrator = ident.IsAppAdmin(this.settings)
             };
 
             if (this.settings.GetValue<string>(Constants.Web.ModeKey) != "development")
