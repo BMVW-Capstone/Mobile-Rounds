@@ -69,7 +69,7 @@
         </breadcrumb:BreadcrumbControl>
 
         <ProgressRing Margin="0, 20, 0, 0"
-            Grid.Column="1" Grid.Row="2" Grid.RowSpan="4" Grid.ColumnSpan="4"
+            Grid.Column="3" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="4"
             Width="200" Height="200"
             IsActive="{Binding IsLoading, Mode=TwoWay}" 
             Visibility="{Binding IsLoading, Mode=TwoWay, Converter={StaticResource BoolToVis}}"/>
