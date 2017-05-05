@@ -23,7 +23,14 @@ namespace Mobile_Rounds.ViewModels.Shared.Commands
         {
             this.Action = (obj) =>
             {
-                BaseViewModel.Navigator.Navigate(Navigation.NavigationType.Home);
+                if (RoundManager.CurrentRound == null)
+                {
+                    BaseViewModel.Navigator.Navigate(Navigation.NavigationType.Home);
+                }
+                else
+                {
+                    BaseViewModel.Navigator.Navigate(Navigation.NavigationType.PauseScreen);
+                }
             };
             this.Condition = (obj) => { return true; };
         }
