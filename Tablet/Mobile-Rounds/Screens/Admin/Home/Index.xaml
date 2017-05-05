@@ -69,14 +69,14 @@
             Margin="10"
             Foreground="White"
             Background="Purple" 
-            Title="Regions" 
+            Title="Areas" 
             Command="{Binding GoToRegions}"/>
 
         <controls:ColoredTile Grid.Row="2" Grid.Column="2"
             Margin="10"
             Foreground="White"
             Background="Purple" 
-            Title="Stations"
+            Title="Systems"
             Command="{Binding GoToStations}" />
 
         <!--<controls:ColoredTile Grid.Row="2" Grid.Column="3"

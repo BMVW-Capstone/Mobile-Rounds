@@ -46,7 +46,7 @@ namespace Mobile_Rounds.ViewModels.Regular.Region
         {
             this.Regions = new ObservableCollection<RegionModelSource>();
             var result = JsonConvert.DeserializeObject<RegionHandler>(reads);
-            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Regions", parent.Navigate));
+            this.Crumbs.Add(new Shared.Controls.BreadcrumbItemModel("Areas", parent.Navigate));
 
             foreach (var region in result.Regions)
             {

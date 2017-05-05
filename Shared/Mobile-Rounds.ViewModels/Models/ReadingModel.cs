@@ -26,7 +26,6 @@ namespace Mobile_Rounds.ViewModels.Models
         /// </summary>
         public Guid RoundId { get; set; }
 
-
         /// <summary>
         /// The time of reading.
         /// </summary>
