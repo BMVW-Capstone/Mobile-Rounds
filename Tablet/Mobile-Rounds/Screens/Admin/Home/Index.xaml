@@ -93,10 +93,5 @@
             Title="Units of Measure"
             Command="{Binding GoToUnits}" />
 
-        <controls:ColoredTile Grid.Row="2" Grid.Column="4"
-            Margin="10"
-            Foreground="White"
-            Background="Purple" 
-            Title="History" />
     </Grid>
 </Page>
