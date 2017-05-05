@@ -88,7 +88,10 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical" Padding="0,5,0,5">
-                            <TextBlock Text="{Binding Name}" FontSize="22" Foreground="#234ace"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}" FontSize="22" Foreground="#234ace" Padding="0, 0, 20, 0"/>
+                                <CheckBox IsChecked="{Binding IsComplete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" FontSize="22" Padding="5, 0, 0, 0"/>
+                            </StackPanel>
                             <TextBlock Text="{Binding MeterName}" FontSize="18" Foreground="#234ace" Padding="8, 0, 0, 10"/>
                         </StackPanel>
                     </DataTemplate>
