@@ -51,8 +51,8 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
             else
             {
                 await RoundManager.CompleteRoundAsync();
-                Navigator.Navigate(Navigation.NavigationType.Home);
             }
+            Navigator.Navigate(Navigation.NavigationType.Home);
         }
 
 
