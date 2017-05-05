@@ -64,9 +64,6 @@
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top">
             <controls:ColoredTile Foreground="White" Background="#224ace" Title="Resume Round" Command="{Binding ResumeRound, Mode=OneWay}" />
             <controls:ColoredTile Foreground="White" Background="DarkRed" Title="End Round" Command="{Binding EndRound, Mode=OneWay}" />
-            <controls:ColoredTile Foreground="White" Background="Purple" Title="Admin"
-                                  Command="{Binding GoToAdmin}"
-                                  Visibility="{Binding AdminTileVisibility}"/>
         </StackPanel>
     </Grid>
 </Page>

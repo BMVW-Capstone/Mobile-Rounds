@@ -101,7 +101,6 @@ namespace Mobile_Rounds.ViewModels.Shared
         private static async Task<bool> DeleteCurrentRoundAsync()
         {
             var success = await FileHandler.DeleteFileAsync(Constants.FileNames.CurrentRound);
-            if (!success) return success;
 
             Singleton = null;
             return success;
