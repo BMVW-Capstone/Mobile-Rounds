@@ -39,6 +39,9 @@ namespace Mobile_Rounds.Helpers
                 case NavigationType.Home:
                     frame.Navigate(typeof(Screens.Regular.HomeScreen));
                     break;
+                case NavigationType.PauseScreen:
+                    frame.Navigate(typeof(Screens.Regular.PauseScreen));
+                    break;
                 case NavigationType.UnitOfMeasure:
                     frame.Navigate(typeof(Screens.Admin.UnitOfMeasureScreen));
                     break;

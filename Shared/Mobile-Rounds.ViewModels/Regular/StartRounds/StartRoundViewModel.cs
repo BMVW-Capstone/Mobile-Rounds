@@ -38,33 +38,31 @@ namespace Mobile_Rounds.ViewModels.Regular.StartRounds
 
             var currentHour = DateTime.Now.Hour;
 
-            //Determine which round is selectable
-            if (currentHour >= 2 && currentHour < 8)
+            RoundTimes.Clear();
+
+            if (currentHour >= 0 && currentHour <= 4)
             {
-                //enable 2 and 8
-                RoundTimes.Clear();
+                // 2 round
                 RoundTimes.Add(new RoundTimeViewModel() { RoundHour = "2:00" });
+            }
+            else if (currentHour > 4 && currentHour <= 10)
+            {
+                // 8 round
                 RoundTimes.Add(new RoundTimeViewModel() { RoundHour = "8:00" });
             }
-            else if (currentHour >= 8 && currentHour < 14)
+            else if (currentHour > 10 && currentHour <= 16)
             {
-                //enable 8 and 14
-                RoundTimes.Clear();
-                RoundTimes.Add(new RoundTimeViewModel() { RoundHour = "8:00" });
+                //14 round
                 RoundTimes.Add(new RoundTimeViewModel() { RoundHour = "14:00" });
-            }
-            else if (currentHour >= 14 && currentHour < 20)
+            } 
+            else if (currentHour > 16 && currentHour <= 22)
             {
-                //enable 14 and 20
-                RoundTimes.Clear();
-                RoundTimes.Add(new RoundTimeViewModel() { RoundHour = "14:00" });
+                // 20 round
                 RoundTimes.Add(new RoundTimeViewModel() { RoundHour = "20:00" });
             }
-            else if (currentHour >= 20 || currentHour < 2)
+            else if (currentHour == 23)
             {
-                //enable 20 and 2
-                RoundTimes.Clear();
-                RoundTimes.Add(new RoundTimeViewModel() { RoundHour = "20:00" });
+                // 2 round
                 RoundTimes.Add(new RoundTimeViewModel() { RoundHour = "2:00" });
             }
         }

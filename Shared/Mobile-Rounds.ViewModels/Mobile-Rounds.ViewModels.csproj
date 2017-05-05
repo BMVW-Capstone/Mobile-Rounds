@@ -80,7 +80,6 @@
     <Compile Include="Shared\Commands\AsyncCommand.cs" />
     <Compile Include="Shared\Commands\EndRoundCommand.cs" />
     <Compile Include="Shared\Commands\GoHomeCommand.cs" />
-    <Compile Include="Shared\Commands\ResumeRoundCommand.cs" />
     <Compile Include="Shared\Commands\StartRoundCommand.cs" />
     <Compile Include="Shared\Commands\SyncCommand.cs" />
     <Compile Include="Shared\Controls\BreadcrumbItemModel.cs" />

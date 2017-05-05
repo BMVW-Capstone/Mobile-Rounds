@@ -1,5 +1,6 @@
 ﻿using Mobile_Rounds.ViewModels.Models;
 using Mobile_Rounds.ViewModels.Platform;
+using Mobile_Rounds.ViewModels.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -107,6 +108,17 @@ namespace Mobile_Rounds.ViewModels.Shared
         }
 
         /// <summary>
+        /// Deletes the current round and redirects to the home screen without uploading anything.
+        /// This gets invoked if the user has exceeded the time window for completing a round.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task CancelRound()
+        {
+            await DeleteCurrentRoundAsync();
+            BaseViewModel.IsRoundLocked = false;
+        }
+
+        /// <summary>
         /// Saves the current round to disk. Should be called whenever you want to ensure
         /// that it persists per app instance.
         /// </summary>
@@ -118,6 +130,29 @@ namespace Mobile_Rounds.ViewModels.Shared
             }
 
             await FileHandler.SaveFileAsync(Constants.FileNames.CurrentRound, Singleton);
+        }
+
+        /// <summary>
+        /// Determines if the current round needs to be timed out due to time constraints.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task CheckTimeout()
+        {
+            var currentDate = DateTime.Now;
+            var hourDiff = Math.Abs(currentDate.Hour - CurrentRound.RoundHour);
+
+            if (hourDiff > 3)
+            {
+                BaseViewModel.IsRoundLocked = true;
+            }
+            else if (hourDiff == 3)
+            {
+                var temp = currentDate.AddHours(-3);
+                if (temp.Minute > 0)
+                {
+                    BaseViewModel.IsRoundLocked = true;
+                }
+            }
         }
 
         private static IFileHandler FileHandler;

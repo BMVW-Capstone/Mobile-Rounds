@@ -100,7 +100,7 @@ namespace Mobile_Rounds.ViewModels.Shared
             {
                 throw new InvalidOperationException("No readings to save.");
             }
-
+            await RoundManager.CheckTimeout();
             var handler = new ReadingHandler() { Readings = Singleton };
 
             await FileHandler.SaveFileAsync(Constants.FileNames.CurrentReadings, handler);

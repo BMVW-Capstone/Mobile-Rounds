@@ -68,6 +68,11 @@ namespace Mobile_Rounds.ViewModels.Shared.Navigation
         /// <summary>
         /// Navigate to the configuration input page.
         /// </summary>
-        Configuration
+        Configuration,
+
+        /// <summary>
+        /// Navigates to the pause/end round screen
+        /// </summary>
+        PauseScreen
     }
 }

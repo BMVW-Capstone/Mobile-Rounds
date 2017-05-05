@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid.DataContext>
-            <vm:HomePageViewModel />
+            <vm:PausePageViewModel />
         </Grid.DataContext>
 
         <!--Header-->
@@ -62,10 +62,9 @@
 
         <!-- Content -->
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top">
-            <controls:ColoredTile Foreground="White" Background="Purple" Title="Resume Round" Command="{Binding ResumeRound, Mode=OneWay}" />
-            <controls:ColoredTile Foreground="White" Background="Blue" Title="End Round" Command="{Binding EndRound, Mode=OneWay}" />
-            <controls:ColoredTile Foreground="White" Background="Green" Title="Sync" Command="{Binding Sync, Mode=OneWay}" />
-            <controls:ColoredTile Foreground="White" Background="Orange" Title="Admin"
+            <controls:ColoredTile Foreground="White" Background="#224ace" Title="Resume Round" Command="{Binding ResumeRound, Mode=OneWay}" />
+            <controls:ColoredTile Foreground="White" Background="DarkRed" Title="End Round" Command="{Binding EndRound, Mode=OneWay}" />
+            <controls:ColoredTile Foreground="White" Background="Purple" Title="Admin"
                                   Command="{Binding GoToAdmin}"
                                   Visibility="{Binding AdminTileVisibility}"/>
         </StackPanel>
