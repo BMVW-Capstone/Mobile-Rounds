@@ -66,8 +66,16 @@ namespace Mobile_Rounds.ViewModels.Shared.Home
             // only make us admin if debugging.
             this.IsAdmin = true;
 #endif
+            this.GoHome = null;
             this.Sync = new SyncCommand();
-            this.ResumeRound = new AsyncCommand(null, CanResume);
+            if (IsRoundLocked)
+            {
+                this.ResumeRound = null;
+            }
+            else
+            {
+                this.ResumeRound = new StartRoundCommand();
+            }
             this.EndRound = new AsyncCommand(StopRound);
 
         }
