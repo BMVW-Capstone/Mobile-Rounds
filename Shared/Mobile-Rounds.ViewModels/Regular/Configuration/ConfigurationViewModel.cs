@@ -2,6 +2,7 @@
 using Mobile_Rounds.ViewModels.Platform;
 using Mobile_Rounds.ViewModels.Shared;
 using Mobile_Rounds.ViewModels.Shared.Commands;
+using Mobile_Rounds.ViewModels.Shared.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,8 +51,8 @@ namespace Mobile_Rounds.ViewModels.Regular.Configuration
             {
                 settings.SaveValue(Constants.UserAdminKey, userInfo.IsAdministrator);
                 settings.SaveValue(Constants.UserDomainName, userInfo.DomainName);
-
             }
+            Navigator.Navigate(NavigationType.Home);
         }
 
         private async Task TestApiConnection()
