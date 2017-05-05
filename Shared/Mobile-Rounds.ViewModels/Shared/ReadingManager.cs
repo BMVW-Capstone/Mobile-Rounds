@@ -24,7 +24,7 @@ namespace Mobile_Rounds.ViewModels.Shared
         static ReadingManager()
         {
             FileHandler = ServiceResolver.Resolve<IFileHandler>();
-            Reset();
+            Singleton = new List<ReadingModel>();
         }
 
         public static void AddReading(ReadingModel newReading)

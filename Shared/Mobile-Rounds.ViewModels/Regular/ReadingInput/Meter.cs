@@ -32,7 +32,13 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// <summary>
         /// True if entry is completed
         /// </summary>
-        public bool IsComplete { get; set; } = false;
+        public bool IsComplete 
+        {
+            get { return isComplete; }
+            set { isComplete = value;  RaisePropertyChanged(nameof(IsComplete)); }
+        }
+
+        private bool isComplete = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Meter"/> class.
