@@ -173,6 +173,10 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             }
             //finally, write out the result to file so that way it doesn't get lost.
             item.CurrentReading = existingReading;
+
+            var model = this.ListModel.Meters.FirstOrDefault(m => m.Id == this.ListModel.Selected.Id);
+            model.IsComplete = true;
+
             await ReadingManager.SaveReadingsToDiskAsync();
             //place binding for completed items here. probably.
         }
