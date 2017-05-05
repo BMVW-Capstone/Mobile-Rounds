@@ -333,8 +333,11 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
                     valid = valToTest.ToLower().Equals(this.item.Specification.UpperBound, StringComparison.CurrentCultureIgnoreCase);
                 }
             }
+
             return valid;
         }
+
+
 
         private string FalseValue => item.Specification.LowerBound;
         private string TrueValue => item.Specification.UpperBound;

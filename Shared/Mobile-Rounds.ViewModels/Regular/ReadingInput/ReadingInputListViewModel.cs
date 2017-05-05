@@ -22,6 +22,11 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
         /// </summary>
         public ObservableCollection<Meter> Meters { get; set; }
 
+        public void SetSelectedAsVisited()
+        {
+            var model = Meters.FirstOrDefault(m => m.Id == selectedMeter.Id);
+            model.IsComplete = true;
+        }
         /// <summary>
         /// Gets or sets the currently selected unit in the list.
         /// If set to null, it clears out the selection.

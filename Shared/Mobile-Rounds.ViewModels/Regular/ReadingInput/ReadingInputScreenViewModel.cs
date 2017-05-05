@@ -50,6 +50,9 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
                         Name = item.Name,
                         MeterName = item.Meter
                     };
+
+                    var currentReading = ReadingManager.Find(item.Id);
+
                     newMeter.LastReading = new ReadingInput();
                     newMeter.TwoReadingsAgo = new ReadingInput();
                     newMeter.ThreeReadingsAgo = new ReadingInput();
@@ -61,8 +64,24 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
                         MaximumValue = item.Specification.UpperBound,
                         UnitAbbreviation = item.Specification.UnitOfMeasure.Abbreviation,
                         ValueBounds = newMeter.ComparisonType.AsEnum(),
-                        IsWithinSpec = false
+                        IsWithinSpec = false,
                     };
+
+                    if(!string.IsNullOrEmpty(currentReading.Value))
+                    {
+                        bool boolVal = false;
+                        if(bool.TryParse(currentReading.Value, out boolVal))
+                        {
+                            newMeter.TodaysReading.BooleanValue = boolVal;
+                        }
+                        else
+                        {
+                            //just a string value.
+                            newMeter.TodaysReading.StringValue = currentReading.Value;
+                        }
+                        newMeter.TodaysReading.IsWithinSpec = !currentReading.IsOutOfSpec;
+                        newMeter.IsComplete = true;
+                    }
 
                     var count = item.PastFourReadings.Count();
 
@@ -173,6 +192,9 @@ namespace Mobile_Rounds.ViewModels.Regular.ReadingInput
             }
             //finally, write out the result to file so that way it doesn't get lost.
             item.CurrentReading = existingReading;
+
+            this.ListModel.SetSelectedAsVisited();
+
             await ReadingManager.SaveReadingsToDiskAsync();
             //place binding for completed items here. probably.
         }
