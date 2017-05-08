@@ -1,0 +1,2 @@
+for now, drop the local db test files into the install directory after the build deployment. it should be something like 
+C:\Users\Chris\AppData\Local\Packages\21dfdc9c-4f8c-4e76-b1ba-2841c000665b_r0crwdv4bg5ta\LocalState   on a regular windows machine. no clue what the equivalent path structure is on the tablets.

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED818571-B5D0-4FC3-8AF3-63A04D806524}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mobile_Rounds.ViewModels</RootNamespace>
+    <AssemblyName>Mobile-Rounds.ViewModels</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <None Include="packages.config" />
+    <None Include="stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\AdminHome\AdminHomeViewModel.cs" />
+    <Compile Include="Admin\Items\ComparisonTypeViewModel.cs" />
+    <Compile Include="Admin\Items\ItemScreenViewModel.cs" />
+    <Compile Include="Admin\Items\ItemViewModel.cs" />
+    <Compile Include="Admin\Regions\RegionScreenViewModel.cs" />
+    <Compile Include="Admin\Regions\RegionViewModel.cs" />
+    <Compile Include="Admin\Stations\StationsViewModel.cs" />
+    <Compile Include="Admin\Stations\StationViewModel.cs" />
+    <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureViewModel.cs" />
+    <Compile Include="Models\DateBasedReport.cs" />
+    <Compile Include="Models\ReadingModel.cs" />
+    <Compile Include="Models\RegionModel.cs" />
+    <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\RoundModel.cs" />
+    <Compile Include="Models\ItemModel.cs" />
+    <Compile Include="Models\SpecificationModel.cs" />
+    <Compile Include="Models\UnitOfMeasureModel.cs" />
+    <Compile Include="Admin\UnitOfMeasure\UnitOfMeasureScreenViewModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Platform\Constants.cs" />
+    <Compile Include="Platform\IApiRequest.cs" />
+    <Compile Include="Platform\IBreadcrumbNavigationEvent.cs" />
+    <Compile Include="Platform\IFileHandler.cs" />
+    <Compile Include="Platform\ISettings.cs" />
+    <Compile Include="Platform\ServiceResolver.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regular\Configuration\ConfigurationViewModel.cs" />
+    <Compile Include="Regular\ReadingInput\Meter.cs" />
+    <Compile Include="Regular\ReadingInput\ReadingInput.cs" />
+    <Compile Include="Regular\ReadingInput\ReadingInputListViewModel.cs" />
+    <Compile Include="Regular\ReadingInput\ReadingInputScreenViewModel.cs" />
+    <Compile Include="Regular\ReadingInput\ReadingInputViewModel.cs" />
+    <Compile Include="Regular\Region\RegionListViewModel.cs" />
+    <Compile Include="Regular\Region\RegionModelSource.cs" />
+    <Compile Include="Regular\StartRounds\RoundTimeViewModel.cs" />
+    <Compile Include="Regular\Station\StationListViewModel.cs" />
+    <Compile Include="Models\StationModel.cs" />
+    <Compile Include="Shared\BaseViewModel.cs" />
+    <Compile Include="Shared\Commands\AsyncCommand.cs" />
+    <Compile Include="Shared\Commands\EndRoundCommand.cs" />
+    <Compile Include="Shared\Commands\GoHomeCommand.cs" />
+    <Compile Include="Shared\Commands\StartRoundCommand.cs" />
+    <Compile Include="Shared\Commands\SyncCommand.cs" />
+    <Compile Include="Shared\Controls\BreadcrumbItemModel.cs" />
+    <Compile Include="Shared\DbModels\ItemHandler.cs" />
+    <Compile Include="Shared\DbModels\ReadingHandler.cs" />
+    <Compile Include="Shared\DbModels\RegionHandler.cs" />
+    <Compile Include="Shared\DbModels\StationHandler.cs" />
+    <Compile Include="Shared\DbModels\UnitHandler.cs" />
+    <Compile Include="Shared\EnumerableExtensions.cs" />
+    <Compile Include="Shared\Home\HomePageViewModel.cs" />
+    <Compile Include="Shared\Home\PausePageViewModel.cs" />
+    <Compile Include="Regular\StartRounds\StartRoundViewModel.cs" />
+    <Compile Include="Shared\ModificationType.cs" />
+    <Compile Include="Shared\Navigation\INavigator.cs" />
+    <Compile Include="Shared\Navigation\NavigationType.cs" />
+    <Compile Include="Shared\NotificationBase.cs" />
+    <Compile Include="Shared\ReadingManager.cs" />
+    <Compile Include="Shared\ReadingType\BoundType.cs" />
+    <Compile Include="Shared\RoundManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Windows.Foundation.FoundationContract">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\2.0.0.0\Windows.Foundation.FoundationContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Foundation.UniversalApiContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

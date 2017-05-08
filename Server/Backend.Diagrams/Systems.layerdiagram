@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="6fe90bcb-25e9-41a7-9374-8fc7683d8fa7" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="091feb67-07b6-4ea2-8dba-d7b2d628c0c1" name="Model Layer">
+      <childLayers>
+        <layer Id="82097339-99c0-4a42-aa44-1bfb61210eee" name="DatabaseContext">
+          <references>
+            <reference Id="c8d5fe29-9939-4ad5-997c-af2f608ae9a0" name="DatabaseContext.cs">
+              <ArtifactNode Label="DatabaseContext.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend.Schemas/Backend.Schemas.csproj&quot; File=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend.Schemas/DatabaseContext.cs&quot;)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Backend.Schemas Namespace=Backend.Schemas Type=DatabaseContext)" Label="DatabaseContext" Category="CodeSchema_Class">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="f5021d36-5187-4924-ac83-b583c0ced7d3" name="View Model Layer">
+      <childLayers>
+        <layer Id="ac8e4792-3c9c-4200-aeeb-3a21c5881835" name="Mobile-Rounds.ViewModels">
+          <references>
+            <reference Id="dee2ddb7-db5d-45a6-a268-783a60d00947" name="Mobile-Rounds.ViewModels">
+              <ArtifactNode Label="Mobile-Rounds.ViewModels" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Shared/Mobile-Rounds.ViewModels/Mobile-Rounds.ViewModels.csproj&quot;)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Mobile-Rounds.ViewModels)" Label="Mobile-Rounds.ViewModels.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="34e03447-82c7-42cc-8cef-7a6957605ba3" name="View / API Layer">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="d01be319-75e4-4f80-9219-e713aed9b0b2" direction="Forward">
+          <layerMoniker Id="f5021d36-5187-4924-ac83-b583c0ced7d3" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="2dde63cc-3156-4817-a5d0-56026f675699" name="Backend">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="353575a7-6a6f-4660-9190-681e75454c3d" direction="Forward">
+              <layerMoniker Id="82097339-99c0-4a42-aa44-1bfb61210eee" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="05f3dc60-0760-41d0-819e-b2040b148443" direction="Forward">
+              <layerMoniker Id="74fa1382-62d5-48f4-aed4-2eebe58b6dd7" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="4e8d7a76-dd28-4637-9322-6a234f13cf11" direction="Forward">
+              <layerMoniker Id="60ef5cdb-f810-4223-9d78-090b1c8e0509" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="cf9e33c8-f3b5-4e94-8855-4d4027b21cb1" name="Controllers">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="5c48c533-47c0-4ea1-9656-903574104636" direction="Forward">
+                  <layerMoniker Id="275da64a-bf9f-49dc-94b2-c4111441c67c" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <references>
+                <reference Id="c859156d-0b48-4d67-b1a5-0289105342c8" name="Controllers">
+                  <ArtifactNode Label="Controllers" Category="CodeSchema_ProjectItem" Id="(Assembly=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend/Backend.csproj&quot; File=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend/Controllers/&quot;)">
+                    <Category Ref="ProjectFolder" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Backend Namespace=Backend.Controllers Type=RegionsController)" Label="RegionsController" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="d9721f46-1265-42a1-a6fe-f75e3b2df693" name="NinjectWebCommon.cs">
+              <references>
+                <reference Id="a62745c5-7c44-4ecc-a3e7-0ce975a85932" name="NinjectWebCommon.cs">
+                  <ArtifactNode Label="NinjectWebCommon.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend/Backend.csproj&quot; File=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend/App_Start/NinjectWebCommon.cs&quot;)">
+                    <Category Ref="File" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Backend Namespace=AgencyRM.Tracker.App_Start Type=NinjectWebCommon)" Label="NinjectWebCommon" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+          </childLayers>
+          <references>
+            <reference Id="01870be1-4fd8-4fd2-af09-bd8670f613e6" name="Backend">
+              <ArtifactNode Label="Backend" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend/Backend.csproj&quot;)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Backend)" Label="Backend.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="60ef5cdb-f810-4223-9d78-090b1c8e0509" name="Repository Layer (Data Access)">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="881a2969-ce59-4797-879b-f477ecf6c769" direction="Forward">
+          <layerMoniker Id="091feb67-07b6-4ea2-8dba-d7b2d628c0c1" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="0615f662-4c4f-4fe3-8a12-848256faba72" direction="Forward">
+          <layerMoniker Id="f5021d36-5187-4924-ac83-b583c0ced7d3" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="29e690a6-9d67-4ea2-96ed-9b87032ecb24" name="Backend.DataAccess">
+          <childLayers>
+            <layer Id="275da64a-bf9f-49dc-94b2-c4111441c67c" name="Repositories">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="4a9bc739-b6b0-4b7c-ab55-967546da7ed0" direction="Forward">
+                  <layerMoniker Id="6ed85abf-5eff-403e-88fb-517e5091e6fb" />
+                </dependencyFromLayerToLayer>
+                <dependencyFromLayerToLayer Id="d0cfc275-16d7-4ecd-8efb-ef716ae9ef01" direction="Forward">
+                  <layerMoniker Id="74fa1382-62d5-48f4-aed4-2eebe58b6dd7" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <references>
+                <reference Id="a923f0f4-5824-4d39-bbe0-559cb56be6fc" name="Repositories">
+                  <ArtifactNode Label="Repositories" Category="CodeSchema_ProjectItem" Id="(Assembly=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend.DataAccess/Backend.DataAccess.csproj&quot; File=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend.DataAccess/Repositories/&quot;)">
+                    <Category Ref="ProjectFolder" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Backend.DataAccess Namespace=Backend.DataAccess.Repositories Type=RegionRepository)" Label="RegionRepository" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="6ed85abf-5eff-403e-88fb-517e5091e6fb" name="DataSources">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="9913478b-1d9f-4b11-8371-989a7d7fc192" direction="Forward">
+                  <layerMoniker Id="74fa1382-62d5-48f4-aed4-2eebe58b6dd7" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <references>
+                <reference Id="d8d6707e-ffac-4829-9044-99cb73f44510" name="DataSources">
+                  <ArtifactNode Label="DataSources" Category="CodeSchema_ProjectItem" Id="(Assembly=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend.DataAccess/Backend.DataAccess.csproj&quot; File=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend.DataAccess/DataSources/&quot;)">
+                    <Category Ref="ProjectFolder" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Backend.DataAccess Namespace=Backend.DataAccess.Repositories.DataSources Type=RegionDataSource)" Label="RegionDataSource" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="74fa1382-62d5-48f4-aed4-2eebe58b6dd7" name="Abstractions">
+              <references>
+                <reference Id="a0895771-c1e6-4f2b-b9f5-7ac2dbd5b915" name="Abstractions">
+                  <ArtifactNode Label="Abstractions" Category="CodeSchema_ProjectItem" Id="(Assembly=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend.DataAccess/Backend.DataAccess.csproj&quot; File=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend.DataAccess/Abstractions/&quot;)">
+                    <Category Ref="ProjectFolder" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Backend.DataAccess Namespace=Backend.DataAccess.Abstractions Type=(Name=AbstractDataSource GenericParameterCount=1))" Label="AbstractDataSource&lt;TModel&gt;" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Backend.DataAccess Namespace=Backend.DataAccess.Abstractions Type=(Name=AbstractRepository GenericParameterCount=2))" Label="AbstractRepository&lt;TViewModel, TModel&gt;" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Backend.DataAccess Namespace=Backend.DataAccess.Abstractions Type=(Name=IDataSource GenericParameterCount=1))" Label="IDataSource&lt;TModel&gt;" Category="CodeSchema_Interface">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Backend.DataAccess Namespace=Backend.DataAccess.Abstractions Type=(Name=IReadableDataSource GenericParameterCount=1))" Label="IReadableDataSource&lt;TModel&gt;" Category="CodeSchema_Interface">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Backend.DataAccess Namespace=Backend.DataAccess.Abstractions Type=(Name=IRepository GenericParameterCount=1))" Label="IRepository&lt;TModel&gt;" Category="CodeSchema_Interface">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Backend.DataAccess Namespace=Backend.DataAccess.Abstractions Type=(Name=IWriteableDataSource GenericParameterCount=1))" Label="IWriteableDataSource&lt;TModel&gt;" Category="CodeSchema_Interface">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+          </childLayers>
+          <references>
+            <reference Id="ab59d031-e1b4-4dd9-9c26-8ba4ae59baff" name="Backend.DataAccess">
+              <ArtifactNode Label="Backend.DataAccess" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend.DataAccess/Backend.DataAccess.csproj&quot;)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Backend.DataAccess)" Label="Backend.DataAccess.dll" Category="CodeSchema_Assembly">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+      <references>
+        <reference Id="54416d81-4ff6-4a18-918b-21061439da50" name="Backend.DataAccess">
+          <ArtifactNode Label="Backend.DataAccess" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/GitHub/Personal/Mobile-Rounds/Server/Backend.DataAccess/Backend.DataAccess.csproj&quot;)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=Backend.DataAccess)" Label="Backend.DataAccess.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>

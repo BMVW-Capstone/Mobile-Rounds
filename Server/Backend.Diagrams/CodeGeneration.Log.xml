@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 14.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/CodeGenLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2017-01-09T23:19:54" Importance="High" Text="Code generation or text transformation started." />
+  <Message Timestamp="2017-01-09T23:19:54" Importance="Diagnostic" Text="Name = ClassTemplate" />
+  <Message Timestamp="2017-01-09T23:19:54" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2017-01-09T23:19:54" Importance="Diagnostic" Text="ProjectPath = ..\Backend.DiagramsLib\Backend.DiagramsLib.csproj" />
+  <Message Timestamp="2017-01-09T23:19:54" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2017-01-09T23:19:54" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2017-01-09T23:19:54" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2017-01-09T23:19:54" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2017-01-09T23:19:54" Importance="Medium" Text="Backend.Diagrams's Text Template Binding: 'ClassTemplate' will apply ClassTemplate.t4 to: 'Backend.Diagrams::Backend.Schemas::Region' -  (Class), 'Backend.Diagrams::Backend.Schemas::Station' -  (Class), 'Backend.Diagrams::Backend.Schemas::Item' -  (Class), 'Backend.Diagrams::Backend.Schemas::Reading' -  (Class), 'Backend.Diagrams::Backend.Schemas::Round' -  (Class), 'Backend.Diagrams::Backend.Schemas::Specification' -  (Class), 'Backend.Diagrams::Backend.Schemas::UnitOfMeasure' -  (Class) " />
+  <Message Timestamp="2017-01-09T23:20:18" Importance="Medium" Text="'Backend.Diagrams::Backend.Schemas::Region' -  (Class) : success (file replaced) - C:\Users\tylervanderhoef\Documents\GitHub\Personal\Mobile-Rounds\Server\Backend.DiagramsLib\GeneratedCode\Backend.Schemas\Region.cs" />
+  <Message Timestamp="2017-01-09T23:20:18" Importance="Medium" Text="'Backend.Diagrams::Backend.Schemas::Station' -  (Class) : success (file created) - C:\Users\tylervanderhoef\Documents\GitHub\Personal\Mobile-Rounds\Server\Backend.DiagramsLib\GeneratedCode\Backend.Schemas\Station.cs" />
+  <Message Timestamp="2017-01-09T23:20:18" Importance="Medium" Text="'Backend.Diagrams::Backend.Schemas::Item' -  (Class) : success (file created) - C:\Users\tylervanderhoef\Documents\GitHub\Personal\Mobile-Rounds\Server\Backend.DiagramsLib\GeneratedCode\Backend.Schemas\Item.cs" />
+  <Message Timestamp="2017-01-09T23:20:19" Importance="Medium" Text="'Backend.Diagrams::Backend.Schemas::Reading' -  (Class) : success (file created) - C:\Users\tylervanderhoef\Documents\GitHub\Personal\Mobile-Rounds\Server\Backend.DiagramsLib\GeneratedCode\Backend.Schemas\Reading.cs" />
+  <Message Timestamp="2017-01-09T23:20:19" Importance="Medium" Text="'Backend.Diagrams::Backend.Schemas::Round' -  (Class) : success (file created) - C:\Users\tylervanderhoef\Documents\GitHub\Personal\Mobile-Rounds\Server\Backend.DiagramsLib\GeneratedCode\Backend.Schemas\Round.cs" />
+  <Message Timestamp="2017-01-09T23:20:19" Importance="Medium" Text="'Backend.Diagrams::Backend.Schemas::Specification' -  (Class) : success (file created) - C:\Users\tylervanderhoef\Documents\GitHub\Personal\Mobile-Rounds\Server\Backend.DiagramsLib\GeneratedCode\Backend.Schemas\Specification.cs" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Medium" Text="'Backend.Diagrams::Backend.Schemas::UnitOfMeasure' -  (Class) : success (file created) - C:\Users\tylervanderhoef\Documents\GitHub\Personal\Mobile-Rounds\Server\Backend.DiagramsLib\GeneratedCode\Backend.Schemas\UnitOfMeasure.cs" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="Name = EnumTemplate" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="ProjectPath = ..\Backend.DiagramsLib\Backend.DiagramsLib.csproj" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Medium" Text="Backend.Diagrams's Text Template Binding: 'EnumTemplate' will apply EnumTemplate.t4 to: 'Backend.Diagrams::Backend.Schemas::ComparisonType' -  (Enumeration) " />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Medium" Text="'Backend.Diagrams::Backend.Schemas::ComparisonType' -  (Enumeration) : success (file created) - C:\Users\tylervanderhoef\Documents\GitHub\Personal\Mobile-Rounds\Server\Backend.DiagramsLib\GeneratedCode\Backend.Schemas\ComparisonType.cs" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="Name = StructTemplate" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="ProjectPath = ..\Backend.DiagramsLib\Backend.DiagramsLib.csproj" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Medium" Text="Backend.Diagrams's Text Template Binding: 'StructTemplate' will apply StructTemplate.t4 to: 'Backend.Diagrams::Backend.Schemas::Region' -  (Class), 'Backend.Diagrams::Backend.Schemas::Station' -  (Class), 'Backend.Diagrams::Backend.Schemas::Item' -  (Class), 'Backend.Diagrams::Backend.Schemas::Reading' -  (Class), 'Backend.Diagrams::Backend.Schemas::Round' -  (Class), 'Backend.Diagrams::Backend.Schemas::Specification' -  (Class), 'Backend.Diagrams::Backend.Schemas::UnitOfMeasure' -  (Class) " />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="'Backend.Diagrams::Backend.Schemas::Region' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="'Backend.Diagrams::Backend.Schemas::Station' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="'Backend.Diagrams::Backend.Schemas::Item' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="'Backend.Diagrams::Backend.Schemas::Reading' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="'Backend.Diagrams::Backend.Schemas::Round' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="'Backend.Diagrams::Backend.Schemas::Specification' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="'Backend.Diagrams::Backend.Schemas::UnitOfMeasure' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="The selection included 1 elements which were not bound to a template." />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="Diagnostic" Text="'Backend.Diagrams::Backend.Schemas' -  (Package): no bound template." />
+  <Message Timestamp="2017-01-09T23:20:20" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
+</Log>

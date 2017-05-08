@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{63014203-15ec-4eb7-a6f6-79a3e3e775d6}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>Backend.Diagrams</Name>
+    <RootNamespace>Backend.Diagrams</RootNamespace>
+    <ValidateArchitecture>true</ValidateArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ItemGroup>
+    <Content Include="API-Flow.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="API-Flow.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>API-Flow.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="Backend.DataAccess.Abstractions.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Backend.DataAccess.Abstractions.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Backend.DataAccess.Abstractions.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Backend.DataAccess.DataSources.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Backend.DataAccess.DataSources.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Backend.DataAccess.DataSources.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Backend.DataAccess.Repositories.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Backend.DataAccess.Repositories.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Backend.DataAccess.Repositories.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="ModelDefinition\Package_0015.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_0033.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_0039.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_0041.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_0045.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1152.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_2228.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="Backend.Schemas.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Backend.Schemas.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Backend.Schemas.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="ModelDefinition\Backend.Diagrams.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Validate Include="Systems.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="Systems.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Systems.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="Systems.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>Systems.layerdiagram</DependentUpon>
+    </Validate>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Mobile-Rounds.ViewModels\Mobile-Rounds.ViewModels.csproj">
+      <Name>Mobile-Rounds.ViewModels</Name>
+      <Project>{ed818571-b5d0-4fc3-8af3-63a04d806524}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Backend.DataAccess\Backend.DataAccess.csproj">
+      <Name>Backend.DataAccess</Name>
+      <Project>{9eed13c4-a6d2-41d5-bee7-9cc439ffa97f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Backend.Schemas\Backend.Schemas.csproj">
+      <Name>Backend.Schemas</Name>
+      <Project>{4bd2528e-277f-404b-b036-6f7f273abc32}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Backend.Tests\Backend.Tests.csproj">
+      <Name>Backend.Tests</Name>
+      <Project>{36a0a9da-11ed-441f-b4bb-57fc91256ede}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Backend\Backend.csproj">
+      <Name>Backend</Name>
+      <Project>{5e1bc974-a75b-4cae-a797-41e35926cbda}</Project>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
